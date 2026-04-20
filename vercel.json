@@ -1,20 +1,10 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    }
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/flats-near-hinjewadi.html", "destination": "/krisala-aventis-tathawade-flats-near-hinjewadi", "permanent": true },
+    { "source": "/2-bhk-flats-tathawade.html", "destination": "/krisala-aventis-tathawade-2-bhk-flats", "permanent": true },
+    { "source": "/3-bhk-luxury-apartments-tathawade.html", "destination": "/krisala-aventis-tathawade-3-bhk-luxury-apartments", "permanent": true },
+    { "source": "/construction-update-krisala-aventis.html", "destination": "/krisala-aventis-tathawade-construction-status", "permanent": true }
   ]
 }

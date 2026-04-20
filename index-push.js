@@ -2,8 +2,8 @@ const { google } = require('googleapis');
 const fs = require('fs');
 
 /**
- * SOVEREIGN INDEXING ENGINE v1.0
- * For Krisala Aventis Search Dominance
+ * SOVEREIGN INDEXING ENGINE v1.1
+ * Optimized for Krisala Aventis Clean URL Architecture
  * 
  * Requirement: service-account.json from Google Search Console API
  */
@@ -11,10 +11,10 @@ const fs = require('fs');
 const keyFile = 'service-account.json';
 const urls = [
   'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/',
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/flats-near-hinjewadi.html',
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/2-bhk-flats-tathawade.html',
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/3-bhk-luxury-apartments-tathawade.html',
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/construction-update-krisala-aventis.html'
+  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-flats-near-hinjewadi',
+  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-2-bhk-flats',
+  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-3-bhk-luxury-apartments',
+  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-construction-status'
 ];
 
 async function pushToIndex() {
