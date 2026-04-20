@@ -175,6 +175,9 @@
       const waUrl = `https://api.whatsapp.com/send?phone=919172174141&text=${waMsg}`;
 
       setTimeout(() => {
+        // Track Lead Conversion
+        trackEvent('Conversion', 'Enquiry Form Submission', data.config);
+
         window.open(waUrl, '_blank');
         showSuccess();
         form.reset();
@@ -264,7 +267,35 @@
   });
 
   /* =============================================
-     10. INJECT SHAKE KEYFRAME DYNAMICALLY
+     10. ANALYTICS & EVENT TRACKING (dataLayer)
+     ============================================= */
+  function trackEvent(category, action, label) {
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        'event': 'ka_engagement',
+        'event_category': category,
+        'event_action': action,
+        'event_label': label
+      });
+      console.log(`[Analytics] Tracked: ${category} | ${action} | ${label}`);
+    }
+  }
+
+  // Track WhatsApp Clicks
+  document.getElementById('waFab')?.addEventListener('click', () => {
+    trackEvent('Communication', 'WhatsApp Click', 'Floating FAB');
+  });
+
+  // Track CTA Button Clicks
+  document.querySelectorAll('.btn-primary, .btn-secondary, .cta-pill, .ribbon-cta').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.innerText || btn.textContent;
+      trackEvent('Engagement', 'Button Click', text.trim());
+    });
+  });
+
+  /* =============================================
+     11. INJECT SHAKE KEYFRAME DYNAMICALLY
      ============================================= */
   const shakeStyle = document.createElement('style');
   shakeStyle.textContent = `
