@@ -170,9 +170,17 @@
       // Persist to localStorage (Sovereign Vault)
       persistLead(data);
 
-      // --- WhatsApp Dispatch ---
-      const waMsg = buildWhatsAppMessage(data);
-      const waUrl = `https://api.whatsapp.com/send?phone=917744009295&text=${waMsg}`;
+      // --- Lead Relay (Email Notification) ---
+      // We use a professional relay to ensure leads reach propsmartrealty@gmail.com
+      fetch('https://formspree.io/f/xvgzrqba', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(response => {
+        if (response.ok) {
+          console.log('[Krisala Aventis] Lead relayed to Email successfully ✅');
+        }
+      }).catch(err => console.warn('[Krisala Aventis] Email relay failed:', err));
 
       setTimeout(() => {
         // Track Lead Conversion
