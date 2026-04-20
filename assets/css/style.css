@@ -45,6 +45,7 @@ button { cursor: pointer; font-family: inherit; }
 /* ---- UTILITIES ---- */
 .container { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
 .gold { color: var(--clr-gold); }
+.white { color: #ffffff; }
 .section { padding: clamp(80px, 10vw, 140px) 0; }
 .section-tag {
   display: inline-flex; align-items: center; gap: 8px;
@@ -788,4 +789,48 @@ button { cursor: pointer; font-family: inherit; }
   .zone-grid { grid-template-columns: 1fr; }
   .tower-stat { min-width: 100%; }
   .layout-legend { position: static; }
+}
+
+/* --- Phase 4 Authority & UI Scaling --- */
+.connectivity-h3-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.conn-h3 h3 {
+  font-size: 1.25rem;
+  color: var(--clr-gold);
+  margin-bottom: 0.75rem;
+  font-family: var(--ff-heading);
+}
+
+.conn-h3 p {
+  font-size: 0.95rem;
+  color: var(--clr-light-alt);
+  line-height: 1.6;
+}
+
+.maps-cta {
+  margin-top: 1.5rem;
+}
+
+.btn-secondary.small {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .connectivity-h3-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1.5rem;
+  }
 }

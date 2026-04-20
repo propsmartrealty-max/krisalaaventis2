@@ -1,0 +1,12 @@
+{
+  "name": "krisala-aventis-indexing",
+  "version": "1.0.0",
+  "description": "Programmatic Google Indexing for Krisala Aventis",
+  "main": "index-push.js",
+  "dependencies": {
+    "googleapis": "^126.0.0"
+  },
+  "scripts": {
+    "push": "node index-push.js"
+  }
+}

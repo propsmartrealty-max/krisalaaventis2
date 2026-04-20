@@ -309,5 +309,24 @@
   `;
   document.head.appendChild(shakeStyle);
 
+  const connStyle = document.createElement('style');
+  connStyle.textContent = `
+    .share-btn-fp { margin-top: 1rem; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--clr-gold); cursor: pointer; opacity: 0.8; transition: 0.3s; }
+    .share-btn-fp:hover { opacity: 1; transform: translateX(5px); }
+  `;
+  document.head.appendChild(connStyle);
+
+  document.querySelectorAll('.fp-details').forEach(details => {
+    const shareBtn = document.createElement('div');
+    shareBtn.className = 'share-btn-fp';
+    shareBtn.innerHTML = '<span>📲 Share Layout</span>';
+    shareBtn.onclick = () => {
+      const bhk = details.querySelector('h3')?.innerText || '2/3 BHK';
+      const msg = encodeURIComponent(`Check out this ${bhk} layout at Krisala Aventis Tathawade! It looks perfect. \n\nView here: ${window.location.href}`);
+      window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+    };
+    details.appendChild(shareBtn);
+  });
+
   console.log('[Krisala Aventis] Sovereign Intelligence v2.0 — ACTIVE ✅');
 })();
