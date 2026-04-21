@@ -202,42 +202,42 @@
       // Persist to local "Sovereign Vault"
       persistLead(data);
 
-      // --- Lead Relay (Email Notification via Web3Forms) ---
-      const leadData = {
-        access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
-        subject: `New Lead: ${data.name} - Krisala Aventis`,
-        from_name: 'Krisala Aventis Live Portal',
-        ...data
-      };
+      // --- Lead Relay via Formsubmit.co ---
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('phone', data.phone);
+      formData.append('email', data.email);
+      formData.append('config', data.config);
+      formData.append('budget', data.budget);
+      formData.append('message', data.message);
+      formData.append('page', data.page);
+      formData.append('_subject', `New Lead: ${data.name} - Krisala Aventis`);
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
 
-      fetch('https://api.web3forms.com/submit', {
+      fetch('https://formsubmit.co/ajax/propsmartrealty@gmail.com', {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(leadData)
-      }).then(response => {
-        if (response.ok) {
-          console.log('[Krisala Aventis] Lead relayed successfully ✅');
-        }
-      }).catch(err => console.warn('[Krisala Aventis] Relay issues:', err))
-      .finally(() => {
-        // --- Success Outcome Execution ---
+        body: formData
+      }).then(res => res.json()).then(json => {
+        console.log('[Krisala Aventis] Formsubmit OK ✅', json);
+      }).catch(err => {
+        console.warn('[Krisala Aventis] Formsubmit issue:', err);
+      }).finally(() => {
         trackEvent('Conversion', 'Enquiry Form Submission', data.config);
         
         // WhatsApp Dispatch
         const waMsg = buildWhatsAppMessage(data);
         const waUrl = `https://api.whatsapp.com/send?phone=917744009295&text=${waMsg}`;
-        try {
-          window.open(waUrl, '_blank');
-        } catch(e) { console.error('Popup blocked'); }
+        try { window.open(waUrl, '_blank'); } catch(e) {}
 
         // UI Reset
         showSuccess(currentBtn, currentBtnText);
         form.reset();
         
         // Close modal if open
-        const modal = document.getElementById('enquiryModal');
-        if (modal && modal.classList.contains('open')) {
-          setTimeout(() => modal.classList.remove('open'), 2000);
+        const modalEl = document.getElementById('enquiryModal');
+        if (modalEl && modalEl.classList.contains('open')) {
+          setTimeout(() => modalEl.classList.remove('open'), 2000);
         }
       });
     });
