@@ -191,6 +191,8 @@
         phone:   phone.value.trim(),
         email:   form.querySelector('input[name="email"]')?.value.trim() || 'N/A',
         config:  config.value,
+        budget:  form.querySelector('select[name="budget"]')?.value || 'N/A',
+        message: form.querySelector('textarea[name="message"]')?.value.trim() || 'N/A',
         source:  urlParams.get('utm_source') || 'Direct',
         campaign: urlParams.get('utm_campaign') || 'Direct_Organic',
         page:    window.location.pathname,
@@ -201,7 +203,6 @@
       persistLead(data);
 
       // --- Lead Relay (Email Notification via Web3Forms) ---
-      // Destination: propsmartrealty@gmail.com
       const leadData = {
         access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
         subject: `New Lead: ${data.name} - Krisala Aventis`,
@@ -215,26 +216,30 @@
         body: JSON.stringify(leadData)
       }).then(response => {
         if (response.ok) {
-          console.log('[Krisala Aventis] Lead relayed to Web3Forms successfully ✅');
+          console.log('[Krisala Aventis] Lead relayed successfully ✅');
         }
-      }).catch(err => console.warn('[Krisala Aventis] Lead relay failed:', err));
-
-      // --- Success Execution ---
-      setTimeout(() => {
+      }).catch(err => console.warn('[Krisala Aventis] Relay issues:', err))
+      .finally(() => {
+        // --- Success Outcome Execution ---
         trackEvent('Conversion', 'Enquiry Form Submission', data.config);
         
         // WhatsApp Dispatch
         const waMsg = buildWhatsAppMessage(data);
         const waUrl = `https://api.whatsapp.com/send?phone=917744009295&text=${waMsg}`;
-        window.open(waUrl, '_blank');
+        try {
+          window.open(waUrl, '_blank');
+        } catch(e) { console.error('Popup blocked'); }
 
         // UI Reset
         showSuccess(currentBtn, currentBtnText);
         form.reset();
         
         // Close modal if open
-        setTimeout(() => modal.classList.remove('open'), 2000);
-      }, 800);
+        const modal = document.getElementById('enquiryModal');
+        if (modal && modal.classList.contains('open')) {
+          setTimeout(() => modal.classList.remove('open'), 2000);
+        }
+      });
     });
   });
 
@@ -244,10 +249,10 @@
     msg += `*My Details:*%0A`;
     msg += `• Name: ${d.name}%0A`;
     msg += `• Mobile: ${d.phone}%0A`;
-    if (d.email) msg += `• Email: ${d.email}%0A`;
+    if (d.email && d.email !== 'N/A') msg += `• Email: ${d.email}%0A`;
     msg += `• Configuration: ${d.config}%0A`;
-    if (d.budget) msg += `• Budget: ${d.budget}%0A`;
-    if (d.message) msg += `• Query: ${d.message}%0A%0A`;
+    if (d.budget && d.budget !== 'N/A') msg += `• Budget: ${d.budget}%0A`;
+    if (d.message && d.message !== 'N/A') msg += `• Query: ${d.message}%0A%0A`;
     
     // Add Tracking Metadata
     if (d.utm && (d.utm.source !== 'Direct' || d.utm.campaign !== 'None')) {
