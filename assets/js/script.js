@@ -167,11 +167,12 @@
       const config = form.querySelector('select[name="config"]');
       let valid = true;
 
-      [name, phone, config].forEach(el => el.classList.remove('error'));
+      [name, phone].forEach(el => el && el.classList.remove('error'));
+      if (config) config.classList.remove('error');
 
-      if (!name.value.trim()) { name.classList.add('error'); valid = false; }
-      if (!phone.value.trim() || !/^[0-9]{10}$/.test(phone.value.trim())) {
-        phone.classList.add('error'); valid = false;
+      if (!name || !name.value.trim()) { if(name) name.classList.add('error'); valid = false; }
+      if (!phone || !phone.value.trim() || !/^[0-9]{10}$/.test(phone.value.trim())) {
+        if(phone) phone.classList.add('error'); valid = false;
       }
 
       if (!valid) {
@@ -181,65 +182,35 @@
 
       // --- Loading State ---
       currentBtn.disabled = true;
-      const originalBtnText = currentBtnText.textContent;
       currentBtnText.textContent = '⏳ Dispatching...';
 
-      // UTM/Source Data
-      const urlParams = new URLSearchParams(window.location.search);
+      // Collect data
       const data = {
         name:    name.value.trim(),
         phone:   phone.value.trim(),
         email:   form.querySelector('input[name="email"]')?.value.trim() || 'N/A',
-        config:  config.value,
+        config:  config ? config.value : 'N/A',
         budget:  form.querySelector('select[name="budget"]')?.value || 'N/A',
-        message: form.querySelector('textarea[name="message"]')?.value.trim() || 'N/A',
-        source:  urlParams.get('utm_source') || 'Direct',
-        campaign: urlParams.get('utm_campaign') || 'Direct_Organic',
-        page:    window.location.pathname,
-        ts:      new Date().toLocaleString()
+        message: form.querySelector('textarea[name="message"]')?.value.trim() || 'N/A'
       };
 
-      // Persist to local "Sovereign Vault"
+      // Persist to local vault
       persistLead(data);
 
-      // --- Lead Relay via Formsubmit.co ---
-      const formData = new FormData();
-      formData.append('name', data.name);
-      formData.append('phone', data.phone);
-      formData.append('email', data.email);
-      formData.append('config', data.config);
-      formData.append('budget', data.budget);
-      formData.append('message', data.message);
-      formData.append('page', data.page);
-      formData.append('_subject', `New Lead: ${data.name} - Krisala Aventis`);
-      formData.append('_captcha', 'false');
-      formData.append('_template', 'table');
+      // WhatsApp Dispatch
+      const waMsg = buildWhatsAppMessage(data);
+      const waUrl = `https://api.whatsapp.com/send?phone=917744009295&text=${waMsg}`;
+      try { window.open(waUrl, '_blank'); } catch(e) {}
 
-      fetch('https://formsubmit.co/ajax/propsmartrealty@gmail.com', {
-        method: 'POST',
-        body: formData
-      }).then(res => res.json()).then(json => {
-        console.log('[Krisala Aventis] Formsubmit OK ✅', json);
-      }).catch(err => {
-        console.warn('[Krisala Aventis] Formsubmit issue:', err);
-      }).finally(() => {
-        trackEvent('Conversion', 'Enquiry Form Submission', data.config);
-        
-        // WhatsApp Dispatch
-        const waMsg = buildWhatsAppMessage(data);
-        const waUrl = `https://api.whatsapp.com/send?phone=917744009295&text=${waMsg}`;
-        try { window.open(waUrl, '_blank'); } catch(e) {}
+      // Now submit the form natively to Formsubmit.co
+      // Remove the JS listener temporarily and submit
+      showSuccess(currentBtn, currentBtnText);
 
-        // UI Reset
-        showSuccess(currentBtn, currentBtnText);
-        form.reset();
-        
-        // Close modal if open
-        const modalEl = document.getElementById('enquiryModal');
-        if (modalEl && modalEl.classList.contains('open')) {
-          setTimeout(() => modalEl.classList.remove('open'), 2000);
-        }
-      });
+      // Native HTML form submit to Formsubmit after a short delay
+      setTimeout(() => {
+        form.removeEventListener('submit', arguments.callee);
+        form.submit();
+      }, 1000);
     });
   });
 
