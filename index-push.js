@@ -10,11 +10,11 @@ const fs = require('fs');
 
 const keyFile = 'service-account.json';
 const urls = [
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/',
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-flats-near-hinjewadi',
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-2-bhk-flats',
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-3-bhk-luxury-apartments',
-  'https://krisala.com/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-construction-status'
+  'https://krisalaventis.in/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/',
+  'https://krisalaventis.in/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-flats-near-hinjewadi',
+  'https://krisalaventis.in/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-2-bhk-flats',
+  'https://krisalaventis.in/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-3-bhk-luxury-apartments',
+  'https://krisalaventis.in/aventis-2-25-bhk-3-25-bhk-flats-in-tathawade-pune/krisala-aventis-tathawade-construction-status'
 ];
 
 async function pushToIndex() {
