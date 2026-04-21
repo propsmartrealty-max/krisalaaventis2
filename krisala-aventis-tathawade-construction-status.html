@@ -88,19 +88,19 @@
       <div class="glass-form-container" style="max-width: 600px; margin: 0 auto;">
         <h3>See Actual Site Progress</h3>
         <p>Book a guided site walk and get the latest RERA Quarter Report for Krisala Aventis.</p>
-        <form id="sovereign-form" class="enquiry-form">
+        <form id="sovereign-form" class="sovereign-form-logic">
           <div class="form-group">
-            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" name="name" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <input type="tel" id="phone" placeholder="Mobile Number" required>
+            <input type="tel" name="phone" placeholder="Mobile Number" pattern="[0-9]{10}" required>
           </div>
-          <select id="config" required>
-            <option value="Site Visit">Site Visit (Requested)</option>
-            <option value="Live Photos">Send Latest Site Photos</option>
+          <select name="config" required>
+            <option value="Construction Status" selected>Construction Update (Requested)</option>
+            <option value="Site Visit">Request Site Video</option>
           </select>
-          <button type="submit" class="submit-btn" id="submitBtn">
-            <span id="btnText">Schedule Site Walk →</span>
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Get Latest Update →</span>
           </button>
         </form>
       </div>

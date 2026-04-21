@@ -86,19 +86,19 @@
       <div class="glass-form-container" style="max-width: 600px; margin: 0 auto;">
         <h3>Enquire About 3 BHK Units</h3>
         <p>Get the exclusive inventory list and current home loan advisory for Krisala Aventis.</p>
-        <form id="sovereign-form" class="enquiry-form">
+        <form id="sovereign-form" class="sovereign-form-logic">
           <div class="form-group">
-            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" name="name" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <input type="tel" id="phone" placeholder="Mobile Number" required>
+            <input type="tel" name="phone" placeholder="Mobile Number" pattern="[0-9]{10}" required>
           </div>
-          <select id="config" required>
-            <option value="3.25 BHK" selected>3.25 BHK Luxury (Requested)</option>
-            <option value="Combo">Inventory Inquiry</option>
+          <select name="config" required>
+            <option value="3.25 BHK" selected>3.25 BHK (Requested)</option>
+            <option value="Penthouse">Premium Units</option>
           </select>
-          <button type="submit" class="submit-btn" id="submitBtn">
-            <span id="btnText">Unlock Platinum Access →</span>
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Unlock Privilege Price →</span>
           </button>
         </form>
       </div>
@@ -114,6 +114,32 @@
       <a href="/" class="gold" style="text-decoration: none; margin-top: 10px; display: inline-block;">🏠 Back to Homepage</a>
     </div>
   </footer>
+
+  <!-- ======= ENQUIRY MODAL ======= -->
+  <div id="enquiryModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal" aria-label="Close Modal">✕</button>
+      <div class="modal-header">
+        <h3>Exclusive <span class="gold">3.25 BHK Access</span></h3>
+        <p>Enter your details to receive the premium brochure, specific unit floor plans, and priority site visit slots.</p>
+      </div>
+      <form id="modal-form" class="sovereign-form-logic">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="name" placeholder="E.g. Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label>Mobile Number *</label>
+            <input type="tel" name="phone" placeholder="98765 43210" pattern="[0-9]{10}" required>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">
+          <span>Get VIP Callback 🏠</span>
+        </button>
+      </form>
+    </div>
+  </div>
 
   <script src="assets/js/script.js"></script>
 </body>

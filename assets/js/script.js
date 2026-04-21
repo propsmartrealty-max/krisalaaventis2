@@ -115,19 +115,41 @@
   /* =============================================
      7. SOVEREIGN ENQUIRY PIPELINE
         — Dual Dispatch: WhatsApp + Thank You State
+        — Destination: propsmartrealty@gmail.com
      ============================================= */
-  const form    = document.getElementById('sovereign-form');
-  const btnEl   = document.getElementById('submitBtn');
-  const btnText = document.getElementById('btnText');
+  const forms = document.querySelectorAll('.sovereign-form-logic');
+  const modal = document.getElementById('enquiryModal');
+  const closeModal = document.getElementById('closeModal');
+  
+  // Modal Trigger Logic
+  document.querySelectorAll('.btn-modal, .cta-pill, .btn-primary, .btn-secondary').forEach(btn => {
+    // Only target buttons that aren't navigation links
+    if (btn.tagName === 'A' && btn.getAttribute('href')?.startsWith('#')) return;
+    
+    btn.addEventListener('click', (e) => {
+      const text = btn.innerText || btn.textContent;
+      // If it's a "Download" or "Enquire" button, show modal instead of jumping
+      if (text.toLowerCase().includes('enquire') || text.toLowerCase().includes('visit') || text.toLowerCase().includes('brochure') || text.toLowerCase().includes('price')) {
+        e.preventDefault();
+        modal.classList.add('open');
+        trackEvent('Engagement', 'Modal Opened', text.trim());
+      }
+    });
+  });
 
-  if (form) {
+  closeModal?.addEventListener('click', () => modal.classList.remove('open'));
+  window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+
+  forms.forEach(form => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      const currentBtn = form.querySelector('.submit-btn');
+      const currentBtnText = currentBtn.querySelector('span');
 
       // --- Validation ---
-      const name   = document.getElementById('name');
-      const phone  = document.getElementById('phone');
-      const config = document.getElementById('config');
+      const name   = form.querySelector('input[name="name"]');
+      const phone  = form.querySelector('input[name="phone"]');
+      const config = form.querySelector('select[name="config"]');
       let valid = true;
 
       [name, phone, config].forEach(el => el.classList.remove('error'));
@@ -136,62 +158,63 @@
       if (!phone.value.trim() || !/^[0-9]{10}$/.test(phone.value.trim())) {
         phone.classList.add('error'); valid = false;
       }
-      if (!config.value) { config.classList.add('error'); valid = false; }
 
       if (!valid) {
-        shake(btnEl);
+        shake(currentBtn);
         return;
       }
 
       // --- Loading State ---
-      btnEl.disabled = true;
-      btnText.textContent = '⏳ Dispatching...';
+      currentBtn.disabled = true;
+      const originalBtnText = currentBtnText.textContent;
+      currentBtnText.textContent = '⏳ Dispatching...';
 
-      // UTM Parameter Extraction
+      // UTM/Source Data
       const urlParams = new URLSearchParams(window.location.search);
-      const utmParams = {
-        source: urlParams.get('utm_source') || 'Direct',
-        medium: urlParams.get('utm_medium') || 'None',
-        campaign: urlParams.get('utm_campaign') || 'None'
-      };
-
-      // Collect form data
       const data = {
         name:    name.value.trim(),
         phone:   phone.value.trim(),
-        email:   document.getElementById('email').value.trim(),
+        email:   form.querySelector('input[name="email"]')?.value.trim() || 'N/A',
         config:  config.value,
-        budget:  document.getElementById('budget').value,
-        message: document.getElementById('message').value.trim(),
-        utm:     utmParams,
-        ts:      new Date().toISOString()
+        source:  urlParams.get('utm_source') || 'Direct',
+        campaign: urlParams.get('utm_campaign') || 'Direct_Organic',
+        page:    window.location.pathname,
+        ts:      new Date().toLocaleString()
       };
 
-      // Persist to localStorage (Sovereign Vault)
+      // Persist to local "Sovereign Vault"
       persistLead(data);
 
-      // --- Lead Relay (Email Notification) ---
-      // We use a professional relay to ensure leads reach propsmartrealty@gmail.com
+      // --- Lead Relay (Email Notification via Formspree Repo) ---
+      // Endpoint linked to propsmartrealty@gmail.com
       fetch('https://formspree.io/f/xvgzrqba', {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       }).then(response => {
         if (response.ok) {
-          console.log('[Krisala Aventis] Lead relayed to Email successfully ✅');
+          console.log('[Krisala Aventis] Lead relayed to Email ✅');
         }
       }).catch(err => console.warn('[Krisala Aventis] Email relay failed:', err));
 
+      // --- Success Execution ---
       setTimeout(() => {
-        // Track Lead Conversion
         trackEvent('Conversion', 'Enquiry Form Submission', data.config);
-
+        
+        // WhatsApp Dispatch
+        const waMsg = buildWhatsAppMessage(data);
+        const waUrl = `https://api.whatsapp.com/send?phone=917744009295&text=${waMsg}`;
         window.open(waUrl, '_blank');
-        showSuccess();
+
+        // UI Reset
+        showSuccess(currentBtn, currentBtnText);
         form.reset();
-      }, 900);
+        
+        // Close modal if open
+        setTimeout(() => modal.classList.remove('open'), 2000);
+      }, 800);
     });
-  }
+  });
 
   function buildWhatsAppMessage(d) {
     let msg = `Hello Krisala Aventis Team! 🏢%0A%0A`;
@@ -226,17 +249,17 @@
     }
   }
 
-  function showSuccess() {
-    btnEl.disabled = false;
-    btnEl.style.background = 'var(--clr-gold)';
-    btnEl.style.color = '#000';
-    btnText.textContent = '🏠 Privilege Access Granted!';
+  function showSuccess(btn, btnText) {
+    btn.disabled = false;
+    btn.style.background = 'var(--clr-wa)';
+    btn.style.color = '#fff';
+    btnText.textContent = '🏠 Access Granted! WhatsApp Opening...';
     
     setTimeout(() => {
-      btnEl.style.background = '';
-      btnEl.style.color = '';
-      btnText.textContent = 'Unlock Privilege Access 🏠';
-    }, 6000);
+      btn.style.background = '';
+      btn.style.color = '';
+      btnText.textContent = 'Get Priority Callback 🏠';
+    }, 5000);
   }
 
   function shake(el) {
