@@ -982,3 +982,22 @@ button { cursor: pointer; font-family: inherit; }
 .landmark-meta span { background: rgba(202,163,80,0.1); padding: 2px 8px; border-radius: 4px; }
 .landmark-link { margin-top: 10px; font-size: 0.75rem; color: var(--clr-silver); display: inline-flex; align-items: center; gap: 6px; text-decoration: underline; transition: 0.3s; }
 .landmark-link:hover { color: var(--clr-gold); }
+
+/* --- AI Oracle Wizard --- */
+.oracle-section { background: linear-gradient(180deg, #050608 0%, #0a0c10 100%); }
+.oracle-container { max-width: 800px; margin: 0 auto; background: var(--clr-onyx); border: 1px solid var(--clr-glass-border); border-radius: 30px; padding: 40px; position: relative; overflow: hidden; }
+.oracle-step { display: none; animation: fadeIn 0.5s ease forwards; }
+.oracle-step.active { display: block; }
+.oracle-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 2rem; }
+.oracle-opt { 
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); 
+  padding: 20px; border-radius: 15px; cursor: pointer; transition: 0.3s; text-align: center;
+}
+.oracle-opt:hover { background: rgba(202,163,80,0.05); border-color: var(--clr-gold); }
+.oracle-opt.selected { background: var(--clr-gold); color: #000; border-color: var(--clr-gold); }
+.oracle-opt h5 { margin-bottom: 5px; font-size: 1rem; }
+.oracle-opt p { font-size: 0.75rem; opacity: 0.7; }
+.oracle-nav { display: flex; justify-content: space-between; margin-top: 3rem; }
+.oracle-result { text-align: center; display: none; }
+.oracle-result h3 { color: var(--clr-gold); font-size: 2rem; margin-bottom: 1rem; }
+.oracle-result p { margin-bottom: 2rem; color: var(--clr-silver); }

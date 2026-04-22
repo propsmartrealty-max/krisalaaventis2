@@ -149,6 +149,24 @@
     }
   }
   </script>
+
+  <!-- PWA & Mobile Web App Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#caa350">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Krisala Aventis">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('Sovereign Service Worker Active:', reg.scope))
+          .catch(err => console.warn('Service Worker Failed:', err));
+      });
+    }
+  </script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -944,6 +962,77 @@
       </div>
     </div>
   </section>
+  <!-- ======== AI PROPERTY WIZARD ======== -->
+  <section class="section oracle-section reveal">
+    <div class="container">
+      <div class="section-tag">Aventis Smart Intelligence</div>
+      <div class="section-header center">
+        <h2>Find Your <span class="gold">Perfect Configuration.</span></h2>
+        <p>Our intelligent system helps you select the ideal layout based on your lifestyle goals.</p>
+      </div>
+
+      <div class="oracle-container">
+        <div id="oracleWizardContent">
+          <!-- Step 1 -->
+          <div class="oracle-step active" data-step="goal">
+            <h3>Step 1: What is your primary goal?</h3>
+            <div class="oracle-options">
+              <div class="oracle-opt" data-val="Self-Use">
+                <h5>Self-Use</h5>
+                <p>Looking for a dream home for my family.</p>
+              </div>
+              <div class="oracle-opt" data-val="Investment">
+                <h5>Investment</h5>
+                <p>Looking for high ROI and rental yields.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="oracle-step" data-step="space">
+            <h3>Step 2: What do you value most?</h3>
+            <div class="oracle-options">
+              <div class="oracle-opt" data-val="Study">
+                <h5>Smart-Study Space</h5>
+                <p>A dedicated office for WFH / Student desk.</p>
+              </div>
+              <div class="oracle-opt" data-val="Balcony">
+                <h5>Massive Balcony</h5>
+                <p>Large decks with panoramic skyline views.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="oracle-step" data-step="timeline">
+            <h3>Step 3: What is your buying timeline?</h3>
+            <div class="oracle-options">
+              <div class="oracle-opt" data-val="Immediate">
+                <h5>Immediate</h5>
+                <p>Ready to book within 15-30 days.</p>
+              </div>
+              <div class="oracle-opt" data-val="Exploration">
+                <h5>Just Exploring</h5>
+                <p>Comparing projects for future booking.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="oracle-nav">
+            <button id="oraclePrev" class="btn-secondary" style="visibility: hidden;">← Previous</button>
+            <button id="oracleNext" class="btn-primary" disabled>Next Step →</button>
+          </div>
+        </div>
+
+        <div id="oracleResult" class="oracle-result">
+          <div class="pass-header" style="margin-bottom: 2rem;">PERSONALIZED RECOMMENDATION</div>
+          <h3 id="oracleRecTitle">We've Found Your Match!</h3>
+          <p id="oracleRecText">Evaluating your preferences...</p>
+          <a href="#contact" class="btn-primary">View Detailed Quote for this Unit</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ======== RELATED PROJECTS ======== -->
   <section id="related-projects" class="section related-projects-section">
@@ -1310,5 +1399,6 @@
   </div>
 
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/oracle.js"></script>
 </body>
 </html>
