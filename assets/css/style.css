@@ -1001,3 +1001,26 @@ button { cursor: pointer; font-family: inherit; }
 .oracle-result { text-align: center; display: none; }
 .oracle-result h3 { color: var(--clr-gold); font-size: 2rem; margin-bottom: 1rem; }
 .oracle-result p { margin-bottom: 2rem; color: var(--clr-silver); }
+
+/* --- Priority Pass Gold Shimmer --- */
+.priority-pass::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(202, 163, 80, 0.15) 50%,
+    transparent 80%
+  );
+  animation: shimmerPass 4s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes shimmerPass {
+  0% { transform: translate(-30%, -30%) rotate(0deg); }
+  100% { transform: translate(30%, 30%) rotate(0deg); }
+}
