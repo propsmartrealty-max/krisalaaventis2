@@ -219,14 +219,21 @@
       // Persist to local vault
       persistLead(data);
 
-      // --- AJAX Email Dispatch (Formspree — Production Verified) ---
+      // --- AJAX Email Dispatch (Web3Forms — Optimized for Gmail) ---
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
 
-      fetch('https://formspree.io/f/xvgzrqba', {
+      const leadData = {
+        access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
+        subject: `New Lead: ${data.name} — Krisala Aventis`,
+        from_name: 'Krisala Aventis Live Portal',
+        ...data
+      };
+
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(leadData),
         signal: controller.signal
       })
       .then(response => {
@@ -235,15 +242,14 @@
         throw new Error('Network response was not ok.');
       })
       .then(res => {
-        console.log('[Sovereign Pipeline] AJAX Dispatch Successful:', res);
+        console.log('[Sovereign Pipeline] Relay Successful:', res);
         showSuccess(currentBtn, currentBtnText, originalText);
         form.reset();
       })
       .catch(error => {
         clearTimeout(timeoutId);
-        console.error('[Sovereign Pipeline] AJAX Dispatch Failure:', error);
-        // Fail-safe: Even if AJAX fails, we've saved to Vault for manual recovery.
-        // We still show success to the user to avoid frustration, as we have their data in Vault.
+        console.error('[Sovereign Pipeline] Relay Failure:', error);
+        // Fail-safe: Even if Relay fails, we've saved to Vault for manual recovery.
         showSuccess(currentBtn, currentBtnText, originalText); 
         form.reset();
       });
