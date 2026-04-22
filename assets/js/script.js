@@ -23,26 +23,30 @@
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('navLinks');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  });
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    hamburger.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
-  });
-
-  // Close mobile nav on link click
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      hamburger.textContent = '☰';
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
     });
-  });
+  }
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      hamburger.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.textContent = '☰';
+      });
+    });
+  }
 
   /* =============================================
      3. FLOOR PLAN TABS
@@ -50,23 +54,27 @@
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabs     = document.querySelectorAll('.fp-tab');
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.tab;
+  if (tabBtns.length > 0) {
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        const targetEl = document.getElementById(target);
 
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabs.forEach(t => t.classList.remove('active'));
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
 
-      btn.classList.add('active');
-      document.getElementById(target).classList.add('active');
-
-      // Re-trigger reveals in new tab
-      document.getElementById(target).querySelectorAll('.reveal').forEach(el => {
-        el.classList.remove('visible');
-        setTimeout(() => el.classList.add('visible'), 100);
+        btn.classList.add('active');
+        if (targetEl) {
+          targetEl.classList.add('active');
+          // Re-trigger reveals in new tab
+          targetEl.querySelectorAll('.reveal').forEach(el => {
+            el.classList.remove('visible');
+            setTimeout(() => el.classList.add('visible'), 100);
+          });
+        }
       });
     });
-  });
+  }
 
   /* =============================================
      4. SMOOTH SCROLL FOR ANCHOR LINKS
@@ -74,7 +82,7 @@
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const id = anchor.getAttribute('href');
-      if (id === '#') return;
+      if (id === '#' || !id) return;
       const target = document.querySelector(id);
       if (target) {
         e.preventDefault();
@@ -89,20 +97,22 @@
      5. STICKY RIBBON BANISHMENT ON SCROLL
      ============================================= */
   const ribbon = document.getElementById('stickyRibbon');
-  let ribbonVisible = true;
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200 && ribbonVisible) {
-      ribbon.style.transform = 'translateY(-100%)';
-      nav.style.top = '10px';
-      ribbonVisible = false;
-    } else if (window.scrollY <= 200 && !ribbonVisible) {
-      ribbon.style.transform = 'translateY(0)';
-      nav.style.top = '44px';
-      ribbonVisible = true;
-    }
-  });
-  ribbon.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1)';
-  nav.style.transition     = 'top 0.4s cubic-bezier(0.4,0,0.2,1), background 0.4s, border 0.4s';
+  if (ribbon && nav) {
+    let ribbonVisible = true;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200 && ribbonVisible) {
+        ribbon.style.transform = 'translateY(-100%)';
+        nav.style.top = '10px';
+        ribbonVisible = false;
+      } else if (window.scrollY <= 200 && !ribbonVisible) {
+        ribbon.style.transform = 'translateY(0)';
+        nav.style.top = '44px';
+        ribbonVisible = true;
+      }
+    });
+    ribbon.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1)';
+    nav.style.transition     = 'top 0.4s cubic-bezier(0.4,0,0.2,1), background 0.4s, border 0.4s';
+  }
 
   /* =============================================
      6. MARQUEE DUPLICATE (for seamless loop)
@@ -125,41 +135,46 @@
   document.querySelectorAll('.btn-modal, .cta-pill, .btn-primary, .btn-secondary, .nav-links a, .ribbon-cta').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const text = (btn.innerText || btn.textContent).toLowerCase();
-      const modalHeader = modal?.querySelector('.modal-header h3');
-      const modalDesc   = modal?.querySelector('.modal-header p');
       
       // Target specific high-intent phrases
       if (text.includes('enquire') || text.includes('visit') || text.includes('price') || text.includes('access') || text.includes('roi') || text.includes('calc')) {
-        e.preventDefault();
-        
-        // Contextual Header Update
-        if (modalHeader) {
-          if (text.includes('roi') || text.includes('growth')) {
-            modalHeader.innerHTML = 'Request <span class="gold">ROI Analysis</span>';
-            modalDesc.innerText   = 'Unlock the complete market whitepaper and capital appreciation projection.';
-          } else if (text.includes('price')) {
-            modalHeader.innerHTML = 'Get <span class="gold">Price List</span>';
-            modalDesc.innerText   = 'Receive the latest inventory status and pre-launch pricing directly on WhatsApp.';
-          } else {
-            modalHeader.innerHTML = 'Unlock <span class="gold">Privilege Access</span>';
-            modalDesc.innerText   = 'Enter your details to receive the official brochure and priority site visit slots.';
+        if (modal) {
+          e.preventDefault();
+          const modalHeader = modal.querySelector('.modal-header h3');
+          const modalDesc   = modal.querySelector('.modal-header p');
+          
+          // Contextual Header Update
+          if (modalHeader) {
+            if (text.includes('roi') || text.includes('growth')) {
+              modalHeader.innerHTML = 'Request <span class="gold">ROI Analysis</span>';
+              if (modalDesc) modalDesc.innerText = 'Unlock the complete market whitepaper and capital appreciation projection.';
+            } else if (text.includes('price')) {
+              modalHeader.innerHTML = 'Get <span class="gold">Price List</span>';
+              if (modalDesc) modalDesc.innerText = 'Receive the latest inventory status and pre-launch pricing directly on WhatsApp.';
+            } else {
+              modalHeader.innerHTML = 'Unlock <span class="gold">Privilege Access</span>';
+              if (modalDesc) modalDesc.innerText = 'Enter your details to receive the official brochure and priority site visit slots.';
+            }
           }
-        }
 
-        modal.classList.add('open');
-        trackEvent('Engagement', 'Modal Opened', text.trim());
+          modal.classList.add('open');
+          trackEvent('Engagement', 'Modal Opened', text.trim());
+        }
       }
     });
   });
 
-  closeModal?.addEventListener('click', () => modal.classList.remove('open'));
-  window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+  if (closeModal) {
+    closeModal.addEventListener('click', () => modal?.classList.remove('open'));
+  }
+  window.addEventListener('click', (e) => { if (e && modal && e.target === modal) modal.classList.remove('open'); });
 
   forms.forEach(form => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const currentBtn = form.querySelector('.submit-btn');
-      const currentBtnText = currentBtn.querySelector('span');
+      if (!currentBtn) return;
+      const currentBtnText = currentBtn.querySelector('span') || currentBtn;
 
       // --- Validation ---
       const name   = form.querySelector('input[name="name"]');
@@ -187,6 +202,7 @@
 
       // --- Loading State ---
       currentBtn.disabled = true;
+      const originalText = currentBtnText.textContent;
       currentBtnText.textContent = '⏳ Calibrating Stream...';
 
       // Collect data
@@ -209,16 +225,19 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
       })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) return response.json();
+        throw new Error('Network response was not ok.');
+      })
       .then(res => {
         console.log('[Sovereign Pipeline] AJAX Dispatch Successful:', res);
-        showSuccess(currentBtn, currentBtnText);
+        showSuccess(currentBtn, currentBtnText, originalText);
         form.reset();
       })
       .catch(error => {
         console.error('[Sovereign Pipeline] AJAX Dispatch Failure:', error);
         // Fail-safe: Even if AJAX fails, we've saved to Vault for manual recovery.
-        showSuccess(currentBtn, currentBtnText); 
+        showSuccess(currentBtn, currentBtnText, originalText); 
         form.reset();
       });
     });
@@ -229,21 +248,6 @@
     });
   });
 
-  function buildMessage(d) {
-    let msg = `Hello Krisala Aventis Team! 🏢\n\n`;
-    msg += `I am interested in Krisala Aventis, Tathawade.\n\n`;
-    msg += `*My Details:*\n`;
-    msg += `• Name: ${d.name}\n`;
-    msg += `• Mobile: ${d.phone}\n`;
-    if (d.email && d.email !== 'N/A') msg += `• Email: ${d.email}\n`;
-    msg += `• Configuration: ${d.config}\n`;
-    if (d.budget && d.budget !== 'N/A') msg += `• Budget: ${d.budget}\n`;
-    if (d.message && d.message !== 'N/A') msg += `• Query: ${d.message}\n\n`;
-    
-    msg += `Please send me the brochure, floor plans, and schedule a site visit. Thank you!`;
-    return msg;
-  }
-
   function persistLead(data) {
     try {
       const vault = JSON.parse(localStorage.getItem('ka_sovereign_vault') || '[]');
@@ -252,20 +256,24 @@
     } catch (err) { console.warn('Vault error:', err); }
   }
 
-  function showSuccess(btn, btnText) {
+  function showSuccess(btn, btnTextEl, originalText) {
     btn.disabled = false;
+    const originalBg = btn.style.background;
+    const originalColor = btn.style.color;
+    
     btn.style.background = 'var(--clr-gold)';
     btn.style.color = '#000';
-    btnText.textContent = '🏠 Enquiry Protocol Delivered! (Email Sent)';
+    btnTextEl.textContent = '🏠 Enquiry Protocol Delivered!';
     
     setTimeout(() => {
-      btn.style.background = '';
-      btn.style.color = '';
-      btnText.textContent = 'Unlock Privilege Access 🏠';
+      btn.style.background = originalBg;
+      btn.style.color = originalColor;
+      btnTextEl.textContent = originalText;
     }, 5000);
   }
 
   function shake(el) {
+    if (!el) return;
     el.style.animation = 'none';
     requestAnimationFrame(() => {
       el.style.animation = 'shake 0.4s ease';
@@ -278,33 +286,37 @@
   const sections = document.querySelectorAll('section[id]');
   const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 
-  const sectionObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const id = e.target.id;
-        navAnchors.forEach(a => {
-          a.style.color = a.getAttribute('href') === `#${id}`
-            ? 'var(--clr-gold)' : '';
-        });
-      }
-    });
-  }, { threshold: 0.4 });
+  if (sections.length > 0 && navAnchors.length > 0) {
+    const sectionObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          navAnchors.forEach(a => {
+            a.style.color = a.getAttribute('href') === `#${id}`
+              ? 'var(--clr-gold)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
 
-  sections.forEach(s => sectionObs.observe(s));
+    sections.forEach(s => sectionObs.observe(s));
+  }
 
   /* =============================================
      9. BACK TO TOP ON LOGO CLICK
      ============================================= */
   document.querySelector('.logo')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (e.target.getAttribute('href') === '#' || e.target.closest('a').getAttribute('href') === '#') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   });
 
   /* =============================================
      10. ANALYTICS & EVENT TRACKING (dataLayer)
      ============================================= */
   function trackEvent(category, action, label) {
-    if (window.dataLayer) {
+    if (window.dataLayer && typeof window.dataLayer.push === 'function') {
       window.dataLayer.push({
         'event': 'ka_engagement',
         'event_category': category,
@@ -316,8 +328,10 @@
   }
 
   // Track WhatsApp Clicks
-  document.getElementById('waFab')?.addEventListener('click', () => {
-    trackEvent('Communication', 'WhatsApp Click', 'Floating FAB');
+  document.querySelectorAll('.wa-float, .wa-fab').forEach(waBtn => {
+    waBtn.addEventListener('click', () => {
+      trackEvent('Communication', 'WhatsApp Click', waBtn.classList.contains('wa-fab') ? 'Floating FAB' : 'Footer/Ribbon');
+    });
   });
 
   // Track CTA Button Clicks
@@ -362,5 +376,5 @@
     details.appendChild(shareBtn);
   });
 
-  console.log('[Krisala Aventis] Sovereign Intelligence v2.0 — ACTIVE ✅');
+  console.log('[Krisala Aventis] Sovereign Intelligence v2.1 — ACTIVE ✅');
 })();

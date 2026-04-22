@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager (GTM) [Ready for Production Deployment] -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tathawade Property Growth Predictor & ROI Calculator | Krisala Aventis Intelligence</title>
-  <meta name="description" content="Use the Krisala Aventis Market Predictor to calculate capital appreciation and rental yield in Tathawade. Predictive real estate data for 2026-2030 based on West Pune infrastructure growth.">
+  <meta name="description" content="Use the Krisala Aventis Market Predictor to calculate capital appreciation and rental yield in Tathawade. Predictive real estate data for 2026-2030.">
   <meta name="keywords" content="tathawade property price predictor, real estate investment calculator pune, capital appreciation tathawade, rental yield hinjewadi wakad, krisala aventis roi calculator">
   <link rel="canonical" href="https://krisalaventis.in/tathawade-market-growth-calculator">
+
+  <!-- Social Media Meta Tags (OG & Twitter) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tathawade Property Growth Predictor | Krisala Aventis">
+  <meta property="og:description" content="Calculate capital appreciation and rental yield in Tathawade. Predictive real estate data for 2026-2030.">
+  <meta property="og:url" content="https://krisalaventis.in/tathawade-market-growth-calculator">
+  <meta property="og:image" content="https://krisalaventis.in/assets/images/hero.png">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ROI Calculator | Tathawade Real Estate">
+  <meta name="twitter:description" content="Data-driven projections for your future wealth at Krisala Aventis.">
+  <meta name="twitter:image" content="https://krisalaventis.in/assets/images/hero.png">
+
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     .calculator-container {
@@ -63,12 +86,13 @@
 <body>
   <nav class="pill-navbar" id="mainNav">
     <div class="nav-container">
-      <a href="index.html" class="logo">KRISALA <span>AVENTIS</span></a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="tathawade-real-estate-investment-roi.html">Economy</a>
+      <a href="/" class="logo">KRISALA <span>AVENTIS</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/tathawade-real-estate-investment-roi">Economy</a>
         <a href="#contact" class="cta-pill">Book Site Visit</a>
       </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">☰</button>
     </div>
   </nav>
 
@@ -128,7 +152,7 @@
             <option value="Calculator Query" selected>Growth Analysis (Requested)</option>
             <option value="Site Visit">Book Site Visit</option>
           </select>
-          <button type="submit" class="submit-btn"><span class="btn-text">Unlock Complete Data Set →</span></button>
+          <button type="submit" class="submit-btn"><span>Unlock Complete Data Set →</span></button>
         </form>
       </div>
     </div>
@@ -142,9 +166,11 @@
     const rentDisp = document.getElementById('rental');
 
     function updateCalculations() {
-      const p = parseFloat(invInput.value) || 0;
-      const t = parseFloat(yrsInput.value) || 0;
+      const p = parseFloat(invInput?.value) || 0;
+      const t = parseFloat(yrsInput?.value) || 0;
       
+      if (!valDisp || !rentDisp) return;
+
       // Calculation Logic: 9% Compound Interest (Appreciation) + 4% Flat Rental Yield
       const appreciationRate = 0.09;
       const futureVal = p * Math.pow((1 + appreciationRate), t);
@@ -157,8 +183,10 @@
       rentDisp.innerText = `₹ ${annualRental.toFixed(1)} Lakhs`;
     }
 
-    [invInput, yrsInput].forEach(el => el.addEventListener('input', updateCalculations));
-    updateCalculations();
+    if (invInput && yrsInput) {
+      [invInput, yrsInput].forEach(el => el.addEventListener('input', updateCalculations));
+      updateCalculations();
+    }
   </script>
 </body>
 </html>

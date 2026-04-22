@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager (GTM) Placeholder [REPLACE GTM-XXXXXXX] -->
+  <!-- Google Tag Manager (GTM) [Ready for Production Deployment] -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
   <!-- End Google Tag Manager -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="HMzV9DNm0y-PepD-H3BpgrmZ2RshicvMwZ0V-Q8yBF4" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +18,18 @@
   <meta name="description" content="Get the latest Krisala Aventis construction update. View real-time progress of our 4 towers in Tathawade. Learn about the Aluform construction technology and possession timelines for the most awaited project in Pune.">
   <meta name="keywords" content="krisala aventis construction status, krisala aventis actual site photos, krisala project progress tathawade, construction update pune real estate, krisala aventis possession date">
   <link rel="canonical" href="https://krisalaventis.in/krisala-aventis-tathawade-construction-status">
+
+  <!-- Social Media Meta Tags (OG & Twitter) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Krisala Aventis Construction Update | Real-Time Progress">
+  <meta property="og:description" content="Get the latest Krisala Aventis construction update. View real-time progress of our 4 towers in Tathawade and learn about the Aluform technology.">
+  <meta property="og:url" content="https://krisalaventis.in/krisala-aventis-tathawade-construction-status">
+  <meta property="og:image" content="https://krisalaventis.in/assets/images/hero.png">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Krisala Aventis Construction Update | Tathawade">
+  <meta name="twitter:description" content="Live construction progress and actual site photos of Krisala Aventis. Track your future home.">
+  <meta name="twitter:image" content="https://krisalaventis.in/assets/images/hero.png">
 
   <!-- Style & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,12 +44,14 @@
   
   <nav class="pill-navbar" id="mainNav">
     <div class="nav-container">
-      <a href="index.html" class="logo">KRISALA <span>AVENTIS</span></a>
-      <div class="nav-links">
-        <a href="index.html#overview">Overview</a>
-        <a href="index.html#masterlayout">Master Plan</a>
+      <a href="/" class="logo">KRISALA <span>AVENTIS</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/index#overview">Overview</a>
+        <a href="/index#masterlayout">Master Plan</a>
         <a href="#contact" class="cta-pill">Book Site Visit</a>
       </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">☰</button>
     </div>
   </nav>
 
@@ -101,7 +117,7 @@
             <option value="Site Visit">Request Site Video</option>
           </select>
           <button type="submit" class="submit-btn">
-            <span class="btn-text">Get Latest Update →</span>
+            <span>Get Latest Update →</span>
           </button>
         </form>
       </div>
@@ -117,6 +133,32 @@
       <a href="/" class="gold" style="text-decoration: none; margin-top: 10px; display: inline-block;">🏠 Back to Homepage</a>
     </div>
   </footer>
+
+  <!-- ======= ENQUIRY MODAL ======= -->
+  <div id="enquiryModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal" aria-label="Close Modal">✕</button>
+      <div class="modal-header">
+        <h3>Unlock <span class="gold">Privilege Access</span></h3>
+        <p>Enter your details to receive the official brochure and priority site visit slots.</p>
+      </div>
+      <form id="modal-form" class="sovereign-form-logic">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" name="name" placeholder="E.g. Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label>Mobile Number *</label>
+            <input type="tel" name="phone" placeholder="98765 43210"  required>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">
+          <span>Get Priority Callback 🏠</span>
+        </button>
+      </form>
+    </div>
+  </div>
 
   <script src="assets/js/script.js"></script>
 </body>

@@ -1,4 +1,10 @@
-indexing-automation/service-account.json
-service-account.json
+# Credentials
 **/service-account.json
-*.json
+service-account.json
+
+# Dependencies
+node_modules/
+.vercel/
+
+# System
+.DS_Store

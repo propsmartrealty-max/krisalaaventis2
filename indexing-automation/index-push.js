@@ -18,7 +18,13 @@ const urls = [
   'https://krisalaventis.in/tathawade-real-estate-investment-roi',
   'https://krisalaventis.in/lifestyle-amenities-shopping-tathawade',
   'https://krisalaventis.in/educational-hubs-near-krisala-aventis',
-  'https://krisalaventis.in/tathawade-connectivity-it-hubs.html'
+  'https://krisalaventis.in/tathawade-connectivity-it-hubs',
+  'https://krisalaventis.in/aluform-technology-construction-quality-krisala-aventis',
+  'https://krisalaventis.in/krisala-aventis-tathawade-flats-near-hinjewadi',
+  'https://krisalaventis.in/krisala-legacy-pune-track-record-completed-projects',
+  'https://krisalaventis.in/public-transport-connectivity-tathawade-pune',
+  'https://krisalaventis.in/tathawade-market-growth-calculator',
+  'https://krisalaventis.in/tathawade-real-estate-glossary'
 ];
 
 async function pushToIndex() {
