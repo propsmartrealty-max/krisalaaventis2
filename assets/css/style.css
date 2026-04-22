@@ -908,3 +908,14 @@ button { cursor: pointer; font-family: inherit; }
 .submit-btn:hover { background: var(--clr-gold-light); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(202,163,80,0.35); }
 
 .disclaimer { font-size: 0.65rem; color: var(--clr-muted); text-align: center; line-height: 1.4; }
+
+.keyword-cluster { margin-bottom: 1.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.8; }
+.keyword-cluster strong { color: var(--clr-gold); margin-right: 8px; }
+.keyword-cluster span { transition: 0.3s; cursor: default; }
+.keyword-cluster span:hover { color: var(--clr-gold); }
+
+.cluster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+.cluster-card { background: var(--clr-onyx-light); border: 1px solid var(--clr-glass-border); padding: 30px; border-radius: 16px; transition: 0.4s var(--ease); }
+.cluster-card:hover { transform: translateY(-10px); border-color: var(--clr-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.cluster-card h4 { color: var(--clr-gold); margin-bottom: 15px; font-size: 1.1rem; }
+.cluster-card p { font-size: 0.9rem; color: var(--clr-muted); line-height: 1.6; }

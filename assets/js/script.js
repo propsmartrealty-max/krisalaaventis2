@@ -2,6 +2,12 @@
 (function () {
   'use strict';
 
+  /* --- Global Error Boundary --- */
+  window.addEventListener('error', (e) => {
+    console.error('[Krisala Sovereign] Global Exception:', e.message);
+    return false; // Prevent default error handling
+  });
+
   /* =============================================
      1. SCROLL REVEAL
      ============================================= */
@@ -208,7 +214,7 @@
       // Collect data
       const data = {
         name:    name.value.trim(),
-        phone:   phone.value.trim(),
+        phone:   cleanedPhone, // Use cleaned phone for data integrity
         email:   form.querySelector('input[name="email"]')?.value.trim() || 'N/A',
         config:  config ? config.value : 'N/A',
         budget:  form.querySelector('select[name="budget"]')?.value || 'N/A',
@@ -409,5 +415,32 @@
     details.appendChild(shareBtn);
   });
 
-  console.log('[Krisala Aventis] Sovereign Intelligence v2.1 — ACTIVE ✅');
+  /* =============================================
+     12. INTELLIGENT LINK PRE-FETCHING (SEO SPEED)
+     ============================================= */
+  const prefetchLinks = () => {
+    const links = document.querySelectorAll('a[href^="/"]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const href = entry.target.getAttribute('href');
+          if (href && !href.includes('#')) {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = href;
+            document.head.appendChild(link);
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    links.forEach(link => observer.observe(link));
+  };
+
+  if ('IntersectionObserver' in window) {
+    setTimeout(prefetchLinks, 2000); // Start pre-fetching after 2s to prioritize LCP
+  }
+
+  console.log('[Krisala Aventis] Sovereign Intelligence v2.2 — TOTAL HARDENING ACTIVE ✅');
 })();
