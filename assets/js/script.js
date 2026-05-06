@@ -40,17 +40,29 @@
   }
 
   if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      hamburger.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      document.body.classList.toggle('no-scroll');
     });
 
     // Close mobile nav on link click
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.textContent = '☰';
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.classList.remove('no-scroll');
       });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
     });
   }
 

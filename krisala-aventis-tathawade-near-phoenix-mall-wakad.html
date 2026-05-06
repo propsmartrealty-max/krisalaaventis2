@@ -49,6 +49,26 @@
   }
   </script>
 
+  <script>
+    // --- SOVEREIGN LINK ACTIVATOR (Environment Proxy) ---
+    (function() {
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (isLocal) {
+        console.log('[Sovereign] Local Environment Detected — Activating Extension Proxy');
+        document.addEventListener('DOMContentLoaded', () => {
+          document.querySelectorAll('a[href^="/"]').forEach(link => {
+            const href = link.getAttribute('href');
+            // If it's an internal link and doesn't have an extension/hash
+            if (href.startsWith('/') && !href.includes('.') && !href.includes('#') && href !== '/') {
+              link.setAttribute('href', href + '.html');
+            }
+          });
+        });
+      }
+    })();
+  </script>
+
+
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
