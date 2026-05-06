@@ -15,6 +15,36 @@
     .sitemap-col a { color: #fff; text-decoration: none; font-size: 0.95rem; transition: 0.3s; opacity: 0.8; }
     .sitemap-col a:hover { opacity: 1; color: var(--clr-gold); padding-left: 5px; }
   </style>
+<style>
+/* --- Synchronized Breadcrumbs --- */
+.breadcrumb-wrapper {
+  padding-top: 140px; /* Space for floating navbar */
+  padding-bottom: 20px;
+  background: transparent;
+  animation: fadeIn 1s ease both;
+}
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.breadcrumb-list a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: 0.3s;
+}
+.breadcrumb-list a:hover { color: var(--clr-gold); }
+.breadcrumb-list .separator { color: rgba(255,255,255,0.2); }
+.breadcrumb-list .current { color: var(--clr-gold); font-weight: 600; }
+
+@media (max-width: 1024px) {
+  .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
+}
+</style>
 </head>
 <body>
   <nav class="pill-navbar">
@@ -23,6 +53,20 @@
       <div class="nav-links"><a href="/">Home</a></div>
     </div>
   </nav>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li class="separator">/</li>
+          <li class="current">Sitemap Html</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
 
   <section class="section" style="padding-top: 120px;">
     <div class="container">

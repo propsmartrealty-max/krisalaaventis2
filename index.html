@@ -298,6 +298,36 @@
   <meta name="theme-color" content="#050608">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+/* --- Synchronized Breadcrumbs --- */
+.breadcrumb-wrapper {
+  padding-top: 140px; /* Space for floating navbar */
+  padding-bottom: 20px;
+  background: transparent;
+  animation: fadeIn 1s ease both;
+}
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.breadcrumb-list a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: 0.3s;
+}
+.breadcrumb-list a:hover { color: var(--clr-gold); }
+.breadcrumb-list .separator { color: rgba(255,255,255,0.2); }
+.breadcrumb-list .current { color: var(--clr-gold); font-weight: 600; }
+
+@media (max-width: 1024px) {
+  .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
+}
+</style>
 </head>
 <body>
   
