@@ -1177,3 +1177,23 @@ button { cursor: pointer; font-family: inherit; }
   .breadcrumb-wrapper { padding-top: 110px; padding-left: 20px; }
   .nav-container { display: flex; justify-content: space-between; }
 }
+
+/* --- WhatsApp Enquiry Button --- */
+.wa-enquiry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff !important;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+.wa-enquiry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+}
