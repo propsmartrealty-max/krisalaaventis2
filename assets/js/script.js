@@ -97,16 +97,28 @@
   /* =============================================
      4. SMOOTH SCROLL FOR ANCHOR LINKS
      ============================================= */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
-      const id = anchor.getAttribute('href');
-      if (id === '#' || !id) return;
-      const target = document.querySelector(id);
-      if (target) {
-        e.preventDefault();
-        const offset = 90;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+      const href = anchor.getAttribute('href');
+      const hash = href.substring(href.indexOf("#"));
+      const path = href.substring(0, href.indexOf("#"));
+
+      // Only smooth scroll if on same page (or if target is on index.html and we are on index.html)
+      if (path === "" || path === "/" || path === window.location.pathname) {
+        const target = document.querySelector(hash);
+        if (target) {
+          e.preventDefault();
+          const offset = 100;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+          
+          // Close mobile menu if open
+          if (navLinks.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+          }
+        }
       }
     });
   });
