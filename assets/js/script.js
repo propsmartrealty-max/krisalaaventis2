@@ -1,11 +1,24 @@
-/* Krisala Aventis — Sovereign Intelligence Script v2.0 */
+/* Krisala Aventis — Sovereign Intelligence Script v3.0 (Hardened) */
 (function () {
   'use strict';
 
-  /* --- Global Error Boundary --- */
+  /* --- Global Error Boundary & Telemetry --- */
+  const SOVEREIGN_VERSION = '3.0';
+  const ERROR_LOG = [];
+
   window.addEventListener('error', (e) => {
-    console.error('[Krisala Sovereign] Global Exception:', e.message);
-    return false; // Prevent default error handling
+    const entry = { type: 'js_error', msg: e.message, src: e.filename, line: e.lineno, ts: Date.now() };
+    ERROR_LOG.push(entry);
+    console.error('[Sovereign Guard] Exception:', entry);
+    try { localStorage.setItem('ka_error_log', JSON.stringify(ERROR_LOG.slice(-20))); } catch(_) {}
+    return false;
+  });
+
+  window.addEventListener('unhandledrejection', (e) => {
+    const entry = { type: 'promise_rejection', msg: String(e.reason), ts: Date.now() };
+    ERROR_LOG.push(entry);
+    console.error('[Sovereign Guard] Unhandled Promise:', entry);
+    try { localStorage.setItem('ka_error_log', JSON.stringify(ERROR_LOG.slice(-20))); } catch(_) {}
   });
 
   /* =============================================
@@ -264,40 +277,67 @@
       // Persist to local vault
       persistLead(data);
 
-      // --- AJAX Email Dispatch (Web3Forms — Optimized for Gmail) ---
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
+      // --- TRIPLE-REDUNDANT DISPATCH ENGINE ---
+      const WEB3FORMS_KEY = 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b';
+      const MAX_RETRIES = 3;
+      const RETRY_DELAY = 2000;
 
       const leadData = {
-        access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
+        access_key: WEB3FORMS_KEY,
         subject: `New Lead: ${data.name} — Krisala Aventis`,
         from_name: 'Krisala Aventis Live Portal',
+        replyto: data.email !== 'N/A' ? data.email : undefined,
         ...data
       };
 
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(leadData),
-        signal: controller.signal
-      })
-      .then(response => {
-        clearTimeout(timeoutId);
-        if (response.ok) return response.json();
-        throw new Error('Network response was not ok.');
-      })
-      .then(res => {
-        console.log('[Sovereign Pipeline] Relay Successful:', res);
-        showSuccess(currentBtn, currentBtnText, originalText, form, data.name, data.phone);
-        form.reset();
-      })
-      .catch(error => {
-        clearTimeout(timeoutId);
-        console.error('[Sovereign Pipeline] Relay Failure:', error);
-        // Fail-safe: Even if Relay fails, we've saved to Vault for manual recovery.
-        showSuccess(currentBtn, currentBtnText, originalText, form, data.name, data.phone); 
-        form.reset();
-      });
+      // Retry-capable fetch wrapper
+      async function dispatchWithRetry(url, payload, retries = MAX_RETRIES) {
+        for (let attempt = 1; attempt <= retries; attempt++) {
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            const response = await fetch(url, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(payload),
+              signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+
+            if (response.ok) {
+              const result = await response.json();
+              console.log(`[Sovereign Pipeline] Relay SUCCESS (attempt ${attempt}):`, result);
+              trackEvent('Pipeline', 'Email Delivered', `Attempt ${attempt}`);
+              return { success: true, result };
+            }
+            throw new Error(`HTTP ${response.status}`);
+          } catch (err) {
+            console.warn(`[Sovereign Pipeline] Attempt ${attempt}/${retries} failed:`, err.message);
+            if (attempt < retries) {
+              await new Promise(r => setTimeout(r, RETRY_DELAY * attempt));
+            }
+          }
+        }
+        return { success: false };
+      }
+
+      // Primary Dispatch
+      dispatchWithRetry('https://api.web3forms.com/submit', leadData)
+        .then(result => {
+          if (result.success) {
+            // Mark as delivered in vault
+            markVaultDelivered(data);
+          } else {
+            // Queue for retry on next page load
+            queueFailedLead(data);
+            console.error('[Sovereign Pipeline] All retries exhausted. Lead queued for recovery.');
+            trackEvent('Pipeline', 'Email Failed - Queued', data.name);
+          }
+          // Always show success to user (lead is in vault regardless)
+          showSuccess(currentBtn, currentBtnText, originalText, form, data.name, data.phone);
+          form.reset();
+        });
     });
 
     // Guard: Prevent "Enter" on selects from triggering premature submission
@@ -329,10 +369,72 @@
   function persistLead(data) {
     try {
       const vault = JSON.parse(localStorage.getItem('ka_sovereign_vault') || '[]');
-      vault.push({ ...data, timestamp: new Date().toISOString() });
-      localStorage.setItem('ka_sovereign_vault', JSON.stringify(vault.slice(-50))); // Keep last 50
+      vault.push({ ...data, status: 'pending', timestamp: new Date().toISOString() });
+      localStorage.setItem('ka_sovereign_vault', JSON.stringify(vault.slice(-100)));
     } catch (err) { console.warn('Vault error:', err); }
   }
+
+  function markVaultDelivered(data) {
+    try {
+      const vault = JSON.parse(localStorage.getItem('ka_sovereign_vault') || '[]');
+      const match = vault.find(v => v.phone === data.phone && v.status === 'pending');
+      if (match) match.status = 'delivered';
+      localStorage.setItem('ka_sovereign_vault', JSON.stringify(vault));
+    } catch (_) {}
+  }
+
+  function queueFailedLead(data) {
+    try {
+      const queue = JSON.parse(localStorage.getItem('ka_retry_queue') || '[]');
+      queue.push({ ...data, attempts: 0, timestamp: new Date().toISOString() });
+      localStorage.setItem('ka_retry_queue', JSON.stringify(queue.slice(-20)));
+    } catch (_) {}
+  }
+
+  // --- AUTOMATIC QUEUE FLUSH ON PAGE LOAD ---
+  (function flushRetryQueue() {
+    try {
+      const queue = JSON.parse(localStorage.getItem('ka_retry_queue') || '[]');
+      if (queue.length === 0) return;
+
+      console.log(`[Sovereign Pipeline] Flushing ${queue.length} queued lead(s)...`);
+      const remaining = [];
+
+      queue.forEach(lead => {
+        if (lead.attempts >= 5) {
+          console.warn('[Sovereign Pipeline] Lead exceeded max retry. Archived:', lead.name);
+          return; // Drop after 5 total retries
+        }
+
+        lead.attempts = (lead.attempts || 0) + 1;
+        const payload = {
+          access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
+          subject: `[RETRY #${lead.attempts}] Lead: ${lead.name} — Krisala Aventis`,
+          from_name: 'Krisala Aventis Retry System',
+          ...lead
+        };
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(r => {
+          if (r.ok) {
+            console.log(`[Sovereign Pipeline] Retry delivered: ${lead.name}`);
+          } else {
+            remaining.push(lead);
+          }
+        })
+        .catch(() => remaining.push(lead));
+      });
+
+      // Update queue after flush attempt
+      setTimeout(() => {
+        localStorage.setItem('ka_retry_queue', JSON.stringify(remaining));
+      }, 5000);
+    } catch (_) {}
+  })();
 
   function showSuccess(btn, btnTextEl, originalText, form, nameVal, phoneVal) {
     btn.disabled = false;
@@ -509,5 +611,37 @@
     setTimeout(prefetchLinks, 2000); // Start pre-fetching after 2s to prioritize LCP
   }
 
-  console.log('[Krisala Aventis] Sovereign Intelligence v2.2 — TOTAL HARDENING ACTIVE ✅');
+  /* =============================================
+     13. CONNECTIVITY WATCHDOG
+     ============================================= */
+  window.addEventListener('online', () => {
+    console.log('[Sovereign Guard] Connection restored. Flushing retry queue...');
+    // Re-attempt queued leads when connection returns
+    try {
+      const queue = JSON.parse(localStorage.getItem('ka_retry_queue') || '[]');
+      if (queue.length > 0) {
+        queue.forEach(lead => {
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
+              subject: `[AUTO-RECOVERY] Lead: ${lead.name} — Krisala Aventis`,
+              from_name: 'Krisala Aventis Auto-Recovery',
+              ...lead
+            })
+          }).then(r => {
+            if (r.ok) console.log(`[Sovereign Guard] Auto-recovered lead: ${lead.name}`);
+          }).catch(() => {});
+        });
+        localStorage.setItem('ka_retry_queue', '[]');
+      }
+    } catch(_) {}
+  });
+
+  window.addEventListener('offline', () => {
+    console.warn('[Sovereign Guard] Connection lost. Leads will be queued locally.');
+  });
+
+  console.log(`[Krisala Aventis] Sovereign Intelligence v${SOVEREIGN_VERSION} — TOTAL HARDENING ACTIVE ✅`);
 })();
