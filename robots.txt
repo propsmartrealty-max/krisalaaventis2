@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /scratch/
+Disallow: /indexing-automation/
+Disallow: /*.json$
 
 Sitemap: https://krisalaventis.in/sitemap.xml
+
+# Krisala Aventis Tathawade — Sovereign SEO Infrastructure
+# Domain: krisalaventis.in
+# Last Hardened: 2026-05-07
