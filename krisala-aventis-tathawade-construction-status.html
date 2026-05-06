@@ -242,6 +242,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -254,8 +271,8 @@
       <a href="/" class="logo">KRISALA <span>AVENTIS</span></a>
       <div class="nav-links" id="navLinks">
         <a href="/">Home</a>
-        <a href="/krisala-aventis-tathawade-flats-near-hinjewadi">Krisala Aventis Overview</a>
-        <a href="/krisala-aventis-tathawade-construction-status">Krisala Aventis Master Plan</a>
+        <a href="/krisala-aventis-tathawade-flats-near-hinjewadi">Overview</a>
+        <a href="/krisala-aventis-tathawade-construction-status">Master Plan</a>
         <a href="#contact" class="cta-pill">Book Site Visit</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">☰</button>
@@ -265,68 +282,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Construction Status</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Construction Status</span>
       </nav>
     </div>
   </div>
-
-  <!-- BREADCRUMBS -->
-  <div class="breadcrumb-container" style="background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0;">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb" style="font-size: 0.75rem; color: var(--clr-muted);">
-        <a href="/" style="color: var(--clr-gold); text-decoration: none;">Home</a> 
-        <span style="margin: 0 8px;">/</span> 
-        <span style="color: #fff;">Construction Status</span>
-      </nav>
-    </div>
-  </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="hero silo-hero">
-    <div class="hero-bg">
-      <img src="assets/images/hero.png" alt="Krisala Aventis Tathawade Construction Progress — Real-Time Actual Site Development Photos" fetchpriority="high" width="1024" height="555">
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">🏗️ LIVE Construction Status: Active</div>
-      <h1>Krisala Aventis Construction Progress & Status Tathawade</h1>
-      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 211, 102, 0.1); color: #25D366; padding: 6px 14px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; margin-bottom: 2rem; border: 1px solid rgba(37, 211, 102, 0.2);">
-        <span style="width: 8px; height: 8px; background: #25D366; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span>
-        DATA VERIFIED: APRIL 2026
-      </div>
-      <p class="hero-desc">Transparency is at the core of the Krisala Legacy. Track the real-time development of your future home in Tathawade. From foundational excavation to precision Aluform shuttering, we are moving at an industry-leading pace.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get Actual Site Photos</a>
-        <a href="#milestones" class="btn-secondary">View Milestones</a>
-      </div>
-    </div>
-  </section>
+  
 
-  <section id="milestones" class="section">
-    <div class="container">
-      <div class="section-tag">Development Roadmap</div>
-      <h2>Strategic <span class="gold">Building Milestones</span></h2>
-      <p class="lead-text">Krisala Aventis is being constructed using global Aluform standards, ensuring 100% precision and significantly faster possession timelines compared to traditional methods.</p>
-      
-      <div class="feature-grid">
-        <div class="feature-item reveal">
-          <span class="status-pill completed">Completed</span>
-          <strong>Foundation & Piling</strong>
-          <p class="body-text" style="font-size: 0.85rem; margin-bottom: 0;">Comprehensive piling work for all 4 towers and the clubhouse foundation is 100% secure.</p>
-          <div class="progress-wrapper">
-            <div class="progress-header">
-              <strong>100%</strong>
-              <span>Verified Apr 2026</span>
-            </div>
-            <div class="progress-track">
-              <div class="progress-fill" style="width: 100%;"></div>
-            </div>
-          </div>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
         </div>
 
         <div class="feature-item reveal">

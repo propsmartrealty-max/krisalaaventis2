@@ -158,6 +158,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -175,67 +192,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Nri Investment</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Nri Investment</span>
       </nav>
     </div>
   </div>
-
-  <!-- BREADCRUMBS -->
-  <div class="breadcrumb-container" style="background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0;">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb" style="font-size: 0.75rem; color: var(--clr-muted);">
-        <a href="/" style="color: var(--clr-gold); text-decoration: none;">Home</a> 
-        <span style="margin: 0 8px;">/</span> 
-        <span style="color: #fff;">Nri Investment Krisala Aventis Tathawade</span>
-      </nav>
-    </div>
-  </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="hero silo-hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/images/hero.png') center/cover;">
-    <div class="container center">
-      <div class="hero-badge">🌍 Global Investor Portal</div>
-      <h1>NRI Investment Portal — Krisala Aventis Tathawade Pune</h1>
-      <p class="hero-desc">Tailored investment solutions for NRIs in the USA, UK, UAE, and beyond. Krisala Aventis offers the perfect blend of capital appreciation and high-yield rental potential in Tathawade, West Pune.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Download NRI Guide</a>
-        <a href="tel:7744009295" class="btn-secondary">Global Sales Support</a>
-      </div>
-    </div>
-  </section>
+  
 
-  <section id="nri-benefits" class="section">
-    <div class="container">
-      <div class="section-tag">Why Krisala Aventis for NRIs?</div>
-      <div class="section-header">
-        <h2>Exclusive <span class="gold">NRI Advantage.</span></h2>
-        <p>We simplify international property ownership with a transparent, end-to-end ecosystem.</p>
-      </div>
 
-      <div class="feature-grid">
-        <div class="feature-item reveal">
-          <strong>Remote Digital Booking</strong>
-          <span>Complete your selection and booking from anywhere in the world via secure digital protocols.</span>
-        </div>
-        <div class="feature-item reveal">
-          <strong>FEMA & RERA Compliance</strong>
-          <span>100% legal transparency. Professional advisory for NRE/NRO account transactions and tax benefits.</span>
-        </div>
-        <div class="feature-item reveal">
-          <strong>High Rental Velocity</strong>
-          <span>Proximity to Hinjewadi Phase 1 ensures your asset is always in demand by top-tier IT professionals.</span>
-        </div>
-        <div class="feature-item reveal">
-          <strong>Rental Management</strong>
-          <span>Post-possession assistance in finding tenants and managing your property remotely.</span>
-        </div>
-      </div>
-    </div>
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
   </section>
 
   <section id="contact" class="section enquiry-section">

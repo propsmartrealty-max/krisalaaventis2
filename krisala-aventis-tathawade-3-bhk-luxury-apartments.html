@@ -255,6 +255,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -267,9 +284,9 @@
       <a href="/" class="logo">KRISALA <span>AVENTIS</span></a>
       <div class="nav-links" id="navLinks">
         <a href="/">Home</a>
-        <a href="/krisala-aventis-tathawade-flats-near-hinjewadi">Krisala Aventis Overview</a>
-        <a href="/krisala-aventis-tathawade-2-bhk-flats">Krisala Aventis Floor Plans</a>
-        <a href="/krisala-aventis-tathawade-amenities-lifestyle">Krisala Aventis Amenities</a>
+        <a href="/krisala-aventis-tathawade-flats-near-hinjewadi">Overview</a>
+        <a href="/krisala-aventis-tathawade-2-bhk-flats">Floor Plans</a>
+        <a href="/krisala-aventis-tathawade-amenities-lifestyle">Amenities</a>
         <a href="#contact" class="cta-pill">Book Site Visit</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">☰</button>
@@ -279,65 +296,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">3 Bhk Luxury Apartments</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">3 Bhk Luxury Apartments</span>
       </nav>
     </div>
   </div>
-
-  <!-- BREADCRUMBS -->
-  <div class="breadcrumb-container" style="background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0;">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb" style="font-size: 0.75rem; color: var(--clr-muted);">
-        <a href="/" style="color: var(--clr-gold); text-decoration: none;">Home</a> 
-        <span style="margin: 0 8px;">/</span> 
-        <span style="color: #fff;">3 Bhk Luxury Apartments</span>
-      </nav>
-    </div>
-  </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="hero silo-hero">
-    <div class="hero-bg">
-      <img src="assets/images/hero.png" alt="Krisala Aventis Tathawade 3 BHK Floor Plan — Premium 3.25 BHK Configuration Layout" fetchpriority="high" width="1024" height="555">
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">💎 The Pinnacle of Luxury</div>
-      <h1>Krisala Aventis 3.25 BHK Luxury Apartments Tathawade</h1>
-      <p class="hero-desc">Elevate your lifestyle with the spacious 3.25 BHK residences at Krisala Aventis. Designed for the modern elite, featuring smart home integration, premium flooring, and panoramic views of the Pune skyline.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Download Price List</a>
-        <a href="/krisala-aventis-tathawade-construction-status" class="btn-secondary">Krisala Aventis Explore Master Plan</a>
-      </div>
-    </div>
-  </section>
+  
 
-  <section class="section">
-    <div class="container">
-      <div class="section-tag">High-End Living</div>
-      <h2>Engineered for <span class="gold">Luxury & Excellence</span></h2>
-      <p class="lead-text">Krisala Aventis sets a new benchmark for 3 BHK flats in Tathawade. Combining world-class Aluform construction with smart automation, every home is a sanctuary of comfort and tech-forward living.</p>
-      
-      <div class="feature-grid">
-        <div class="feature-item">
-          <strong>Carpet Area 1116 Sq.ft.</strong>
-          <span>Experience true volume with expansive living rooms, king-sized bedrooms, and a dedicated 'Plus' space for your home office.</span>
-        </div>
-        <div class="feature-item">
-          <strong>Elite Specifications</strong>
-          <span>1600x800mm premium vitrified tiles, Kohler/Grohe fittings, and digital locks with biometric access.</span>
-        </div>
-        <div class="feature-item">
-          <strong>Podium-Level Lifestyle</strong>
-          <span>Direct access to the rooftop swimming pool, mini-theatre, and yoga lawn — all reserved for Aventis residents.</span>
-        </div>
-      </div>
-    </div>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
   </section>
 
   <section id="contact" class="section enquiry-section">

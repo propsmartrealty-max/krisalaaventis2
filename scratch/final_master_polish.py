@@ -1,67 +1,102 @@
 import os
 import re
 
-silos = [
-    "index.html",
-    "krisala-aventis-tathawade-2-bhk-flats.html",
-    "krisala-aventis-tathawade-3-bhk-luxury-apartments.html",
-    "krisala-aventis-tathawade-flats-near-hinjewadi.html",
-    "krisala-aventis-tathawade-construction-status.html",
-    "tathawade-real-estate-investment-roi.html",
-    "lifestyle-amenities-shopping-tathawade.html",
-    "educational-hubs-near-krisala-aventis.html",
-    "tathawade-connectivity-it-hubs.html",
-    "krisala-legacy-pune-track-record-completed-projects.html",
-    "aluform-technology-construction-quality-krisala-aventis.html",
-    "public-transport-connectivity-tathawade-pune.html",
-    "tathawade-real-estate-glossary.html",
-    "tathawade-market-growth-calculator.html",
-    "nri-investment-krisala-aventis-tathawade.html",
-    "404.html"
-]
-
 base_dir = "/Users/vikasyewle/krisalaaventis"
+html_files = [f for f in os.listdir(base_dir) if f.endswith('.html')]
 
-# GTM Block Pattern
-gtm_pattern = r'<!-- Google Tag Manager.*?End Google Tag Manager -->'
+# 1. Update style.css with Master Navigation Rules
+master_nav_css = """
+/* --- Master Navigation & Breadcrumb Reset --- */
+.pill-navbar {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1200px;
+  background: rgba(5, 6, 8, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  z-index: 2000;
+  padding: 10px 30px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pill-navbar.scrolled { top: 15px; background: rgba(5, 6, 8, 0.98); }
 
-def final_master_polish(filename):
+.nav-container { display: grid; grid-template-columns: auto 1fr auto; align-items: center; width: 100%; gap: 20px; }
+.nav-links { display: flex; gap: 30px; align-items: center; justify-content: center; }
+.nav-links a { color: #fff; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; white-space: nowrap; transition: 0.3s; }
+.nav-links a:hover { opacity: 1; color: var(--clr-gold); }
+
+.breadcrumb-wrapper {
+  padding-top: 150px; /* Strong separation from floating navbar */
+  padding-bottom: 20px;
+  background: transparent;
+  z-index: 1000;
+  position: relative;
+}
+.breadcrumb-list { display: flex; align-items: center; gap: 10px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; }
+.breadcrumb-list a { color: rgba(255,255,255,0.4); text-decoration: none; }
+.breadcrumb-list .sep { color: rgba(255,255,255,0.15); }
+.breadcrumb-list .active { color: var(--clr-gold); font-weight: 600; }
+
+@media (max-width: 1024px) {
+  .breadcrumb-wrapper { padding-top: 110px; padding-left: 20px; }
+  .nav-container { display: flex; justify-content: space-between; }
+}
+"""
+
+style_path = os.path.join(base_dir, "assets/css/style.css")
+with open(style_path, 'r', encoding='utf-8') as f:
+    css_content = f.read()
+
+# Remove old blocks and inject new one
+css_content = re.sub(r'/\* --- Synchronized Breadcrumbs --- \*/.*?@media', '/* --- Master Navigation & Breadcrumb Reset --- */\n@media', css_content, flags=re.DOTALL)
+if "Master Navigation & Breadcrumb Reset" not in css_content:
+    css_content += master_nav_css
+
+with open(style_path, 'w', encoding='utf-8') as f:
+    f.write(css_content)
+
+# 2. Sanitize all HTML files
+def polish_page(filename):
     path = os.path.join(base_dir, filename)
-    if not os.path.exists(path): return
-
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 1. Update Language Localization
-    content = content.replace('<html lang="en">', '<html lang="en-IN">')
-
-    # 2. Remove hardcoded GTM blocks (config.js handles it now)
-    content = re.sub(gtm_pattern, '', content, flags=re.DOTALL)
+    # Remove all <style> blocks that I might have injected
+    content = re.sub(r'<style>/\* --- Synchronized Breadcrumbs --- \*/.*?</style>', '', content, flags=re.DOTALL)
     
-    # Also remove GTM noscript if present
-    content = re.sub(r'<!-- Google Tag Manager \(noscript\).*?End Google Tag Manager \(noscript\) -->', '', content, flags=re.DOTALL)
-
-    # 3. Add SearchBox Schema to Index
-    if filename == "index.html" and 'SearchAction' not in content:
-        search_schema = """
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://krisalaventis.in/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://krisalaventis.in/#contact?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
+    # Ensure ONE clean breadcrumb row
+    content = re.sub(r'<!-- ======== SOVEREIGN BREADCRUMBS.*?<!-- ======== /SOVEREIGN BREADCRUMBS ======== -->', '', content, flags=re.DOTALL)
+    
+    if filename != 'index.html':
+        title = filename.replace('krisala-aventis-tathawade-', '').replace('.html', '').replace('-', ' ').title()
+        if not title or title == 'Index': title = "Overview"
+        
+        breadcrumb_html = f"""
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">{title}</span>
+      </nav>
+    </div>
+  </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 """
-        content = content.replace('</head>', search_schema + '</head>')
+        # Inject after </nav> of main navbar
+        content = re.sub(r'(</nav>)', r'\1\n' + breadcrumb_html, content, count=1)
 
-    with open(path, 'w') as f:
+    with open(path, 'w', encoding='utf-8') as f:
         f.write(content)
-    print(f"Master Polished: {filename}")
+    print(f"Polished: {filename}")
 
-for silo in silos:
-    final_master_polish(silo)
+for filename in html_files:
+    polish_page(filename)
+
+print("Final Master Polish Complete.")

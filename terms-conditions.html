@@ -10,7 +10,24 @@
     .policy-content { padding: 8rem 0; color: #ccc; line-height: 1.8; }
     .policy-content h1 { color: var(--clr-gold); margin-bottom: 2rem; }
     .policy-content h2 { color: #fff; margin-top: 2rem; }
-  </style>
+  
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
+</style>
 
   <script type="application/ld+json">
   {
@@ -108,15 +125,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Terms Conditions</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Terms Conditions</span>
       </nav>
     </div>
   </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
+
+
+  
+
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
 
 
   <section class="policy-content">

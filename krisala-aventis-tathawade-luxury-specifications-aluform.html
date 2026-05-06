@@ -106,6 +106,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -119,51 +136,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Luxury Specifications Aluform</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Luxury Specifications Aluform</span>
       </nav>
     </div>
   </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="hero silo-hero">
-    <div class="hero-bg">
-      <img src="assets/images/hero.png" width="1024" height="555" alt="Krisala Aventis Specifications — Engineering Excellence and Luxury" fetchpriority="high" decoding="async">
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">🛠️ Engineering Excellence</div>
-      <h1>Built for <span class="gold">Generations.</span></h1>
-      <p class="hero-desc">At Krisala Aventis, we use high-precision Aluform construction technology and premium global brands to ensure your home is as durable as it is beautiful.</p>
-    </div>
-  </section>
+  
 
-  <section class="section">
-    <div class="container">
-      <h2>Technical <span class="gold">Specifications.</span></h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-        <div class="portfolio-card">
-          <h4>Structure</h4>
-          <p>Seismic resistant RCC Shear Wall structure using Aluform System (MIVAN equivalent) for superior finish and zero leakage.</p>
-        </div>
-        <div class="portfolio-card">
-          <h4>Flooring</h4>
-          <p>800x800 Vitrified tiles in all rooms. Anti-skid designer tiles in balconies and bathrooms.</p>
-        </div>
-        <div class="portfolio-card">
-          <h4>Bath & Sanitary</h4>
-          <p>CP and Sanitary fittings by premium brands like Kohler, Jaquar or Grohe. Wall-hung commodes in all toilets.</p>
-        </div>
-        <div class="portfolio-card">
-          <h4>Smart Automation</h4>
-          <p>Video door phone, digital main door lock, and app-controlled lighting in the living area.</p>
-        </div>
-      </div>
-    </div>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
   </section>
 
   

@@ -327,6 +327,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -419,7 +436,7 @@
       <div class="section-tag">Krisala Aventis Review & Overview</div>
       <div class="overview-grid">
         <div class="overview-left reveal">
-          <h2>Krisala Tathawade Project | <br><span class="gold">Krisala Aventis Overview.</span></h2>
+          <h2>Krisala Tathawade Project | <br><span class="gold">Overview.</span></h2>
           <p class="lead-text">Krisala Aventis Tathawade is a premium residential project by Krisala Legacy. This is the most sought-after new launch in the micro-market.</p>
           <p class="body-text">Whether you are looking for Krisala Tathawade Pune 2 BHK or 3 BHK, Krisala Aventis provides the highest ROI for IT professionals near Hinjewadi.</p>
           <div class="feature-grid">
@@ -549,7 +566,7 @@
   <!-- ======== AMENITIES ======== -->
   <section id="amenities" class="section amenities-section">
     <div class="container">
-      <div class="section-tag">Krisala Aventis Amenities & Lifestyle</div>
+      <div class="section-tag">Amenities & Lifestyle</div>
       <div class="section-header center">
         <h2>Luxury <span class="gold">Amenities in Tathawade</span></h2>
         <p>Premium flats in Tathawade with swimming pool, gym, and 40+ lifestyle facilities.</p>
@@ -714,7 +731,7 @@
   <!-- ======== LOCATION ======== -->
   <section id="location" class="section location-section">
     <div class="container">
-      <div class="section-tag">Krisala Aventis Location & Connectivity</div>
+      <div class="section-tag">Location & Connectivity</div>
       <div class="section-header">
         <h2>Tathawade <span class="gold">Real Estate Hub</span></h2>
         <p>Connectivity from Krisala Aventis to Hinjewadi, Wakad, and Mumbai-Pune Highway.</p>

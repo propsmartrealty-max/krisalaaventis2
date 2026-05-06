@@ -106,6 +106,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -122,47 +139,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Growth Story Roi 2026</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Growth Story Roi 2026</span>
       </nav>
     </div>
   </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="hero silo-hero">
-    <div class="hero-bg">
-      <img src="assets/images/hero.png" width="1024" height="555" alt="Tathawade Real Estate Investment — Future Growth and ROI at Krisala Aventis" fetchpriority="high" decoding="async">
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">📈 Market Intelligence</div>
-      <h1>Tathawade <span class="gold">Growth Story 2026.</span></h1>
-      <p class="hero-desc">Discover why Tathawade is the fastest-growing residential hub in West Pune and how Krisala Aventis offers superior capital appreciation compared to Wakad or Baner.</p>
-    </div>
-  </section>
+  
 
-  <section class="section">
-    <div class="container">
-      <div class="overview-grid">
-        <div class="overview-left">
-          <h2>The <span class="gold">Investment Thesis</span></h2>
-          <p>Tathawade has transitioned from a developing suburb to a prime residential destination. With the expansion of Hinjewadi IT Park Phase 3 and the development of Phoenix Mall, property prices are projected to rise by 15-20% by 2026.</p>
-          <ul class="fp-specs" style="margin-top: 24px;">
-            <li><span>✓</span> Proximity to Hinjewadi IT Park (10 Mins)</li>
-            <li><span>✓</span> Direct Connectivity to Mumbai-Pune Expressway</li>
-            <li><span>✓</span> Educational Institutional Hub (JSPM, Indira, Balaji)</li>
-            <li><span>✓</span> Upcoming Metro Connectivity Phase 2</li>
-          </ul>
-        </div>
-        <div class="overview-right">
-          <img src="assets/images/location-infographic.png" width="1024" height="1024" alt="Tathawade Location Connectivity Infographic" loading="lazy" decoding="async">
-        </div>
-      </div>
-    </div>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
   </section>
 
   <section class="section related-silos">

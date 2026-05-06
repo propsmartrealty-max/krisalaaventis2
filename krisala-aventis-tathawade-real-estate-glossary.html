@@ -235,6 +235,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -257,26 +274,24 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Real Estate Glossary</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Real Estate Glossary</span>
       </nav>
     </div>
   </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
+
+
+  
+
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
 
   <!-- BREADCRUMBS -->
-  <div class="breadcrumb-container" style="background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0;">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb" style="font-size: 0.75rem; color: var(--clr-muted);">
-        <a href="/" style="color: var(--clr-gold); text-decoration: none;">Home</a> 
-        <span style="margin: 0 8px;">/</span> 
-        <span style="color: #fff;">Tathawade Real Estate Glossary</span>
-      </nav>
-    </div>
-  </div>
+  
 
 
   <section class="hero silo-hero">

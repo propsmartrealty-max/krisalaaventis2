@@ -235,6 +235,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -258,63 +275,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Developer Legacy</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Developer Legacy</span>
       </nav>
     </div>
   </div>
-
-  <!-- BREADCRUMBS -->
-  <div class="breadcrumb-container" style="background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0;">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb" style="font-size: 0.75rem; color: var(--clr-muted);">
-        <a href="/" style="color: var(--clr-gold); text-decoration: none;">Home</a> 
-        <span style="margin: 0 8px;">/</span> 
-        <span style="color: #fff;">Krisala Legacy Pune Track Record Completed Projects</span>
-      </nav>
-    </div>
-  </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="hero silo-hero">
-    <div class="hero-bg">
-      <img src="assets/images/hero.png" alt="Krisala Pune Projects — Portfolio of Delivered Projects including Krisala Luxoverts" fetchpriority="high" width="1024" height="555">
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">🏆 15+ Years of Excellence</div>
-      <h1>Krisala Legacy Pune — Track Record & Completed Projects</h1>
-      <p class="hero-desc">At Krisala Legacy, we don't just build structures; we build relationships. As one of the most prominent <strong>Krisala Pune projects</strong>, Aventis follows a heritage of delivering 5,000+ happy families. From <strong>Krisala Luxoverts</strong> to our latest <strong>Krisala launch</strong>, our track record is our strongest foundation.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Download Portfolio</a>
-        <a href="/" class="btn-secondary">Explore Our Latest: Aventis</a>
-      </div>
-    </div>
-  </section>
+  
 
-  <section class="section">
-    <div class="container">
-      <div class="section-tag">Institutional Proof</div>
-      <h2>Landmark <span class="gold">Deliveries</span></h2>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <strong>Krisala Cosmo 41</strong>
-          <span>A symbol of modern living in Tathawade, delivered with precision and premium amenities.</span>
-        </div>
-        <div class="feature-item">
-          <strong>Krisala Luxovert</strong>
-          <span>Premium residences that redefined luxury in the PCMC region, known for their superior finishes.</span>
-        </div>
-        <div class="feature-item">
-          <strong>Happy Community</strong>
-          <span>Join the 5,000+ families who chose the Krisala brand for transparency, quality, and timely delivery.</span>
-        </div>
-      </div>
-    </div>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
   </section>
 
   <section id="contact" class="section enquiry-section" style="background: var(--clr-onyx-light);">

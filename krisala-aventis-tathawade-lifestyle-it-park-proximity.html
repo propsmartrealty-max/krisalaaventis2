@@ -106,6 +106,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -119,47 +136,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Lifestyle It Park Proximity</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Lifestyle It Park Proximity</span>
       </nav>
     </div>
   </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="hero silo-hero">
-    <div class="hero-bg">
-      <img src="assets/images/hero.png" width="1024" height="555" alt="Krisala Aventis Lifestyle — Work-Life Balance near Hinjewadi IT Park" fetchpriority="high" decoding="async">
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">✨ Luxury Lifestyle</div>
-      <h1>Work. Play. <span class="gold">Live.</span></h1>
-      <p class="hero-desc">Located just 10 minutes from Hinjewadi Phase 1, Krisala Aventis offers the perfect balance between your professional ambition and personal tranquility.</p>
-    </div>
-  </section>
+  
 
-  <section class="section">
-    <div class="container">
-      <h2>The <span class="gold">Lifestyle Advantage.</span></h2>
-      <div class="overview-grid">
-        <div class="overview-left">
-          <p>Imagine finishing your workday at the IT Park and reaching home in under 10 minutes. At Krisala Aventis, this is your reality. Spend more time with your family and less time in traffic.</p>
-          <ul class="fp-specs" style="margin-top: 24px;">
-            <li><span>🏊</span> Rooftop Infinity Pool with Sundeck</li>
-            <li><span>💪</span> State-of-the-art Fitness Center</li>
-            <li><span>🍿</span> Mini Theater for Private Screenings</li>
-            <li><span>🌳</span> Oxygen Zones & Meditation Garden</li>
-          </ul>
-        </div>
-        <div class="overview-right">
-          <img src="assets/images/amenities-infographic.png" width="1024" height="1024" alt="Krisala Aventis Lifestyle Amenities Infographic" loading="lazy" decoding="async">
-        </div>
-      </div>
-    </div>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
   </section>
 
   

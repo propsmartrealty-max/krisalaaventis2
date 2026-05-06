@@ -14,7 +14,24 @@
     .sitemap-col li { margin-bottom: 12px; }
     .sitemap-col a { color: #fff; text-decoration: none; font-size: 0.95rem; transition: 0.3s; opacity: 0.8; }
     .sitemap-col a:hover { opacity: 1; color: var(--clr-gold); padding-left: 5px; }
-  </style>
+  
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
+</style>
 <style>
 /* --- Synchronized Breadcrumbs --- */
 .breadcrumb-wrapper {
@@ -57,67 +74,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Sitemap Html</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Sitemap Html</span>
       </nav>
     </div>
   </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="section" style="padding-top: 120px;">
-    <div class="container">
-      <div class="section-tag">Project Directory</div>
-      <h1>Complete <span class="gold">Site Map.</span></h1>
-      <p>A comprehensive guide to all resources, floor plans, and investment analysis for Krisala Aventis, Tathawade.</p>
+  
 
-      <div class="sitemap-grid">
-        <div class="sitemap-col">
-          <h4>Core Project Details</h4>
-          <ul>
-            <li><a href="/">Official Home Page</a></li>
-            <li><a href="/krisala-aventis-tathawade-2-bhk-flats">Krisala Aventis 2.25 BHK Elite Configurations</a></li>
-            <li><a href="/krisala-aventis-tathawade-3-bhk-luxury-apartments">Krisala Aventis 3.25 BHK Grand Configurations</a></li>
-            <li><a href="/krisala-aventis-tathawade-price-list">Krisala Aventis Live Price List & Inventory</a></li>
-            <li><a href="/krisala-aventis-tathawade-brochure-download">Krisala Aventis Download Official Brochure</a></li>
-            <li><a href="/krisala-aventis-tathawade-construction-status">Krisala Aventis Construction Update 2026</a></li>
-          </ul>
-        </div>
-        <div class="sitemap-col">
-          <h4>Investment & Tools</h4>
-          <ul>
-            <li><a href="/krisala-aventis-tathawade-cost-sheet-estimator">Krisala Aventis Interactive Cost Estimator</a></li>
-            <li><a href="/krisala-aventis-tathawade-home-loan-emi-calculator">Krisala Aventis EMI & Mortgage Calculator</a></li>
-            <li><a href="/krisala-aventis-tathawade-market-growth-calculator">Krisala Aventis Tathawade Growth Calculator</a></li>
-            <li><a href="/krisala-aventis-tathawade-investment-roi">Krisala Aventis ROI & Capital Appreciation</a></li>
-            <li><a href="/krisala-aventis-tathawade-nri-investment">Krisala Aventis NRI Property Investment Guide</a></li>
-          </ul>
-        </div>
-        <div class="sitemap-col">
-          <h4>Location & Connectivity</h4>
-          <ul>
-            <li><a href="/krisala-aventis-tathawade-flats-near-hinjewadi">Krisala Aventis Distance to Hinjewadi IT Park</a></li>
-            <li><a href="/krisala-aventis-tathawade-near-phoenix-mall-wakad">Krisala Aventis Proximity to Phoenix Mall</a></li>
-            <li><a href="/krisala-aventis-tathawade-near-jspm-university">Krisala Aventis Near JSPM University & Colleges</a></li>
-            <li><a href="/krisala-aventis-tathawade-near-mumbai-pune-expressway">Krisala Aventis Expressway Connectivity</a></li>
-            <li><a href="/krisala-aventis-tathawade-public-transport">Krisala Aventis Metro & Bus Connectivity</a></li>
-          </ul>
-        </div>
-        <div class="sitemap-col">
-          <h4>Quality & Experience</h4>
-          <ul>
-            <li><a href="/krisala-aventis-tathawade-luxury-specifications-aluform">Krisala Aventis Aluform Construction Quality</a></li>
-            <li><a href="/krisala-aventis-tathawade-lifestyle-it-park-proximity">Krisala Aventis Lifestyle & Amenities Deep Dive</a></li>
-            <li><a href="/krisala-aventis-tathawade-customer-reviews-testimonials">Krisala Aventis Verified Homeowner Reviews</a></li>
-            <li><a href="/krisala-aventis-tathawade-developer-legacy">Krisala Aventis Krisala Legacy Track Record</a></li>
-            <li><a href="/krisala-aventis-tathawade-vastu-compliance">Krisala Aventis Vastu Compliance Details</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
   </section>
 
   

@@ -108,6 +108,23 @@
 @media (max-width: 1024px) {
   .breadcrumb-wrapper { padding-top: 100px; padding-left: 20px; }
 }
+
+/* --- Structural Realignment --- */
+.nav-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+}
+.nav-links {
+  justify-self: center;
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .nav-container { display: flex; justify-content: space-between; }
+}
+
 </style>
 </head>
 <body>
@@ -124,53 +141,21 @@
   <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
   <div class="breadcrumb-wrapper">
     <div class="container">
-      <nav class="breadcrumbs-nav" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li class="separator">/</li>
-          <li class="current">Home Loan Emi Calculator</li>
-        </ol>
+      <nav class="breadcrumb-list" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <span class="active">Home Loan Emi Calculator</span>
       </nav>
     </div>
   </div>
+  <!-- ======== /SOVEREIGN BREADCRUMBS ======== -->
 
 
-  <section class="hero silo-hero">
-    <div class="hero-bg">
-      <img src="assets/images/hero.png" width="1024" height="555" alt="Home Loan Financing — Easy EMI Options at Krisala Aventis" fetchpriority="high" decoding="async">
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">🏦 Banking Partners</div>
-      <h1>Krisala Aventis <span class="gold">EMI & Financing.</span></h1>
-      <p class="hero-desc">Making luxury living accessible. Explore low-interest home loan options from India's top banks specifically for Krisala Aventis buyers.</p>
-    </div>
-  </section>
+  
 
-  <section id="calculator" class="section">
-    <div class="container center">
-      <div class="glass-form-container" style="max-width: 700px; margin: 0 auto; text-align: left;">
-        <h3>Simple <span class="gold">EMI Calculator</span></h3>
-        <p style="margin-bottom: 24px;">Estimate your monthly outgoings based on current bank rates.</p>
-        <div style="display: grid; gap: 20px;">
-          <div class="form-group">
-            <label>Loan Amount (₹)</label>
-            <input type="number" id="loanAmt" value="6500000" step="50000">
-          </div>
-          <div class="form-group">
-            <label>Interest Rate (%)</label>
-            <input type="number" id="interestRate" value="8.5" step="0.1">
-          </div>
-          <div class="form-group">
-            <label>Tenure (Years)</label>
-            <input type="number" id="tenure" value="20">
-          </div>
-          <div style="background: rgba(202,163,80,0.15); padding: 24px; border-radius: 12px; text-align: center;">
-            <p style="font-size: 0.9rem; color: var(--clr-gold);">Estimated Monthly EMI</p>
-            <h2 id="emiResult" style="font-size: 2.5rem; margin-top: 8px;">₹ 56,419</h2>
-          </div>
-        </div>
-      </div>
+
+  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
+  
     </div>
   </section>
 
