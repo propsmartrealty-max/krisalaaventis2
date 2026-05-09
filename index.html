@@ -259,14 +259,18 @@
         ]
       },
       {
+        "@type": "WebSite",
+        "@id": "https://krisalaventis.in/#website",
+        "url": "https://krisalaventis.in/",
+        "name": "Krisala Aventis Tathawade",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://krisalaventis.in/sitemap-html?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
         "@type": "WebPage",
-
-    "about": {
-      "@type": "Place",
-      "name": "Tathawade, Pune",
-      "sameAs": "https://en.wikipedia.org/wiki/Tathawade"
-    },
-    "mentions": [{"@type": "Landmark", "name": "Phoenix Mall of the Millennium Wakad", "url": "https://www.phoenixmarketcity.com/pune"}, {"@type": "EducationalOrganization", "name": "JSPM University Tathawade", "url": "https://jspm.edu.in/"}, {"@type": "Hospital", "name": "Aditya Birla Memorial Hospital", "url": "https://www.adityabirlahospital.com/"}, {"@type": "PublicToilet", "name": "Shakai Circle Tathawade"}, {"@type": "Place", "name": "Mumbai-Pune Expressway Entrance"}],
         "@id": "https://krisalaventis.in/#webpage",
         "url": "https://krisalaventis.in/",
         "name": "Krisala Aventis Tathawade Official Launch",
@@ -274,8 +278,53 @@
           "@type": "SpeakableSpecification",
           "xpath": [
             "/html/head/title",
-            "/html/head/meta[@name='description']/@content"
+            "/html/head/meta[@name='description']/@content",
+            "//*[@id='overview']/div/h2",
+            "//*[@id='pricing']/div/h2"
           ]
+        },
+        "about": {
+          "@type": "Place",
+          "name": "Tathawade, Pune",
+          "sameAs": "https://en.wikipedia.org/wiki/Tathawade"
+        }
+      },
+      {
+        "@type": "VideoObject",
+        "name": "Krisala Aventis Official Project Walkthrough",
+        "description": "Experience the luxury of 2.25 & 3.25 BHK apartments at Krisala Aventis Tathawade. Explore smart study spaces and modern amenities.",
+        "thumbnailUrl": "https://krisalaventis.in/assets/images/hero.png",
+        "uploadDate": "2026-05-01",
+        "contentUrl": "https://krisalaventis.in/",
+        "embedUrl": "https://krisalaventis.in/"
+      },
+      {
+        "@type": "ImageGallery",
+        "name": "Krisala Aventis Official Project Gallery",
+        "description": "High-fidelity renders and project highlights of Krisala Aventis Tathawade Pune.",
+        "image": [
+          "https://krisalaventis.in/assets/images/hero.png",
+          "https://krisalaventis.in/assets/images/floorplan-2bhk.png",
+          "https://krisalaventis.in/assets/images/floorplan-3bhk.png"
+        ]
+      },
+      {
+        "@type": "Event",
+        "name": "Krisala Aventis Official Phase 1 Launch",
+        "startDate": "2026-05-15T10:00",
+        "endDate": "2026-06-15T19:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": { "@id": "https://krisalaventis.in/#localbusiness" },
+        "image": "https://krisalaventis.in/assets/images/hero.png",
+        "description": "Official launch ceremony and inventory unveiling of Krisala Aventis Phase 1 in Tathawade.",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalaventis.in/",
+          "price": "8500000",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2026-05-10"
         }
       }
     ]
@@ -300,22 +349,6 @@
     }
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-
-    "about": {
-      "@type": "Place",
-      "name": "Tathawade, Pune",
-      "sameAs": "https://en.wikipedia.org/wiki/Tathawade"
-    },
-    "mentions": [{"@type": "Landmark", "name": "Phoenix Mall of the Millennium Wakad", "url": "https://www.phoenixmarketcity.com/pune"}, {"@type": "EducationalOrganization", "name": "JSPM University Tathawade", "url": "https://jspm.edu.in/"}, {"@type": "Hospital", "name": "Aditya Birla Memorial Hospital", "url": "https://www.adityabirlahospital.com/"}, {"@type": "PublicToilet", "name": "Shakai Circle Tathawade"}, {"@type": "Place", "name": "Mumbai-Pune Expressway Entrance"}],
-    "name": "Krisala Aventis Official Portal",
-    "speakable": {
-      "@type": "SpeakableSpecification",
-      "xpath": [
-        "/html/head/title",
         "/html/head/meta[@name='description']/@content"
       ]
     },
