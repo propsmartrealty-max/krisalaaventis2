@@ -32,7 +32,7 @@
         revealObs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.01, rootMargin: '0px 0px -50px 0px' });
   reveals.forEach(el => revealObs.observe(el));
 
   /* =============================================
