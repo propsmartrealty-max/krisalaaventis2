@@ -275,12 +275,15 @@
         "closes": "19:00"
       },
       "sameAs": [
-        "https://maharera.mahaonline.gov.in/Project?projectReraNo=P52100080336",
-        "https://www.wikidata.org/wiki/Q116447814",
-        "https://www.wikidata.org/wiki/Q11062",
-        "https://en.wikipedia.org/wiki/Tathawade",
-        "https://en.wikipedia.org/wiki/Hinjewadi"
-      ]
+      "https://maharera.mahaonline.gov.in/Project?projectReraNo=P52100080336",
+      "https://en.wikipedia.org/wiki/Tathawade",
+      "https://en.wikipedia.org/wiki/Hinjewadi",
+      "https://www.facebook.com/KrisalaLegacy",
+      "https://www.instagram.com/krisala_legacy",
+      "https://www.linkedin.com/company/krisala-legacy",
+      "https://www.wikidata.org/wiki/Q116447814",
+      "https://www.wikidata.org/wiki/Q11062"
+    ]
     },
     {
       "@type": "Product",
@@ -384,9 +387,15 @@
         "@type": "Place",
         "name": "Tathawade, Pune",
         "sameAs": [
-          "https://en.wikipedia.org/wiki/Tathawade",
-          "https://www.wikidata.org/wiki/Q116447814"
-        ]
+      "https://maharera.mahaonline.gov.in/Project?projectReraNo=P52100080336",
+      "https://en.wikipedia.org/wiki/Tathawade",
+      "https://en.wikipedia.org/wiki/Hinjewadi",
+      "https://www.facebook.com/KrisalaLegacy",
+      "https://www.instagram.com/krisala_legacy",
+      "https://www.linkedin.com/company/krisala-legacy",
+      "https://www.wikidata.org/wiki/Q116447814",
+      "https://www.wikidata.org/wiki/Q11062"
+    ]
       }
     },
     {
@@ -464,9 +473,119 @@
   
 
 
-  <!-- ======== SOVEREIGN BREADCRUMBS (Synchronized) ======== -->
-  
+  <section class="section" id="calculator">
+    <div class="container">
+      <div class="section-tag">Interactive Pricing</div>
+      <h2>Cost Sheet <span class="gold">Intelligence.</span></h2>
+      <p class="lead-text">Select your preferred configuration to generate an all-inclusive price estimation.</p>
+
+      <div class="calculator-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 3rem; align-items: start;">
+        <div class="calc-inputs glass-card reveal">
+          <h4 class="gold">1. Select Unit Configuration</h4>
+          <div style="display: grid; gap: 15px; margin-top: 20px;">
+            <div class="unit-option" onclick="calculateCost(8500000, '2.25 BHK Smart Study')" style="cursor: pointer; padding: 20px; border: 1px solid var(--clr-glass-border); border-radius: 12px; transition: 0.3s;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>2.25 BHK Smart Study</strong>
+                <span class="gold">₹ 85.00 L*</span>
+              </div>
+              <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px;">Carpet Area: ~839 Sq.ft.</p>
+            </div>
+            <div class="unit-option" onclick="calculateCost(12000000, '3.25 BHK Premium Study')" style="cursor: pointer; padding: 20px; border: 1px solid var(--clr-glass-border); border-radius: 12px; transition: 0.3s;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>3.25 BHK Premium Study</strong>
+                <span class="gold">₹ 1.20 Cr*</span>
+              </div>
+              <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px;">Carpet Area: ~1185 Sq.ft.</p>
+            </div>
+          </div>
+
+          <h4 class="gold" style="margin-top: 30px;">2. Floor Preference (Indicative)</h4>
+          <input type="range" min="1" max="26" value="5" class="slider" id="floorSlider" oninput="updateFloorRise()" style="width: 100%; margin-top: 15px; accent-color: var(--clr-gold);">
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 10px;">
+            <span>Lower Floor</span>
+            <span id="floorLabel">Floor: 5</span>
+            <span>Higher Floor</span>
+          </div>
+        </div>
+
+        <div class="calc-output glass-card reveal" style="border: 1px solid var(--clr-gold-dim);">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <div id="unitTitle" style="font-size: 1.2rem; font-weight: 600;">Select a Unit</div>
+            <div class="gold" style="font-size: 0.9rem;">Estimated All-Inclusive Quote</div>
+          </div>
+
+          <div style="display: grid; gap: 12px; font-size: 0.9rem; border-top: 1px solid var(--clr-glass-border); padding-top: 20px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>Agreement Value</span>
+              <span id="agreementVal">₹ 0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>Stamp Duty (7%)</span>
+              <span id="stampDuty">₹ 0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>Registration Fee</span>
+              <span id="registration">₹ 30,000</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>GST (5%)</span>
+              <span id="gst">₹ 0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1rem; margin-top: 15px; color: var(--clr-gold); border-top: 1px solid var(--clr-gold-dim); padding-top: 15px;">
+              <span>Total Estimated Price</span>
+              <span id="totalPrice">₹ 0</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 30px; text-align: center;">
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 15px;">*T&C Apply. Prices are indicative and exclude Floor Rise, PLC, and other charges.</p>
+            <a href="#contact" class="btn-primary" style="display: block;">Download Official Cost Sheet →</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <script>
+    let currentBase = 0;
+    let currentName = "";
+
+    function calculateCost(basePrice, name) {
+      currentBase = basePrice;
+      currentName = name;
+      updateDisplay();
+      
+      // Highlight selection
+      document.querySelectorAll('.unit-option').forEach(el => el.style.borderColor = 'var(--clr-glass-border)');
+      event.currentTarget.style.borderColor = 'var(--clr-gold)';
+    }
+
+    function updateFloorRise() {
+      const floor = document.getElementById('floorSlider').value;
+      document.getElementById('floorLabel').innerText = `Floor: ${floor}`;
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      if(currentBase === 0) return;
+      
+      const floor = parseInt(document.getElementById('floorSlider').value);
+      const floorRise = (floor > 5) ? (floor - 5) * 25000 : 0;
+      const av = currentBase + floorRise;
+      
+      const sd = av * 0.07;
+      const gst = av * 0.05;
+      const reg = 30000;
+      const total = av + sd + gst + reg;
+
+      document.getElementById('unitTitle').innerText = currentName;
+      document.getElementById('agreementVal').innerText = '₹ ' + av.toLocaleString('en-IN');
+      document.getElementById('stampDuty').innerText = '₹ ' + Math.round(sd).toLocaleString('en-IN');
+      document.getElementById('gst').innerText = '₹ ' + Math.round(gst).toLocaleString('en-IN');
+      document.getElementById('totalPrice').innerText = '₹ ' + Math.round(total).toLocaleString('en-IN');
+    }
+  </script>
+
 
   <section id="contact" class="section enquiry-section">
     <div class="container center">

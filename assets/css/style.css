@@ -1197,3 +1197,16 @@ button { cursor: pointer; font-family: inherit; }
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
 }
+
+/* =============================================
+   CONVERSION HARDENING: PULSE ANIMATIONS
+   ============================================= */
+.cta-pill, .btn-primary {
+  animation: pulse-gold 3s infinite;
+}
+
+@keyframes pulse-gold {
+  0% { box-shadow: 0 0 0 0 rgba(202, 163, 80, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(202, 163, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(202, 163, 80, 0); }
+}

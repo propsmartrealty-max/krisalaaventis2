@@ -449,20 +449,33 @@
       form.style.display = 'none';
       if (formTitle) formTitle.style.display = 'none';
 
+      // Capture Slot Details
+      const day = form.querySelector('select[name="visit-day"]')?.value || 'TBD';
+      const slot = form.querySelector('select[name="visit-slot"]')?.value || 'TBD';
+      const ppSlot = document.getElementById('pp-slot');
+      if (ppSlot) ppSlot.innerText = `${day} | ${slot}`;
+
       // Set Pass Data
       ppName.innerText = nameVal || 'Valued Guest';
       const passId = 'KA-' + Math.random().toString(36).substr(2, 9).toUpperCase();
       ppId.innerText = passId;
 
       if (qrImg) {
-        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PassID:${passId}|Phone:${phoneVal}`;
+        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=PassID:${passId}|Slot:${day}-${slot}|Phone:${phoneVal}`;
       }
 
       // Show Pass
       ppContainer.style.display = 'block';
       ppContainer.style.animation = 'fadeIn 0.8s ease forwards';
       
-      trackEvent('Conversion', 'Priority Pass Generated', passId);
+      // WhatsApp Deep Link Update
+      const confirmBtn = document.getElementById('confirmWA');
+      if (confirmBtn) {
+        const waMsg = encodeURIComponent(`Hi, I have generated my Krisala Aventis Priority Pass (${passId}). \nSlot: ${day} | ${slot}. \nPlease confirm my visit.`);
+        confirmBtn.href = `https://api.whatsapp.com/send?phone=917744009295&text=${waMsg}`;
+      }
+
+      trackEvent('Conversion', 'Priority Pass Generated', `${passId} | ${day}-${slot}`);
     } else {
       // Fallback if elements not present (e.g. on silo pages)
       const originalBg = btn.style.background;
