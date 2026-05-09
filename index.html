@@ -152,142 +152,116 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "What is the price of 2 BHK in Krisala Aventis Tathawade?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The price for 2.25 BHK apartments at Krisala Aventis Tathawade starts from ₹85 Lakhs* onwards. Get the latest cost sheet and availability by requesting the official brochure."
+        "@type": "Organization",
+        "@id": "https://krisalaventis.in/#organization",
+        "name": "Krisala Legacy",
+        "url": "https://krisalaventis.in/",
+        "logo": "https://krisalaventis.in/favicon.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+917744009295",
+          "contactType": "Sales"
         }
       },
       {
-        "@type": "Question",
-        "name": "Where is Krisala Aventis located in Pune?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Krisala Aventis is located in Tathawade, West Pune, near the Mumbai-Pune-Bangalore Highway and just 10 minutes from the Hinjewadi IT Park."
+        "@type": "RealEstateAgent",
+        "@id": "https://krisalaventis.in/#localbusiness",
+        "name": "Krisala Aventis Official Launch",
+        "image": "https://krisalaventis.in/assets/images/hero.png",
+        "url": "https://krisalaventis.in/",
+        "telephone": "+917744009295",
+        "priceRange": "₹85L - ₹1.40Cr",
+        "hasMap": "https://maps.app.goo.gl/TathawadeLocation",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1250"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Beside Shakai, Mumbai-Pune Highway",
+          "addressLocality": "Tathawade",
+          "addressRegion": "Maharashtra",
+          "postalCode": "411033",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 18.6298,
+          "longitude": 73.7560
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+          ],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        "sameAs": [
+          "https://maharera.mahaonline.gov.in/Project?projectReraNo=P52100080336",
+          "https://en.wikipedia.org/wiki/Tathawade",
+          "https://en.wikipedia.org/wiki/Hinjewadi"
+        ]
+      },
+      {
+        "@type": "Product",
+        "@id": "https://krisalaventis.in/#project",
+        "name": "Krisala Aventis Tathawade",
+        "description": "Premium 2.25 & 3.25 BHK apartments near Hinjewadi IT Park. Official Launch Phase Now Open.",
+        "brand": { "@id": "https://krisalaventis.in/#organization" },
+        "offers": {
+          "@type": "AggregateOffer",
+          "url": "https://krisalaventis.in/",
+          "priceCurrency": "INR",
+          "lowPrice": "8500000",
+          "highPrice": "14000000",
+          "offerCount": "42"
         }
       },
       {
-        "@type": "Question",
-        "name": "What are the configuration options in Krisala Aventis?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Krisala Aventis offers premium 2.25 BHK and 3.25 BHK smart study apartments with spacious layouts and modern amenities."
-        }
-      }
-    ],
-    "speakable": {
-      "@type": "SpeakableSpecification",
-      "xpath": [
-        "/html/head/title",
-        "/html/head/meta[@name='description']/@content"
-      ]
-    }
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ImageObject",
-    "contentUrl": "https://krisalaventis.in/assets/images/hero.png",
-    "license": "https://krisalaventis.in/terms-conditions",
-    "acquireLicensePage": "https://krisalaventis.in/contact",
-    "creditText": "Krisala Legacy",
-    "creator": {
-      "@type": "Organization",
-      "name": "Krisala Legacy"
-    },
-    "copyrightNotice": "Krisala Legacy 2026"
-  }
-  </script>
-
-  <script>
-    // --- SOVEREIGN LINK ACTIVATOR (Environment Proxy) ---
-    (function() {
-      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      if (isLocal) {
-        console.log('[Sovereign] Local Environment Detected — Activating Extension Proxy');
-        document.addEventListener('DOMContentLoaded', () => {
-          document.querySelectorAll('a[href^="/"]').forEach(link => {
-            const href = link.getAttribute('href');
-            // If it's an internal link and doesn't have an extension/hash
-            if (href.startsWith('/') && !href.includes('.') && !href.includes('#') && href !== '/') {
-              link.setAttribute('href', href + '.html');
+        "@type": "FAQPage",
+        "@id": "https://krisalaventis.in/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the price of 2 BHK in Krisala Aventis Tathawade?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The price for 2.25 BHK apartments at Krisala Aventis Tathawade starts from ₹85 Lakhs* onwards. Get the latest cost sheet and availability by requesting the official brochure."
             }
-          });
-        });
-      }
-    })();
-  </script>
-
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Krisala Aventis Site Office",
-    "image": "https://krisalaventis.in/assets/images/hero.png",
-    "url": "https://krisalaventis.in/",
-    "telephone": "+917744009295",
-    "priceRange": "₹85L - ₹1.40Cr",
-    "openingHours": "Mo-Su 10:00-19:00",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Beside Shakai, Mumbai-Pune Highway",
-      "addressLocality": "Tathawade",
-      "addressRegion": "Maharashtra",
-      "postalCode": "411033",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 18.6298,
-      "longitude": 73.7560
-    }
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SpecialAnnouncement",
-    "name": "Krisala Aventis New Launch Phase - I",
-    "text": "Special pre-launch pricing and inventory access now open for 2.25 & 3.25 BHK units in Tathawade.",
-    "category": "Real Estate Launch",
-    "url": "https://krisalaventis.in/"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the Krisala Aventis RERA number?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The Krisala Aventis MahaRERA number is P52100080336."
-        }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Krisala Aventis located in Pune?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Krisala Aventis is located in Tathawade, West Pune, near the Mumbai-Pune-Bangalore Highway and just 10 minutes from the Hinjewadi IT Park."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the configuration options in Krisala Aventis?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Krisala Aventis offers premium 2.25 BHK and 3.25 BHK smart study apartments with spacious layouts and modern amenities."
+            }
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "What are the flat configurations available at Krisala Aventis Tathawade?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Krisala Aventis offers premium 2.25 BHK and 3.25 BHK luxury apartments with extra study/office spaces."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the location of Krisala Aventis?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Krisala Aventis is located in Tathawade, Pune, near the Mumbai-Pune-Bangalore Highway and Hinjewadi IT Park."
+        "@type": "WebPage",
+        "@id": "https://krisalaventis.in/#webpage",
+        "url": "https://krisalaventis.in/",
+        "name": "Krisala Aventis Tathawade Official Launch",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "xpath": [
+            "/html/head/title",
+            "/html/head/meta[@name='description']/@content"
+          ]
         }
       }
     ]
