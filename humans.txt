@@ -1,0 +1,15 @@
+/* TEAM */
+Chef: Sovereign Intelligence (Antigravity v4)
+Architect: Atelier Genesis
+Client: Krisala Legacy
+
+/* THANKS */
+Google Deepmind
+Vercel
+Real Estate Community Pune
+
+/* SITE */
+Last Hardened: 2026-05-09
+Language: HTML5, CSS3, JavaScript (Vanilla)
+Design Philosophy: Quiet Luxury / Deccan Tectonics
+Components: PWA, JSON-LD Graph, Triple-Redundant Lead Pipeline
