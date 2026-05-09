@@ -1,15 +1,13 @@
 /* TEAM */
-Chef: Sovereign Intelligence (Antigravity v4)
-Architect: Atelier Genesis
-Client: Krisala Legacy
+  Developer: Krisala Legacy Engineering
+  SEO: Sovereign Intelligence Systems
+  Design: Atelier Genesis
 
 /* THANKS */
-Google Deepmind
-Vercel
-Real Estate Community Pune
+  Partner: Google Advanced Agentic Coding Team
 
 /* SITE */
-Last Hardened: 2026-05-09
-Language: HTML5, CSS3, JavaScript (Vanilla)
-Design Philosophy: Quiet Luxury / Deccan Tectonics
-Components: PWA, JSON-LD Graph, Triple-Redundant Lead Pipeline
+  Last update: 2026-05-09
+  Language: English / Hindi
+  Standards: HTML5, CSS3, ES6+
+  Components: Sovereign Enquiry Vault, Tectonic Intelligence Hub

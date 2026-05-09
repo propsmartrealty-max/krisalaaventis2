@@ -1,28 +1,16 @@
 {
-  "name": "Krisala Aventis Tathawade Official Site",
-  "short_name": "Krisala Aventis",
-  "description": "Premium 2.25 & 3.25 BHK apartments in Tathawade. Smart Study Homes near Hinjewadi IT Park.",
+  "name": "Krisala Aventis Official",
+  "short_name": "Krisala",
+  "description": "Official Launch: Krisala Aventis Tathawade. Luxury 2.25 & 3.25 BHK Smart Study Homes.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050608",
+  "background_color": "#0a0c11",
   "theme_color": "#caa350",
-  "orientation": "portrait",
-  "categories": ["lifestyle", "real estate", "productivity"],
-  "screenshots": [
-    {
-      "src": "/assets/images/hero.png",
-      "sizes": "1024x555",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Krisala Aventis Luxury Living"
-    }
-  ],
   "icons": [
     {
       "src": "/favicon.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "/favicon.png",

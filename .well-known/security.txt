@@ -1,6 +1,5 @@
-Contact: mailto:propsmartrealty@gmail.com
-Expires: 2027-05-09T14:00:00.000Z
-Preferred-Languages: en, hi, mr
-Policy: https://krisalaventis.in/privacy-policy
-Hiring: https://krisalaventis.in/contact
+Contact: https://krisalaventis.in/#contact
+Expires: 2027-05-01T00:00:00.000Z
+Preferred-Languages: en
 Canonical: https://krisalaventis.in/.well-known/security.txt
+Policy: https://krisalaventis.in/privacy-policy
