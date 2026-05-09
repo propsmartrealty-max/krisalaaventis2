@@ -7,14 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultText = document.getElementById('oracleRecText');
   const wizardContent = document.getElementById('oracleWizardContent');
   
+  if (!nextBtn || !prevBtn || !steps.length) return;
+
   let currentStep = 0;
   let selections = {};
 
   options.forEach(opt => {
     opt.addEventListener('click', () => {
-      const stepId = opt.closest('.oracle-step').dataset.step;
+      const stepEl = opt.closest('.oracle-step');
+      if (!stepEl) return;
+      const stepId = stepEl.dataset.step;
       // Deselect others in the same step
-      opt.closest('.oracle-options').querySelectorAll('.oracle-opt').forEach(o => o.classList.remove('selected'));
+      const optionsContainer = opt.closest('.oracle-options');
+      if (optionsContainer) {
+        optionsContainer.querySelectorAll('.oracle-opt').forEach(o => o.classList.remove('selected'));
+      }
       opt.classList.add('selected');
       selections[stepId] = opt.dataset.val;
       nextBtn.disabled = false;
@@ -44,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function showResult() {
-    wizardContent.style.display = 'none';
-    resultDiv.style.display = 'block';
+    if (wizardContent) wizardContent.style.display = 'none';
+    if (resultDiv) resultDiv.style.display = 'block';
     
     let recommendation = "";
     if (selections.goal === 'Investment') {
@@ -56,6 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
       recommendation = "The 3.25 BHK Ultra-Premium layout offers the massive balcony and luxury space your family deserves.";
     }
     
-    resultText.innerText = recommendation;
+    if (resultText) resultText.innerText = recommendation;
   }
 });
