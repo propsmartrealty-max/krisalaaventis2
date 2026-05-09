@@ -22,18 +22,33 @@
   });
 
   /* =============================================
-     1. SCROLL REVEAL
+     1. SCROLL REVEAL (Hardened)
      ============================================= */
   const reveals = document.querySelectorAll('.reveal');
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        revealObs.unobserve(e.target);
-      }
+  
+  try {
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.01, rootMargin: '0px 0px -50px 0px' });
+    
+    reveals.forEach(el => revealObs.observe(el));
+  } catch (err) {
+    console.warn('[Sovereign Guard] ScrollReveal Observer Failed — Triggering Manual Reveal');
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+
+  // GLOBAL SAFETY FALLBACK: Reveal everything after 2.5s regardless of intersection
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+      el.classList.add('visible');
+      console.log('[Sovereign Guard] Safety Reveal Triggered for:', el);
     });
-  }, { threshold: 0.01, rootMargin: '0px 0px -50px 0px' });
-  reveals.forEach(el => revealObs.observe(el));
+  }, 2500);
 
   /* =============================================
      2. NAVBAR — SCROLL + HAMBURGER
@@ -347,23 +362,21 @@
   });
 
   /* =============================================
-     7b. AUTO-MODAL ON FIRST LOAD
+     7b. AUTO-MODAL ON FIRST LOAD (Hardened)
      ============================================= */
   if (modal) {
-    const hasSeenModal = sessionStorage.getItem('ka_modal_viewed');
-    if (!hasSeenModal) {
-      setTimeout(() => {
-        const isAnyModalOpen = document.querySelector('.modal-overlay.open');
-        if (!isAnyModalOpen) {
-          modal.classList.add('open');
-          const modalHeader = modal.querySelector('.modal-header h3');
-          const modalDesc   = modal.querySelector('.modal-header p');
-          if (modalHeader) modalHeader.innerHTML = 'Unlock <span class="gold">Exclusive Offers</span>';
-          if (modalDesc) modalDesc.innerText = 'Register now to receive current inventory status and pre-launch pricing.';
-          sessionStorage.setItem('ka_modal_viewed', 'true');
-        }
-      }, 3000); // 3 seconds delay
-    }
+    // Reveal modal after 1.5s for maximum engagement
+    setTimeout(() => {
+      const isAnyModalOpen = document.querySelector('.modal-overlay.open');
+      if (!isAnyModalOpen) {
+        modal.classList.add('open');
+        const modalHeader = modal.querySelector('.modal-header h3');
+        const modalDesc   = modal.querySelector('.modal-header p');
+        if (modalHeader) modalHeader.innerHTML = 'Unlock <span class="gold">Exclusive Offers</span>';
+        if (modalDesc) modalDesc.innerText = 'Register now to receive current inventory status and pre-launch pricing.';
+        console.log('[Sovereign Guard] Auto-Modal Triggered');
+      }
+    }, 1500); 
   }
 
   function persistLead(data) {

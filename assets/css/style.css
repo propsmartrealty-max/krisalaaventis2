@@ -6,9 +6,10 @@
 /* =============================================
    CRITICAL HERO CSS (Core Web Vitals Optimization)
    ============================================= */
-.hero { min-height: 100vh; background: var(--clr-obsidian); }
-.hero-content { opacity: 1 !important; transform: none !important; }
-.pill-navbar { transform: translateX(-50%) translateY(0); }
+.hero { min-height: 100vh; background: var(--clr-obsidian); opacity: 1 !important; visibility: visible !important; }
+.hero-content { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+.pill-navbar { transform: translateX(-50%) translateY(0); opacity: 1 !important; visibility: visible !important; }
+body { opacity: 1 !important; visibility: visible !important; }
 
 :root {
   --clr-obsidian:   hsl(222, 18%, 7%);
