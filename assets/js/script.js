@@ -644,4 +644,13 @@
   });
 
   console.log(`[Krisala Aventis] Sovereign Intelligence v${SOVEREIGN_VERSION} — TOTAL HARDENING ACTIVE ✅`);
+
+  // --- SERVICE WORKER REGISTRATION ---
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('[Service Worker] Sovereign Registration Successful ✅', reg.scope))
+        .catch(err => console.warn('[Service Worker] Sovereign Registration Failed ❌', err));
+    });
+  }
 })();

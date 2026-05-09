@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  
+  <!-- Preloads & Fonts -->
+  <link rel="preload" as="image" href="assets/images/hero.png" type="image/png" fetchpriority="high">
+  <link rel="preload" as="style" href="assets/css/style.css">
+  <link rel="preload" as="script" href="assets/js/script.js">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms & Conditions | Official Krisala Aventis Tathawade</title>
   <meta name="robots" content="noindex, follow">
@@ -128,6 +133,35 @@
       "https://krisalaventis.in/#location",
       "https://krisalaventis.in/#blog"
     ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "xpath": [
+        "/html/head/title",
+        "/html/head/meta[@name='description']/@content"
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": "https://krisalaventis.in/assets/images/hero.png",
+    "license": "https://krisalaventis.in/terms-conditions",
+    "creditText": "Krisala Legacy",
+    "creator": {
+      "@type": "Organization",
+      "name": "Krisala Legacy"
+    },
+    "copyrightNotice": "Krisala Legacy 2026"
   }
   </script>
 </head>

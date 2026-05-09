@@ -1,13 +1,22 @@
 {
-  "name": "Krisala Aventis Tathawade",
-  "short_name": "K. Aventis",
-  "description": "Next-generation luxury living in Tathawade, Pune. 2.25 & 3.25 BHK Premium Apartments.",
+  "name": "Krisala Aventis Tathawade Official Site",
+  "short_name": "Krisala Aventis",
+  "description": "Premium 2.25 & 3.25 BHK apartments in Tathawade. Smart Study Homes near Hinjewadi IT Park.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050608",
   "theme_color": "#caa350",
   "orientation": "portrait",
   "categories": ["lifestyle", "real estate", "productivity"],
+  "screenshots": [
+    {
+      "src": "/assets/images/hero.png",
+      "sizes": "1024x555",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Krisala Aventis Luxury Living"
+    }
+  ],
   "icons": [
     {
       "src": "/favicon.png",
