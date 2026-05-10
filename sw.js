@@ -1,65 +1,70 @@
-const CACHE_NAME = 'krisala-aventis-sovereign-v4';
+const CACHE_NAME = 'krisala-aventis-v3';
 const ASSETS = [
   '/',
+  '/krisala-aventis-tathawade-2-bhk-flats',
+  '/krisala-aventis-tathawade-3-bhk-luxury-apartments',
+  '/krisala-aventis-tathawade-aluform-technology',
+  '/krisala-aventis-tathawade-amenities-lifestyle',
+  '/krisala-aventis-tathawade-brochure-download',
+  '/krisala-aventis-tathawade-competitor-comparison',
+  '/krisala-aventis-tathawade-connectivity-it-hubs',
+  '/krisala-aventis-tathawade-construction-status',
+  '/krisala-aventis-tathawade-cost-sheet-estimator',
+  '/krisala-aventis-tathawade-customer-reviews-testimonials',
+  '/krisala-aventis-tathawade-developer-legacy',
+  '/krisala-aventis-tathawade-educational-hubs',
+  '/krisala-aventis-tathawade-flats-near-hinjewadi',
+  '/krisala-aventis-tathawade-growth-story-roi-2026',
+  '/krisala-aventis-tathawade-hindi-janakari',
+  '/krisala-aventis-tathawade-home-loan-emi-calculator',
+  '/krisala-aventis-tathawade-investment-roi',
+  '/krisala-aventis-tathawade-lifestyle-it-park-proximity',
+  '/krisala-aventis-tathawade-local-area-guide-map',
+  '/krisala-aventis-tathawade-local-pune-review-hindi-marathi',
+  '/krisala-aventis-tathawade-luxury-specifications-aluform',
+  '/krisala-aventis-tathawade-marathi-mahiti',
+  '/krisala-aventis-tathawade-market-growth-calculator',
+  '/krisala-aventis-tathawade-near-aditya-birla-hospital',
+  '/krisala-aventis-tathawade-near-bhujbal-chowk',
+  '/krisala-aventis-tathawade-near-jspm-university',
+  '/krisala-aventis-tathawade-near-mumbai-pune-expressway',
+  '/krisala-aventis-tathawade-near-phoenix-mall-wakad',
+  '/krisala-aventis-tathawade-near-shakai-circle',
+  '/krisala-aventis-tathawade-nri-investment',
+  '/krisala-aventis-tathawade-possession-timeline-2026',
+  '/krisala-aventis-tathawade-price-list',
+  '/krisala-aventis-tathawade-privacy-policy',
+  '/krisala-aventis-tathawade-public-transport',
+  '/krisala-aventis-tathawade-real-estate-glossary',
+  '/krisala-aventis-tathawade-smart-study-homes',
+  '/krisala-aventis-tathawade-terms-conditions',
+  '/krisala-aventis-tathawade-vastu-compliance',
+  '/sitemap-html',
   '/assets/css/style.css',
   '/assets/js/script.js',
-  '/assets/js/config.js',
-  '/assets/images/logo.png',
   '/favicon.png'
 ];
 
-// Install Event — Pre-cache core assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Pre-caching Core Assets');
       return cache.addAll(ASSETS);
     })
   );
-  self.skipWaiting();
 });
 
-// Activate Event — Clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            console.log('[Service Worker] Deleting Old Cache:', key);
-            return caches.delete(key);
-          }
-        })
-      );
+      return Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)));
     })
   );
-  self.clients.claim();
 });
 
-// Fetch Event — Stale-While-Revalidate Strategy
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests
-  if (event.request.method !== 'GET') return;
-
   event.respondWith(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.match(event.request).then((cachedResponse) => {
-        const fetchedResponse = fetch(event.request).then((networkResponse) => {
-          // Update cache with fresh version
-          if (networkResponse.status === 200) {
-            cache.put(event.request, networkResponse.clone());
-          }
-          return networkResponse;
-        }).catch(() => {
-            // Fallback for navigation requests
-            if (event.request.mode === 'navigate') {
-                return cache.match('/');
-            }
-        });
-
-        // Return cached version immediately, or wait for network
-        return cachedResponse || fetchedResponse;
-      });
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
     })
   );
 });
