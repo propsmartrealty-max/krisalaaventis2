@@ -244,12 +244,14 @@
       [name, phone].forEach(el => el && el.classList.remove('error'));
       if (config) config.classList.remove('error');
 
-      // Validation Logic (Loosened)
+      // Validation Logic (Hardened)
       const cleanedPhone = (phone?.value || '').replace(/\s+/g, '').replace('+', '');
-      const phoneRegex = /^[0-9]{10,14}$/; // Accept 10 to 14 digits (Indian + International)
+      // Block dummy numbers (e.g., all same digits) and ensure length
+      const isDummy = /^(\d)\1{9,}$/.test(cleanedPhone);
+      const phoneRegex = /^[0-9]{10,14}$/; 
 
-      if (!name || !name.value.trim()) { if(name) name.classList.add('error'); valid = false; }
-      if (!phone || !cleanedPhone || !phoneRegex.test(cleanedPhone)) {
+      if (!name || !name.value.trim() || name.value.length < 2) { if(name) name.classList.add('error'); valid = false; }
+      if (!phone || !cleanedPhone || !phoneRegex.test(cleanedPhone) || isDummy) {
         if(phone) phone.classList.add('error'); valid = false;
       }
 
@@ -266,12 +268,17 @@
       }
 
       const now = Date.now();
-      const lastSub = localStorage.getItem('last_sub_time');
-      if (lastSub && (now - lastSub < 45000)) { 
-        alert('🔒 Security Protocol: Please wait a few moments between submissions.');
+      let subHistory = JSON.parse(localStorage.getItem('ka_sub_history') || '[]');
+      // Filter out submissions older than 60 seconds
+      subHistory = subHistory.filter(t => now - t < 60000);
+      
+      if (subHistory.length >= 2) { 
+        alert('🔒 Security Protocol: Too many requests. Please wait a minute before submitting again.');
         return;
       }
-      localStorage.setItem('last_sub_time', now);
+      
+      subHistory.push(now);
+      localStorage.setItem('ka_sub_history', JSON.stringify(subHistory));
 
       // --- Loading State ---
       currentBtn.disabled = true;
