@@ -25,6 +25,10 @@ jobs:
         working-directory: ./indexing-automation
         run: echo "${{ secrets.GOOGLE_INDEXING_KEY }}" > service-account.json
         
-      - name: Execute Sovereign Indexing Sweep
+      - name: Execute Sovereign Indexing Sweep (Google)
         working-directory: ./indexing-automation
         run: node index-push.js
+        
+      - name: Execute Omnipresent Search Sweep (Bing/Yahoo/DuckDuckGo)
+        working-directory: ./indexing-automation
+        run: python3 indexnow-push.py
