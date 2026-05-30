@@ -350,6 +350,7 @@
           if (result.success) {
             // Mark as delivered in vault
             markVaultDelivered(data);
+            try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
           } else {
             // Queue for retry on next page load
             queueFailedLead(data);

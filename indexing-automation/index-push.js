@@ -13,6 +13,7 @@ const keyFile = path.join(__dirname, 'service-account.json');
 const urls = [
   'https://krisalaventis.in/',
   'https://krisalaventis.in/krisala-aventis-premium-living-review',
+  'https://krisalaventis.in/krisala-aventis-special-offer',
   'https://krisalaventis.in/krisala-aventis-tathawade-2-bhk-flats',
   'https://krisalaventis.in/krisala-aventis-tathawade-3-bhk-luxury-apartments',
   'https://krisalaventis.in/krisala-aventis-tathawade-aluform-technology',

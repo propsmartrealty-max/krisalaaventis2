@@ -2,6 +2,7 @@ const CACHE_NAME = 'krisala-aventis-v3';
 const ASSETS = [
   '/',
   '/krisala-aventis-premium-living-review',
+  '/krisala-aventis-special-offer',
   '/krisala-aventis-tathawade-2-bhk-flats',
   '/krisala-aventis-tathawade-3-bhk-luxury-apartments',
   '/krisala-aventis-tathawade-aluform-technology',

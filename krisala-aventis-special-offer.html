@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Special Offer: Krisala Aventis Tathawade</title>
+  <meta name="description" content="Unlock exclusive pre-launch pricing for Krisala Aventis Tathawade. Premium 2.25 & 3.25 BHK apartments with 40+ amenities near Hinjewadi. Claim your offer now.">
+  <meta name="robots" content="noindex, nofollow"> <!-- Prevent organic indexing so it's strictly for paid traffic -->
+
+  <!-- Preloads & Fonts -->
+  <link rel="preload" as="image" href="assets/images/hero.png" type="image/png" fetchpriority="high">
+  <link rel="preload" as="style" href="assets/css/style.min.css">
+  <link rel="preload" as="script" href="assets/js/script.js">
+  
+  <!-- Style & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.min.css">
+
+  <style>
+    /* Squeeze Page Specific Overrides */
+    .squeeze-nav {
+      position: absolute;
+      top: 0; left: 0; width: 100%;
+      padding: 30px 5%;
+      z-index: 100;
+      text-align: center;
+    }
+    .squeeze-nav .logo {
+      font-size: 1.8rem;
+    }
+    .squeeze-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      padding: 100px 5% 50px;
+      gap: 50px;
+      background: linear-gradient(to right, rgba(5,6,8,0.9), rgba(5,6,8,0.5)), url('assets/images/hero.png') center/cover;
+    }
+    .urgency-badge {
+      display: inline-block;
+      background: rgba(202, 163, 80, 0.2);
+      color: var(--clr-gold);
+      padding: 8px 16px;
+      border: 1px solid var(--clr-gold);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+    .squeeze-form-container {
+      background: rgba(5,6,8,0.95);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .trust-badges {
+      display: flex;
+      gap: 20px;
+      margin-top: 30px;
+      opacity: 0.7;
+    }
+    .trust-badges div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+    
+    @media (max-width: 1024px) {
+      .squeeze-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 150px;
+      }
+      .trust-badges {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Nav (No Links) -->
+  <header class="squeeze-nav">
+    <div class="logo">KRISALA <span class="gold">AVENTIS</span></div>
+  </header>
+
+  <!-- Squeeze Hero -->
+  <section class="squeeze-hero">
+    <div class="hero-content">
+      <div class="urgency-badge">⚠️ Offer Valid For Next 48 Hours</div>
+      <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 20px;">Unlock Pre-Launch Pricing For Tathawade's Finest.</h1>
+      <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 30px; max-width: 600px;">Experience the luxury of 2.25 & 3.25 BHK Smart-Study Homes. Claim your official price list, brochure, and secure the best inventory before public launch.</p>
+      
+      <div class="trust-badges">
+        <div><span>🛡️</span> RERA Approved</div>
+        <div><span>🏗️</span> Aluform Tech</div>
+        <div><span>📍</span> 10 Min to Hinjewadi</div>
+      </div>
+    </div>
+
+    <!-- The Trap (Form) -->
+    <div class="squeeze-form-container">
+      <h3 style="font-size: 1.8rem; margin-bottom: 10px; text-align: center;">Claim Your Offer</h3>
+      <p style="text-align: center; opacity: 0.7; font-size: 0.9rem; margin-bottom: 30px;">Enter details to download the Official Price List instantly.</p>
+      
+      <form id="enquiry-form" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="5fc96541-b0e6-4277-bc0c-974910cf904f">
+        <input type="hidden" name="subject" value="URGENT: Squeeze Page Lead - Krisala Aventis">
+        <input type="hidden" name="redirect" value="https://krisalaventis.in/">
+        
+        <div class="form-group">
+          <input type="text" name="name" required placeholder="Full Name">
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" required placeholder="Email Address">
+        </div>
+        <div class="form-group">
+          <input type="tel" name="phone" id="phone-input" required placeholder="Phone Number (e.g., 9876543210)">
+        </div>
+        <button type="submit" class="submit-btn" style="width: 100%;">DOWNLOAD BROCHURE & PRICING</button>
+      </form>
+      <div id="form-status" style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--clr-gold);"></div>
+      <p style="text-align: center; font-size: 0.7rem; opacity: 0.5; margin-top: 20px;">By submitting, you authorize Krisala Legacy to contact you.</p>
+    </div>
+  </section>
+
+  <!-- Minimal Footer (No Distractions) -->
+  <footer style="text-align: center; padding: 30px; background: #000; border-top: 1px solid rgba(255,255,255,0.05);">
+    <p style="font-size: 0.8rem; opacity: 0.5;">© 2026 Krisala Legacy. MahaRERA No: P52100080336. All Rights Reserved.</p>
+  </footer>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
