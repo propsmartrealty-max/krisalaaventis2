@@ -1,0 +1,30 @@
+name: Sovereign Indexing Engine - Daily Push
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at 00:00 UTC
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions dashboard
+
+jobs:
+  index_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install Automation Dependencies
+        working-directory: ./indexing-automation
+        run: npm install
+        
+      - name: Inject Secure Service Account Key
+        working-directory: ./indexing-automation
+        run: echo "${{ secrets.GOOGLE_INDEXING_KEY }}" > service-account.json
+        
+      - name: Execute Sovereign Indexing Sweep
+        working-directory: ./indexing-automation
+        run: node index-push.js
