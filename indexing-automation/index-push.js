@@ -12,6 +12,7 @@ const path = require('path');
 const keyFile = path.join(__dirname, 'service-account.json');
 const urls = [
   'https://krisalaventis.in/',
+  'https://krisalaventis.in/krisala-aventis-premium-living-review',
   'https://krisalaventis.in/krisala-aventis-tathawade-2-bhk-flats',
   'https://krisalaventis.in/krisala-aventis-tathawade-3-bhk-luxury-apartments',
   'https://krisalaventis.in/krisala-aventis-tathawade-aluform-technology',
@@ -50,7 +51,9 @@ const urls = [
   'https://krisalaventis.in/krisala-aventis-tathawade-smart-study-homes',
   'https://krisalaventis.in/krisala-aventis-tathawade-terms-conditions',
   'https://krisalaventis.in/krisala-aventis-tathawade-vastu-compliance',
-  'https://krisalaventis.in/sitemap-html'
+  'https://krisalaventis.in/sitemap-html',
+  'https://krisalaventis.in/tathawade-real-estate-investment-guide',
+  'https://krisalaventis.in/wakad-vs-tathawade-property-analysis'
 ];
 
 async function pushToIndex() {

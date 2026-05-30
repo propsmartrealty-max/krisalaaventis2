@@ -1,6 +1,7 @@
 const CACHE_NAME = 'krisala-aventis-v3';
 const ASSETS = [
   '/',
+  '/krisala-aventis-premium-living-review',
   '/krisala-aventis-tathawade-2-bhk-flats',
   '/krisala-aventis-tathawade-3-bhk-luxury-apartments',
   '/krisala-aventis-tathawade-aluform-technology',
@@ -40,6 +41,8 @@ const ASSETS = [
   '/krisala-aventis-tathawade-terms-conditions',
   '/krisala-aventis-tathawade-vastu-compliance',
   '/sitemap-html',
+  '/tathawade-real-estate-investment-guide',
+  '/wakad-vs-tathawade-property-analysis',
   '/assets/css/style.css',
   '/assets/js/script.js',
   '/favicon.png'
