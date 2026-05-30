@@ -31,8 +31,13 @@ def push_to_indexnow():
         headers={'Content-Type': 'application/json; charset=utf-8'}
     )
 
+    import ssl
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+
     try:
-        response = urllib.request.urlopen(req)
+        response = urllib.request.urlopen(req, context=ctx)
         if response.status == 200 or response.status == 202:
             print(f"✅ IndexNow Protocol Execution SUCCESS.")
             print(f"🚀 Blasted {len(url_list)} URLs to Bing, Yahoo, DuckDuckGo, and Yandex.")
