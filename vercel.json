@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
@@ -94,49 +96,76 @@
       "source": "/krisala-aventis-tathawade-floor-plan",
       "destination": "/krisala-aventis-tathawade-2-bhk-flats",
       "permanent": true
-    }
-  ],
-  "trailingSlash": false,
-  "routes": [
-    {
-      "src": "/krisala-aventis-tathawade-site-visit-book",
-      "dest": "/krisala-aventis-tathawade-site-visit-book.html"
     },
     {
-      "src": "/how-to-buy-flat-in-west-pune-guide-2026",
-      "dest": "/how-to-buy-flat-in-west-pune-guide-2026.html"
+      "source": "/flats-near-hinjewadi.html",
+      "destination": "/krisala-aventis-tathawade-flats-near-hinjewadi",
+      "permanent": true
     },
     {
-      "src": "/residential-flats-near-hinjewadi-phase-3",
-      "dest": "/residential-flats-near-hinjewadi-phase-3.html"
+      "source": "/2-bhk-flats-tathawade.html",
+      "destination": "/krisala-aventis-tathawade-2-bhk-flats",
+      "permanent": true
     },
     {
-      "src": "/krisala-aventis-vs-kolte-patil-tathawade",
-      "dest": "/krisala-aventis-vs-kolte-patil-tathawade.html"
+      "source": "/3-bhk-luxury-apartments-tathawade.html",
+      "destination": "/krisala-aventis-tathawade-3-bhk-luxury-apartments",
+      "permanent": true
     },
     {
-      "src": "/pcmc-luxury-apartments-tathawade-2026",
-      "dest": "/pcmc-luxury-apartments-tathawade-2026.html"
+      "source": "/construction-update-krisala-aventis.html",
+      "destination": "/krisala-aventis-tathawade-construction-status",
+      "permanent": true
     },
     {
-      "src": "/tathawade-vs-baner-property-2026",
-      "dest": "/tathawade-vs-baner-property-2026.html"
+      "source": "/tathawade-real-estate-investment-roi.html",
+      "destination": "/krisala-aventis-tathawade-investment-roi",
+      "permanent": true
     },
     {
-      "src": "/best-3-bhk-under-1-5-crore-pune-2026",
-      "dest": "/best-3-bhk-under-1-5-crore-pune-2026.html"
+      "source": "/lifestyle-amenities-shopping-tathawade.html",
+      "destination": "/krisala-aventis-tathawade-amenities-lifestyle",
+      "permanent": true
     },
     {
-      "src": "/krisala-aventis-vs-godrej-tathawade",
-      "dest": "/krisala-aventis-vs-godrej-tathawade.html"
+      "source": "/educational-hubs-near-krisala-aventis.html",
+      "destination": "/krisala-aventis-tathawade-educational-hubs",
+      "permanent": true
     },
     {
-      "handle": "filesystem"
+      "source": "/krisala-legacy-pune-track-record-completed-projects.html",
+      "destination": "/krisala-aventis-tathawade-developer-legacy",
+      "permanent": true
     },
     {
-      "src": "/(.*)",
-      "dest": "/404.html",
-      "status": 404
+      "source": "/aluform-technology-construction-quality-krisala-aventis.html",
+      "destination": "/krisala-aventis-tathawade-aluform-technology",
+      "permanent": true
+    },
+    {
+      "source": "/public-transport-connectivity-tathawade-pune.html",
+      "destination": "/krisala-aventis-tathawade-public-transport",
+      "permanent": true
+    },
+    {
+      "source": "/tathawade-market-growth-calculator.html",
+      "destination": "/krisala-aventis-tathawade-market-growth-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/tathawade-real-estate-glossary.html",
+      "destination": "/krisala-aventis-tathawade-real-estate-glossary",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/krisala-aventis-tathawade-privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms-conditions",
+      "destination": "/krisala-aventis-tathawade-terms-conditions",
+      "permanent": true
     }
   ]
 }
