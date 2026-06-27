@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krisala-aventis-v4';
+const CACHE_NAME = 'krisala-aventis-v5';
 const ASSETS = [
   '/',
   '/krisala-aventis-premium-living-review',
@@ -44,6 +44,14 @@ const ASSETS = [
   '/sitemap-html',
   '/tathawade-real-estate-investment-guide',
   '/wakad-vs-tathawade-property-analysis',
+  '/krisala-aventis-vs-godrej-tathawade',
+  '/best-3-bhk-under-1-5-crore-pune-2026',
+  '/tathawade-vs-baner-property-2026',
+  '/pcmc-luxury-apartments-tathawade-2026',
+  '/krisala-aventis-vs-kolte-patil-tathawade',
+  '/residential-flats-near-hinjewadi-phase-3',
+  '/how-to-buy-flat-in-west-pune-guide-2026',
+  '/krisala-aventis-tathawade-site-visit-book',
   '/assets/images/hero.webp',
   '/assets/images/interior.webp',
   '/assets/images/amenities-infographic.webp',
