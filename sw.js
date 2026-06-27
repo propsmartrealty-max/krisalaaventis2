@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krisala-aventis-v5';
+const CACHE_NAME = 'krisala-aventis-v6';
 const ASSETS = [
   '/',
   '/krisala-aventis-premium-living-review',
@@ -59,8 +59,10 @@ const ASSETS = [
   '/assets/images/master-layout.webp',
   '/assets/images/floorplan-2bhk.webp',
   '/assets/images/floorplan-3bhk.webp',
-  '/assets/css/style.css',
-  '/assets/js/script.js',
+  '/assets/css/style.min.css',
+  '/assets/js/config.js',
+  '/assets/js/script.min.js',
+  '/assets/images/logo.webp',
   '/favicon.png'
 ];
 
