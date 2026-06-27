@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krisala-aventis-v3';
+const CACHE_NAME = 'krisala-aventis-v4';
 const ASSETS = [
   '/',
   '/krisala-aventis-premium-living-review',
@@ -44,6 +44,13 @@ const ASSETS = [
   '/sitemap-html',
   '/tathawade-real-estate-investment-guide',
   '/wakad-vs-tathawade-property-analysis',
+  '/assets/images/hero.webp',
+  '/assets/images/interior.webp',
+  '/assets/images/amenities-infographic.webp',
+  '/assets/images/location-infographic.webp',
+  '/assets/images/master-layout.webp',
+  '/assets/images/floorplan-2bhk.webp',
+  '/assets/images/floorplan-3bhk.webp',
   '/assets/css/style.css',
   '/assets/js/script.js',
   '/favicon.png'
