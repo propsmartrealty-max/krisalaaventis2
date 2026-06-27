@@ -99,6 +99,38 @@
   "trailingSlash": false,
   "routes": [
     {
+      "src": "/krisala-aventis-tathawade-site-visit-book",
+      "dest": "/krisala-aventis-tathawade-site-visit-book.html"
+    },
+    {
+      "src": "/how-to-buy-flat-in-west-pune-guide-2026",
+      "dest": "/how-to-buy-flat-in-west-pune-guide-2026.html"
+    },
+    {
+      "src": "/residential-flats-near-hinjewadi-phase-3",
+      "dest": "/residential-flats-near-hinjewadi-phase-3.html"
+    },
+    {
+      "src": "/krisala-aventis-vs-kolte-patil-tathawade",
+      "dest": "/krisala-aventis-vs-kolte-patil-tathawade.html"
+    },
+    {
+      "src": "/pcmc-luxury-apartments-tathawade-2026",
+      "dest": "/pcmc-luxury-apartments-tathawade-2026.html"
+    },
+    {
+      "src": "/tathawade-vs-baner-property-2026",
+      "dest": "/tathawade-vs-baner-property-2026.html"
+    },
+    {
+      "src": "/best-3-bhk-under-1-5-crore-pune-2026",
+      "dest": "/best-3-bhk-under-1-5-crore-pune-2026.html"
+    },
+    {
+      "src": "/krisala-aventis-vs-godrej-tathawade",
+      "dest": "/krisala-aventis-vs-godrej-tathawade.html"
+    },
+    {
       "handle": "filesystem"
     },
     {
