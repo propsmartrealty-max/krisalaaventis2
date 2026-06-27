@@ -8,8 +8,8 @@ base_url = "https://krisalaventis.in"
 indexnow_key = "2f5a8b79d63c4e10b2f18394a7d65b2f"
 
 def push_to_indexnow():
-    # Gather all HTML files (excluding 404, privacy, terms)
-    html_files = [f for f in os.listdir(base_dir) if f.endswith('.html') and f not in ['404.html', 'privacy-policy.html', 'terms-conditions.html']]
+    # Gather all HTML files (excluding 404.html)
+    html_files = [f for f in os.listdir(base_dir) if f.endswith('.html') and f.lower() != '404.html']
     
     url_list = []
     for filename in html_files:
