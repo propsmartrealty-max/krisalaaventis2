@@ -4,8 +4,30 @@ Disallow: /scratch/
 Disallow: /indexing-automation/
 Disallow: /*.json$
 
+# Priority Crawl Paths
+Allow: /assets/images/
+Allow: /sitemap.xml
+
 Sitemap: https://krisalaventis.in/sitemap.xml
 
 # Krisala Aventis Tathawade — Sovereign SEO Infrastructure
 # Domain: krisalaventis.in
-# Last Hardened: 2026-05-09
+# Last Hardened: 2026-06-27
+
+# Search Engine Crawl Optimization
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /assets/images/
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /

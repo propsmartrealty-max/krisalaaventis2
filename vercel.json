@@ -1,175 +1,59 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/flats-near-hinjewadi.html",
-      "destination": "/krisala-aventis-tathawade-flats-near-hinjewadi",
-      "permanent": true
-    },
-    {
-      "source": "/krisala-aventis-tathawade-flats-near-hinjewadi.html",
-      "destination": "/krisala-aventis-tathawade-flats-near-hinjewadi",
-      "permanent": true
-    },
-    {
-      "source": "/2-bhk-flats-tathawade.html",
-      "destination": "/krisala-aventis-tathawade-2-bhk-flats",
-      "permanent": true
-    },
-    {
-      "source": "/krisala-aventis-tathawade-2-bhk-flats.html",
-      "destination": "/krisala-aventis-tathawade-2-bhk-flats",
-      "permanent": true
-    },
-    {
-      "source": "/3-bhk-luxury-apartments-tathawade.html",
-      "destination": "/krisala-aventis-tathawade-3-bhk-luxury-apartments",
-      "permanent": true
-    },
-    {
-      "source": "/krisala-aventis-tathawade-3-bhk-luxury-apartments.html",
-      "destination": "/krisala-aventis-tathawade-3-bhk-luxury-apartments",
-      "permanent": true
-    },
-    {
-      "source": "/construction-update-krisala-aventis.html",
-      "destination": "/krisala-aventis-tathawade-construction-status",
-      "permanent": true
-    },
-    {
-      "source": "/krisala-aventis-tathawade-construction-status.html",
-      "destination": "/krisala-aventis-tathawade-construction-status",
-      "permanent": true
-    },
-    {
-      "source": "/tathawade-real-estate-investment-roi.html",
-      "destination": "/krisala-aventis-tathawade-investment-roi",
-      "permanent": true
-    },
-    {
-      "source": "/tathawade-real-estate-investment-roi",
-      "destination": "/krisala-aventis-tathawade-investment-roi",
-      "permanent": true
-    },
-    {
-      "source": "/lifestyle-amenities-shopping-tathawade.html",
-      "destination": "/krisala-aventis-tathawade-amenities-lifestyle",
-      "permanent": true
-    },
-    {
-      "source": "/lifestyle-amenities-shopping-tathawade",
-      "destination": "/krisala-aventis-tathawade-amenities-lifestyle",
-      "permanent": true
-    },
-    {
-      "source": "/educational-hubs-near-krisala-aventis.html",
-      "destination": "/krisala-aventis-tathawade-educational-hubs",
-      "permanent": true
-    },
-    {
-      "source": "/educational-hubs-near-krisala-aventis",
-      "destination": "/krisala-aventis-tathawade-educational-hubs",
-      "permanent": true
-    },
-    {
-      "source": "/krisala-legacy-pune-track-record-completed-projects.html",
-      "destination": "/krisala-aventis-tathawade-developer-legacy",
-      "permanent": true
-    },
-    {
-      "source": "/krisala-legacy-pune-track-record-completed-projects",
-      "destination": "/krisala-aventis-tathawade-developer-legacy",
-      "permanent": true
-    },
-    {
-      "source": "/aluform-technology-construction-quality-krisala-aventis.html",
-      "destination": "/krisala-aventis-tathawade-aluform-technology",
-      "permanent": true
-    },
-    {
-      "source": "/aluform-technology-construction-quality-krisala-aventis",
-      "destination": "/krisala-aventis-tathawade-aluform-technology",
-      "permanent": true
-    },
-    {
-      "source": "/public-transport-connectivity-tathawade-pune.html",
-      "destination": "/krisala-aventis-tathawade-public-transport",
-      "permanent": true
-    },
-    {
-      "source": "/public-transport-connectivity-tathawade-pune",
-      "destination": "/krisala-aventis-tathawade-public-transport",
-      "permanent": true
-    },
-    {
-      "source": "/tathawade-market-growth-calculator.html",
-      "destination": "/krisala-aventis-tathawade-market-growth-calculator",
-      "permanent": true
-    },
-    {
-      "source": "/tathawade-market-growth-calculator",
-      "destination": "/krisala-aventis-tathawade-market-growth-calculator",
-      "permanent": true
-    },
-    {
-      "source": "/tathawade-real-estate-glossary.html",
-      "destination": "/krisala-aventis-tathawade-real-estate-glossary",
-      "permanent": true
-    },
-    {
-      "source": "/tathawade-real-estate-glossary",
-      "destination": "/krisala-aventis-tathawade-real-estate-glossary",
-      "permanent": true
-    },
-    {
-      "source": "/privacy-policy",
-      "destination": "/krisala-aventis-tathawade-privacy-policy",
-      "permanent": true
-    },
-    {
-      "source": "/terms-conditions",
-      "destination": "/krisala-aventis-tathawade-terms-conditions",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "index, follow"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=31536000; includeSubDomains; preload"
-        },
-        {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://api.web3forms.com https://api.qrserver.com https://*.google-analytics.com https://*.googletagmanager.com; img-src 'self' data: https:; frame-src https://www.google.com https://www.googletagmanager.com https://maharera.mahaonline.gov.in;"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(self)" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+      ]
+    },
+    {
+      "source": "/assets/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/assets/css/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/assets/js/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*).html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" },
+        { "key": "Content-Type", "value": "application/xml" }
       ]
     }
-  ]
+  ],
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "trailingSlash": false
 }
