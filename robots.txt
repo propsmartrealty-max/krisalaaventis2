@@ -7,12 +7,35 @@ Disallow: /*.json$
 # Priority Crawl Paths
 Allow: /assets/images/
 Allow: /sitemap.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
 
 Sitemap: https://krisalaventis.in/sitemap.xml
 
+# AI Search & Answer Engine Optimization (AEO) Directives
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
 # Krisala Aventis Tathawade — Sovereign SEO Infrastructure
 # Domain: krisalaventis.in
-# Last Hardened: 2026-06-27
+# Last Hardened: 2026-08-05
 
 # Search Engine Crawl Optimization
 User-agent: Googlebot
