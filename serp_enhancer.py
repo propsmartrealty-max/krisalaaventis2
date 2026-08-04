@@ -5,6 +5,7 @@ import re
 TARGET_DIRS = [
     '.',
     'pune-market',
+    'vs-competitor',
     'near',
     'price',
     'guide',
