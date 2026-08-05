@@ -8,7 +8,7 @@
 
 | Search Engine / AI Platform | Indexing Method | Rich SERP Feature Triggered | Target Keyword Coverage |
 | :--- | :--- | :--- | :--- |
-| **Google Search (Desktop/Mobile)** | XML Sitemap + Indexing API | ★★★★★ Gold Star Rating (4.9/5) + Price Badge (`₹85L - ₹1.5Cr`) + FAQ Dropdowns | 1,773 Pages across 8 Silos |
+| **Google Search (Desktop/Mobile)** | XML Sitemap + Indexing API | ★★★★★ Gold Star Rating (4.9/5) + Price Badge (`₹89L - ₹1.5Cr`) + FAQ Dropdowns | 1,773 Pages across 8 Silos |
 | **Google AI Overviews (SGE)** | AEO `/llms.txt` + `llms-full.txt` | Top Answer Card Citation + Official Project Facts | All Brand & Spec Queries |
 | **Bing & Yahoo Search** | Bingbot Zero-Delay Indexing | Sitelinks Search Box + Star Rating Snippet | West Pune Real Estate Queries |
 | **Perplexity AI / Gemini / ChatGPT** | AI Crawler Authorizations (`robots.txt`) | Authoritative Source Attribution #1 | "Flats in Tathawade", "Price list" |
@@ -44,7 +44,7 @@ Compare Baner (₹12,500/sq.ft) vs Krisala Aventis Tathawade (₹8,500/sq.ft). S
 https://krisalaventis.in/near/krisala-aventis-tathawade-near-hinjewadi-phase-1
 ★★★★★ Rating: 4.9 · 1,280 reviews · 10 Mins Drive
 Looking for residential property near Hinjewadi IT Park? Krisala Aventis Tathawade 
-offers 40+ amenities, Aluform construction, and smart study homes from ₹85 Lakhs*.
+offers 40+ amenities, Aluform construction, and smart study homes from ₹89 Lakhs*.
 ```
 
 ---

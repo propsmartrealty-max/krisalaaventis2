@@ -17,7 +17,7 @@ PUNE_LOCALITIES = {
     "Aundh": {"avg_price": 13500, "commute": "30 mins", "landmark": "Aundh Parihar Chowk", "savings": "₹45–₹55 Lakhs"},
     "Pimple Saudagar": {"avg_price": 9800, "commute": "25 mins", "landmark": "Linear Garden", "savings": "₹15–₹20 Lakhs"},
     "Kothrud": {"avg_price": 15000, "commute": "40 mins", "landmark": "Chandni Chowk", "savings": "₹60–₹75 Lakhs"},
-    "Shivaji Nagar": {"avg_price": 16500, "commute": "45 mins", "landmark": "FC Road", "savings": "₹70–₹85 Lakhs"},
+    "Shivaji Nagar": {"avg_price": 16500, "commute": "45 mins", "landmark": "FC Road", "savings": "₹70–₹89 Lakhs"},
     "Kharadi": {"avg_price": 11000, "commute": "75 mins", "landmark": "EON IT Park", "savings": "₹25–₹30 Lakhs"},
     "Viman Nagar": {"avg_price": 13000, "commute": "70 mins", "landmark": "Phoenix Marketcity", "savings": "₹40–₹50 Lakhs"},
     "Kalyani Nagar": {"avg_price": 14500, "commute": "65 mins", "landmark": "Trump Towers", "savings": "₹55–₹65 Lakhs"},
@@ -224,7 +224,7 @@ def build_pune_pages():
             content_intro = (
                 f"When evaluating Pune's dynamic property market in 2026, homebuyers searching across {locality} are increasingly shifting their focus toward the Wakad-Tathawade growth corridor. "
                 f"While {locality} remains an established residential pocket near {data['landmark']}, property prices averaging ₹{data['avg_price']}/sq.ft often force buyers to compromise on layout size or lifestyle amenities. "
-                f"In contrast, Krisala Aventis Tathawade offers luxury 2.25 BHK and 3.25 BHK smart study homes starting at ₹85 Lakhs*, delivering superior capital appreciation and connectivity."
+                f"In contrast, Krisala Aventis Tathawade offers luxury 2.25 BHK and 3.25 BHK smart study homes starting at ₹89 Lakhs*, delivering superior capital appreciation and connectivity."
             )
             
             content_body = (

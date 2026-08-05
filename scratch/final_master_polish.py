@@ -35,7 +35,7 @@ def final_polish():
       "@type": "AggregateOffer",
       "url": "https://krisalaventis.in/",
       "priceCurrency": "INR",
-      "lowPrice": "8500000",
+      "lowPrice": "8900000",
       "highPrice": "14000000",
       "offerCount": "42"
     }

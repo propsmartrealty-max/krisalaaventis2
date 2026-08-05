@@ -7,12 +7,12 @@ OUTPUT_DIR = "vs-competitor"
 COMPETITORS = [
     {"name": "Kohinoor Westview", "location": "Punawale", "price_sqft": "₹9,200", "avg_2bhk": "₹82 Lakhs - ₹90 Lakhs", "commute": "18 mins"},
     {"name": "Mahindra Happinest", "location": "Tathawade", "price_sqft": "₹8,900", "avg_2bhk": "₹80 Lakhs - ₹88 Lakhs", "commute": "12 mins"},
-    {"name": "Godrej 24", "location": "Hinjewadi", "price_sqft": "₹9,500", "avg_2bhk": "₹85 Lakhs - ₹95 Lakhs", "commute": "15 mins"},
+    {"name": "Godrej 24", "location": "Hinjewadi", "price_sqft": "₹9,500", "avg_2bhk": "₹89 Lakhs - ₹95 Lakhs", "commute": "15 mins"},
     {"name": "VJ Yashwin", "location": "Tathawade", "price_sqft": "₹8,800", "avg_2bhk": "₹78 Lakhs - ₹86 Lakhs", "commute": "12 mins"},
     {"name": "Rohan Harita", "location": "Tathawade", "price_sqft": "₹9,100", "avg_2bhk": "₹82 Lakhs - ₹92 Lakhs", "commute": "14 mins"},
     {"name": "Kasturi Apostrophe", "location": "Wakad", "price_sqft": "₹11,500", "avg_2bhk": "₹1.10 Cr - ₹1.25 Cr", "commute": "20 mins"},
-    {"name": "Paranjpe Schemes", "location": "Punawale", "price_sqft": "₹8,700", "avg_2bhk": "₹78 Lakhs - ₹85 Lakhs", "commute": "18 mins"},
-    {"name": "Kolte Patil Life Republic", "location": "Hinjewadi", "price_sqft": "₹8,600", "avg_2bhk": "₹75 Lakhs - ₹85 Lakhs", "commute": "22 mins"},
+    {"name": "Paranjpe Schemes", "location": "Punawale", "price_sqft": "₹8,700", "avg_2bhk": "₹78 Lakhs - ₹89 Lakhs", "commute": "18 mins"},
+    {"name": "Kolte Patil Life Republic", "location": "Hinjewadi", "price_sqft": "₹8,600", "avg_2bhk": "₹75 Lakhs - ₹89 Lakhs", "commute": "22 mins"},
     {"name": "Shapoorji Pallonji Sensorium", "location": "Hinjewadi", "price_sqft": "₹9,800", "avg_2bhk": "₹88 Lakhs - ₹98 Lakhs", "commute": "18 mins"},
     {"name": "Lodha Panache", "location": "Hinjewadi", "price_sqft": "₹10,200", "avg_2bhk": "₹95 Lakhs - ₹1.10 Cr", "commute": "20 mins"},
     {"name": "Prestige Panorama", "location": "Wakad", "price_sqft": "₹11,800", "avg_2bhk": "₹1.15 Cr - ₹1.35 Cr", "commute": "22 mins"},
@@ -109,7 +109,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         "@type": "AggregateOffer",
         "url": "https://krisalaventis.in/vs-competitor/{slug}",
         "priceCurrency": "INR",
-        "lowPrice": "8500000",
+        "lowPrice": "8900000",
         "highPrice": "15000000",
         "offerCount": "120"
       }},
@@ -252,7 +252,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                         </tr>
                         <tr>
                             <td class="p-5 font-medium text-gray-300">Typical 2 BHK Apartment Budget</td>
-                            <td class="p-5 font-bold text-white bg-gold-500/5 border-x border-gold-500/20">₹85.00 Lakhs* Onwards</td>
+                            <td class="p-5 font-bold text-white bg-gold-500/5 border-x border-gold-500/20">₹89.00 Lakhs* Onwards</td>
                             <td class="p-5 text-gray-300">{comp_2bhk}</td>
                             <td class="p-5 text-green-400 font-bold">₹15 Lakhs – ₹35 Lakhs Direct Savings</td>
                         </tr>
