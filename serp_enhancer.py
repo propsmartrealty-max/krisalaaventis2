@@ -12,6 +12,7 @@ TARGET_DIRS = [
     'market',
     'compare',
     'feature',
+    'west-pune',
     'blog'
 ]
 

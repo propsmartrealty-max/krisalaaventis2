@@ -11,6 +11,7 @@ CATEGORIES = [
     {"dir": "compare", "name": "Property Type Comparisons", "icon": "fa-columns", "desc": "2 BHK vs 3 BHK, co-working vs smart study homes, high-floor vs low-floor flats."},
     {"dir": "market", "name": "Market Forecasts & Appreciation", "icon": "fa-chart-line", "desc": "West Pune infrastructure growth, metro connectivity impact, and ROI index."},
     {"dir": "feature", "name": "Luxury Amenities & Specifications", "icon": "fa-star", "desc": "Rooftop infinity pool, smart study alcoves, and monolithic Aluform durability."},
+    {"dir": "west-pune", "name": "West Pune Property Hub", "icon": "fa-map-marker-alt", "desc": "Hyper-local guides for 50+ West Pune and PCMC micro-markets."},
     {"dir": "blog", "name": "Real Estate Insights Blog", "icon": "fa-newspaper", "desc": "In-depth articles and annual forecasts from 2025 to 2030 across Pune."}
 ]
 
