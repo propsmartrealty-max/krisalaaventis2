@@ -170,7 +170,7 @@ BASE_TEMPLATE = """<!DOCTYPE html>
     <meta property="twitter:description" content="$description">
     <meta property="twitter:image" content="https://krisalaventis.in/assets/images/hero.webp">
 
-    <link rel="stylesheet" href="../assets/css/style.min.css">
+    <link rel="stylesheet" href="/assets/css/output.css">
     <link rel="canonical" href="https://krisalaventis.in/$folder/$url_slug_clean">
     
     <!-- JSON-LD Structured Data -->
