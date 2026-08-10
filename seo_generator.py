@@ -47,7 +47,8 @@ def generate_location_data():
                     "content": f"Krisala Aventis Tathawade offers unparalleled connectivity for those looking for {bhk} flats near {landmark} in {year}. Enjoy world-class amenities just minutes away from major hubs.",
                     "landmark": landmark,
                     "bhk": bhk,
-                    "year": year
+                    "year": year,
+                    "keywords": f"flats in Tathawade, flats near {landmark}, property near {landmark}, Krisala Aventis {landmark}, {bhk} near {landmark}, apartments near Hinjewadi"
                 })
     return pages
 
@@ -70,7 +71,8 @@ def generate_price_data():
                     "content": f"Looking for {config} properties in {loc} within the {budget} range? Krisala Aventis Tathawade brings you premium homes that fit your budget while offering luxurious lifestyle amenities.",
                     "budget": budget,
                     "config": config,
-                    "location": loc
+                    "location": loc,
+                    "keywords": f"Krisala Aventis price, {budget} flats in {loc}, {config} flats for sale {loc}, Krisala Aventis cost, affordable luxury flats {loc}, Krisala Aventis price list"
                 })
     return pages
 
@@ -91,7 +93,8 @@ def generate_persona_data():
                     "title": f"Krisala Aventis Tathawade for {persona} | {need} in {loc}",
                     "description": f"Are you a {persona} looking for {need} in {loc}? Discover why Krisala Aventis Tathawade is the perfect fit.",
                     "h1": f"The Perfect Home for {persona}s Prioritizing {need} in {loc}",
-                    "content": f"For a {persona}, finding the right property in {loc} that offers {need} is crucial. Krisala Aventis Tathawade delivers exactly that, combining luxury living with practical benefits tailored to your lifestyle."
+                    "content": f"For a {persona}, finding the right property in {loc} that offers {need} is crucial. Krisala Aventis Tathawade delivers exactly that, combining luxury living with practical benefits tailored to your lifestyle.",
+                    "keywords": f"Krisala Aventis review, {persona} flats {loc}, {need} properties {loc}, buy Krisala Aventis, investment property Tathawade"
                 })
     return pages[:200]
 
@@ -112,7 +115,8 @@ def generate_market_data():
                 "title": f"{market} Real Estate {topic} {year} | Krisala Aventis Tathawade",
                 "description": f"In-depth analysis of {market} {topic} in {year}. See why investing near Krisala Aventis Tathawade is a smart choice.",
                 "h1": f"{market} Property Market: {topic} ({year})",
-                "content": f"Understanding the {topic} in {market} is essential for {year}. With major infrastructure projects underway, Krisala Aventis Tathawade stands out as a prime investment opportunity with excellent ROI potential."
+                "content": f"Understanding the {topic} in {market} is essential for {year}. With major infrastructure projects underway, Krisala Aventis Tathawade stands out as a prime investment opportunity with excellent ROI potential.",
+                "keywords": f"real estate investment {market}, high ROI property Pune, {topic} {market} {year}, Krisala Aventis investment, property for investment Pune West"
             })
     return pages
 
@@ -132,7 +136,8 @@ def generate_compare_data():
                 "title": f"Krisala Aventis Tathawade vs {comp} - {aspect}",
                 "description": f"Detailed {aspect} comparison between Krisala Aventis Tathawade and {comp}. Make an informed home buying decision.",
                 "h1": f"Comparing Krisala Aventis Tathawade vs {comp}: {aspect}",
-                "content": f"When evaluating {aspect}, how does Krisala Aventis Tathawade stack up against {comp}? Our detailed analysis shows why Krisala Aventis Tathawade offers superior value in the Tathawade micro-market."
+                "content": f"When evaluating {aspect}, how does Krisala Aventis Tathawade stack up against {comp}? Our detailed analysis shows why Krisala Aventis Tathawade offers superior value in the Tathawade micro-market.",
+                "keywords": f"Krisala Aventis vs {comp}, best project in Tathawade, top residential projects Tathawade, best luxury project Tathawade, {comp} alternative"
             })
     return pages
 
@@ -153,7 +158,8 @@ def generate_feature_data():
                 "title": f"{feature} at Krisala Aventis Tathawade | {variant}",
                 "description": f"Learn about the {feature} at Krisala Aventis Tathawade and its {variant}. Premium living in Tathawade.",
                 "h1": f"Krisala Aventis Tathawade Features: {feature} ({variant})",
-                "content": f"Krisala Aventis Tathawade incorporates top-tier {feature} to ensure a {variant}. This commitment to quality and modern living standards sets the project apart in Pune's real estate landscape."
+                "content": f"Krisala Aventis Tathawade incorporates top-tier {feature} to ensure a {variant}. This commitment to quality and modern living standards sets the project apart in Pune's real estate landscape.",
+                "keywords": f"Krisala Aventis amenities, wellness homes Pune, smart homes Tathawade, luxury apartments with {feature}, Krisala Aventis specifications"
             })
     return pages
 
@@ -176,7 +182,8 @@ def generate_blog_data():
                     "title": f"{topic} in {loc} ({year}) | Krisala Blog",
                     "description": f"Read our comprehensive guide on {topic} for {loc} property buyers in {year}.",
                     "h1": f"{topic}: {loc} Perspective {year}",
-                    "content": f"Our detailed look into {topic} reveals important trends for {loc} in {year}. Stay informed with Krisala Legacy's expert real estate insights."
+                    "content": f"Our detailed look into {topic} reveals important trends for {loc} in {year}. Stay informed with Krisala Legacy's expert real estate insights.",
+                    "keywords": f"Is Krisala Aventis worth buying, Krisala Aventis review, {topic} {loc} {year}, Krisala Aventis investment review, real estate investment Tathawade"
                 })
     return pages[:300]
 
@@ -201,6 +208,7 @@ BASE_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="$description">
+    <meta name="keywords" content="$keywords">
     <title>$title</title>
     <link rel="stylesheet" href="../assets/css/style.min.css">
     <link rel="canonical" href="https://krisalaventis.in/$folder/$url_slug">
@@ -255,7 +263,8 @@ def build_pages():
             folder=page['folder'],
             url_slug=page['url_slug'],
             h1=page['h1'],
-            content=page['content']
+            content=page['content'],
+            keywords=page.get('keywords', '')
         )
         
         output_path = os.path.join(OUTPUT_DIRS[page['folder']], page['url_slug'])

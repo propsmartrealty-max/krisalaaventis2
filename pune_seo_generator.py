@@ -53,6 +53,7 @@ BASE_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="$description">
+    <meta name="keywords" content="$keywords">
     <title>$title</title>
     
     <!-- Open Graph / Social -->
@@ -120,7 +121,7 @@ BASE_TEMPLATE = """<!DOCTYPE html>
     <main class="max-w-7xl mx-auto p-6 py-12">
         <article class="bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm">
             <div class="w-full h-64 md:h-96 relative overflow-hidden">
-                <img src="../assets/images/hero.webp" alt="Krisala Aventis Tathawade - $h1" class="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500">
+                <img src="../assets/images/hero.webp" alt="$title" title="$h1" class="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-[#0a0c11] to-transparent"></div>
                 <div class="absolute bottom-8 left-8 right-8">
                     <span class="inline-block px-4 py-1 mb-3 text-xs font-semibold uppercase tracking-wider bg-gold-500/20 text-gold-400 border border-gold-500/30 rounded-full">Pune Market Analysis 2026</span>
@@ -264,7 +265,8 @@ def build_pune_pages():
                 "h1": h1,
                 "content_intro": content_intro,
                 "content_body": content_body,
-                "faqs": faqs
+                "faqs": faqs,
+                "keywords": f"Tathawade Pune property, {locality} real estate, {angle} {locality}, flats near Hinjewadi, Pune West real estate investment"
             })
             
     print(f"Generating {len(pages)} enhanced Pune Real Estate market pages...")
@@ -310,7 +312,8 @@ def build_pune_pages():
             locality_savings=page['locality_savings'],
             faq_schema=faq_schema_str,
             faq_html=faq_html_str,
-            related_links_html=related_links_html
+            related_links_html=related_links_html,
+            keywords=page.get('keywords', '')
         )
         
         output_path = os.path.join(OUTPUT_DIR, page['url_slug'])

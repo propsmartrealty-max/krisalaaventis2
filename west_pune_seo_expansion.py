@@ -99,7 +99,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} — West Pune Real Estate ⭐</title>
     <meta name="description" content="{desc}">
-    <meta name="keywords" content="{market} real estate, {market} flats, {market} property, 2 BHK near {market}, Krisala Aventis Tathawade">
+    <meta name="keywords" content="Krisala Aventis {market}, {market} real estate trends, luxury flats near {market}, premium 2 BHK {market}, Tathawade investment">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://krisalaventis.in/west-pune/{slug}">
     

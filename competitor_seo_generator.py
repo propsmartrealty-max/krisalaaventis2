@@ -62,7 +62,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krisala Aventis vs {comp_name} ({comp_loc}) — {angle_title} ⭐</title>
     <meta name="description" content="Compare Krisala Aventis Tathawade (₹8,500/sq.ft) vs {comp_name} ({comp_loc} @ {comp_price}). {angle_desc} Save ₹15L–₹40L+ on luxury 2.25 & 3.25 BHK flats.">
-    <meta name="keywords" content="Krisala Aventis vs {comp_name}, {comp_name} price, {comp_name} {comp_loc}, Krisala Aventis Tathawade price list, 2 BHK in Tathawade vs {comp_loc}">
+    <meta name="keywords" content="Krisala Aventis vs {comp_name}, best project in Tathawade, best luxury project Tathawade, top residential projects Tathawade, {comp_name} alternative">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://krisalaventis.in/vs-competitor/{slug}">
     

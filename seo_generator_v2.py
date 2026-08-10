@@ -44,7 +44,8 @@ def generate_location_data():
                     "description": f"Discover {bhk} luxury apartments at Krisala Aventis Tathawade near {landmark}. Launching in {year}. Check floor plans, pricing & premium amenities.",
                     "h1": f"Premium {bhk} Flats Near {landmark}",
                     "content": content,
-                    "faqs": faqs
+                    "faqs": faqs,
+                    "keywords": f"flats in Tathawade, flats near {landmark}, property near {landmark}, Krisala Aventis {landmark}, {bhk} near {landmark}, apartments near Hinjewadi"
                 })
     return pages
 
@@ -75,7 +76,8 @@ def generate_price_data():
                     "description": f"Find your dream {config} in {loc} within {budget}. Krisala Aventis Tathawade offers luxury living with 40+ amenities. Download the cost sheet.",
                     "h1": f"Krisala Aventis Tathawade: {config} in {loc} for {budget}",
                     "content": content,
-                    "faqs": faqs
+                    "faqs": faqs,
+                    "keywords": f"Krisala Aventis price, {budget} flats in {loc}, {config} flats for sale {loc}, Krisala Aventis cost, affordable luxury flats {loc}, Krisala Aventis price list"
                 })
     return pages
 
@@ -106,7 +108,8 @@ def generate_persona_data():
                     "description": f"Are you a {persona} looking for {need} in {loc}? Discover why Krisala Aventis Tathawade is the perfect fit.",
                     "h1": f"The Perfect Home for {persona}s Prioritizing {need} in {loc}",
                     "content": content,
-                    "faqs": faqs
+                    "faqs": faqs,
+                    "keywords": f"Krisala Aventis review, {persona} flats {loc}, {need} properties {loc}, buy Krisala Aventis, investment property Tathawade"
                 })
     return pages[:200]
 
@@ -133,7 +136,8 @@ def generate_market_data():
                 "description": f"In-depth analysis of {market} {topic} in {year}. See why investing near Krisala Aventis Tathawade is a smart choice.",
                 "h1": f"{market} Property Market: {topic} ({year})",
                 "content": content,
-                "faqs": faqs
+                "faqs": faqs,
+                "keywords": f"real estate investment {market}, high ROI property Pune, {topic} {market} {year}, Krisala Aventis investment, property for investment Pune West"
             })
     return pages
 
@@ -154,6 +158,7 @@ BASE_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="$description">
+    <meta name="keywords" content="$keywords">
     <title>$title</title>
     
     <!-- Open Graph / Social -->
@@ -221,7 +226,7 @@ BASE_TEMPLATE = """<!DOCTYPE html>
     <main class="max-w-7xl mx-auto p-6 py-12">
         <article class="bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm">
             <div class="w-full h-64 md:h-96 relative overflow-hidden">
-                <img src="../assets/images/hero.webp" alt="Krisala Aventis Tathawade - $h1" class="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500">
+                <img src="../assets/images/hero.webp" alt="$title" title="$h1" class="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-[#0a0c11] to-transparent"></div>
                 <div class="absolute bottom-8 left-8 right-8">
                     <h1 class="text-4xl md:text-5xl font-['Playfair_Display'] font-bold text-gold-400">$h1</h1>
@@ -316,6 +321,7 @@ def build_pages():
             url_slug_clean=page['url_slug'].replace('.html', ''),
             h1=page['h1'],
             content=page['content'],
+            keywords=page.get('keywords', ''),
             faq_schema=faq_schema_str,
             faq_html=faq_html_str,
             related_links_html=related_links_html
@@ -353,7 +359,8 @@ def generate_compare_data():
                 "description": f"Detailed {aspect} comparison between Krisala Aventis Tathawade and {comp}. Make an informed home buying decision.",
                 "h1": f"Comparing Krisala Aventis Tathawade vs {comp}: {aspect}",
                 "content": content,
-                "faqs": faqs
+                "faqs": faqs,
+                "keywords": f"Krisala Aventis vs {comp}, best project in Tathawade, top residential projects Tathawade, best luxury project Tathawade, {comp} alternative"
             })
     return pages
 
@@ -380,7 +387,8 @@ def generate_feature_data():
                 "description": f"Learn about the {feature} at Krisala Aventis Tathawade and its {variant}. Premium living in Tathawade.",
                 "h1": f"Krisala Aventis Tathawade Features: {feature} ({variant})",
                 "content": content,
-                "faqs": faqs
+                "faqs": faqs,
+                "keywords": f"Krisala Aventis amenities, wellness homes Pune, smart homes Tathawade, luxury apartments with {feature}, Krisala Aventis specifications"
             })
     return pages
 
@@ -409,7 +417,8 @@ def generate_blog_data():
                     "description": f"Read our comprehensive guide on {topic} for {loc} property buyers in {year}.",
                     "h1": f"{topic}: {loc} Perspective {year}",
                     "content": content,
-                    "faqs": faqs
+                    "faqs": faqs,
+                    "keywords": f"Is Krisala Aventis worth buying, Krisala Aventis review, {topic} {loc} {year}, Krisala Aventis investment review, real estate investment Tathawade"
                 })
     return pages[:300]
 if __name__ == "__main__":
