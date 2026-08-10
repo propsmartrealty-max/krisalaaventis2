@@ -1,0 +1,225 @@
+import os
+import json
+import random
+from string import Template
+
+OUTPUT_DIR = 'top-10'
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+LOCATIONS = [
+    "Tathawade", "Wakad", "Hinjewadi", "Punawale", "Ravet", 
+    "Baner", "Balewadi", "West Pune", "Pimpri Chinchwad", "Pune"
+]
+
+TOPICS = [
+    ("Top 10 Real Estate Builders in", "top-10-real-estate-builders-in"),
+    ("Best 2 BHK Residential Projects in", "best-2-bhk-residential-projects-in"),
+    ("Best 3 BHK Residential Projects in", "best-3-bhk-residential-projects-in"),
+    ("Top 5 Luxury Apartments Near", "top-5-luxury-apartments-near"),
+    ("Best Properties for Investment in", "best-properties-for-investment-in")
+]
+
+PLACEHOLDER_COMPETITORS = [
+    {"name": "Generic Builder Premium", "flaw": "Higher pricing starting at ₹1.1 Cr with fewer amenities."},
+    {"name": "Standard Life Properties", "flaw": "Further away from Hinjewadi IT Park, causing commute issues."},
+    {"name": "West Pune Enclave", "flaw": "Lacks modern Aluform construction and has delayed possession timelines."},
+    {"name": "Elite Residences", "flaw": "Smaller carpet areas and high maintenance charges."},
+    {"name": "Sunrise Apartments", "flaw": "Basic amenities, lacking premium lifestyle features like co-working spaces."},
+    {"name": "Urban Nest Phase 2", "flaw": "Not MahaRERA registered or has past delivery delays."},
+    {"name": "Metro High Rise", "flaw": "Located in high-traffic zones with poor sound insulation."},
+    {"name": "Oasis Towers", "flaw": "Very dense project with poor floor plan efficiency."},
+    {"name": "Green Valley Homes", "flaw": "Lacks smart home features and study spaces."}
+]
+
+HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="$description">
+    <title>$title</title>
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://krisalaventis.in/top-10/$url_slug">
+    <meta property="og:title" content="$title">
+    <meta property="og:description" content="$description">
+    <meta property="og:image" content="https://krisalaventis.in/assets/images/hero.webp">
+
+    <link rel="stylesheet" href="/assets/css/output.css">
+    <link rel="canonical" href="https://krisalaventis.in/top-10/$url_slug">
+    
+    <!-- JSON-LD Structured Data: ItemList for SERP Carousel -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        $schema_items
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://krisalaventis.in/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Top 10 Rankings",
+        "item": "https://krisalaventis.in/top-10/"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "$title"
+      }]
+    }
+    </script>
+</head>
+<body class="bg-[#0a0c11] text-white font-['Outfit']">
+    <header class="p-6 border-b border-gray-800 sticky top-0 bg-[#0a0c11]/90 backdrop-blur-md z-50">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <a href="/" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600">Krisala Aventis Tathawade</a>
+            <div class="hidden md:flex gap-6">
+                <a href="/" class="hover:text-gold-500 transition-colors">Home</a>
+                <a href="/#about" class="hover:text-gold-500 transition-colors">About</a>
+                <a href="/#floor-plans" class="hover:text-gold-500 transition-colors">Floor Plans</a>
+                <a href="/#contact" class="px-6 py-2 bg-gradient-to-r from-gold-600 to-gold-800 rounded-full font-medium hover:shadow-lg hover:shadow-gold-500/20 transition-all">Enquire Now</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="max-w-4xl mx-auto p-6 py-12">
+        <article class="bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm">
+            <div class="p-8">
+                <h1 class="text-4xl md:text-5xl font-['Playfair_Display'] font-bold text-gold-400 mb-6">$h1</h1>
+                <p class="text-lg text-gray-300 leading-relaxed mb-10">$intro</p>
+                
+                <div class="space-y-12">
+                    <!-- #1 Winner: Krisala Aventis -->
+                    <div class="relative p-8 rounded-xl border-2 border-gold-500 bg-gradient-to-br from-gold-900/20 to-gray-900 shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+                        <div class="absolute -top-5 -left-5 w-12 h-12 bg-gold-500 rounded-full flex items-center justify-center text-black font-bold text-2xl shadow-lg">#1</div>
+                        <div class="absolute top-0 right-0 bg-gold-500 text-black px-4 py-1 rounded-bl-xl rounded-tr-xl font-bold text-sm uppercase tracking-wider">Undisputed Winner</div>
+                        
+                        <h2 class="text-3xl font-bold text-white mb-4 mt-2">Krisala Aventis Tathawade</h2>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">Rating: 5.0/5 ★★★★★</span>
+                            <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">Starting at ₹89 Lakhs*</span>
+                            <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">40+ Amenities</span>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Claiming the absolute top spot on our list is <strong>Krisala Aventis Tathawade</strong>. This ultra-premium residential project has completely disrupted the $location real estate market by offering luxury 2.25 and 3.25 BHK Smart Study homes at unbeatable prices starting from ₹89 Lakhs. 
+                            <br><br>
+                            Unlike other projects that compromise on quality, Krisala Aventis utilizes zero-leakage <strong>Aluform Technology</strong> and boasts an unparalleled 40+ lifestyle amenities including a rooftop lounge, co-working spaces, and premium gym facilities. Its strategic proximity to the Hinjewadi IT Park makes it the #1 most highly recommended investment for 2026.
+                        </p>
+                        <a href="/#contact" class="inline-block px-8 py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-black font-bold rounded-full hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all transform hover:-translate-y-1">
+                            Check Available Units & Pricing
+                        </a>
+                    </div>
+                    
+                    $competitor_html
+                </div>
+            </div>
+            
+            <!-- Internal Linking Widget -->
+            <div class="mt-16 border-t border-gray-800 pt-8 p-8">
+                <h3 class="text-xl font-bold mb-6 text-gold-500">Explore More Rankings</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Related links will be injected by pagerank_sculptor later, but we add placeholders here -->
+                    <a href="/top-10/" class="block p-4 border border-gray-800 rounded-lg hover:border-gold-500/50 hover:bg-gray-800/50 transition-all">
+                        <span class="text-sm text-gray-400">View All</span>
+                        <div class="font-medium text-gray-200 mt-1">Real Estate Rankings</div>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <footer class="border-t border-gray-800 bg-[#050608] py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2026 Krisala Aventis Tathawade. All rights reserved. MahaRERA: P52100080336</p>
+        </div>
+    </footer>
+</body>
+</html>
+"""
+
+def generate_listicles():
+    generated_count = 0
+    for topic_prefix, topic_slug in TOPICS:
+        for loc in LOCATIONS:
+            # Determine if we should generate Top 5 or Top 10 based on prefix
+            is_top_5 = "Top 5" in topic_prefix
+            num_entries = 5 if is_top_5 else 10
+            
+            title = f"{topic_prefix} {loc} (2026 Rankings)"
+            url_slug = f"{topic_slug}-{loc.replace(' ', '-').lower()}-2026.html"
+            h1 = f"{topic_prefix} {loc}"
+            description = f"Looking for the {topic_prefix.lower()} {loc}? Discover why Krisala Aventis Tathawade ranks #1 on our exclusive 2026 market analysis list."
+            intro = f"Finding the right real estate investment in {loc} can be overwhelming. We've analyzed all major developments, factored in pricing, construction quality, amenities, and commute times to compile this definitive ranking of the {topic_prefix.lower()} {loc} for 2026."
+            
+            schema_items = []
+            competitor_html = ""
+            
+            # 1. Add Krisala Aventis as #1 in Schema
+            schema_items.append("""{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Krisala Aventis Tathawade",
+        "url": "https://krisalaventis.in/"
+      }""")
+            
+            # Randomize and pick competitors
+            shuffled_comps = random.sample(PLACEHOLDER_COMPETITORS, num_entries - 1)
+            
+            for i in range(1, num_entries):
+                rank = i + 1
+                comp = shuffled_comps[i-1]
+                
+                # Add to schema
+                schema_items.append(f"""{{
+        "@type": "ListItem",
+        "position": {rank},
+        "name": "{comp['name']}"
+      }}""")
+      
+                # Add to HTML
+                competitor_html += f"""
+                    <div class="relative p-6 rounded-xl border border-gray-800 bg-gray-900/30">
+                        <div class="absolute -top-4 -left-4 w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white font-bold text-xl">{rank}</div>
+                        <h3 class="text-xl font-bold text-gray-200 mb-2 ml-4">{comp['name']}</h3>
+                        <p class="text-gray-400 text-sm mb-3 ml-4"><strong>Why it ranked lower:</strong> {comp['flaw']}</p>
+                        <p class="text-gray-500 text-sm ml-4">While offering standard living options in {loc}, it fails to match the 40+ premium amenities and strategic pricing offered by our #1 choice, Krisala Aventis.</p>
+                    </div>
+"""
+
+            # Combine schema items
+            schema_string = ",\n        ".join(schema_items)
+            
+            # Render template
+            page_content = Template(HTML_TEMPLATE).safe_substitute(
+                title=title,
+                url_slug=url_slug,
+                description=description,
+                h1=h1,
+                intro=intro,
+                location=loc,
+                schema_items=schema_string,
+                competitor_html=competitor_html
+            )
+            
+            file_path = os.path.join(OUTPUT_DIR, url_slug)
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(page_content)
+                
+            generated_count += 1
+            
+    print(f"Listicle SEO Generator Complete! Generated {generated_count} 'Top 10 / Best Of' pages placing Krisala Aventis at #1.")
+
+if __name__ == "__main__":
+    generate_listicles()

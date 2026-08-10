@@ -13,7 +13,8 @@ TARGET_DIRS = [
     'compare',
     'feature',
     'west-pune',
-    'blog'
+    'blog',
+    'top-10'
 ]
 
 MESH_TEMPLATE = """

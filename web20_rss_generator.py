@@ -14,7 +14,8 @@ TARGET_DIRS = [
     'compare',
     'feature',
     'west-pune',
-    'blog'
+    'blog',
+    'top-10'
 ]
 
 def extract_metadata(html_content):
