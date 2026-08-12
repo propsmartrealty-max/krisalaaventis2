@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --clr-gold: #caa350;
+  --clr-gold-light: #dfb965;
+  --clr-dark: #121212;
+  --clr-primary: #1e1e1e;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Outfit", sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
