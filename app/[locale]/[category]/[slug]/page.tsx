@@ -1,22 +1,45 @@
 import data from "../../../../data.json";
+import nriData from "../../../../data/global-nri-seo.json";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
-  return data.map((page) => ({
+  const standardParams = [];
+  const locales = ['en', 'ae', 'us', 'uk', 'sg'];
+  
+  for (const locale of locales) {
+    for (const page of data) {
+      standardParams.push({
+        locale,
+        category: page.folder,
+        slug: page.url_slug.replace(".html", ""),
+      });
+    }
+  }
+
+  const nriParams = nriData.map((page) => ({
+    locale: page.locale,
     category: page.folder,
     slug: page.url_slug.replace(".html", ""),
   }));
+
+  return [...standardParams, ...nriParams];
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ category: string; slug: string }>;
+  params: Promise<{ locale: string; category: string; slug: string }>;
 }): Promise<Metadata> {
   const p = await params;
-  const page = data.find(
+  let page = data.find(
     (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
   );
+  
+  if (!page) {
+    page = nriData.find(
+      (item) => item.locale === p.locale && item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
+    );
+  }
 
   if (!page) {
     return { title: "Not Found" };
@@ -54,12 +77,18 @@ export async function generateMetadata({
 export default async function SEOPage({
   params,
 }: {
-  params: Promise<{ category: string; slug: string }>;
+  params: Promise<{ locale: string; category: string; slug: string }>;
 }) {
   const p = await params;
-  const page = data.find(
+  let page = data.find(
     (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
   );
+  
+  if (!page) {
+    page = nriData.find(
+      (item) => item.locale === p.locale && item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
+    );
+  }
 
   if (!page) {
     return <h1>404 - Page Not Found</h1>;
