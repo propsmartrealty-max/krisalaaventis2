@@ -300,12 +300,10 @@
       persistLead(data);
 
       // --- TRIPLE-REDUNDANT DISPATCH ENGINE ---
-      const WEB3FORMS_KEY = 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b';
       const MAX_RETRIES = 3;
       const RETRY_DELAY = 2000;
 
       const leadData = {
-        access_key: WEB3FORMS_KEY,
         subject: `New Lead: ${data.name} — Krisala Aventis`,
         from_name: 'Krisala Aventis Live Portal',
         replyto: data.email !== 'N/A' ? data.email : undefined,
@@ -345,7 +343,7 @@
       }
 
       // Primary Dispatch
-      dispatchWithRetry('https://api.web3forms.com/submit', leadData)
+      dispatchWithRetry('/api/contact', leadData)
         .then(result => {
           if (result.success) {
             // Mark as delivered in vault
@@ -429,13 +427,12 @@
 
         lead.attempts = (lead.attempts || 0) + 1;
         const payload = {
-          access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
           subject: `[RETRY #${lead.attempts}] Lead: ${lead.name} — Krisala Aventis`,
           from_name: 'Krisala Aventis Retry System',
           ...lead
         };
 
-        fetch('https://api.web3forms.com/submit', {
+        fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
@@ -655,7 +652,7 @@
       const queue = JSON.parse(localStorage.getItem('ka_retry_queue') || '[]');
       if (queue.length > 0) {
         queue.forEach(lead => {
-          fetch('https://api.web3forms.com/submit', {
+          fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
