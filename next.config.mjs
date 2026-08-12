@@ -5,6 +5,7 @@ const nextConfig = {
     unoptimized: true, // Required for static export
   },
   trailingSlash: true, // Matches current static architecture
+  poweredByHeader: false,
 };
 
 export default nextConfig;
