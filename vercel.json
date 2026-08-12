@@ -87,6 +87,11 @@
   ],
   "redirects": [
     {
+      "source": "/",
+      "destination": "/en",
+      "permanent": false
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
