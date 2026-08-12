@@ -1,5 +1,6 @@
 import data from "../../../data.json";
 import nriData from "../../../data/global-nri-seo.json";
+import dominationData from "../../../data/krisala-domination-seo.json";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -14,7 +15,12 @@ export async function generateStaticParams() {
     slug: page.url_slug.replace(".html", ""),
   }));
 
-  return [...standardParams, ...nriParams];
+  const dominationParams = dominationData.map((page) => ({
+    category: page.folder,
+    slug: page.url_slug.replace(".html", ""),
+  }));
+
+  return [...standardParams, ...nriParams, ...dominationParams];
 }
 
 export async function generateMetadata({
@@ -29,6 +35,12 @@ export async function generateMetadata({
   
   if (!page) {
     page = nriData.find(
+      (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
+    );
+  }
+
+  if (!page) {
+    page = dominationData.find(
       (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
     );
   }
@@ -83,6 +95,12 @@ export default async function Page({
   }
 
   if (!page) {
+    page = dominationData.find(
+      (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
+    );
+  }
+
+  if (!page) {
     return <h1>404 - Page Not Found</h1>;
   }
 
@@ -124,7 +142,7 @@ export default async function Page({
   };
 
   // Combine all pages to form a perfect PageRank ring
-  const allPages = [...data, ...nriData];
+  const allPages = [...data, ...nriData, ...dominationData];
   const currentIndex = allPages.findIndex(
     (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
   );
@@ -132,7 +150,8 @@ export default async function Page({
   // Pick 6 deterministic related pages to form a mesh
   const relatedPages = [];
   for (let i = 1; i <= 6; i++) {
-    const nextIndex = (currentIndex + i) % allPages.length;
+    // If the index is not found, fallback to 0 to prevent NaN bugs
+    const nextIndex = ((currentIndex !== -1 ? currentIndex : 0) + i) % allPages.length;
     relatedPages.push(allPages[nextIndex]);
   }
 
