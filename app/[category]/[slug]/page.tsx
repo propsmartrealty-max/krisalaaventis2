@@ -143,8 +143,8 @@ export default async function SEOPage({
         </nav>
       </header>
 
-      <main className="max-w-7xl mx-auto p-6 py-12">
-        <article className="bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm">
+      <main className="max-w-7xl mx-auto p-6 py-12" suppressHydrationWarning>
+        <article className="bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm" suppressHydrationWarning>
           <div className="w-full h-64 md:h-96 relative overflow-hidden">
             <img
               src="/assets/images/hero.webp"
