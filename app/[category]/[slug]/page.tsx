@@ -212,7 +212,21 @@ export default async function Page({
 
           <div className="p-8">
             <div className="prose prose-invert prose-gold max-w-none">
+              <h2 className="text-2xl font-bold mb-4 font-playfair text-white">About {page.h1}</h2>
               <p className="text-lg text-gray-300 leading-relaxed mb-8">{page.content}</p>
+              
+              {page.keywords && (
+                <div className="mb-12">
+                  <h3 className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Targeted Searches</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {page.keywords.split(',').map((kw: string, i: number) => (
+                      <span key={i} className="px-3 py-1 bg-gray-800/80 border border-gray-700/50 rounded-full text-xs text-gray-300 hover:text-gold hover:border-gold/50 transition-colors cursor-default">
+                        #{kw.trim().toLowerCase().replace(/\s+/g, '-')}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="grid md:grid-cols-2 gap-8 my-12">
                 <div className="p-6 bg-gray-800/50 rounded-xl border border-gray-700">
