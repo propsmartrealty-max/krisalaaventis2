@@ -1,24 +1,15 @@
-import data from "../../../../data.json";
-import nriData from "../../../../data/global-nri-seo.json";
+import data from "../../../data.json";
+import nriData from "../../../data/global-nri-seo.json";
 import { Metadata } from "next";
 import Image from "next/image";
 
 export async function generateStaticParams() {
-  const standardParams = [];
-  const locales = ['en', 'ae', 'us', 'uk', 'sg'];
-  
-  for (const locale of locales) {
-    for (const page of data) {
-      standardParams.push({
-        locale,
-        category: page.folder,
-        slug: page.url_slug.replace(".html", ""),
-      });
-    }
-  }
+  const standardParams = data.map((page) => ({
+    category: page.folder,
+    slug: page.url_slug.replace(".html", ""),
+  }));
 
   const nriParams = nriData.map((page) => ({
-    locale: page.locale,
     category: page.folder,
     slug: page.url_slug.replace(".html", ""),
   }));
@@ -29,7 +20,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string; category: string; slug: string }>;
+  params: Promise<{ category: string; slug: string }>;
 }): Promise<Metadata> {
   const p = await params;
   let page = data.find(
@@ -38,7 +29,7 @@ export async function generateMetadata({
   
   if (!page) {
     page = nriData.find(
-      (item) => item.locale === p.locale && item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
+      (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
     );
   }
 
@@ -75,10 +66,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function SEOPage({
+export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string; category: string; slug: string }>;
+  params: Promise<{ category: string; slug: string }>;
 }) {
   const p = await params;
   let page = data.find(
@@ -87,7 +78,7 @@ export default async function SEOPage({
   
   if (!page) {
     page = nriData.find(
-      (item) => item.locale === p.locale && item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
+      (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
     );
   }
 
