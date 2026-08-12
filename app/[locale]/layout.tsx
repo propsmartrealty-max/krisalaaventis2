@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
+import { Outfit, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "../globals.css";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+});
 
 export const metadata: Metadata = {
   title: "Krisala Aventis | Premium Flats in Tathawade",
@@ -21,7 +35,7 @@ export default async function RootLayout({
   const currentLocale = resolvedParams.locale || 'en';
   
   return (
-    <html lang={currentLocale} suppressHydrationWarning>
+    <html lang={currentLocale} suppressHydrationWarning className={`${outfit.variable} ${playfair.variable}`}>
       <head>
         <link rel="alternate" href="https://krisalaaventis.in/en" hrefLang="en-in" />
         <link rel="alternate" href="https://krisalaaventis.in/ae" hrefLang="en-ae" />
@@ -29,15 +43,11 @@ export default async function RootLayout({
         <link rel="alternate" href="https://krisalaaventis.in/uk" hrefLang="en-gb" />
         <link rel="alternate" href="https://krisalaaventis.in/sg" hrefLang="en-sg" />
         <link rel="alternate" href="https://krisalaaventis.in/" hrefLang="x-default" />
-        
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="/assets/css/style.min.css" />
       </head>
       <body suppressHydrationWarning>
         {children}
-        <script src="/assets/js/script.min.js" async defer></script>
+        <Script src="/assets/js/script.min.js" strategy="afterInteractive" />
       </body>
     </html>
   );

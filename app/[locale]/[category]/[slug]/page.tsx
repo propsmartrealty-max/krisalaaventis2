@@ -1,6 +1,7 @@
 import data from "../../../../data.json";
 import nriData from "../../../../data/global-nri-seo.json";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   const standardParams = [];
@@ -175,11 +176,13 @@ export default async function SEOPage({
       <main className="max-w-7xl mx-auto p-6 py-12" suppressHydrationWarning>
         <article className="bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm" suppressHydrationWarning>
           <div className="w-full h-64 md:h-96 relative overflow-hidden">
-            <img
+            <Image
               src="/assets/images/hero.webp"
               alt={page.title}
               title={page.h1}
-              className="object-cover w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-500"
+              fill
+              className="object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c11] to-transparent"></div>
             <div className="absolute bottom-8 left-8 right-8">
