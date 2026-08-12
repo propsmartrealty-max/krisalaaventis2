@@ -154,7 +154,7 @@ export default async function SEOPage({
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c11] to-transparent"></div>
             <div className="absolute bottom-8 left-8 right-8">
-              <h1 className="text-4xl md:text-5xl font-playfair font-bold text-goldLight">
+              <h1 className="text-4xl md:text-5xl font-playfair font-bold text-goldLight uppercase">
                 {page.h1}
               </h1>
             </div>
