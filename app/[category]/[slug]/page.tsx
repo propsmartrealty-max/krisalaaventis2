@@ -123,8 +123,18 @@ export default async function Page({
     ],
   };
 
-  // Generate related links (randomly pick 4 for now, mimicking python script)
-  const relatedPages = data.slice(0, 4);
+  // Combine all pages to form a perfect PageRank ring
+  const allPages = [...data, ...nriData];
+  const currentIndex = allPages.findIndex(
+    (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
+  );
+  
+  // Pick 6 deterministic related pages to form a mesh
+  const relatedPages = [];
+  for (let i = 1; i <= 6; i++) {
+    const nextIndex = (currentIndex + i) % allPages.length;
+    relatedPages.push(allPages[nextIndex]);
+  }
 
   return (
     <>
@@ -165,6 +175,23 @@ export default async function Page({
       </header>
 
       <main className="max-w-7xl mx-auto p-6 py-12" suppressHydrationWarning>
+        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-400">
+          <ol className="flex items-center space-x-2">
+            <li>
+              <a href="/" className="hover:text-gold transition-colors">Home</a>
+            </li>
+            <li><span className="text-gray-600">/</span></li>
+            <li>
+              <a href={`/${page.folder}`} className="hover:text-gold transition-colors capitalize">
+                {page.folder}
+              </a>
+            </li>
+            <li><span className="text-gray-600">/</span></li>
+            <li className="text-gray-200 truncate" aria-current="page">
+              {page.title}
+            </li>
+          </ol>
+        </nav>
         <article className="bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden backdrop-blur-sm" suppressHydrationWarning>
           <div className="w-full h-64 md:h-96 relative overflow-hidden">
             <Image
@@ -230,7 +257,7 @@ export default async function Page({
               <h3 className="text-xl font-bold mb-6 text-gold font-playfair">
                 Explore More Related Searches
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {relatedPages.map((rp: any, i: number) => (
                   <a
                     key={i}
