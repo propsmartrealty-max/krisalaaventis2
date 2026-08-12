@@ -1,0 +1,52 @@
+document.addEventListener('DOMContentLoaded', () => {
+  /* 1. GLOBAL MOUSE SPOTLIGHT */
+  const spotlight = document.createElement('div');
+  spotlight.className = 'cursor-spotlight';
+  document.body.appendChild(spotlight);
+
+  document.addEventListener('mousemove', (e) => {
+    spotlight.style.setProperty('--mouse-x', `${e.clientX}px`);
+    spotlight.style.setProperty('--mouse-y', `${e.clientY}px`);
+  });
+
+  /* 2. MAGNETIC CTAs */
+  const magneticEls = document.querySelectorAll('.magnetic');
+  magneticEls.forEach((el) => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const h = rect.width / 2;
+      const v = rect.height / 2;
+      // Calculate mouse position relative to center of element
+      const x = e.clientX - rect.left - h;
+      const y = e.clientY - rect.top - v;
+      // Pull strength (smaller divisor = stronger pull)
+      el.style.transform = `translate(${x * 0.2}px, ${y * 0.3}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = `translate(0px, 0px)`;
+    });
+  });
+
+  /* 3. PARALLAX HERO BACKGROUND */
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      // Move background slower than scroll speed
+      heroBg.style.setProperty('--scroll-offset', `${scrolled * 0.4}px`);
+    }, { passive: true });
+  }
+
+  /* 4. 3D REVEAL OBSERVER */
+  const observer3D = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer3D.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+  document.querySelectorAll('.reveal-3d').forEach((el) => observer3D.observe(el));
+});
