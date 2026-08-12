@@ -5,40 +5,66 @@ import dominationData from "../data/krisala-domination-seo.json";
 
 export const dynamic = 'force-static';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const DOMINATION_CHUNK_SIZE = 2000;
+
+export async function generateSitemaps() {
+  const sitemaps = [
+    { id: 0 }, // Core
+    { id: 1 }, // NRI
+  ];
+
+  // Chunk Domination Data
+  const numDominationChunks = Math.ceil(dominationData.length / DOMINATION_CHUNK_SIZE);
+  for (let i = 0; i < numDominationChunks; i++) {
+    sitemaps.push({ id: i + 2 });
+  }
+
+  return sitemaps;
+}
+
+export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
   const baseUrl = "https://krisalaventis.in";
   const sitemapData: MetadataRoute.Sitemap = [];
-  
-  // Home page
-  sitemapData.push({
-    url: `${baseUrl}`,
-    lastModified: new Date(),
-    changeFrequency: 'daily',
-    priority: 1.0,
-  });
 
-  // Standard Pages
-  for (const page of data) {
+  if (id === 0) {
+    // Core Sitemap
     sitemapData.push({
-      url: `${baseUrl}/${page.folder}/${page.url_slug.replace(".html", "")}`,
+      url: `${baseUrl}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
+      changeFrequency: 'daily',
+      priority: 1.0,
     });
+    for (const page of data) {
+      sitemapData.push({
+        url: `${baseUrl}/${page.folder}/${page.url_slug.replace(".html", "")}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+      });
+    }
+    return sitemapData;
   }
 
-  // NRI Pages
-  for (const page of nriData) {
-    sitemapData.push({
-      url: `${baseUrl}/${page.folder}/${page.url_slug.replace(".html", "")}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    });
+  if (id === 1) {
+    // NRI Sitemap
+    for (const page of nriData) {
+      sitemapData.push({
+        url: `${baseUrl}/${page.folder}/${page.url_slug.replace(".html", "")}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.7,
+      });
+    }
+    return sitemapData;
   }
 
-  // Domination Pages (5000+)
-  for (const page of dominationData) {
+  // Domination Chunks (id >= 2)
+  const chunkIndex = id - 2;
+  const start = chunkIndex * DOMINATION_CHUNK_SIZE;
+  const end = start + DOMINATION_CHUNK_SIZE;
+  const chunkedData = dominationData.slice(start, end);
+
+  for (const page of chunkedData) {
     sitemapData.push({
       url: `${baseUrl}/${page.folder}/${page.url_slug.replace(".html", "")}`,
       lastModified: new Date(),
