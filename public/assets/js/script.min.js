@@ -303,6 +303,7 @@
       const MAX_RETRIES = 3;
       const RETRY_DELAY = 2000;
 
+      const urlParams = new URLSearchParams(window.location.search);
       const leadData = {
         ...data,
         page_url: window.location.href,
