@@ -304,6 +304,7 @@
       const RETRY_DELAY = 2000;
 
       const leadData = {
+        access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
         subject: `New Lead: ${data.name} — Krisala Aventis`,
         from_name: 'Krisala Aventis Live Portal',
         replyto: data.email !== 'N/A' ? data.email : undefined,
@@ -343,7 +344,7 @@
       }
 
       // Primary Dispatch
-      dispatchWithRetry('/api/contact', leadData)
+      dispatchWithRetry('https://api.web3forms.com/submit', leadData)
         .then(result => {
           if (result.success) {
             // Mark as delivered in vault
@@ -432,7 +433,7 @@
           ...lead
         };
 
-        fetch('/api/contact', {
+        fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
@@ -652,7 +653,7 @@
       const queue = JSON.parse(localStorage.getItem('ka_retry_queue') || '[]');
       if (queue.length > 0) {
         queue.forEach(lead => {
-          fetch('/api/contact', {
+          fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
