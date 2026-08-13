@@ -1,0 +1,30 @@
+name: SEO Indexing Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  index-urls:
+    name: Ping Google Indexing API
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: |
+          # Install googleapis explicitly in the CI runner
+          npm install googleapis
+
+      - name: Run Google Indexer
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: node scripts/google_indexer.js
