@@ -1164,29 +1164,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 .no-scroll { overflow: hidden; }
 
-/* --- Master Navigation & Breadcrumb Reset --- */
-.pill-navbar {
-  position: fixed;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  max-width: 1200px;
-  background: rgba(5, 6, 8, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 100px;
-  z-index: 2000;
-  padding: 10px 30px;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.pill-navbar.scrolled { top: 15px; background: rgba(5, 6, 8, 0.98); }
 
-.nav-container { display: grid; grid-template-columns: auto 1fr auto; align-items: center; width: 100%; gap: 20px; }
-.nav-links { display: flex; gap: 30px; align-items: center; justify-content: center; }
-.nav-links a { color: #fff; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; white-space: nowrap; transition: 0.3s; }
-.nav-links a:hover { opacity: 1; color: var(--clr-gold); }
 
 .breadcrumb-wrapper {
   padding-top: 150px; /* Strong separation from floating navbar */

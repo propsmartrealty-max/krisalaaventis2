@@ -157,6 +157,15 @@
   const ribbon = document.getElementById('stickyRibbon');
   if (ribbon && nav) {
     let ribbonVisible = true;
+    
+    // Dynamic offset calculation for flawless multi-line mobile stacking
+    const updateNavTop = () => {
+      if (ribbonVisible) nav.style.top = `${ribbon.offsetHeight + 8}px`;
+    };
+    
+    updateNavTop();
+    window.addEventListener('resize', updateNavTop);
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 200 && ribbonVisible) {
         ribbon.style.transform = 'translateY(-100%)';
@@ -164,7 +173,7 @@
         ribbonVisible = false;
       } else if (window.scrollY <= 200 && !ribbonVisible) {
         ribbon.style.transform = 'translateY(0)';
-        nav.style.top = '44px';
+        nav.style.top = `${ribbon.offsetHeight + 8}px`;
         ribbonVisible = true;
       }
     });
