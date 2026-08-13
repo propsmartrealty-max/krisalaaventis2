@@ -304,11 +304,11 @@
       const RETRY_DELAY = 2000;
 
       const leadData = {
-        access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
-        subject: `New Lead: ${data.name} — Krisala Aventis`,
-        from_name: 'Krisala Aventis Live Portal',
-        replyto: data.email !== 'N/A' ? data.email : undefined,
-        ...data
+        ...data,
+        page_url: window.location.href,
+        utm_source: urlParams.get('utm_source') || 'Organic',
+        utm_medium: urlParams.get('utm_medium') || 'Organic',
+        utm_campaign: urlParams.get('utm_campaign') || 'N/A'
       };
 
       // Retry-capable fetch wrapper
@@ -344,7 +344,7 @@
       }
 
       // Primary Dispatch
-      dispatchWithRetry('https://api.web3forms.com/submit', leadData)
+      dispatchWithRetry('/api/contact', leadData)
         .then(result => {
           if (result.success) {
             // Mark as delivered in vault
