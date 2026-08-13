@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static optimizations
   },
-  trailingSlash: true, // Matches current static architecture
+  trailingSlash: false, // Matches current static architecture
   poweredByHeader: false,
 };
 
