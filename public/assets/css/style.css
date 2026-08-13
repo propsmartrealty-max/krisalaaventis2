@@ -76,10 +76,12 @@ button { cursor: pointer; font-family: inherit; }
 /* ---- SCROLL REVEAL ---- */
 .reveal {
   opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+  transform: translateY(40px) scale(0.98) rotateX(-4deg);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
 }
-.reveal.visible { opacity: 1; transform: none; }
+.reveal.visible { opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); }
 
 /* =============================================
    STICKY RIBBON
@@ -106,7 +108,7 @@ button { cursor: pointer; font-family: inherit; }
    ============================================= */
 .pill-navbar {
   position: fixed;
-  top: 25px;
+  top: 44px;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
@@ -176,6 +178,8 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .cta-pill {
+  position: relative;
+  overflow: hidden;
   background: var(--clr-gold);
   color: #000 !important;
   padding: 10px 25px;
@@ -183,8 +187,26 @@ button { cursor: pointer; font-family: inherit; }
   font-size: 0.85rem !important;
   font-weight: 700 !important;
   opacity: 1 !important;
-  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+}
+.cta-pill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  transition: 0.6s ease;
+}
+.cta-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(202,163,80,0.4);
+}
+.cta-pill:hover::after {
+  left: 150%;
 }
 .hamburger {
   display: none;
@@ -1355,4 +1377,29 @@ button { cursor: pointer; font-family: inherit; }
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(202, 163, 80, 0.3);
+}
+
+/* Premium Hover Overrides */
+.portfolio-card, .spec-card, .zone-card, .cluster-card, .landmark-card, .bento-card, .fp-card {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-card::before, .spec-card::before, .zone-card::before, .cluster-card::before, .landmark-card::before, .bento-card::before, .fp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+  transform: skewX(-20deg);
+  transition: 0.7s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+.portfolio-card:hover::before, .spec-card:hover::before, .zone-card:hover::before, .cluster-card:hover::before, .landmark-card:hover::before, .bento-card:hover::before, .fp-card:hover::before {
+  left: 150%;
+}
+.portfolio-card img, .bento-card img, .fp-card img, .zone-card img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.portfolio-card:hover img, .bento-card:hover img, .fp-card:hover img, .zone-card:hover img {
+  transform: scale(1.05) !important;
 }

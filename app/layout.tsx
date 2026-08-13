@@ -90,7 +90,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=4" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=5" strategy="afterInteractive" />
       </body>
     </html>
   );
