@@ -15,9 +15,45 @@ const playfair = Playfair_Display({
   variable: "--font-serif",
 });
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://krisalaaventis.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Krisala Aventis | Premium Flats in Tathawade",
-  description: "Krisala Aventis Tathawade — New Launch Opportunity. 2 & 3 BHK Premium Residences in West Pune.",
+  metadataBase: new URL(BASE_URL),
+  title: "Krisala Aventis | Premium 2 & 3 BHK Flats in Tathawade",
+  description: "Krisala Aventis Tathawade — Exclusive pre-launch opportunity. Discover ultra-premium 2 & 3 BHK residences in West Pune. Get floor plans & pricing.",
+  openGraph: {
+    title: "Krisala Aventis | Ultra-Premium Residences in Tathawade",
+    description: "Unlock the exclusive pre-launch pricing and floor plans for Krisala Aventis in Tathawade, Pune.",
+    url: BASE_URL,
+    siteName: "Krisala Aventis",
+    images: [
+      {
+        url: "/assets/images/desktop-bg.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Krisala Aventis Elevation",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krisala Aventis | Tathawade",
+    description: "Unlock exclusive pre-launch access to Krisala Aventis.",
+    images: ["/assets/images/desktop-bg.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
