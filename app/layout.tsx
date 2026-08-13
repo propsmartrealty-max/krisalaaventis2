@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
   variable: "--font-serif",
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://krisalaaventis.vercel.app";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://krisalaventis.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
