@@ -1,6 +1,17 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+export async function OPTIONS() {
+  return NextResponse.json({}, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
+}
+
 export async function POST(request: Request) {
   try {
     const data = await request.json();
@@ -99,9 +110,18 @@ export async function POST(request: Request) {
     const info = await transporter.sendMail(mailOptions);
     console.log("Email sent successfully: ", info.response);
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
   } catch (error: any) {
     console.error("Error sending email:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    return NextResponse.json({ success: false, error: error.message }, { 
+      status: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
   }
 }
