@@ -344,7 +344,7 @@
       }
 
       // Primary Dispatch
-      dispatchWithRetry('/api/contact', leadData)
+      dispatchWithRetry('https://www.krisalaventis.in/api/contact', leadData)
         .then(result => {
           if (result.success) {
             // Mark as delivered in vault
