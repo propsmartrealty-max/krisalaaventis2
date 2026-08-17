@@ -1680,3 +1680,243 @@ button { cursor: pointer; font-family: inherit; }
 .tower-specs-list li strong {
   color: var(--clr-silk);
 }
+
+/* =============================================
+   LEGAL TRUST VAULT & MAHARERA VERIFICATION
+   ============================================= */
+.trust-vault-section {
+  padding: 80px 0;
+  background: var(--clr-obsidian);
+  border-top: 1px solid var(--clr-glass-border);
+}
+
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.vault-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--clr-glass-border);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.4s var(--ease);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vault-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(46, 213, 115, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.vault-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.vault-card h4 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 8px;
+  font-family: var(--font-serif);
+}
+
+.vault-meta {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #2ed573;
+  background: rgba(46, 213, 115, 0.1);
+  border: 1px solid rgba(46, 213, 115, 0.25);
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.vault-card p {
+  font-size: 0.85rem;
+  color: var(--clr-silver);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.vault-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--clr-gold);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: 0.2s;
+}
+
+.vault-link:hover {
+  color: var(--clr-gold-light);
+  transform: translateX(4px);
+}
+
+/* =============================================
+   COMPETITOR COMPARISON BENCHMARK
+   ============================================= */
+.comparison-section {
+  padding: 80px 0;
+  background: var(--clr-onyx);
+  border-top: 1px solid var(--clr-glass-border);
+}
+
+/* =============================================
+   SMART WHATSAPP CONCIERGE WIDGET
+   ============================================= */
+.wa-concierge-widget {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 4000;
+  font-family: var(--font-body);
+}
+
+.wa-floating-btn {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wa-floating-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+}
+
+.wa-btn-icon {
+  font-size: 1.2rem;
+}
+
+.wa-drawer {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 320px;
+  background: rgba(8, 10, 16, 0.95);
+  border: 1px solid rgba(202, 163, 80, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  display: none;
+  animation: revealUp 0.4s var(--ease) forwards;
+  overflow: hidden;
+}
+
+.wa-drawer.open {
+  display: block;
+}
+
+.wa-drawer-header {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(202, 163, 80, 0.15));
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wa-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.wa-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.wa-status {
+  font-size: 0.7rem;
+  color: #2ed573;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.wa-online-dot {
+  width: 6px;
+  height: 6px;
+  background: #2ed573;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+.wa-close-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--clr-silver);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.wa-drawer-body {
+  padding: 18px;
+}
+
+.wa-intro {
+  font-size: 0.8rem;
+  color: var(--clr-silver);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.wa-intro strong {
+  color: var(--clr-gold);
+}
+
+.wa-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wa-action-pill {
+  display: block;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: var(--clr-silk);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.wa-action-pill:hover {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: #25D366;
+  color: #25D366;
+  transform: translateX(4px);
+}
+

@@ -875,6 +875,34 @@
     calculateStamp();
   }
 
+  /* =============================================
+     15. SMART WHATSAPP CONCIERGE WIDGET HANDLER
+     ============================================= */
+  const toggleWaBtn = document.getElementById('toggleWaConcierge');
+  const waDrawer = document.getElementById('waDrawer');
+  const closeWaBtn = document.getElementById('closeWaDrawer');
+
+  if (toggleWaBtn && waDrawer) {
+    toggleWaBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      waDrawer.classList.toggle('open');
+      trackEvent('Engagement', 'WhatsApp Concierge Toggled', waDrawer.classList.contains('open') ? 'Open' : 'Close');
+    });
+
+    if (closeWaBtn) {
+      closeWaBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        waDrawer.classList.remove('open');
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!waDrawer.contains(e.target) && !toggleWaBtn.contains(e.target)) {
+        waDrawer.classList.remove('open');
+      }
+    });
+  }
+
   console.log(`[Krisala Aventis] Sovereign Intelligence v${SOVEREIGN_VERSION} — TOTAL HARDENING ACTIVE ✅`);
 
   // --- SERVICE WORKER REGISTRATION ---

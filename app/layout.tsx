@@ -247,11 +247,15 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=8" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=9" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#caa350" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=8" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=9" strategy="afterInteractive" />
       </body>
     </html>
   );
