@@ -51,27 +51,63 @@
   }, 2500);
 
   /* =============================================
-     2. NAVBAR — SCROLL + HAMBURGER
+     2. NAVBAR & STICKY RIBBON SYNCHRONIZED CONTROLLER
      ============================================= */
-  const nav      = document.getElementById('mainNav');
+  const nav       = document.getElementById('mainNav');
+  const ribbon    = document.getElementById('stickyRibbon');
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('navLinks');
 
   if (nav) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        nav.classList.add('scrolled');
+    let isScrolled = false;
+    const syncNavPosition = () => {
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const ribbonHeight = ribbon ? ribbon.offsetHeight : 0;
+
+      if (scrollY > 40) {
+        if (!isScrolled) {
+          isScrolled = true;
+          if (ribbon) {
+            ribbon.style.transform = 'translateY(-100%)';
+            ribbon.style.opacity = '0';
+            ribbon.style.pointerEvents = 'none';
+          }
+          nav.classList.add('scrolled');
+          nav.style.top = '12px';
+        }
       } else {
-        nav.classList.remove('scrolled');
+        if (isScrolled || !nav.style.top) {
+          isScrolled = false;
+          if (ribbon) {
+            ribbon.style.transform = 'translateY(0)';
+            ribbon.style.opacity = '1';
+            ribbon.style.pointerEvents = 'auto';
+          }
+          nav.classList.remove('scrolled');
+          nav.style.top = ribbonHeight > 0 ? `${ribbonHeight + 10}px` : '48px';
+        }
       }
-    });
+    };
+
+    // Initialize immediately and bind events
+    syncNavPosition();
+    window.addEventListener('scroll', syncNavPosition, { passive: true });
+    window.addEventListener('resize', syncNavPosition, { passive: true });
+    window.addEventListener('load', syncNavPosition);
+
+    if (ribbon) {
+      ribbon.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
+    }
+    nav.style.transition = 'top 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, box-shadow 0.4s ease';
   }
 
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', (e) => {
       e.stopPropagation();
       hamburger.classList.toggle('active');
+      hamburger.classList.toggle('open');
       navLinks.classList.toggle('active');
+      navLinks.classList.toggle('open');
       document.body.classList.toggle('no-scroll');
     });
 
@@ -79,16 +115,20 @@
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
+        hamburger.classList.remove('open');
         navLinks.classList.remove('active');
+        navLinks.classList.remove('open');
         document.body.classList.remove('no-scroll');
       });
     });
 
     // Close on outside click
     document.addEventListener('click', (e) => {
-      if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+      if (!nav.contains(e.target) && (navLinks.classList.contains('active') || navLinks.classList.contains('open'))) {
         hamburger.classList.remove('active');
+        hamburger.classList.remove('open');
         navLinks.classList.remove('active');
+        navLinks.classList.remove('open');
         document.body.classList.remove('no-scroll');
       }
     });
@@ -151,35 +191,7 @@
     });
   });
 
-  /* =============================================
-     5. STICKY RIBBON BANISHMENT ON SCROLL
-     ============================================= */
-  const ribbon = document.getElementById('stickyRibbon');
-  if (ribbon && nav) {
-    let ribbonVisible = true;
-    
-    // Dynamic offset calculation for flawless multi-line mobile stacking
-    const updateNavTop = () => {
-      if (ribbonVisible) nav.style.top = `${ribbon.offsetHeight + 8}px`;
-    };
-    
-    updateNavTop();
-    window.addEventListener('resize', updateNavTop);
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 200 && ribbonVisible) {
-        ribbon.style.transform = 'translateY(-100%)';
-        nav.style.top = '10px';
-        ribbonVisible = false;
-      } else if (window.scrollY <= 200 && !ribbonVisible) {
-        ribbon.style.transform = 'translateY(0)';
-        nav.style.top = `${ribbon.offsetHeight + 8}px`;
-        ribbonVisible = true;
-      }
-    });
-    ribbon.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1)';
-    nav.style.transition     = 'top 0.4s cubic-bezier(0.4,0,0.2,1), background 0.4s, border 0.4s';
-  }
 
   /* =============================================
      6. MARQUEE DUPLICATE (for seamless loop)
