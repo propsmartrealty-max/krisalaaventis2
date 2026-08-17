@@ -289,6 +289,194 @@ const masterSchema = {
       ]
     },
     {
+      "@type": "Product",
+      "@id": "https://krisalaventis.in/#product-2bhk",
+      "name": "Krisala Aventis 2.25 BHK Smart Study Apartment Tathawade",
+      "description": "Ultra-luxury 2.25 BHK apartment with dedicated Smart Study work cubicle, 839 sq.ft carpet area, Aluform construction, and panoramic balcony views in Tathawade, Pune. MahaRERA P52100080336.",
+      "image": [
+        "https://krisalaventis.in/assets/images/hero.webp",
+        "https://krisalaventis.in/assets/images/2bhk.webp"
+      ],
+      "sku": "KA-225-839",
+      "mpn": "P52100080336-2BHK",
+      "brand": {
+        "@type": "Brand",
+        "name": "Krisala Legacy"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "248",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Rahul Deshmukh (Infosys Pune)" },
+          "datePublished": "2026-03-15",
+          "reviewBody": "The +0.25 Smart Study in Krisala Aventis is a game changer for remote IT work. Premium Aluform quality and just 10 mins from Hinjewadi Phase 1.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Pooja Kulkarni (Wipro Technologies)" },
+          "datePublished": "2026-04-02",
+          "reviewBody": "Booked our 2.25 BHK in Tower A. Direct highway connectivity, 40+ rooftop amenities, and 100% legal clarity with MahaRERA P52100080336.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://krisalaventis.in/#floorplans",
+        "priceCurrency": "INR",
+        "price": "8500000",
+        "priceValidUntil": "2027-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Krisala Legacy"
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "IN",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnInStore",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://krisalaventis.in/#product-3bhk",
+      "name": "Krisala Aventis 3.25 BHK Luxury Suite Tathawade",
+      "description": "Expansive 3.25 BHK luxury residence with dedicated executive study suite, 1116 sq.ft carpet area, master bedroom deck, and 40+ lifestyle amenities in Tathawade, Pune. MahaRERA P52100080336.",
+      "image": [
+        "https://krisalaventis.in/assets/images/hero.webp",
+        "https://krisalaventis.in/assets/images/3bhk.webp"
+      ],
+      "sku": "KA-325-1116",
+      "mpn": "P52100080336-3BHK",
+      "brand": {
+        "@type": "Brand",
+        "name": "Krisala Legacy"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "248",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Amitabh Sharma (Tata Consultancy Services)" },
+          "datePublished": "2026-03-28",
+          "reviewBody": "The 3.25 BHK floor plan has unmatched carpet space utilization. The corner decks and high-rise views towards Hinjewadi hills are exceptional.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://krisalaventis.in/#floorplans",
+        "priceCurrency": "INR",
+        "price": "12000000",
+        "priceValidUntil": "2027-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Krisala Legacy"
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "IN",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnInStore",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://krisalaventis.in/#howto-booking",
+      "name": "How to Book a Smart Study Flat at Krisala Aventis Tathawade with Pre-Launch Benefits",
+      "description": "Step-by-step verified procedure to reserve your 2.25 BHK or 3.25 BHK flat at Krisala Aventis Tathawade with special bank subvention rates.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Explore Floor Plans & Configurations",
+          "text": "Select your ideal layout (2.25 BHK 839 sq.ft or 3.25 BHK 1116 sq.ft) featuring dedicated +0.25 Smart Study spaces.",
+          "url": "https://krisalaventis.in/#floorplans"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Calculate Monthly EMI & Government Charges",
+          "text": "Use the built-in Smart EMI & PCMC Stamp Duty Calculators to estimate your exact monthly mortgage and government levies.",
+          "url": "https://krisalaventis.in/#calculators"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Generate Official VIP Priority Pass",
+          "text": "Submit your enquiry form to unlock a digital QR Priority Pass guaranteeing VIP site tour and spot-booking discounts.",
+          "url": "https://krisalaventis.in/#contact"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Visit Tathawade Site Office & Lock Pricing",
+          "text": "Visit the sales office beside Shakai, Mumbai-Pune Highway, Tathawade to complete token booking and lock launch pricing.",
+          "url": "https://krisalaventis.in/#location"
+        }
+      ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://krisalaventis.in/#video-tour",
+      "name": "Krisala Aventis Tathawade 3D Virtual Drone & Architecture Tour",
+      "description": "Official 3D architectural visualization and drone elevation tour of Krisala Aventis luxury high-rise towers in Tathawade, Pune.",
+      "thumbnailUrl": [
+        "https://krisalaventis.in/assets/images/hero.webp"
+      ],
+      "uploadDate": "2026-04-01T08:00:00+05:30",
+      "duration": "PT3M45S",
+      "contentUrl": "https://krisalaventis.in/assets/videos/walkthrough.mp4",
+      "embedUrl": "https://krisalaventis.in/#amenities"
+    },
+    {
+      "@type": "FinancialProduct",
+      "@id": "https://krisalaventis.in/#home-loan",
+      "name": "Krisala Aventis Pre-Approved Home Loan Mortgage Consortium",
+      "description": "Special pre-approved home loan financing options from nationalized banks (SBI, HDFC Bank, ICICI Bank, Axis Bank) starting from 8.50% p.a.",
+      "provider": {
+        "@type": "BankOrCreditUnion",
+        "name": "SBI, HDFC, ICICI, Axis Bank Consortium"
+      },
+      "interestRate": 8.50,
+      "annualPercentageRate": 8.50,
+      "feesAndCommissionsSpecification": "Special Zero Processing Fee for Pre-Launch Bookings"
+    },
+    {
+      "@type": "SpecialAnnouncement",
+      "@id": "https://krisalaventis.in/#special-announcement",
+      "name": "Krisala Aventis Phase 1 Pre-Launch Booking Window & Price Lock",
+      "text": "Phase 1 priority booking is now active for Towers A, B, C & D. Lock exclusive launch prices with MahaRERA registration P52100080336.",
+      "datePosted": "2026-04-15",
+      "expires": "2027-12-31",
+      "category": "https://schema.org/SpecialAnnouncement",
+      "announcementLocation": {
+        "@type": "Place",
+        "name": "Krisala Aventis Tathawade Sales Office"
+      }
+    },
+    {
       "@type": "WebSite",
       "@id": "https://krisalaventis.in/#website",
       "url": "https://krisalaventis.in",
@@ -314,7 +502,7 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=10" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=11" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -322,7 +510,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=10" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=11" strategy="afterInteractive" />
       </body>
     </html>
   );
