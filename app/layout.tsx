@@ -88,10 +88,16 @@ export const metadata: Metadata = {
   category: "Real Estate",
   alternates: {
     canonical: BASE_URL,
+    languages: {
+      "en-IN": BASE_URL,
+      "mr-IN": BASE_URL,
+      "hi-IN": BASE_URL,
+      "x-default": BASE_URL,
+    },
   },
   openGraph: {
     title: "Krisala Aventis Tathawade | Ultra-Premium 2.25 & 3.25 BHK Flats in Pune",
-    description: "Official portal for Krisala Aventis Tathawade by Krisala Legacy. Premium smart-study homes, 40+ lifestyle amenities, near Hinjewadi IT Park & Wakad.",
+    description: "Official portal for Krisala Aventis Tathawade by Krisala Legacy. Premium smart-study homes, 40+ lifestyle amenities, near Hinjewadi IT Park & Wakad. MahaRERA P52100080336.",
     url: BASE_URL,
     siteName: "Krisala Aventis Tathawade",
     images: [
@@ -108,7 +114,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Krisala Aventis Tathawade | Official Portal",
-    description: "Discover luxury 2.25 & 3.25 BHK Smart Study homes in Tathawade, Pune by Krisala Legacy.",
+    description: "Discover luxury 2.25 & 3.25 BHK Smart Study homes in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
     images: ["/assets/images/hero.webp"],
   },
   robots: {
@@ -124,9 +130,18 @@ export const metadata: Metadata = {
   },
   other: {
     "geo.region": "IN-MH",
-    "geo.placename": "Pune, Tathawade",
+    "geo.placename": "Tathawade, Pune, PCMC, Maharashtra",
     "geo.position": "18.6298;73.7560",
     "ICBM": "18.6298, 73.7560",
+    "DC.title": "Krisala Aventis Tathawade — Luxury 2.25 & 3.25 BHK Flats in Pune",
+    "DC.creator": "Krisala Legacy",
+    "DC.subject": "Real Estate, Luxury Flats Pune, Tathawade Apartments, Hinjewadi IT Park",
+    "DC.description": "Official portal for Krisala Aventis Tathawade Pune. MahaRERA P52100080336.",
+    "DC.publisher": "Krisala Legacy",
+    "DC.coverage.placeName": "Tathawade, Pune, Maharashtra, India",
+    "rating": "General",
+    "revisit-after": "1 days",
+    "HandheldFriendly": "true",
   },
 };
 
@@ -502,7 +517,7 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=11" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=12" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -510,7 +525,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=11" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=12" strategy="afterInteractive" />
       </body>
     </html>
   );

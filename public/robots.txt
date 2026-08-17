@@ -1,0 +1,60 @@
+# ==============================================================================
+# KRISALA AVENTIS TATHAWADE — MASTER SEARCH ENGINE CRAWLER DIRECTIVE
+# Canonical Domain: https://krisalaventis.in
+# MahaRERA Registration: P52100080336
+# ==============================================================================
+
+User-agent: Googlebot
+Allow: /
+Allow: /assets/
+Allow: /sitemap.xml
+Crawl-delay: 0.1
+
+User-agent: Googlebot-Image
+Allow: /assets/images/
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0.2
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Allow AI Search Crawlers for Generative SERP Inclusion
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# General Directives
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+
+# Master Canonical XML Sitemap Index
+Sitemap: https://krisalaventis.in/sitemap.xml

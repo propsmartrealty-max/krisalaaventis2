@@ -224,8 +224,14 @@ export default async function Page({
             <a href="/#floorplans" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
               Floor Plans
             </a>
-            <a href="/#amenities" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              Amenities
+            <a href="/#inventory-matrix" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
+              Towers
+            </a>
+            <a href="/#calculators" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
+              EMI & ROI
+            </a>
+            <a href="/#rera-vault" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
+              MahaRERA
             </a>
             <a href="/#location" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
               Location
