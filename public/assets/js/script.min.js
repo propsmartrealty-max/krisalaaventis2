@@ -921,6 +921,203 @@
     });
   }
 
+  /* =============================================
+     17. INTERACTIVE UNIT CONFIGURATOR
+     ============================================= */
+  const configUnitBtns = document.querySelectorAll('.config-unit-btn');
+  const roomBtns = document.querySelectorAll('.room-btn');
+  const configMainImg = document.getElementById('configMainImg');
+  const activeRoomTag = document.getElementById('activeRoomTag');
+  const roomTitle = document.getElementById('roomTitle');
+  const roomDesc = document.getElementById('roomDesc');
+  const roomCarpet = document.getElementById('roomCarpet');
+  const roomFlooring = document.getElementById('roomFlooring');
+  const roomElectrical = document.getElementById('roomElectrical');
+  const roomVentilation = document.getElementById('roomVentilation');
+
+  let currentUnit = '2bhk';
+  let currentRoom = 'study';
+
+  const roomSpecsData = {
+    '2bhk': {
+      study: {
+        title: 'Dedicated +0.25 Smart Study Pod',
+        desc: 'A custom-engineered ergonomic work cubicle designed for remote IT professionals. Features acoustic isolation, dual-monitor desktop provision, high-speed fiber internet point, and ambient task lighting.',
+        carpet: '58 Sq.ft.',
+        flooring: '1600x800mm Vitrified Tiles',
+        electrical: 'Schneider Modular + Dual USB Points',
+        ventilation: 'Dedicated Window Cross-Breeze',
+        tag: 'Active Focus: 2.25 BHK Smart Study Pod'
+      },
+      living: {
+        title: 'Expansive Living & Dining Hall',
+        desc: 'Seamless open-plan layout connecting the living and dining spaces with direct sunrise terrace access and 10ft ceiling height.',
+        carpet: '220 Sq.ft.',
+        flooring: 'Italian Glazed Vitrified Tiles',
+        electrical: 'TV, AC, Home Theater & Ethernet Points',
+        ventilation: '8ft UPVC Sliding Terrace Door',
+        tag: 'Active Focus: Living & Dining Space'
+      },
+      master: {
+        title: 'Master Bedroom with Private Deck',
+        desc: 'Spacious master sanctuary with wooden texture finish flooring, attached luxury bathroom, and panoramic floor-to-ceiling corner vista.',
+        carpet: '165 Sq.ft.',
+        flooring: 'Laminated Wooden Finish Flooring',
+        electrical: 'Bedside USB & Master AC Conduit',
+        ventilation: 'Corner Bay Window + Private Deck',
+        tag: 'Active Focus: Master Suite'
+      },
+      kitchen: {
+        title: 'Parallel Modular Granite Kitchen',
+        desc: 'Granite platform with stainless steel sink, piped gas provision, anti-skid floor tiling, and dedicated dry utility balcony.',
+        carpet: '95 Sq.ft.',
+        flooring: 'Anti-Skid Vitrified Tile Flooring',
+        electrical: 'Hob, Chimney, Water Purifier & Refrigerator Points',
+        ventilation: 'Full Height Dry Balcony Ventilation',
+        tag: 'Active Focus: Modular Kitchen'
+      },
+      balcony: {
+        title: 'Sunrise Vista Deck Balcony',
+        desc: 'Elevated cantilevered deck with toughened glass SS railings overlooking the podium swimming pool and expressway greenery.',
+        carpet: '48 Sq.ft.',
+        flooring: 'Wood-Composite Anti-Skid Decking',
+        electrical: 'Weatherproof Ambient LED Sconce Point',
+        ventilation: '100% Open Unobstructed Airflow',
+        tag: 'Active Focus: Sunrise Deck'
+      }
+    },
+    '3bhk': {
+      study: {
+        title: 'Executive +0.25 Smart Study Suite',
+        desc: 'Upgraded executive library and dual-workstation pod with custom cabinetry provision and sound-dampening acoustic panelling.',
+        carpet: '78 Sq.ft.',
+        flooring: 'Premium 1600x800mm Vitrified Tiles',
+        electrical: 'Quad Modular Ports + Dedicated Fiber Hub',
+        ventilation: 'Dedicated Exterior Casement Window',
+        tag: 'Active Focus: 3.25 BHK Study Suite'
+      },
+      living: {
+        title: 'Grand Living & Formal Dining Lounge',
+        desc: 'Expansive luxury salon space accommodating 8-seater dining, corner sectional sofa, and double-width terrace deck.',
+        carpet: '310 Sq.ft.',
+        flooring: 'Imported Marble Glazed Tiles',
+        electrical: 'Full Smart-Home Controller Panel',
+        ventilation: '10ft Double-Track UPVC Glass Portal',
+        tag: 'Active Focus: Grand Living Salon'
+      },
+      master: {
+        title: 'Presidential Master Suite with Walk-In Closet',
+        desc: 'Ultra-luxurious master bedroom featuring a walk-in wardrobe alcove, Kohler bathtub provision, and corner sunrise deck.',
+        carpet: '215 Sq.ft.',
+        flooring: 'Herringbone Wooden Texture Flooring',
+        electrical: 'Touch-Panel Mood Lighting Controls',
+        ventilation: 'Dual-Aspect Cross Ventilation Windows',
+        tag: 'Active Focus: Presidential Master Suite'
+      },
+      kitchen: {
+        title: 'Gourmet Chef Kitchen with Island Provision',
+        desc: 'Expansive granite countertops, dishwasher point, separate utility dry area, and premium designer dado tiles.',
+        carpet: '125 Sq.ft.',
+        flooring: 'Heavy-Duty Vitrified Ceramic Tiles',
+        electrical: 'Multi-Appliance Heavy Wattage Outlets',
+        ventilation: 'Dry Balcony + Exhaust Chimney Duct',
+        tag: 'Active Focus: Gourmet Kitchen'
+      },
+      balcony: {
+        title: 'Panoramic Wrap-Around Terrace Deck',
+        desc: 'Sprawling outdoor leisure deck with artificial grass patch and 180-degree unobstructed horizon views of Hinjewadi skyline.',
+        carpet: '72 Sq.ft.',
+        flooring: 'Weatherproof Timber Deck Tiles',
+        electrical: 'Outdoor Water & Power Outlets',
+        ventilation: 'High-Altitude Fresh Air Circulation',
+        tag: 'Active Focus: Wrap-Around Terrace'
+      }
+    }
+  };
+
+  function updateConfigurator() {
+    const data = roomSpecsData[currentUnit][currentRoom];
+    if (!data) return;
+    if (configMainImg) {
+      configMainImg.src = currentUnit === '2bhk' ? '/assets/images/floorplan-2bhk.webp' : '/assets/images/floorplan-3bhk.webp';
+    }
+    if (activeRoomTag) activeRoomTag.textContent = data.tag;
+    if (roomTitle) roomTitle.textContent = data.title;
+    if (roomDesc) roomDesc.textContent = data.desc;
+    if (roomCarpet) roomCarpet.textContent = data.carpet;
+    if (roomFlooring) roomFlooring.textContent = data.flooring;
+    if (roomElectrical) roomElectrical.textContent = data.electrical;
+    if (roomVentilation) roomVentilation.textContent = data.ventilation;
+  }
+
+  if (configUnitBtns.length > 0) {
+    configUnitBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        configUnitBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentUnit = btn.dataset.unit || '2bhk';
+        updateConfigurator();
+      });
+    });
+  }
+
+  if (roomBtns.length > 0) {
+    roomBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        roomBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentRoom = btn.dataset.room || 'study';
+        updateConfigurator();
+      });
+    });
+  }
+
+  /* =============================================
+     18. SMART EXIT-INTENT VIP VOUCHER MODAL
+     ============================================= */
+  const exitModal = document.getElementById('exitVoucherModal');
+  const closeExitBtn = document.getElementById('closeExitModalBtn');
+  const closeExitBackdrop = document.getElementById('closeExitModalBackdrop');
+  const dismissExitBtn = document.getElementById('dismissExitBtn');
+  const dynamicVoucherCode = document.getElementById('dynamicVoucherCode');
+  const claimVoucherBtn = document.getElementById('claimVoucherBtn');
+
+  let exitShown = sessionStorage.getItem('krisala_voucher_shown');
+
+  function showExitModal() {
+    if (!exitShown && exitModal) {
+      exitShown = 'true';
+      sessionStorage.setItem('krisala_voucher_shown', 'true');
+      const randomCode = 'AVENTIS-VIP-' + Math.floor(1000 + Math.random() * 9000);
+      if (dynamicVoucherCode) dynamicVoucherCode.textContent = randomCode;
+      if (claimVoucherBtn) {
+        claimVoucherBtn.href = `https://wa.me/917744009295?text=${encodeURIComponent(`Hi Krisala Team, I want to claim my VIP Pre-Launch Voucher code ${randomCode} for Krisala Aventis Tathawade.`)}`;
+      }
+      exitModal.style.display = 'flex';
+      trackEvent('Engagement', 'Exit Voucher Displayed', randomCode);
+    }
+  }
+
+  function hideExitModal() {
+    if (exitModal) exitModal.style.display = 'none';
+  }
+
+  if (closeExitBtn) closeExitBtn.addEventListener('click', hideExitModal);
+  if (closeExitBackdrop) closeExitBackdrop.addEventListener('click', hideExitModal);
+  if (dismissExitBtn) dismissExitBtn.addEventListener('click', hideExitModal);
+
+  // Trigger on mouse leaving viewport top
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0) {
+      showExitModal();
+    }
+  });
+
+  // Also trigger after 45 seconds of active exploration
+  setTimeout(() => {
+    showExitModal();
+  }, 45000);
+
   console.log(`[Krisala Aventis] Sovereign Intelligence v${SOVEREIGN_VERSION} — TOTAL HARDENING ACTIVE ✅`);
 
   // --- SERVICE WORKER REGISTRATION ---

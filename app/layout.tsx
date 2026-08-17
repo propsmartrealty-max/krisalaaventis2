@@ -517,7 +517,7 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=12" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=13" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -525,7 +525,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=12" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=13" strategy="afterInteractive" />
       </body>
     </html>
   );
