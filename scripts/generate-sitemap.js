@@ -25,22 +25,35 @@ function addUrl(loc, priority, changeFreq) {
   </url>`;
 }
 
-// 1. Homepage
+// 1. Flagship Homepage
 addUrl(DOMAIN, '1.0', 'daily');
 
-// 2. Core Pages
+// 2. Core High-Intent Pages
 for (const page of coreData) {
-    addUrl(`${DOMAIN}/${page.folder}/${page.url_slug.replace('.html', '')}`, '0.8', 'weekly');
+    const slug = page.url_slug.replace('.html', '');
+    let priority = '0.8';
+    let freq = 'weekly';
+    if (slug.includes('2-bhk') || slug.includes('3-bhk') || slug.includes('price') || slug.includes('cost-sheet') || slug.includes('brochure') || slug.includes('hinjewadi')) {
+        priority = '0.9';
+        freq = 'daily';
+    }
+    addUrl(`${DOMAIN}/${page.folder}/${slug}`, priority, freq);
 }
 
-// 3. NRI Pages
+// 3. Global NRI Investor Pages
 for (const page of nriData) {
-    addUrl(`${DOMAIN}/${page.folder}/${page.url_slug.replace('.html', '')}`, '0.7', 'weekly');
+    const slug = page.url_slug.replace('.html', '');
+    addUrl(`${DOMAIN}/${page.folder}/${slug}`, '0.75', 'weekly');
 }
 
-// 4. Domination Pages
+// 4. Domination Long-Tail Pune & Krisala Keyword Pages
 for (const page of dominationData) {
-    addUrl(`${DOMAIN}/${page.folder}/${page.url_slug.replace('.html', '')}`, '0.6', 'weekly');
+    const slug = page.url_slug.replace('.html', '');
+    let priority = '0.7';
+    if (slug.includes('krisala') || slug.includes('tathawade') || slug.includes('wakad') || slug.includes('hinjewadi')) {
+        priority = '0.8';
+    }
+    addUrl(`${DOMAIN}/${page.folder}/${slug}`, priority, 'weekly');
 }
 
 sitemapContent += sitemapFooter;
@@ -48,4 +61,4 @@ sitemapContent += sitemapFooter;
 const outputPath = path.join(__dirname, '../public/sitemap.xml');
 fs.writeFileSync(outputPath, sitemapContent, 'utf8');
 
-console.log(`✅ Successfully generated massive static sitemap at public/sitemap.xml with ${1 + coreData.length + nriData.length + dominationData.length} URLs!`);
+console.log(`✅ Successfully generated hardened static sitemap at public/sitemap.xml with ${1 + coreData.length + nriData.length + dominationData.length} URLs!`);
