@@ -247,11 +247,11 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=7" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=8" />
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=7" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=8" strategy="afterInteractive" />
       </body>
     </html>
   );

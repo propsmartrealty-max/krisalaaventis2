@@ -697,6 +697,184 @@
     console.warn('[Sovereign Guard] Connection lost. Leads will be queued locally.');
   });
 
+  /* =============================================
+     14. INTERACTIVE FINANCIAL & ROI SUITE ENGINE
+     ============================================= */
+  // 14a. Tab Switcher
+  const calcTabs = document.querySelectorAll('.calc-tab-btn');
+  const calcPanels = document.querySelectorAll('.calc-panel');
+  if (calcTabs.length > 0) {
+    calcTabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.calc;
+        calcTabs.forEach(b => b.classList.remove('active'));
+        calcPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = document.getElementById(targetId);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  }
+
+  const formatINR = (val) => {
+    return '₹ ' + Number(Math.round(val)).toLocaleString('en-IN');
+  };
+
+  // 14b. Smart EMI Calculator Logic
+  const emiAmountSlider = document.getElementById('emi-amount-slider');
+  const emiRateSlider = document.getElementById('emi-rate-slider');
+  const emiTenureSlider = document.getElementById('emi-tenure-slider');
+
+  const emiAmountBadge = document.getElementById('emi-amount-badge');
+  const emiRateBadge = document.getElementById('emi-rate-badge');
+  const emiTenureBadge = document.getElementById('emi-tenure-badge');
+
+  const emiMonthlyOutput = document.getElementById('emi-monthly-output');
+  const emiPrincipalOutput = document.getElementById('emi-principal-output');
+  const emiInterestOutput = document.getElementById('emi-interest-output');
+  const emiTotalOutput = document.getElementById('emi-total-output');
+
+  function calculateEMI() {
+    if (!emiAmountSlider || !emiRateSlider || !emiTenureSlider) return;
+    const P = parseFloat(emiAmountSlider.value);
+    const annualRate = parseFloat(emiRateSlider.value);
+    const tenureYears = parseFloat(emiTenureSlider.value);
+
+    if (emiAmountBadge) emiAmountBadge.textContent = formatINR(P);
+    if (emiRateBadge) emiRateBadge.textContent = annualRate.toFixed(2) + '%';
+    if (emiTenureBadge) emiTenureBadge.textContent = tenureYears + ' Years';
+
+    const r = annualRate / 12 / 100;
+    const n = tenureYears * 12;
+
+    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const totalPayment = emi * n;
+    const totalInterest = totalPayment - P;
+
+    if (emiMonthlyOutput) emiMonthlyOutput.textContent = formatINR(emi);
+    if (emiPrincipalOutput) emiPrincipalOutput.textContent = formatINR(P);
+    if (emiInterestOutput) emiInterestOutput.textContent = formatINR(totalInterest);
+    if (emiTotalOutput) emiTotalOutput.textContent = formatINR(totalPayment);
+  }
+
+  if (emiAmountSlider) {
+    emiAmountSlider.addEventListener('input', calculateEMI);
+    emiRateSlider.addEventListener('input', calculateEMI);
+    emiTenureSlider.addEventListener('input', calculateEMI);
+
+    document.querySelectorAll('.bank-presets .bank-pill[data-rate]').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.bank-presets .bank-pill[data-rate]').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        emiRateSlider.value = pill.dataset.rate;
+        calculateEMI();
+      });
+    });
+
+    calculateEMI();
+  }
+
+  // 14c. Capital Growth & ROI Calculator
+  const roiPropSlider = document.getElementById('roi-prop-slider');
+  const roiRateSlider = document.getElementById('roi-rate-slider');
+  const roiYearsSlider = document.getElementById('roi-years-slider');
+
+  const roiPropBadge = document.getElementById('roi-prop-badge');
+  const roiRateBadge = document.getElementById('roi-rate-badge');
+  const roiYearsBadge = document.getElementById('roi-years-badge');
+
+  const roiFutureOutput = document.getElementById('roi-future-output');
+  const roiGainOutput = document.getElementById('roi-gain-output');
+  const roiRentalOutput = document.getElementById('roi-rental-output');
+
+  function calculateROI() {
+    if (!roiPropSlider || !roiRateSlider || !roiYearsSlider) return;
+    const PV = parseFloat(roiPropSlider.value);
+    const rate = parseFloat(roiRateSlider.value) / 100;
+    const years = parseFloat(roiYearsSlider.value);
+
+    if (roiPropBadge) roiPropBadge.textContent = formatINR(PV);
+    if (roiRateBadge) roiRateBadge.textContent = (rate * 100).toFixed(1) + '%';
+    if (roiYearsBadge) roiYearsBadge.textContent = years + (years === 1 ? ' Year' : ' Years');
+
+    const FV = PV * Math.pow(1 + rate, years);
+    const gainPct = ((FV - PV) / PV) * 100;
+    const monthlyRentMin = (PV * 0.045) / 12;
+    const monthlyRentMax = (PV * 0.055) / 12;
+
+    if (roiFutureOutput) roiFutureOutput.textContent = formatINR(FV);
+    if (roiGainOutput) roiGainOutput.textContent = `+${gainPct.toFixed(1)}% Net Growth`;
+    if (roiRentalOutput) roiRentalOutput.textContent = `${formatINR(monthlyRentMin)} - ${formatINR(monthlyRentMax)} / mo`;
+  }
+
+  if (roiPropSlider) {
+    roiPropSlider.addEventListener('input', calculateROI);
+    roiRateSlider.addEventListener('input', calculateROI);
+    roiYearsSlider.addEventListener('input', calculateROI);
+
+    document.querySelectorAll('.bank-presets .bank-pill[data-roi]').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.bank-presets .bank-pill[data-roi]').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        roiRateSlider.value = pill.dataset.roi;
+        calculateROI();
+      });
+    });
+
+    calculateROI();
+  }
+
+  // 14d. Stamp Duty Calculator
+  const stampPropSlider = document.getElementById('stamp-prop-slider');
+  const stampPropBadge = document.getElementById('stamp-prop-badge');
+  const stampGenderBadge = document.getElementById('stamp-gender-badge');
+  const stampTotalOutput = document.getElementById('stamp-total-output');
+  const stampDutyOutput = document.getElementById('stamp-duty-output');
+  const stampAllincOutput = document.getElementById('stamp-allinc-output');
+
+  let currentStampRate = 0.06; // Default Male/Joint (5% + 1%)
+
+  function calculateStamp() {
+    if (!stampPropSlider) return;
+    const PV = parseFloat(stampPropSlider.value);
+    if (stampPropBadge) stampPropBadge.textContent = formatINR(PV);
+
+    const stampDuty = PV * currentStampRate;
+    const regFee = 30000;
+    const totalGovt = stampDuty + regFee;
+    const allInc = PV + totalGovt;
+
+    if (stampDutyOutput) stampDutyOutput.textContent = formatINR(stampDuty);
+    if (stampTotalOutput) stampTotalOutput.textContent = formatINR(totalGovt);
+    if (stampAllincOutput) stampAllincOutput.textContent = formatINR(allInc);
+  }
+
+  if (stampPropSlider) {
+    stampPropSlider.addEventListener('input', calculateStamp);
+
+    const btnMale = document.getElementById('btn-male');
+    const btnFemale = document.getElementById('btn-female');
+
+    if (btnMale && btnFemale) {
+      btnMale.addEventListener('click', () => {
+        btnMale.classList.add('active');
+        btnFemale.classList.remove('active');
+        currentStampRate = 0.06;
+        if (stampGenderBadge) stampGenderBadge.textContent = 'Male / Joint (6%)';
+        calculateStamp();
+      });
+      btnFemale.addEventListener('click', () => {
+        btnFemale.classList.add('active');
+        btnMale.classList.remove('active');
+        currentStampRate = 0.05;
+        if (stampGenderBadge) stampGenderBadge.textContent = 'Female Sole Owner (5%)';
+        calculateStamp();
+      });
+    }
+
+    calculateStamp();
+  }
+
   console.log(`[Krisala Aventis] Sovereign Intelligence v${SOVEREIGN_VERSION} — TOTAL HARDENING ACTIVE ✅`);
 
   // --- SERVICE WORKER REGISTRATION ---

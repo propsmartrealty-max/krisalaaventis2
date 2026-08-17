@@ -1381,3 +1381,302 @@ button { cursor: pointer; font-family: inherit; }
 .portfolio-card:hover img, .bento-card:hover img, .fp-card:hover img, .zone-card:hover img {
   transform: scale(1.05) !important;
 }
+
+/* =============================================
+   INTERACTIVE REAL ESTATE DECISION SUITE & INVENTORY
+   ============================================= */
+.calc-suite-section {
+  background: radial-gradient(circle at 50% 0%, rgba(202, 163, 80, 0.08), transparent 70%), var(--clr-obsidian);
+  border-top: 1px solid var(--clr-glass-border);
+  border-bottom: 1px solid var(--clr-glass-border);
+  padding: 80px 0;
+  position: relative;
+}
+
+.calc-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.calc-tab-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--clr-glass-border);
+  color: var(--clr-silver);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calc-tab-btn:hover,
+.calc-tab-btn.active {
+  background: var(--clr-gold);
+  color: #000;
+  border-color: var(--clr-gold);
+  box-shadow: 0 8px 25px rgba(202, 163, 80, 0.3);
+  transform: translateY(-2px);
+}
+
+.calc-panel {
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.calc-panel.active {
+  display: block;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--clr-glass-border);
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 50px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@media (max-width: 900px) {
+  .calc-grid { grid-template-columns: 1fr; }
+}
+
+.calc-input-group {
+  margin-bottom: 28px;
+}
+
+.calc-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.calc-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--clr-silk);
+}
+
+.calc-value-badge {
+  background: rgba(202, 163, 80, 0.15);
+  border: 1px solid rgba(202, 163, 80, 0.3);
+  color: var(--clr-gold);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 4px 14px;
+  border-radius: 8px;
+}
+
+.calc-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--clr-gold);
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(202, 163, 80, 0.6);
+  border: 2px solid #000;
+}
+
+.bank-presets {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.bank-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--clr-silver);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.bank-pill:hover,
+.bank-pill.active {
+  background: rgba(202, 163, 80, 0.2);
+  color: var(--clr-gold);
+  border-color: var(--clr-gold);
+}
+
+.calc-result-box {
+  background: rgba(8, 10, 16, 0.8);
+  border: 1px solid rgba(202, 163, 80, 0.25);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-main {
+  text-align: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.result-main .result-sub {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--clr-silver);
+  margin-bottom: 6px;
+}
+
+.result-main .result-amount {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--clr-gold);
+  font-family: var(--font-serif);
+}
+
+.result-breakdown {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--clr-silver);
+}
+
+.breakdown-row span:last-child {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Tower Inventory Matrix */
+.tower-matrix-section {
+  padding: 80px 0;
+  background: var(--clr-onyx);
+  border-top: 1px solid var(--clr-glass-border);
+}
+
+.tower-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.tower-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--clr-glass-border);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.tower-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(202, 163, 80, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.tower-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.tower-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tower-status-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+
+.badge-selling {
+  background: rgba(255, 71, 87, 0.15);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+.badge-limited {
+  background: rgba(255, 165, 2, 0.15);
+  color: #ffa502;
+  border: 1px solid rgba(255, 165, 2, 0.3);
+}
+
+.badge-exclusive {
+  background: rgba(46, 213, 115, 0.15);
+  color: #2ed573;
+  border: 1px solid rgba(46, 213, 115, 0.3);
+}
+
+.tower-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  margin: 12px 0 18px 0;
+  overflow: hidden;
+}
+
+.tower-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--clr-gold), var(--clr-gold-light));
+  border-radius: 10px;
+}
+
+.tower-specs-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--clr-silver);
+}
+
+.tower-specs-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+  padding-bottom: 6px;
+}
+
+.tower-specs-list li strong {
+  color: var(--clr-silk);
+}
