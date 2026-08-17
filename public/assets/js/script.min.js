@@ -903,6 +903,24 @@
     });
   }
 
+  /* =============================================
+     16. PUNE REAL ESTATE AUTHORITY INDEX TABS
+     ============================================= */
+  const authTabs = document.querySelectorAll('.auth-tab-btn');
+  const authPanels = document.querySelectorAll('.authority-panel');
+  if (authTabs.length > 0) {
+    authTabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.auth;
+        authTabs.forEach(b => b.classList.remove('active'));
+        authPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = document.getElementById(targetId);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  }
+
   console.log(`[Krisala Aventis] Sovereign Intelligence v${SOVEREIGN_VERSION} — TOTAL HARDENING ACTIVE ✅`);
 
   // --- SERVICE WORKER REGISTRATION ---

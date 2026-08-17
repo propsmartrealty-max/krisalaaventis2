@@ -28,27 +28,58 @@ export const metadata: Metadata = {
     "Krisala Aventis",
     "Krisala Aventis Tathawade",
     "Krisala Tathawade",
-    "Krisala Developer Pune",
+    "Krisala Developers Pune",
     "Krisala Legacy Projects",
     "Krisala New Launch Tathawade",
-    "2 BHK in Tathawade",
-    "2.25 BHK in Tathawade",
-    "3 BHK in Tathawade",
-    "3.25 BHK in Tathawade",
-    "Flats in Tathawade",
-    "Flats in Wakad",
-    "Flats near Hinjewadi IT Park",
-    "Flats near Mumbai Pune Expressway",
-    "Pune Real Estate",
-    "West Pune Luxury Homes",
-    "Krisala 41 Cosmo",
     "Krisala Luxovert Tathawade",
-    "Krisala 41 Estera",
-    "Krisala 41 Zircon",
-    "Krisala 41 Evok",
-    "Krisala 41 Platinium",
-    "Krisala 41 Zillenia",
-    "Top Builders in Pune",
+    "Krisala 41 Cosmo Tathawade",
+    "Krisala 41 Estera Punawale",
+    "Krisala 41 Zircon Tathawade",
+    "Krisala 41 Evok Ravet",
+    "Krisala 41 Platinium Marunji",
+    "Krisala 41 Zillenia Punawale",
+    "Krisala 41 Magia Tathawade",
+    "Krisala 41 Presidency Pune",
+    "Krisala 41 Shadow Tathawade",
+    "Krisala 41 Elite Wakad",
+    "Krisala 41 Boulevard Punawale",
+    "Krisala 41 Octave Hinjewadi",
+    "2.25 BHK in Tathawade",
+    "3.25 BHK in Tathawade",
+    "2 BHK Flats in Tathawade",
+    "3 BHK Luxury Flats in Tathawade",
+    "Smart Study Homes Tathawade",
+    "Flats in Tathawade Pune",
+    "Flats in Wakad Pune",
+    "Flats near Hinjewadi IT Park Phase 1",
+    "Flats near Hinjewadi Phase 2",
+    "Flats near Hinjewadi Phase 3",
+    "Flats in Punawale Pune",
+    "Flats in Ravet Pune",
+    "Flats in Marunji Hinjewadi",
+    "Flats in Mahalunge Pune",
+    "Flats in Baner Pune",
+    "Flats in Balewadi High Street",
+    "Flats in Sus Pashan Pune",
+    "Flats in Bavdhan Pune",
+    "Flats in Aundh Pune",
+    "Flats in Pimpri Chinchwad PCMC",
+    "Flats in Pimple Saudagar",
+    "Flats in Pimple Nilakh",
+    "Flats in Kiwale PCMC",
+    "Flats in Moshi PCMC",
+    "Flats in Kharadi IT Hub",
+    "Flats in Viman Nagar",
+    "Flats in Magarpatta Hadapsar",
+    "Flats in Kothrud Pune",
+    "Pune Real Estate 2026",
+    "New Launch Projects in Pune 2026",
+    "Under Construction Flats in Pune",
+    "Pre Launch Property in Pune",
+    "RERA Approved Projects Pune",
+    "Pune Metro Line 3 Property Investment",
+    "NRI Real Estate Investment Pune",
+    "Top Real Estate Developers in Pune",
     "MahaRERA P52100080336"
   ],
   authors: [{ name: "Krisala Legacy", url: BASE_URL }],
@@ -128,12 +159,29 @@ const masterSchema = {
       "areaServed": [
         { "@type": "Place", "name": "Tathawade, Pune" },
         { "@type": "Place", "name": "Wakad, Pune" },
-        { "@type": "Place", "name": "Hinjewadi, Pune" },
+        { "@type": "Place", "name": "Hinjewadi Phase 1, Pune" },
+        { "@type": "Place", "name": "Hinjewadi Phase 2, Pune" },
+        { "@type": "Place", "name": "Hinjewadi Phase 3, Pune" },
         { "@type": "Place", "name": "Punawale, Pune" },
         { "@type": "Place", "name": "Ravet, Pune" },
+        { "@type": "Place", "name": "Marunji, Pune" },
+        { "@type": "Place", "name": "Mahalunge, Pune" },
         { "@type": "Place", "name": "Baner, Pune" },
-        { "@type": "Place", "name": "PCMC, Pune" },
-        { "@type": "Place", "name": "West Pune" }
+        { "@type": "Place", "name": "Balewadi, Pune" },
+        { "@type": "Place", "name": "Sus, Pune" },
+        { "@type": "Place", "name": "Bavdhan, Pune" },
+        { "@type": "Place", "name": "Aundh, Pune" },
+        { "@type": "Place", "name": "Pimpri Chinchwad, PCMC" },
+        { "@type": "Place", "name": "Pimple Saudagar, Pune" },
+        { "@type": "Place", "name": "Pimple Nilakh, Pune" },
+        { "@type": "Place", "name": "Moshi, PCMC" },
+        { "@type": "Place", "name": "Kiwale, PCMC" },
+        { "@type": "Place", "name": "Kharadi, Pune" },
+        { "@type": "Place", "name": "Viman Nagar, Pune" },
+        { "@type": "Place", "name": "Hadapsar, Pune" },
+        { "@type": "Place", "name": "Kothrud, Pune" },
+        { "@type": "Place", "name": "West Pune" },
+        { "@type": "Place", "name": "Pune, Maharashtra" }
       ],
       "sameAs": [
         "https://www.facebook.com/KrisalaLegacy",
@@ -219,6 +267,24 @@ const masterSchema = {
           "position": 7,
           "name": "Krisala 41 Presidency Tower Pune",
           "url": "https://krisalaventis.in/#legacy"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Krisala 41 Evok Ravet",
+          "url": "https://krisalaventis.in/#legacy"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Krisala 41 Platinium Marunji",
+          "url": "https://krisalaventis.in/#legacy"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "Krisala 41 Zircon Tathawade",
+          "url": "https://krisalaventis.in/#legacy"
         }
       ]
     },
@@ -226,9 +292,10 @@ const masterSchema = {
       "@type": "WebSite",
       "@id": "https://krisalaventis.in/#website",
       "url": "https://krisalaventis.in",
-      "name": "Krisala Aventis Tathawade Official",
-      "publisher": { "@id": "https://krisalaventis.in/#organization" },
-      "inLanguage": "en-IN"
+      "name": "Krisala Aventis Tathawade",
+      "publisher": {
+        "@id": "https://krisalaventis.in/#organization"
+      }
     }
   ]
 };
@@ -247,7 +314,7 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=9" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=10" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -255,7 +322,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=9" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=10" strategy="afterInteractive" />
       </body>
     </html>
   );
