@@ -757,7 +757,7 @@
     if (emiTotalOutput) emiTotalOutput.textContent = formatINR(totalPayment);
   }
 
-  if (emiAmountSlider) {
+  if (emiAmountSlider && emiRateSlider && emiTenureSlider) {
     emiAmountSlider.addEventListener('input', calculateEMI);
     emiRateSlider.addEventListener('input', calculateEMI);
     emiTenureSlider.addEventListener('input', calculateEMI);
@@ -766,7 +766,7 @@
       pill.addEventListener('click', () => {
         document.querySelectorAll('.bank-presets .bank-pill[data-rate]').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
-        emiRateSlider.value = pill.dataset.rate;
+        if (emiRateSlider) emiRateSlider.value = pill.dataset.rate;
         calculateEMI();
       });
     });
@@ -807,7 +807,7 @@
     if (roiRentalOutput) roiRentalOutput.textContent = `${formatINR(monthlyRentMin)} - ${formatINR(monthlyRentMax)} / mo`;
   }
 
-  if (roiPropSlider) {
+  if (roiPropSlider && roiRateSlider && roiYearsSlider) {
     roiPropSlider.addEventListener('input', calculateROI);
     roiRateSlider.addEventListener('input', calculateROI);
     roiYearsSlider.addEventListener('input', calculateROI);
@@ -816,7 +816,7 @@
       pill.addEventListener('click', () => {
         document.querySelectorAll('.bank-presets .bank-pill[data-roi]').forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
-        roiRateSlider.value = pill.dataset.roi;
+        if (roiRateSlider) roiRateSlider.value = pill.dataset.roi;
         calculateROI();
       });
     });
