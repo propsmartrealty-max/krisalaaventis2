@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krisala-aventis-v1';
+const CACHE_NAME = 'krisala-aventis-v2';
 const STATIC_ASSETS = [
   '/',
   '/assets/css/style.min.css',
@@ -9,11 +9,6 @@ const STATIC_ASSETS = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
-    })
-  );
   self.skipWaiting();
 });
 
@@ -21,7 +16,7 @@ self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
-        keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
+        keys.map((k) => caches.delete(k))
       );
     })
   );
@@ -29,21 +24,12 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  // Only handle GET requests for same-origin static assets, never block HTML/Next chunks
   if (e.request.method !== 'GET') return;
-  
-  // Stale-while-revalidate strategy for high speed & offline support
-  e.respondWith(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.match(e.request).then((cachedResponse) => {
-        const fetchPromise = fetch(e.request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            cache.put(e.request, networkResponse.clone());
-          }
-          return networkResponse;
-        }).catch(() => cachedResponse);
+  if (!e.request.url.startsWith(self.location.origin)) return;
+  if (e.request.url.includes('/_next/')) return;
 
-        return cachedResponse || fetchPromise;
-      });
-    })
+  e.respondWith(
+    fetch(e.request).catch(() => caches.match(e.request))
   );
 });
