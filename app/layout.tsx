@@ -212,6 +212,7 @@ const masterSchema = {
       "description": "Ultra-luxury residential community featuring 2.25 and 3.25 BHK Smart Study apartments in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
       "url": "https://krisalaventis.in",
       "telephone": "+917744009295",
+      "image": "https://krisalaventis.in/assets/images/hero.webp",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Beside Shakai Circle, Mumbai-Pune Expressway Service Road, Tathawade",
@@ -228,6 +229,36 @@ const masterSchema = {
       "numberOfAccommodationUnits": 400,
       "numberOfBedrooms": "2 to 4",
       "petsAllowed": true,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "248",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Rahul Deshmukh" },
+          "datePublished": "2026-03-15",
+          "reviewBody": "The +0.25 Smart Study in Krisala Aventis is a game changer for remote IT work. Premium Aluform quality and just 10 mins from Hinjewadi Phase 1.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Pooja Kulkarni" },
+          "datePublished": "2026-04-02",
+          "reviewBody": "Booked our 2.25 BHK in Tower A. Direct highway connectivity, 40+ rooftop amenities, and 100% legal clarity with MahaRERA P52100080336.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Amitabh Sharma" },
+          "datePublished": "2026-03-28",
+          "reviewBody": "The 3.25 BHK floor plan has unmatched carpet space utilization. The corner decks and high-rise views towards Hinjewadi hills are exceptional.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        }
+      ],
       "amenityFeature": [
         { "@type": "LocationFeatureSpecification", "name": "Rooftop Podium Swimming Pool", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Aluform Construction Technology", "value": true },
@@ -305,7 +336,7 @@ const masterSchema = {
       ]
     },
     {
-      "@type": "Apartment",
+      "@type": "Accommodation",
       "@id": "https://krisalaventis.in/#apartment-2bhk",
       "name": "Krisala Aventis 2.25 BHK Smart Study Apartment Tathawade",
       "description": "Ultra-luxury 2.25 BHK apartment with dedicated Smart Study work cubicle, 839 sq.ft carpet area, Aluform construction, and panoramic balcony views in Tathawade, Pune. MahaRERA P52100080336.",
@@ -314,96 +345,17 @@ const masterSchema = {
         "https://krisalaventis.in/assets/images/floorplan-2bhk.webp"
       ],
       "numberOfRooms": 3,
-      "occupancy": {
-        "@type": "QuantitativeValue",
-        "maxValue": 4
-      },
       "floorSize": {
         "@type": "QuantitativeValue",
         "value": 839,
         "unitCode": "FTK"
       },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Beside Shakai Circle, Mumbai-Pune Expressway Service Road, Tathawade",
-        "addressLocality": "Pune",
-        "addressRegion": "Maharashtra",
-        "postalCode": "411033",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 18.6298,
-        "longitude": 73.7560
-      },
       "containedInPlace": {
         "@id": "https://krisalaventis.in/#apartment-complex"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "248",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Rahul Deshmukh (Infosys Pune)" },
-          "datePublished": "2026-03-15",
-          "reviewBody": "The +0.25 Smart Study in Krisala Aventis is a game changer for remote IT work. Premium Aluform quality and just 10 mins from Hinjewadi Phase 1.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "itemReviewed": {
-            "@type": "ApartmentComplex",
-            "name": "Krisala Aventis Tathawade",
-            "image": "https://krisalaventis.in/assets/images/hero.webp",
-            "telephone": "+917744009295",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Beside Shakai Circle, Tathawade",
-              "addressLocality": "Pune",
-              "addressRegion": "Maharashtra",
-              "postalCode": "411033",
-              "addressCountry": "IN"
-            }
-          }
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Pooja Kulkarni (Wipro Technologies)" },
-          "datePublished": "2026-04-02",
-          "reviewBody": "Booked our 2.25 BHK in Tower A. Direct highway connectivity, 40+ rooftop amenities, and 100% legal clarity with MahaRERA P52100080336.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "itemReviewed": {
-            "@type": "ApartmentComplex",
-            "name": "Krisala Aventis Tathawade",
-            "image": "https://krisalaventis.in/assets/images/hero.webp",
-            "telephone": "+917744009295",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Beside Shakai Circle, Tathawade",
-              "addressLocality": "Pune",
-              "addressRegion": "Maharashtra",
-              "postalCode": "411033",
-              "addressCountry": "IN"
-            }
-          }
-        }
-      ],
-      "offers": {
-        "@type": "Offer",
-        "url": "https://krisalaventis.in/#floorplans",
-        "priceCurrency": "INR",
-        "price": "8500000",
-        "priceValidUntil": "2027-12-31",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@id": "https://krisalaventis.in/#organization"
-        }
       }
     },
     {
-      "@type": "Apartment",
+      "@type": "Accommodation",
       "@id": "https://krisalaventis.in/#apartment-3bhk",
       "name": "Krisala Aventis 3.25 BHK Luxury Suite Tathawade",
       "description": "Expansive 3.25 BHK luxury residence with dedicated executive study suite, 1116 sq.ft carpet area, master bedroom deck, and 40+ lifestyle amenities in Tathawade, Pune. MahaRERA P52100080336.",
@@ -412,71 +364,13 @@ const masterSchema = {
         "https://krisalaventis.in/assets/images/floorplan-3bhk.webp"
       ],
       "numberOfRooms": 4,
-      "occupancy": {
-        "@type": "QuantitativeValue",
-        "maxValue": 6
-      },
       "floorSize": {
         "@type": "QuantitativeValue",
         "value": 1116,
         "unitCode": "FTK"
       },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Beside Shakai Circle, Mumbai-Pune Expressway Service Road, Tathawade",
-        "addressLocality": "Pune",
-        "addressRegion": "Maharashtra",
-        "postalCode": "411033",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 18.6298,
-        "longitude": 73.7560
-      },
       "containedInPlace": {
         "@id": "https://krisalaventis.in/#apartment-complex"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "248",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Amitabh Sharma (Tata Consultancy Services)" },
-          "datePublished": "2026-03-28",
-          "reviewBody": "The 3.25 BHK floor plan has unmatched carpet space utilization. The corner decks and high-rise views towards Hinjewadi hills are exceptional.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "itemReviewed": {
-            "@type": "ApartmentComplex",
-            "name": "Krisala Aventis Tathawade",
-            "image": "https://krisalaventis.in/assets/images/hero.webp",
-            "telephone": "+917744009295",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Beside Shakai Circle, Tathawade",
-              "addressLocality": "Pune",
-              "addressRegion": "Maharashtra",
-              "postalCode": "411033",
-              "addressCountry": "IN"
-            }
-          }
-        }
-      ],
-      "offers": {
-        "@type": "Offer",
-        "url": "https://krisalaventis.in/#floorplans",
-        "priceCurrency": "INR",
-        "price": "12000000",
-        "priceValidUntil": "2027-12-31",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@id": "https://krisalaventis.in/#organization"
-        }
       }
     },
     {
@@ -580,7 +474,7 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=20" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=21" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -588,7 +482,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=20" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=21" strategy="afterInteractive" />
       </body>
     </html>
   );
