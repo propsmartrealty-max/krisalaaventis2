@@ -477,7 +477,7 @@ export default function Home() {
       <p>A transparent comparative breakdown of construction technology, space efficiency, and value proposition in West Pune.</p>
     </div>
 
-    <div className="table-responsive" style="margin-top: 40px; border-radius: 20px; overflow: hidden; border: 1px solid var(--clr-glass-border);">
+    <div className="table-responsive" style="margin-top: 40px; border-radius: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--clr-glass-border);">
       <table className="sge-table" style="width: 100%; border-collapse: collapse; text-align: left; background: rgba(5,6,8,0.7); backdrop-filter: blur(20px);">
         <thead>
           <tr style="background: rgba(202, 163, 80, 0.15); border-bottom: 2px solid var(--clr-gold);">
@@ -986,6 +986,22 @@ export default function Home() {
     <span className="wa-btn-icon">💬</span>
     <span className="wa-btn-text">Chat with Sales</span>
   </button>
+</div>
+
+{/* Mobile Sticky Quick Action Bar */}
+<div className="mobile-sticky-action-bar">
+  <a href="tel:+917744009295" className="mob-action-btn mob-btn-call">
+    <span className="mob-icon">📞</span>
+    <span>Call Now</span>
+  </a>
+  <a href="https://wa.me/917744009295?text=Hi%20Krisala%20Team%2C%20I%20want%20to%20know%20more%20about%20Krisala%20Aventis%20Tathawade%202.25%20%26%203.25%20BHK." target="_blank" rel="noopener noreferrer" className="mob-action-btn mob-btn-wa">
+    <span className="mob-icon">💬</span>
+    <span>WhatsApp</span>
+  </a>
+  <a href="#contact" className="mob-action-btn mob-btn-visit">
+    <span className="mob-icon">🗓️</span>
+    <span>Site Visit</span>
+  </a>
 </div>
 
 </main>
