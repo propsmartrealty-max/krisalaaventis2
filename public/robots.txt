@@ -1,25 +1,36 @@
 # ==============================================================================
-# KRISALA AVENTIS TATHAWADE — MASTER SEARCH ENGINE CRAWLER DIRECTIVE
-# Canonical Domain: https://krisalaventis.in
-# MahaRERA Registration: P52100080336
+# KRISALA AVENTIS TATHAWADE — ULTRA ADVANCED SEARCH ENGINE & AI ROBOTS DIRECTIVE
+# Official Portal: https://krisalaventis.in | MahaRERA No: P52100080336
+# Last Updated: 2026-08-19
 # ==============================================================================
 
+# --- Priority Tier 1: Primary Search Crawlers ---
 User-agent: Googlebot
 Allow: /
 Allow: /assets/
-Allow: /sitemap.xml
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /*.xml
 Crawl-delay: 0.1
 
 User-agent: Googlebot-Image
 Allow: /assets/images/
+Allow: /assets/
 Allow: /
 
-User-agent: Googlebot-News
+User-agent: Googlebot-Mobile
 Allow: /
+Allow: /assets/
 
 User-agent: Bingbot
 Allow: /
+Allow: /assets/
+Allow: /assets/images/
 Crawl-delay: 0.2
+
+User-agent: msnbot
+Allow: /
 
 User-agent: Slurp
 Allow: /
@@ -30,31 +41,57 @@ Allow: /
 User-agent: Baiduspider
 Allow: /
 
-User-agent: Yandex
+User-agent: YandexBot
 Allow: /
 
 User-agent: Applebot
 Allow: /
+Allow: /assets/images/
 
-# Allow AI Search Crawlers for Generative SERP Inclusion
+# --- Priority Tier 2: AI Search, LLMs & Generative Engine Optimization (GEO) ---
 User-agent: GPTBot
+Allow: /
+Allow: /assets/
+
+User-agent: ChatGPT-User
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
+Allow: /assets/
 
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bytespider
 Allow: /
 
 User-agent: CCBot
 Allow: /
 
-# General Directives
+# --- Global Catch-All Directives ---
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
+Disallow: /admin/
+Disallow: /*?*fbclid=*
+Disallow: /*?*gclid=*
+Disallow: /*?*utm_*
 
-# Master Canonical XML Sitemap Index
+# --- Master XML Sitemaps Hierarchy ---
 Sitemap: https://krisalaventis.in/sitemap.xml
+Sitemap: https://krisalaventis.in/sitemap-index.xml
+Sitemap: https://krisalaventis.in/sitemap-core.xml
+Sitemap: https://krisalaventis.in/sitemap-nri.xml
+Sitemap: https://krisalaventis.in/sitemap-pune.xml
