@@ -61,10 +61,10 @@
   if (nav) {
     let isScrolled = false;
     const syncNavPosition = () => {
-      const scrollY = window.scrollY || window.pageYOffset || 0;
-      const ribbonHeight = ribbon ? ribbon.offsetHeight : 0;
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      const ribbonHeight = ribbon && ribbon.offsetHeight > 0 ? ribbon.offsetHeight : 38;
 
-      if (scrollY > 40) {
+      if (scrollY > 30) {
         if (!isScrolled) {
           isScrolled = true;
           if (ribbon) {
@@ -73,10 +73,10 @@
             ribbon.style.pointerEvents = 'none';
           }
           nav.classList.add('scrolled');
-          nav.style.top = '12px';
+          nav.style.top = '10px';
         }
       } else {
-        if (isScrolled || !nav.style.top) {
+        if (isScrolled || !nav.classList.contains('scrolled')) {
           isScrolled = false;
           if (ribbon) {
             ribbon.style.transform = 'translateY(0)';
@@ -84,7 +84,7 @@
             ribbon.style.pointerEvents = 'auto';
           }
           nav.classList.remove('scrolled');
-          nav.style.top = ribbonHeight > 0 ? `${ribbonHeight + 10}px` : '48px';
+          nav.style.top = `${ribbonHeight + 8}px`;
         }
       }
     };
@@ -93,6 +93,8 @@
     syncNavPosition();
     window.addEventListener('scroll', syncNavPosition, { passive: true });
     window.addEventListener('resize', syncNavPosition, { passive: true });
+    window.addEventListener('orientationchange', syncNavPosition, { passive: true });
+    window.addEventListener('DOMContentLoaded', syncNavPosition);
     window.addEventListener('load', syncNavPosition);
 
     if (ribbon) {
