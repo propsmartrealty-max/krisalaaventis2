@@ -367,20 +367,37 @@
         return { success: false };
       }
 
-      // Primary Dispatch
-      dispatchWithRetry('https://www.krisalaventis.in/api/contact', leadData)
-        .then(result => {
+      // Primary Dispatch via Next.js internal API route + Web3Forms fallback
+      dispatchWithRetry('/api/contact', leadData)
+        .then(async (result) => {
           if (result.success) {
-            // Mark as delivered in vault
             markVaultDelivered(data);
             try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
           } else {
-            // Queue for retry on next page load
-            queueFailedLead(data);
-            console.error('[Sovereign Pipeline] All retries exhausted. Lead queued for recovery.');
-            trackEvent('Pipeline', 'Email Failed - Queued', data.name);
+            console.warn('[Sovereign Pipeline] Local API route unconfigured or failed. Triggering Direct Web3Forms Relay to propsmartrealty@gmail.com...');
+            try {
+              const backupRes = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                  access_key: 'b28972bc-8e15-4fe5-86b7-82b12ee0e82b',
+                  subject: `🔥 New Lead: ${leadData.name} — Krisala Aventis`,
+                  from_name: 'Krisala Aventis Portal',
+                  to_email: 'propsmartrealty@gmail.com',
+                  ...leadData
+                })
+              });
+              if (backupRes.ok) {
+                console.log('[Sovereign Pipeline] Web3Forms Relay SUCCESS to propsmartrealty@gmail.com');
+                markVaultDelivered(data);
+              } else {
+                queueFailedLead(data);
+              }
+            } catch (backupErr) {
+              queueFailedLead(data);
+            }
           }
-          // Always show success to user (lead is in vault regardless)
+          // Always show success to user
           showSuccess(currentBtn, currentBtnText, originalText, form, data.name, data.phone);
           form.reset();
         });
