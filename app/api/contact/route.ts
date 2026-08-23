@@ -31,15 +31,24 @@ export async function POST(request: Request) {
 
     // Validate env variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error("Missing EMAIL_USER or EMAIL_PASS environment variables.");
-      return NextResponse.json({ success: false, error: 'Server Configuration Error' }, { status: 500 });
+      const missing = [];
+      if (!process.env.EMAIL_USER) missing.push('EMAIL_USER');
+      if (!process.env.EMAIL_PASS) missing.push('EMAIL_PASS');
+      console.error("Missing environment variables:", missing.join(', '));
+      return NextResponse.json({ 
+        success: false, 
+        error: `Server Configuration Error: Missing [${missing.join(', ')}] in Vercel Environment Variables.`,
+        missing 
+      }, { status: 500 });
     }
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.EMAIL_USER.trim(),
+        pass: process.env.EMAIL_PASS.trim().replace(/\s+/g, ''),
       },
     });
 
