@@ -449,6 +449,82 @@ const masterSchema = {
       }
     },
     {
+      "@type": "FAQPage",
+      "@id": "https://krisalaventis.in/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the current construction status of Krisala Aventis Tathawade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis Tathawade construction is in full swing using 100% Aluform technology. Substructure and foundation work are completed and high-rise RCC wall casting across Towers A & B is actively progressing. MahaRERA registration number is P52100080336."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the sizes and carpet areas of 2 BHK and 3 BHK flats?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis offers 2.25 BHK (839 sq.ft carpet area) and 3.25 BHK (1116 sq.ft carpet area) residences. Both configurations feature an extra dedicated Smart Study cubicle ideal for work-from-home or student study."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Krisala Aventis located in Pune?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis is located beside Shakai Circle, along the Mumbai-Pune-Bangalore Highway Service Road in Tathawade, Pune 411033. It is situated just 10 minutes from Hinjewadi IT Park Phase 1 and 5 minutes from Wakad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the MahaRERA registration number for Krisala Aventis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The MahaRERA Registration Number for Krisala Aventis Tathawade is P52100080336. Verification is available on the official MahaRERA online portal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What lifestyle amenities are provided at Krisala Aventis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis features 40+ rooftop and podium lifestyle amenities including a rooftop swimming pool, gymnasium, zumba studio, net cricket area, futsal court, biometric security, and solar water heaters."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krisalaventis.in/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krisalaventis.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Pune Real Estate",
+          "item": "https://krisalaventis.in/#pune-real-estate-index"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tathawade Flats",
+          "item": "https://krisalaventis.in/#floorplans"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Krisala Aventis Tathawade",
+          "item": "https://krisalaventis.in/#overview"
+        }
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://krisalaventis.in/#website",
       "url": "https://krisalaventis.in",
@@ -474,7 +550,7 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=24" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=25" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -482,7 +558,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         {children}
-        <Script src="/assets/js/script.min.js?v=24" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=25" strategy="afterInteractive" />
       </body>
     </html>
   );
