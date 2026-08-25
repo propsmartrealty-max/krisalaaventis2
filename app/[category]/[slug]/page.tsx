@@ -149,23 +149,15 @@ export default async function Page({
 
   const realEstateSchema = {
     "@context": "https://schema.org",
-    "@type": "RealEstateListing",
+    "@type": "Apartment",
     name: page.title,
     description: page.description,
     url: pageUrl,
     image: "https://krisalaventis.in/assets/images/hero.webp",
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "INR",
-      price: "8500000",
-      availability: "https://schema.org/InStock",
-      validFrom: "2026-01-01",
-      seller: {
-        "@type": "RealEstateAgent",
-        name: "Krisala Legacy",
-        telephone: "+917744009295",
-        url: "https://krisalaventis.in"
-      }
+    containedInPlace: {
+      "@type": "ApartmentComplex",
+      "name": "Krisala Aventis Tathawade",
+      "url": "https://krisalaventis.in"
     }
   };
 
