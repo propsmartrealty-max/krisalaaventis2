@@ -4,8 +4,22 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static optimizations
   },
-  trailingSlash: false, // Matches current static architecture
+  trailingSlash: false,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: '/index.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
