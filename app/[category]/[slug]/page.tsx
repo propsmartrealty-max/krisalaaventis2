@@ -183,12 +183,12 @@ export default async function Page({
   }
 
   const krisalaProjects = [
-    { name: "Krisala Aventis Tathawade", tag: "Flagship New Launch", desc: "2.25 & 3.25 BHK Smart Study Homes on Mumbai-Pune Highway.", link: "/#floorplans" },
-    { name: "Krisala Luxovert Tathawade", tag: "Luxury Series", desc: "Premium 2, 3 & 4 BHK Residences near Hinjewadi Phase 1.", link: "/#related-projects" },
-    { name: "Krisala 41 Cosmo Tathawade", tag: "High-Rise Gated Community", desc: "2 & 2.75 BHK Apartments near Bhumkar Chowk.", link: "/#related-projects" },
-    { name: "Krisala 41 Estera Punawale", tag: "Growth Corridor", desc: "Spacious 2 & 3 BHK Homes near Mumbai Expressway.", link: "/#related-projects" },
-    { name: "Krisala 41 Zircon Tathawade", tag: "Executive Living", desc: "Modern 2 & 3 BHK Flats close to JSPM University.", link: "/#related-projects" },
-    { name: "Krisala 41 Evok Ravet", tag: "BRTS Corridor", desc: "High-speed transit connectivity & resort lifestyle.", link: "/#related-projects" }
+    { name: "Krisala Aventis Tathawade", tag: "Flagship New Launch", desc: "2.25 & 3.25 BHK Smart Study Homes on Mumbai-Pune Highway.", link: "/krisala-aventis-tathawade-2-bhk-flats" },
+    { name: "Krisala Luxovert Tathawade", tag: "Luxury Series", desc: "Premium 2, 3 & 4 BHK Residences near Hinjewadi Phase 1.", link: "/krisala-aventis-tathawade-flats-near-hinjewadi" },
+    { name: "Krisala 41 Cosmo Tathawade", tag: "High-Rise Gated Community", desc: "2 & 2.75 BHK Apartments near Bhumkar Chowk.", link: "/krisala-aventis-tathawade-construction-status" },
+    { name: "Krisala 41 Estera Punawale", tag: "Growth Corridor", desc: "Spacious 2 & 3 BHK Homes near Mumbai Expressway.", link: "/krisala-aventis-tathawade-market-growth-calculator" },
+    { name: "Krisala 41 Zircon Tathawade", tag: "Executive Living", desc: "Modern 2 & 3 BHK Flats close to JSPM University.", link: "/krisala-aventis-tathawade-connectivity-it-hubs" },
+    { name: "Krisala 41 Evok Ravet", tag: "BRTS Corridor", desc: "High-speed transit connectivity & resort lifestyle.", link: "/krisala-aventis-tathawade-investment-roi" }
   ];
 
   return (
@@ -218,26 +218,23 @@ export default async function Page({
             <a href="/" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
               Home
             </a>
-            <a href="/#overview" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
+            <a href="/krisala-aventis-tathawade-flats-near-hinjewadi" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
               Overview
             </a>
-            <a href="/#floorplans" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
+            <a href="/krisala-aventis-tathawade-2-bhk-flats" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
               Floor Plans
             </a>
-            <a href="/#inventory-matrix" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              Towers
+            <a href="/krisala-aventis-tathawade-construction-status" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
+              Towers & Status
             </a>
-            <a href="/#calculators" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
+            <a href="/krisala-aventis-tathawade-market-growth-calculator" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
               EMI & ROI
             </a>
-            <a href="/#rera-vault" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              MahaRERA
-            </a>
-            <a href="/#location" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
+            <a href="/krisala-aventis-tathawade-connectivity-it-hubs" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
               Location
             </a>
             <a
-              href="/#contact"
+              href="/krisala-aventis-tathawade-brochure-download"
               className="px-6 py-2 bg-gradient-to-r from-gold to-goldLight rounded-full font-bold hover:shadow-lg transition-all text-black text-sm"
             >
               Get Price List →
@@ -319,7 +316,7 @@ export default async function Page({
                   </div>
                   <div className="mt-6 pt-6 border-t border-gray-700/60">
                     <a
-                      href="/#contact"
+                      href="/krisala-aventis-tathawade-brochure-download"
                       className="inline-block w-full text-center py-3 bg-gradient-to-r from-gold to-goldLight text-black font-bold rounded-lg hover:shadow-xl transition-all"
                     >
                       Book Priority Site Visit →

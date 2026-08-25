@@ -173,7 +173,7 @@
       const hash = href.substring(href.indexOf("#"));
       const path = href.substring(0, href.indexOf("#"));
 
-      // Only smooth scroll if on same page (or if target is on index.html and we are on index.html)
+      // Only smooth scroll if on same page
       if (path === "" || path === "/" || path === window.location.pathname) {
         const target = document.querySelector(hash);
         if (target) {
@@ -182,8 +182,13 @@
           const top = target.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top, behavior: 'smooth' });
           
+          // Keep URL completely clean without adding # to address bar
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+
           // Close mobile menu if open
-          if (navLinks.classList.contains('active')) {
+          if (navLinks && navLinks.classList.contains('active')) {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
             document.body.classList.remove('no-scroll');
