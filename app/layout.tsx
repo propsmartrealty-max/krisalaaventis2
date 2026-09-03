@@ -222,6 +222,17 @@ const masterSchema = {
         { "@type": "Place", "name": "Pune, Maharashtra" }
       ],
       "hasMap": "https://maps.google.com/?q=18.6298,73.7560",
+      "knowsAbout": [
+        "Krisala Aventis Tathawade",
+        "Krisala Legacy Pune",
+        "Krisala Developers Projects",
+        "2.25 BHK Flats in Tathawade",
+        "3.25 BHK Luxury Apartments Pune",
+        "Smart Study Real Estate Concept",
+        "Hinjewadi Phase 1 IT Park Real Estate",
+        "MahaRERA P52100080336 Verification",
+        "Wakad Tathawade Property Investment"
+      ],
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -235,6 +246,62 @@ const masterSchema = {
         "https://www.instagram.com/krisala_legacy",
         "https://www.linkedin.com/company/krisala-legacy"
       ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://krisalaventis.in/#product-2bhk",
+      "name": "Krisala Aventis 2.25 BHK Smart Study Flat Tathawade",
+      "image": "https://krisalaventis.in/assets/images/floorplan-2bhk.webp",
+      "description": "Premium 2.25 BHK luxury apartment with dedicated Smart Study work cubicle (839 sq.ft carpet area) at Krisala Aventis Tathawade, Pune near Hinjewadi Phase 1. MahaRERA P52100080336.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Krisala Legacy"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://krisalaventis.in",
+        "priceCurrency": "INR",
+        "price": "8500000",
+        "priceValidUntil": "2027-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@id": "https://krisalaventis.in/organization"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "248"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://krisalaventis.in/#product-3bhk",
+      "name": "Krisala Aventis 3.25 BHK Ultra Luxury Residence Tathawade",
+      "image": "https://krisalaventis.in/assets/images/floorplan-3bhk.webp",
+      "description": "Spacious 3.25 BHK ultra-luxury apartment with dedicated study suite (1116 sq.ft carpet area) at Krisala Aventis Tathawade, Pune. MahaRERA P52100080336.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Krisala Legacy"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://krisalaventis.in",
+        "priceCurrency": "INR",
+        "price": "11500000",
+        "priceValidUntil": "2027-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@id": "https://krisalaventis.in/organization"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "248"
+      }
     },
     {
       "@type": "ApartmentComplex",
@@ -486,34 +553,58 @@ const masterSchema = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is the current construction status of Krisala Aventis Tathawade?",
+          "name": "What is the price of 2.25 BHK and 3.25 BHK in Krisala Aventis Tathawade?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Krisala Aventis Tathawade construction is in full swing using 100% Aluform technology. Substructure and foundation work are completed and high-rise RCC wall casting across Towers A & B is actively progressing. MahaRERA registration number is P52100080336."
+            "text": "Krisala Aventis Tathawade price starts from ₹85 Lakh* onwards for 2.25 BHK Smart Study homes (839 sq.ft carpet) and ₹1.15 Cr* onwards for 3.25 BHK luxury residences (1116 sq.ft carpet). Contact official sales at +917744009295 for the latest all-inclusive cost sheet and pre-launch pricing."
           }
         },
         {
           "@type": "Question",
-          "name": "What are the sizes and carpet areas of 2 BHK and 3 BHK flats?",
+          "name": "What is the MahaRERA registration number for Krisala Aventis Pune?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Krisala Aventis offers 2.25 BHK (839 sq.ft carpet area) and 3.25 BHK (1116 sq.ft carpet area) residences. Both configurations feature an extra dedicated Smart Study cubicle ideal for work-from-home or student study."
+            "text": "The official MahaRERA Registration Number for Krisala Aventis Tathawade is P52100080336. The project is 100% clear with all legal approvals from PCMC and MahaRERA authority."
           }
         },
         {
           "@type": "Question",
-          "name": "Where is Krisala Aventis located in Pune?",
+          "name": "Where is the exact location of Krisala Aventis Tathawade and distance to Hinjewadi Phase 1?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Krisala Aventis is located beside Shakai Circle, along the Mumbai-Pune-Bangalore Highway Service Road in Tathawade, Pune 411033. It is situated just 10 minutes from Hinjewadi IT Park Phase 1 and 5 minutes from Wakad."
+            "text": "Krisala Aventis is strategically located beside Shakai Circle, along the Mumbai-Pune-Bangalore Highway Service Road in Tathawade, Pune 411033. It is situated just 7 to 10 minutes (3.8 km) from Hinjewadi IT Park Phase 1, 5 minutes from Bhumkar Chowk Wakad, and 2 minutes from D.Y. Patil University campus."
           }
         },
         {
           "@type": "Question",
-          "name": "What is the MahaRERA registration number for Krisala Aventis?",
+          "name": "What does +0.25 Smart Study mean in Krisala Aventis flats?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The MahaRERA Registration Number for Krisala Aventis Tathawade is P52100080336. Verification is available on the official MahaRERA online portal."
+            "text": "The +0.25 Smart Study in Krisala Aventis is an intelligently engineered dedicated acoustic work-from-home or student study pod integrated into the floor plan with high-speed fiber-ready conduits, natural sunlight, and ergonomic space optimization."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the possession date and construction update for Krisala Aventis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis Tathawade is scheduled for possession starting December 2028 (with Phase 1 delivery targeted ahead of schedule under MahaRERA P52100080336). Construction is executing in full swing using precision Aluform shuttering technology."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which banks have approved home loans for Krisala Aventis Tathawade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis is pre-approved for home loan financing by top nationalized and private banking institutions including State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Bank of Baroda, and Punjab National Bank with competitive mortgage interest rates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to download the official Krisala Aventis Tathawade brochure PDF and floor plans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can download the official Krisala Aventis Tathawade e-brochure, floor plan layouts, master plan, and cost sheet instantly by submitting the VIP enquiry form on https://krisalaventis.in or by messaging our official sales concierge on WhatsApp at +917744009295."
           }
         },
         {
@@ -521,7 +612,7 @@ const masterSchema = {
           "name": "What lifestyle amenities are provided at Krisala Aventis?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Krisala Aventis features 40+ rooftop and podium lifestyle amenities including a rooftop swimming pool, gymnasium, zumba studio, net cricket area, futsal court, biometric security, and solar water heaters."
+            "text": "Krisala Aventis features 40+ rooftop and podium lifestyle amenities including an infinity rooftop swimming pool, fully equipped gymnasium, zumba & yoga studio, net cricket turf, futsal court, senior citizens reflexology park, co-working lounge, and 24x7 biometric security."
           }
         }
       ]
