@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const isExport = process.env.OUTPUT_EXPORT === 'true' || process.env.NEXT_EXPORT === 'true' || process.env.CLOUDFLARE_BUILD === 'true';
+const isExport = process.env.DISABLE_EXPORT !== 'true'; // Default to static export (out/) for Cloudflare Pages
 
 const nextConfig = {
   output: isExport ? 'export' : undefined,
@@ -8,20 +8,24 @@ const nextConfig = {
   },
   trailingSlash: false,
   poweredByHeader: false,
-  async redirects() {
-    return [
-      {
-        source: '/index.html',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
+  ...(isExport
+    ? {}
+    : {
+        async redirects() {
+          return [
+            {
+              source: '/index.html',
+              destination: '/',
+              permanent: true,
+            },
+            {
+              source: '/home',
+              destination: '/',
+              permanent: true,
+            },
+          ];
+        },
+      }),
 };
 
 export default nextConfig;

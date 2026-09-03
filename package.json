@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
-    "build": "node scripts/generate-sitemap.js && next build --webpack",
-    "build:cloudflare": "OUTPUT_EXPORT=true node scripts/generate-sitemap.js && OUTPUT_EXPORT=true next build --webpack && node scripts/prepare-cloudflare-dist.js",
+    "build": "node scripts/generate-sitemap.js && next build --webpack && node scripts/prepare-cloudflare-dist.js",
+    "build:cloudflare": "node scripts/generate-sitemap.js && next build --webpack && node scripts/prepare-cloudflare-dist.js",
     "start": "next start",
     "lint": "next lint",
     "index:google": "node indexing-automation/index-push.js",
