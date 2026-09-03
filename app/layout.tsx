@@ -646,7 +646,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/assets/images/logo.jpg" />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=25" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=26" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -664,7 +664,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         {children}
-        <Script src="/assets/js/script.min.js?v=25" strategy="afterInteractive" />
+        <Script src="/assets/js/script.min.js?v=26" strategy="afterInteractive" />
+        <Script src="/assets/js/cinematic.js?v=26" strategy="lazyOnload" />
       </body>
     </html>
   );

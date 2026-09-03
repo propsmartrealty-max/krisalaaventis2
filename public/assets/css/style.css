@@ -1306,12 +1306,39 @@ button { cursor: pointer; font-family: inherit; }
 .feature-item:nth-child(3) .feature-icon { animation-delay: 1s; }
 .feature-item:nth-child(4) .feature-icon { animation-delay: 1.5s; }
 
-/* 6. GLASSMORPHISM HOVER GLOW */
+/* 6. GLASSMORPHISM HOVER GLOW & 3D ELEVATION */
+.glass-glow {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(202, 163, 80, 0.015) 40%, rgba(10, 12, 18, 0.75) 100%) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15), inset 0 0 24px 0 rgba(202, 163, 80, 0.02), 0 12px 36px -4px rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.glass-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(600px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%), rgba(202, 163, 80, 0.12), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-glow:hover::after {
+  opacity: 1;
+}
+
 .glass-glow:hover {
-  box-shadow: 0 0 40px rgba(202, 163, 80, 0.15);
-  border-color: rgba(202, 163, 80, 0.4);
-  transform: translateY(-4px);
-  transition: all 0.4s ease;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.35), 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 45px rgba(202, 163, 80, 0.25);
+  border-color: rgba(202, 163, 80, 0.55) !important;
+  transform: translateY(-8px) scale(1.015);
 }
 
 /* 7. PARALLAX BG */
@@ -1321,74 +1348,125 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* =========================================
-   8. STRATEGIC GLASSMORPHISM ENGINE
+   8. STRATEGIC GLASSMORPHISM ENGINE v4.0
    ========================================= */
 
 /* Frosted Glass Base Utility */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(202, 163, 80, 0.02) 50%, rgba(8, 10, 16, 0.85) 100%) !important;
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 16px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
 }
 
-/* Navbar Scrolled Override */
+/* Navbar Scrolled Glass Override */
 .pill-navbar.scrolled {
-  background: rgba(8, 9, 12, 0.65) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: rgba(8, 10, 16, 0.75) !important;
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(202, 163, 80, 0.25) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(202, 163, 80, 0.12);
 }
 
-/* Feature Cards Override */
-.portfolio-card, .spec-card, .zone-card, .cluster-card, .amenity-cat {
-  background: rgba(255, 255, 255, 0.02) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Feature Cards & Bento Grids Override */
+.portfolio-card, .spec-card, .zone-card, .cluster-card, .amenity-cat, .tower-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(202, 163, 80, 0.015) 45%, rgba(10, 12, 18, 0.8) 100%) !important;
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12), 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Enquiry Form Float */
-.enquiry-left, .enquiry-right {
-  background: rgba(255, 255, 255, 0.02) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* Enquiry Form Glassmorphism */
+.enquiry-left, .enquiry-right, .glass-form-container {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(202, 163, 80, 0.02) 40%, rgba(9, 11, 17, 0.88) 100%) !important;
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
   border-radius: 24px;
   padding: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(202, 163, 80, 0.2) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.2), 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(202, 163, 80, 0.1);
 }
 
 /* Sticky Ribbon Overlay */
 .sticky-ribbon {
-  background: rgba(202, 163, 80, 0.15) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(202, 163, 80, 0.3);
+  background: linear-gradient(90deg, rgba(202, 163, 80, 0.25) 0%, rgba(236, 208, 140, 0.35) 50%, rgba(202, 163, 80, 0.25) 100%) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(202, 163, 80, 0.45);
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-/* Premium Hover Overrides */
-.portfolio-card, .spec-card, .zone-card, .cluster-card, .landmark-card, .bento-card, .fp-card {
-  position: relative;
-  overflow: hidden;
-}
-.portfolio-card::before, .spec-card::before, .zone-card::before, .cluster-card::before, .landmark-card::before, .bento-card::before, .fp-card::before {
+/* Specular Glint Light Sweep on Hover */
+.portfolio-card::before, .spec-card::before, .zone-card::before, .cluster-card::before, .landmark-card::before, .bento-card::before, .fp-card::before, .tower-card::before {
   content: '';
   position: absolute;
-  top: 0; left: -100%; width: 50%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-  transform: skewX(-20deg);
-  transition: 0.7s ease;
-  z-index: 1;
+  top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), rgba(202, 163, 80, 0.15), transparent);
+  transform: skewX(-25deg);
+  transition: 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
   pointer-events: none;
 }
-.portfolio-card:hover::before, .spec-card:hover::before, .zone-card:hover::before, .cluster-card:hover::before, .landmark-card:hover::before, .bento-card:hover::before, .fp-card:hover::before {
-  left: 150%;
+
+.portfolio-card:hover::before, .spec-card:hover::before, .zone-card:hover::before, .cluster-card:hover::before, .landmark-card:hover::before, .bento-card:hover::before, .fp-card:hover::before, .tower-card:hover::before {
+  left: 160%;
 }
+
 .portfolio-card img, .bento-card img, .fp-card img, .zone-card img {
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
+
 .portfolio-card:hover img, .bento-card:hover img, .fp-card:hover img, .zone-card:hover img {
-  transform: scale(1.05) !important;
+  transform: scale(1.06) !important;
+}
+
+/* Aura Glow Animations for Verified & Selling Badges */
+@keyframes auraPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(202, 163, 80, 0.4), inset 0 0 8px rgba(202, 163, 80, 0.2);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(202, 163, 80, 0), inset 0 0 12px rgba(202, 163, 80, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(202, 163, 80, 0), inset 0 0 8px rgba(202, 163, 80, 0.2);
+  }
+}
+
+.hero-badge, .badge-selling, .badge-limited, .tower-status-badge {
+  animation: auraPulse 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Shimmer Button Light Sheen */
+.shimmer-btn, .btn-primary {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(202, 163, 80, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.shimmer-btn::after, .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -100%;
+  width: 60%; height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: rotate(30deg);
+  animation: buttonShimmer 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes buttonShimmer {
+  0% { left: -100%; }
+  35%, 100% { left: 160%; }
 }
 
 /* =============================================
