@@ -33,13 +33,19 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Applebot',
         allow: '/',
       },
-      // Block Hostile AI Scrapers and Spam Bots
+      // Authorize AI Search & Generative Engine Optimization (GEO)
       {
-        userAgent: ['GPTBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai', 'ClaudeBot', 'OmigiliBot'],
-        disallow: ['/'],
-      }
+        userAgent: ['GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'anthropic-ai', 'Google-Extended', 'Bytespider', 'FacebookBot'],
+        allow: '/',
+      },
     ],
-    sitemap: 'https://krisalaventis.in/sitemap.xml',
+    sitemap: [
+      'https://krisalaventis.in/sitemap.xml',
+      'https://krisalaventis.in/sitemap-index.xml',
+      'https://krisalaventis.in/sitemap-core.xml',
+      'https://krisalaventis.in/sitemap-nri.xml',
+      'https://krisalaventis.in/sitemap-pune.xml'
+    ],
     host: 'https://krisalaventis.in',
   };
 }

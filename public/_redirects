@@ -1,0 +1,4 @@
+# Cloudflare Pages Redirect Rules for Krisala Aventis
+/index.html   /   301
+/home         /   301
+/home.html    /   301

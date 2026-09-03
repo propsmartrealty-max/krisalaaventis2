@@ -375,6 +375,25 @@
       // Primary Dispatch via Next.js internal API route + Web3Forms fallback
       dispatchWithRetry('/api/contact', leadData)
         .then(async (result) => {
+          // Google Analytics & Meta Pixel Conversion Dispatches
+          try {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'generate_lead', {
+                event_category: 'Leads',
+                event_label: data.config || 'General Enquiry',
+                value: 1.0,
+                currency: 'INR'
+              });
+            }
+            if (window.dataLayer && typeof window.dataLayer.push === 'function') {
+              window.dataLayer.push({
+                event: 'generate_lead',
+                lead_name: data.name,
+                lead_config: data.config,
+                lead_phone: data.phone
+              });
+            }
+          } catch(e) {}
           if (result.success) {
             markVaultDelivered(data);
             try { if (typeof fbq === 'function') fbq('track', 'Lead'); } catch(e) {}
@@ -599,24 +618,70 @@
   });
 
   /* =============================================
-     10. ANALYTICS & EVENT TRACKING (dataLayer)
+     10. ANALYTICS & EVENT TRACKING (dataLayer & gtag)
      ============================================= */
   function trackEvent(category, action, label) {
-    if (window.dataLayer && typeof window.dataLayer.push === 'function') {
-      window.dataLayer.push({
-        'event': 'ka_engagement',
-        'event_category': category,
-        'event_action': action,
-        'event_label': label
-      });
+    try {
+      if (window.dataLayer && typeof window.dataLayer.push === 'function') {
+        window.dataLayer.push({
+          'event': 'ka_engagement',
+          'event_category': category,
+          'event_action': action,
+          'event_label': label
+        });
+      }
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', action.toLowerCase().replace(/\s+/g, '_'), {
+          event_category: category,
+          event_label: label
+        });
+      }
       console.log(`[Analytics] Tracked: ${category} | ${action} | ${label}`);
-    }
+    } catch(e) {}
   }
 
-  // Track WhatsApp Clicks
-  document.querySelectorAll('.wa-float, .wa-fab').forEach(waBtn => {
+  // Track WhatsApp Clicks across the entire page
+  document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"], .wa-floating-btn, .wa-action-pill').forEach(waBtn => {
     waBtn.addEventListener('click', () => {
-      trackEvent('Communication', 'WhatsApp Click', waBtn.classList.contains('wa-fab') ? 'Floating FAB' : 'Footer/Ribbon');
+      trackEvent('Communication', 'WhatsApp Click', 'Sales Concierge / WhatsApp');
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'contact_whatsapp', {
+            event_category: 'Communication',
+            event_label: 'WhatsApp Inquiry'
+          });
+        }
+      } catch(e) {}
+    });
+  });
+
+  // Track Click-to-Call Clicks
+  document.querySelectorAll('a[href^="tel:"]').forEach(callBtn => {
+    callBtn.addEventListener('click', () => {
+      trackEvent('Communication', 'Phone Call Click', callBtn.getAttribute('href'));
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'click_to_call', {
+            event_category: 'Communication',
+            event_label: '+917744009295'
+          });
+        }
+      } catch(e) {}
+    });
+  });
+
+  // Track Brochure Downloads
+  document.querySelectorAll('a[href*="brochure"]').forEach(brochureBtn => {
+    brochureBtn.addEventListener('click', () => {
+      trackEvent('Engagement', 'Brochure Click', 'Brochure Download');
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'brochure_download', {
+            event_category: 'Engagement',
+            event_label: 'Krisala Aventis Brochure'
+          });
+        }
+      } catch(e) {}
     });
   });
 

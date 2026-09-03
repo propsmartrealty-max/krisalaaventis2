@@ -145,6 +145,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "2f5a8b79d63c4e10b2f18394a7d65b2f",
+    other: {
+      "msvalidate.0": "2f5a8b79d63c4e10b2f18394a7d65b2f",
+    },
+  },
   other: {
     "geo.region": "IN-MH",
     "geo.placename": "Tathawade, Pune, PCMC, Maharashtra",
@@ -215,6 +221,15 @@ const masterSchema = {
         { "@type": "Place", "name": "West Pune" },
         { "@type": "Place", "name": "Pune, Maharashtra" }
       ],
+      "hasMap": "https://maps.google.com/?q=18.6298,73.7560",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ],
       "sameAs": [
         "https://www.facebook.com/KrisalaLegacy",
         "https://www.instagram.com/krisala_legacy",
@@ -227,6 +242,7 @@ const masterSchema = {
       "name": "Krisala Aventis Tathawade",
       "description": "Ultra-luxury residential community featuring 2.25 and 3.25 BHK Smart Study apartments in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
       "url": "https://krisalaventis.in",
+      "hasMap": "https://maps.google.com/?q=18.6298,73.7560",
       "telephone": "+917744009295",
       "image": "https://krisalaventis.in/assets/images/hero.webp",
       "address": {
@@ -547,10 +563,39 @@ const masterSchema = {
       "name": "Krisala Aventis Tathawade",
       "publisher": {
         "@id": "https://krisalaventis.in/organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://krisalaventis.in/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://krisalaventis.in/#webpage",
+      "url": "https://krisalaventis.in",
+      "name": "Krisala Aventis Tathawade Official Portal",
+      "isPartOf": {
+        "@id": "https://krisalaventis.in/website"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".h1-subtitle",
+          ".hero-desc",
+          ".lead-text",
+          ".body-text"
+        ]
       }
     }
   ]
 };
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 export default function RootLayout({
   children,
@@ -566,6 +611,41 @@ export default function RootLayout({
             __html: JSON.stringify(masterSchema),
           }}
         />
+        {GTM_ID && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`,
+            }}
+          />
+        )}
+        {GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  window.gtag = gtag;
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}', {
+                    page_path: window.location.pathname,
+                    send_page_view: true
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/assets/images/logo.jpg" />
         <link rel="stylesheet" href="/assets/css/style.min.css?v=25" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
@@ -573,6 +653,16 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body suppressHydrationWarning>
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
         {children}
         <Script src="/assets/js/script.min.js?v=25" strategy="afterInteractive" />
       </body>

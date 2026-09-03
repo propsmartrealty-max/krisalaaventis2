@@ -33,3 +33,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scratch and local logs
+/scratch/
+*.log
+indexing-automation/indexing-state.json
+indexing-automation/node_modules
+

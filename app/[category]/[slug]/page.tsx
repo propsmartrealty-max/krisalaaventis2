@@ -3,6 +3,7 @@ import nriData from "../../../data/global-nri-seo.json";
 import dominationData from "../../../data/krisala-domination-seo.json";
 import { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const standardParams = data.map((page) => ({
@@ -104,7 +105,7 @@ export default async function Page({
   }
 
   if (!page) {
-    return <h1>404 - Page Not Found</h1>;
+    notFound();
   }
 
   const pageUrl = `https://krisalaventis.in/${page.folder}/${page.url_slug.replace(".html", "")}`;
