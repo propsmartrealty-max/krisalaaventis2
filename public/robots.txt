@@ -12,7 +12,6 @@ Allow: /assets/images/
 Allow: /assets/css/
 Allow: /assets/js/
 Allow: /*.xml
-Crawl-delay: 0.1
 
 User-agent: Googlebot-Image
 Allow: /assets/images/
@@ -85,9 +84,6 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
 Disallow: /admin/
-Disallow: /*?*fbclid=*
-Disallow: /*?*gclid=*
-Disallow: /*?*utm_*
 
 # --- Master XML Sitemaps Hierarchy ---
 Sitemap: https://krisalaventis.in/sitemap.xml

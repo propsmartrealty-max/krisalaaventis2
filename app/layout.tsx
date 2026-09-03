@@ -103,6 +103,19 @@ export const metadata: Metadata = {
   creator: "Krisala Legacy",
   publisher: "Krisala Legacy",
   category: "Real Estate",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/manifest.json",
   alternates: {
     canonical: BASE_URL,
     languages: {
@@ -154,8 +167,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "IN-MH",
     "geo.placename": "Tathawade, Pune, PCMC, Maharashtra",
-    "geo.position": "18.6298;73.7560",
-    "ICBM": "18.6298, 73.7560",
+    "geo.position": "18.6314375;73.7462656",
+    "ICBM": "18.6314375, 73.7462656",
     "DC.title": "Krisala Aventis Tathawade — Luxury 2.25 & 3.25 BHK Flats in Pune",
     "DC.creator": "Krisala Legacy",
     "DC.subject": "Real Estate, Luxury Flats Pune, Tathawade Apartments, Hinjewadi IT Park",
@@ -366,7 +379,68 @@ const masterSchema = {
         { "@type": "LocationFeatureSpecification", "name": "Smart Study Spaces in Every Unit", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Futsal Court & Net Cricket Area", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "24x7 Digital Biometric Security", "value": true }
+      ],
+      "containsPlace": [
+        {
+          "@type": "FloorPlan",
+          "@id": "https://krisalaventis.in/#floorplan-2bhk",
+          "name": "2.25 BHK Smart Study Layout",
+          "numberOfRooms": 3,
+          "numberOfBedrooms": 2,
+          "numberOfBathroomsTotal": 2,
+          "floorSize": {
+            "@type": "QuantitativeValue",
+            "value": 839,
+            "unitCode": "FTK"
+          },
+          "image": "https://krisalaventis.in/assets/images/floorplan-2bhk.webp",
+          "offers": {
+            "@type": "Offer",
+            "price": "8500000",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2027-12-31"
+          }
+        },
+        {
+          "@type": "FloorPlan",
+          "@id": "https://krisalaventis.in/#floorplan-3bhk",
+          "name": "3.25 BHK Executive Suite Layout",
+          "numberOfRooms": 4,
+          "numberOfBedrooms": 3,
+          "numberOfBathroomsTotal": 3,
+          "floorSize": {
+            "@type": "QuantitativeValue",
+            "value": 1116,
+            "unitCode": "FTK"
+          },
+          "image": "https://krisalaventis.in/assets/images/floorplan-3bhk.webp",
+          "offers": {
+            "@type": "Offer",
+            "price": "11500000",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2027-12-31"
+          }
+        }
       ]
+    },
+    {
+      "@type": "RealEstateListing",
+      "@id": "https://krisalaventis.in/#real-estate-listing",
+      "name": "Krisala Aventis Tathawade Residences",
+      "datePosted": "2026-01-01",
+      "url": "https://krisalaventis.in",
+      "about": {
+        "@id": "https://krisalaventis.in/apartment-complex"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "lowPrice": "8500000",
+        "highPrice": "15000000",
+        "offerCount": "400"
+      }
     },
     {
       "@type": "ItemList",
