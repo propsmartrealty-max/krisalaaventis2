@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*"
+  ],
+  "exclude": [
+    "/assets/*",
+    "/favicon.png",
+    "/icon.svg",
+    "/manifest.json",
+    "/robots.txt",
+    "/*.xml",
+    "/llms.txt",
+    "/llms-full.txt"
+  ]
+}

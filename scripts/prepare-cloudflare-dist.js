@@ -18,8 +18,8 @@ if (!fs.existsSync(outDir)) {
 
 console.log('\n🚀 \x1b[1mOptimizing Static Distribution for Cloudflare Pages...\x1b[0m');
 
-// 1. Copy _redirects and _headers
-[' _redirects', '_headers'].forEach(name => {
+// 1. Copy _redirects, _headers and _routes.json
+['_redirects', '_headers', '_routes.json'].forEach(name => {
   const cleanName = name.trim();
   const src = path.join(publicDir, cleanName);
   const dest = path.join(outDir, cleanName);
