@@ -78,8 +78,14 @@ function buildUrlEntry(loc, priority, changeFreq, images = []) {
 // 1. SITEMAP 1: Core Landing Pages & Micro-Silos (sitemap-core.xml)
 let coreSitemapContent = xmlHeader;
 
-// Flagship Homepage
+// Flagship Homepage & Pillar Pages
 coreSitemapContent += buildUrlEntry(DOMAIN, '1.0', 'daily', masterImages);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/pricing`, '0.98', 'daily', [masterImages[0]]);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/floor-plans`, '0.98', 'daily', [masterImages[3], masterImages[4]]);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/location`, '0.95', 'weekly', [masterImages[0], masterImages[2]]);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/amenities`, '0.95', 'weekly', [masterImages[1]]);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/maharera`, '0.95', 'monthly', [masterImages[0]]);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/tathawade-vs-wakad`, '0.95', 'weekly', [masterImages[0]]);
 
 // Core URLs
 for (const page of coreData) {

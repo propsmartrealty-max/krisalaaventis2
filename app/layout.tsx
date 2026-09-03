@@ -191,8 +191,8 @@ const masterSchema = {
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 18.6298,
-        "longitude": 73.7560
+        "latitude": 18.6314375,
+        "longitude": 73.7462656
       },
       "areaServed": [
         { "@type": "Place", "name": "Tathawade, Pune" },
@@ -221,7 +221,7 @@ const masterSchema = {
         { "@type": "Place", "name": "West Pune" },
         { "@type": "Place", "name": "Pune, Maharashtra" }
       ],
-      "hasMap": "https://maps.google.com/?q=18.6298,73.7560",
+      "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv",
       "knowsAbout": [
         "Krisala Aventis Tathawade",
         "Krisala Legacy Pune",
@@ -242,6 +242,7 @@ const masterSchema = {
         }
       ],
       "sameAs": [
+        "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv",
         "https://www.facebook.com/KrisalaLegacy",
         "https://www.instagram.com/krisala_legacy",
         "https://www.linkedin.com/company/krisala-legacy"
@@ -309,7 +310,7 @@ const masterSchema = {
       "name": "Krisala Aventis Tathawade",
       "description": "Ultra-luxury residential community featuring 2.25 and 3.25 BHK Smart Study apartments in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
       "url": "https://krisalaventis.in",
-      "hasMap": "https://maps.google.com/?q=18.6298,73.7560",
+      "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv",
       "telephone": "+917744009295",
       "image": "https://krisalaventis.in/assets/images/hero.webp",
       "address": {
@@ -322,8 +323,8 @@ const masterSchema = {
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 18.6298,
-        "longitude": 73.7560
+        "latitude": 18.6314375,
+        "longitude": 73.7462656
       },
       "numberOfAccommodationUnits": 400,
       "numberOfBedrooms": "2 to 4",
