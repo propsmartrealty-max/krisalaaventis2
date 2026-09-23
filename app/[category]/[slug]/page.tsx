@@ -3,6 +3,7 @@ import nriData from "../../../data/global-nri-seo.json";
 import dominationData from "../../../data/krisala-domination-seo.json";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -198,45 +199,27 @@ export default async function Page({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateSchema) }}
       />
-      <header className="p-6 border-b border-gray-800 bg-[#080a10]/80 backdrop-blur-md sticky top-0 z-50">
-        <nav className="flex justify-between items-center max-w-7xl mx-auto">
-          <a
-            href="/"
-            className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gold to-goldLight flex items-center gap-2"
-          >
-            <span>KRISALA</span>
-            <span className="text-white font-light">AVENTIS</span>
-          </a>
-          <div className="hidden md:flex gap-6 items-center">
-            <a href="/" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              Home
-            </a>
-            <a href="/krisala-aventis-tathawade-flats-near-hinjewadi" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              Overview
-            </a>
-            <a href="/krisala-aventis-tathawade-2-bhk-flats" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              Floor Plans
-            </a>
-            <a href="/krisala-aventis-tathawade-construction-status" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              Towers & Status
-            </a>
-            <a href="/krisala-aventis-tathawade-market-growth-calculator" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              EMI & ROI
-            </a>
-            <a href="/krisala-aventis-tathawade-connectivity-it-hubs" className="hover:text-goldLight transition-colors text-sm uppercase tracking-wider font-medium text-gray-300">
-              Location
-            </a>
-            <a
-              href="/krisala-aventis-tathawade-brochure-download"
-              className="px-6 py-2 bg-gradient-to-r from-gold to-goldLight rounded-full font-bold hover:shadow-lg transition-all text-black text-sm"
-            >
-              Get Price List →
-            </a>
+      {/* Universal Floating Luxury Navbar */}
+      <nav className="pill-navbar" id="mainNav">
+        <div className="nav-container">
+          <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <img src="/assets/images/logo.jpg" alt="Krisala Logo" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
+            <span style={{ fontWeight: 300, letterSpacing: '2px', fontSize: '1.1rem', color: '#fff' }}>AVENTIS</span>
+          </Link>
+          <div className="nav-links">
+            <Link href="/">Home</Link>
+            <Link href="/pricing">Pricing</Link>
+            <Link href="/floor-plans">Floor Plans</Link>
+            <Link href="/location">Location</Link>
+            <Link href="/amenities">Amenities</Link>
+            <Link href="/maharera">MahaRERA</Link>
+            <Link href="/tathawade-vs-wakad">Tathawade vs Wakad</Link>
+            <Link href="/pricing" className="cta-pill magnetic">Get Cost Sheet</Link>
           </div>
-        </nav>
-      </header>
+        </div>
+      </nav>
 
-      <main className="max-w-7xl mx-auto p-6 py-12" suppressHydrationWarning>
+      <main className="max-w-7xl mx-auto p-6 pt-28 pb-12" suppressHydrationWarning>
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-400">
           <ol className="flex items-center space-x-2">
             <li>
@@ -380,8 +363,60 @@ export default async function Page({
         </article>
       </main>
 
-      <footer className="mt-12 p-8 border-t border-gray-800 text-center text-gray-500 text-sm bg-[#080a10]">
-        <p>&copy; 2026 Krisala Legacy Pune. All rights reserved. MahaRERA Registration: P52100080336</p>
+      <footer className="footer" style={{ borderTop: '1px solid var(--clr-glass-border)', background: '#050608', padding: '60px 0 30px' }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '30px', marginBottom: '40px' }}>
+            <div>
+              <Link href="/" style={{ display: 'inline-block', fontSize: '1.4rem', fontWeight: 700, color: '#fff', textDecoration: 'none', marginBottom: '12px' }}>
+                KRISALA <span style={{ color: 'var(--clr-gold)' }}>AVENTIS</span>
+              </Link>
+              <p style={{ fontSize: '0.85rem', color: '#888', lineHeight: 1.6, marginBottom: '16px' }}>
+                Next-generation luxury living in Tathawade. Trusted by 5000+ happy families. Top builders in Pune since 2010.
+              </p>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <a href="https://www.facebook.com/KrisalaLegacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--clr-gold)', textDecoration: 'none', fontSize: '0.85rem' }}>FB</a>
+                <a href="https://www.instagram.com/krisala_legacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--clr-gold)', textDecoration: 'none', fontSize: '0.85rem' }}>IG</a>
+                <a href="https://www.linkedin.com/company/krisala-legacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--clr-gold)', textDecoration: 'none', fontSize: '0.85rem' }}>IN</a>
+              </div>
+            </div>
+            <div>
+              <h5 style={{ color: 'var(--clr-gold)', marginBottom: '14px', fontSize: '0.95rem', textTransform: 'uppercase' }}>Project Explorer</h5>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
+                <Link href="/" style={{ color: '#aaa', textDecoration: 'none' }}>Overview</Link>
+                <Link href="/pricing" style={{ color: '#aaa', textDecoration: 'none' }}>Price List &amp; Cost Sheet</Link>
+                <Link href="/floor-plans" style={{ color: '#aaa', textDecoration: 'none' }}>Floor Plans (2.25 &amp; 3.25 BHK)</Link>
+                <Link href="/location" style={{ color: '#aaa', textDecoration: 'none' }}>Location &amp; Hinjewadi Route</Link>
+                <Link href="/amenities" style={{ color: '#aaa', textDecoration: 'none' }}>40+ Luxury Amenities</Link>
+                <Link href="/maharera" style={{ color: '#aaa', textDecoration: 'none' }}>MahaRERA P52100080336</Link>
+              </div>
+            </div>
+            <div>
+              <h5 style={{ color: 'var(--clr-gold)', marginBottom: '14px', fontSize: '0.95rem', textTransform: 'uppercase' }}>Knowledge Silos</h5>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
+                <Link href="/tathawade-vs-wakad" style={{ color: '#aaa', textDecoration: 'none' }}>Tathawade vs Wakad Analysis</Link>
+                <Link href="/krisala-aventis-tathawade-construction-status" style={{ color: '#aaa', textDecoration: 'none' }}>Aluform Construction Status</Link>
+                <Link href="/krisala-aventis-tathawade-investment-roi" style={{ color: '#aaa', textDecoration: 'none' }}>Investment ROI Analysis</Link>
+                <Link href="/krisala-aventis-tathawade-vastu-compliance" style={{ color: '#aaa', textDecoration: 'none' }}>Vastu Compliance</Link>
+                <Link href="/krisala-aventis-tathawade-brochure-download" style={{ color: '#aaa', textDecoration: 'none' }}>Download Official Brochure</Link>
+              </div>
+            </div>
+            <div>
+              <h5 style={{ color: 'var(--clr-gold)', marginBottom: '14px', fontSize: '0.95rem', textTransform: 'uppercase' }}>Official Location &amp; Connect</h5>
+              <p style={{ fontSize: '0.8rem', color: '#888', marginBottom: '10px', lineHeight: 1.5 }}>
+                Krisala Aventis Sales Experience Center, Beside Shakai Circle, Mumbai-Pune Highway, Tathawade, Pune 411033
+              </p>
+              <a href="https://maps.app.goo.gl/TathawadeLocation" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--clr-gold)', fontWeight: 600, display: 'block', marginBottom: '12px', fontSize: '0.85rem', textDecoration: 'none' }}>
+                📍 Get Directions on Google Maps →
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=917744009295&text=Hi%2C%20I%20visited%20krisalaventis.in%20and%20would%20like%20to%20know%20more%20about%20Krisala%20Aventis%20Tathawade." target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', padding: '8px 16px', background: '#25D366', color: '#fff', borderRadius: '20px', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none' }}>
+                💬 WhatsApp Enquiry
+              </a>
+            </div>
+          </div>
+          <div style={{ textAlign: 'center', fontSize: '0.75rem', color: '#666', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '20px' }}>
+            <p>© 2026 Krisala Legacy Pune. All rights reserved. MahaRERA Registration: P52100080336 | <Link href="/sitemap.xml" style={{ color: 'var(--clr-gold)', textDecoration: 'none' }}>XML Sitemap</Link></p>
+          </div>
+        </div>
       </footer>
     </>
   );

@@ -262,62 +262,6 @@ const masterSchema = {
       ]
     },
     {
-      "@type": "Product",
-      "@id": "https://krisalaventis.in/#product-2bhk",
-      "name": "Krisala Aventis 2.25 BHK Smart Study Flat Tathawade",
-      "image": "https://krisalaventis.in/assets/images/floorplan-2bhk.webp",
-      "description": "Premium 2.25 BHK luxury apartment with dedicated Smart Study work cubicle (839 sq.ft carpet area) at Krisala Aventis Tathawade, Pune near Hinjewadi Phase 1. MahaRERA P52100080336.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala Legacy"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://krisalaventis.in",
-        "priceCurrency": "INR",
-        "price": "8500000",
-        "priceValidUntil": "2027-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@id": "https://krisalaventis.in/organization"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "248"
-      }
-    },
-    {
-      "@type": "Product",
-      "@id": "https://krisalaventis.in/#product-3bhk",
-      "name": "Krisala Aventis 3.25 BHK Ultra Luxury Residence Tathawade",
-      "image": "https://krisalaventis.in/assets/images/floorplan-3bhk.webp",
-      "description": "Spacious 3.25 BHK ultra-luxury apartment with dedicated study suite (1116 sq.ft carpet area) at Krisala Aventis Tathawade, Pune. MahaRERA P52100080336.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala Legacy"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://krisalaventis.in",
-        "priceCurrency": "INR",
-        "price": "11500000",
-        "priceValidUntil": "2027-12-31",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@id": "https://krisalaventis.in/organization"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "248"
-      }
-    },
-    {
       "@type": "ApartmentComplex",
       "@id": "https://krisalaventis.in/apartment-complex",
       "name": "Krisala Aventis Tathawade",
@@ -342,36 +286,6 @@ const masterSchema = {
       "numberOfAccommodationUnits": 400,
       "numberOfBedrooms": "2 to 4",
       "petsAllowed": true,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "248",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Rahul Deshmukh" },
-          "datePublished": "2026-03-15",
-          "reviewBody": "The +0.25 Smart Study in Krisala Aventis is a game changer for remote IT work. Premium Aluform quality and just 10 mins from Hinjewadi Phase 1.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Pooja Kulkarni" },
-          "datePublished": "2026-04-02",
-          "reviewBody": "Booked our 2.25 BHK in Tower A. Direct highway connectivity, 40+ rooftop amenities, and 100% legal clarity with MahaRERA P52100080336.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Amitabh Sharma" },
-          "datePublished": "2026-03-28",
-          "reviewBody": "The 3.25 BHK floor plan has unmatched carpet space utilization. The corner decks and high-rise views towards Hinjewadi hills are exceptional.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-        }
-      ],
       "amenityFeature": [
         { "@type": "LocationFeatureSpecification", "name": "Rooftop Podium Swimming Pool", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Aluform Construction Technology", "value": true },
@@ -812,7 +726,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/assets/images/logo.jpg" />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=26" />
+        <link rel="stylesheet" href="/assets/css/style.min.css?v=20260924" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

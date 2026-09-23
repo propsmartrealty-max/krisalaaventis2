@@ -1,91 +1,89 @@
 # ==============================================================================
-# KRISALA AVENTIS TATHAWADE — ULTRA ADVANCED SEARCH ENGINE & AI ROBOTS DIRECTIVE
+# KRISALA AVENTIS TATHAWADE — GOOGLE SEARCH CENTRAL COMPLIANT DIRECTIVE (RFC 9309)
 # Official Portal: https://krisalaventis.in | MahaRERA No: P52100080336
-# Last Updated: 2026-08-19
 # ==============================================================================
 
-# --- Priority Tier 1: Primary Search Crawlers ---
+# --- Googlebot (Primary Web Crawler - Mobile & Desktop) ---
 User-agent: Googlebot
 Allow: /
 Allow: /assets/
-Allow: /assets/images/
-Allow: /assets/css/
-Allow: /assets/js/
 Allow: /*.xml
-
-User-agent: Googlebot-Image
-Allow: /assets/images/
-Allow: /assets/
-Allow: /
-
-User-agent: Googlebot-Mobile
-Allow: /
-Allow: /assets/
-
-User-agent: Bingbot
-Allow: /
-Allow: /assets/
-Allow: /assets/images/
-Crawl-delay: 0.2
-
-User-agent: msnbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-Allow: /assets/images/
-
-# --- Priority Tier 2: AI Search, LLMs & Generative Engine Optimization (GEO) ---
-User-agent: GPTBot
-Allow: /
-Allow: /assets/
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-Allow: /assets/
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: FacebookBot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-# --- Global Catch-All Directives ---
-User-agent: *
-Allow: /
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.ico
+Allow: /*.svg
+Allow: /*.css
+Allow: /*.js
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
 Disallow: /admin/
 
-# --- Master XML Sitemaps Hierarchy ---
+# --- Googlebot-Image (Google Image Search Indexer) ---
+User-agent: Googlebot-Image
+Allow: /assets/images/
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.ico
+Allow: /*.svg
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Google-Extended (Google Gemini & SGE AI Knowledge Graphs) ---
+User-agent: Google-Extended
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+
+# --- Mediapartners-Google (Google Ad & Verification Scanner) ---
+User-agent: Mediapartners-Google
+Allow: /
+
+# --- Bingbot (Microsoft Bing & Yahoo Indexer) ---
+User-agent: Bingbot
+Allow: /
+Allow: /assets/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Leading AI Search Agents (OpenAI GPTBot, Perplexity, Claude, Applebot) ---
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Applebot
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+
+# --- Global Catch-All Directives (All Other Compliant Crawlers) ---
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /*.xml
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Master XML Sitemaps Hierarchy (Canonical HTTPS Index & Child Sitemaps) ---
 Sitemap: https://krisalaventis.in/sitemap.xml
 Sitemap: https://krisalaventis.in/sitemap-index.xml
 Sitemap: https://krisalaventis.in/sitemap-core.xml

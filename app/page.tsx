@@ -99,9 +99,6 @@ export default function Home() {
 
 
 
-{/* ==============================================================================
-   INTERACTIVE ROOM-BY-ROOM UNIT CONFIGURATOR
-   ============================================================================== */}
 <section id="unit-configurator" class="section unit-configurator-section reveal">
   <div class="container">
     <div class="section-tag">🛋️ Interactive Floor Plan Explorer</div>
@@ -165,9 +162,6 @@ export default function Home() {
   </div>
 </section>
 
-{/* ==============================================================================
-   LIVE CONSTRUCTION MILESTONES & ALGORITHM TRACKER
-   ============================================================================== */}
 <section id="construction-status" class="section construction-section reveal">
   <div class="container">
     <div class="section-tag" style="background: rgba(37, 211, 102, 0.15); color: #25D366; border-color: rgba(37, 211, 102, 0.3);">🏗️ Live Site Engineering Tracker</div>

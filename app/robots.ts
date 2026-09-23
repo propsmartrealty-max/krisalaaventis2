@@ -6,37 +6,65 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
+        userAgent: 'Googlebot',
+        allow: [
+          '/',
+          '/assets/',
+          '/*.xml',
+          '/*.png',
+          '/*.jpg',
+          '/*.jpeg',
+          '/*.webp',
+          '/*.ico',
+          '/*.svg',
+          '/*.css',
+          '/*.js',
+        ],
+        disallow: ['/api/', '/_next/', '/scratch/', '/admin/'],
+      },
+      {
+        userAgent: 'Googlebot-Image',
+        allow: [
+          '/assets/images/',
+          '/*.png',
+          '/*.jpg',
+          '/*.jpeg',
+          '/*.webp',
+          '/*.ico',
+          '/*.svg',
+        ],
+        disallow: ['/api/', '/_next/', '/scratch/', '/admin/'],
+      },
+      {
+        userAgent: 'Google-Extended',
+        allow: ['/', '/assets/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/api/', '/_next/', '/scratch/'],
+      },
+      {
+        userAgent: 'Mediapartners-Google',
+        allow: '/',
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: ['/', '/assets/'],
+        disallow: ['/api/', '/_next/', '/scratch/', '/admin/'],
+      },
+      {
+        userAgent: [
+          'GPTBot',
+          'ChatGPT-User',
+          'PerplexityBot',
+          'ClaudeBot',
+          'anthropic-ai',
+          'Applebot',
+        ],
+        allow: ['/', '/assets/', '/llms.txt', '/llms-full.txt'],
+        disallow: ['/api/', '/_next/', '/scratch/'],
+      },
+      {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/_next/', '/private/'],
-      },
-      {
-        userAgent: ['Googlebot', 'Googlebot-Image', 'Googlebot-News', 'Googlebot-Video'],
-        allow: '/',
-      },
-      {
-        userAgent: ['Bingbot', 'msnbot'],
-        allow: '/',
-        crawlDelay: 1,
-      },
-      {
-        userAgent: 'YandexBot',
-        allow: '/',
-        crawlDelay: 2,
-      },
-      {
-        userAgent: 'Baiduspider',
-        allow: '/',
-        crawlDelay: 2,
-      },
-      {
-        userAgent: 'Applebot',
-        allow: '/',
-      },
-      // Authorize AI Search & Generative Engine Optimization (GEO)
-      {
-        userAgent: ['GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'anthropic-ai', 'Google-Extended', 'Bytespider', 'FacebookBot'],
-        allow: '/',
+        allow: ['/', '/assets/', '/*.xml'],
+        disallow: ['/api/', '/_next/', '/scratch/', '/admin/'],
       },
     ],
     sitemap: [
@@ -44,7 +72,7 @@ export default function robots(): MetadataRoute.Robots {
       'https://krisalaventis.in/sitemap-index.xml',
       'https://krisalaventis.in/sitemap-core.xml',
       'https://krisalaventis.in/sitemap-nri.xml',
-      'https://krisalaventis.in/sitemap-pune.xml'
+      'https://krisalaventis.in/sitemap-pune.xml',
     ],
     host: 'https://krisalaventis.in',
   };

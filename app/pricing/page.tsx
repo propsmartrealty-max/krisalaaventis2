@@ -20,11 +20,17 @@ const priceSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Product",
-      "@id": "https://krisalaventis.in/pricing#product-2bhk",
+      "@type": "Apartment",
+      "@id": "https://krisalaventis.in/pricing#apartment-2bhk",
       "name": "Krisala Aventis 2.25 BHK Smart Study Flat Tathawade",
       "image": "https://krisalaventis.in/assets/images/floorplan-2bhk.webp",
       "description": "2.25 BHK Smart Study flat (839 sq.ft carpet area) at Krisala Aventis Tathawade Pune.",
+      "numberOfRooms": 3,
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 839,
+        "unitCode": "FTK"
+      },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
@@ -35,11 +41,17 @@ const priceSchema = {
       }
     },
     {
-      "@type": "Product",
-      "@id": "https://krisalaventis.in/pricing#product-3bhk",
+      "@type": "Apartment",
+      "@id": "https://krisalaventis.in/pricing#apartment-3bhk",
       "name": "Krisala Aventis 3.25 BHK Luxury Residence Tathawade",
       "image": "https://krisalaventis.in/assets/images/floorplan-3bhk.webp",
       "description": "3.25 BHK Luxury flat (1116 sq.ft carpet area) at Krisala Aventis Tathawade Pune.",
+      "numberOfRooms": 4,
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 1116,
+        "unitCode": "FTK"
+      },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
