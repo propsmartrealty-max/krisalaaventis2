@@ -726,7 +726,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/assets/images/logo.jpg" />
-        <link rel="stylesheet" href="/assets/css/style.min.css?v=20260924" />
+        <link rel="stylesheet" href="/assets/css/style-v2026.min.css" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
