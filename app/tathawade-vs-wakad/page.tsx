@@ -25,16 +25,19 @@ export default function TathawadeVsWakadPage() {
             <img src="/assets/images/logo.jpg" alt="Krisala Logo" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
             <span style={{ fontWeight: 300, letterSpacing: '2px', fontSize: '1.1rem', color: '#fff' }}>AVENTIS</span>
           </Link>
-          <div className="nav-links">
+          <div className="nav-links" id="navLinks">
             <Link href="/">Home</Link>
             <Link href="/pricing">Pricing</Link>
             <Link href="/floor-plans">Floor Plans</Link>
             <Link href="/location">Location</Link>
             <Link href="/amenities">Amenities</Link>
-            <Link href="/maharera">MahaRERA</Link>
-            <Link href="/tathawade-vs-wakad" style={{ color: 'var(--clr-gold)', fontWeight: 600 }}>Tathawade vs Wakad</Link>
+            <Link href="/maharera" className="nav-link-secondary">MahaRERA</Link>
+            <Link href="/tathawade-vs-wakad" className="nav-link-secondary" style={{ color: 'var(--clr-gold)', fontWeight: 600 }}>Tathawade vs Wakad</Link>
             <a href="#enquiry" className="cta-pill magnetic">Get Comparison Report</a>
           </div>
+          <button className="hamburger" id="hamburger" aria-label="Toggle Navigation">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </nav>
 
