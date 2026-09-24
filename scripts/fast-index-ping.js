@@ -77,4 +77,5 @@ async function pingEndpoint(ep) {
     await pingEndpoint(ep);
   }
   console.log('🎉 IndexNow Fast-Indexing batch successfully dispatched!');
+  process.exit(0);
 })();
