@@ -18,6 +18,14 @@
   Cache-Control: public, max-age=3600
   Content-Type: application/xml; charset=utf-8
 
+/feed.xml
+  Cache-Control: public, max-age=1800
+  Content-Type: application/rss+xml; charset=utf-8
+
+/rss.xml
+  Cache-Control: public, max-age=1800
+  Content-Type: application/rss+xml; charset=utf-8
+
 # Robots Exclusion Protocol Directive
 /robots.txt
   Cache-Control: public, max-age=86400

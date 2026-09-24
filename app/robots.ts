@@ -73,6 +73,7 @@ export default function robots(): MetadataRoute.Robots {
       'https://krisalaventis.in/sitemap-core.xml',
       'https://krisalaventis.in/sitemap-nri.xml',
       'https://krisalaventis.in/sitemap-pune.xml',
+      'https://krisalaventis.in/feed.xml',
     ],
     host: 'https://krisalaventis.in',
   };

@@ -18,7 +18,9 @@ const urlList = [
   `https://${HOST}/#amenities`,
   `https://${HOST}/#location`,
   `https://${HOST}/#contact`,
-  `https://${HOST}/sitemap.xml`
+  `https://${HOST}/sitemap.xml`,
+  `https://${HOST}/feed.xml`,
+  `https://${HOST}/rss.xml`
 ];
 
 // Add first 100 core URLs for high-priority fast indexing

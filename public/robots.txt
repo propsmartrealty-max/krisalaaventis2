@@ -89,3 +89,5 @@ Sitemap: https://krisalaventis.in/sitemap-index.xml
 Sitemap: https://krisalaventis.in/sitemap-core.xml
 Sitemap: https://krisalaventis.in/sitemap-nri.xml
 Sitemap: https://krisalaventis.in/sitemap-pune.xml
+Sitemap: https://krisalaventis.in/feed.xml
+

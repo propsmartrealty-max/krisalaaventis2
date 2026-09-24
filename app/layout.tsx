@@ -772,6 +772,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="alternate" type="application/rss+xml" title="Krisala Aventis Real Estate Syndication Feed" href="https://krisalaventis.in/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Krisala Aventis RSS 2.0" href="https://krisalaventis.in/rss.xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://api.web3forms.com" />
       </head>
       <body suppressHydrationWarning>
         {GTM_ID && (

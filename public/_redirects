@@ -7,3 +7,5 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /index.html   /   301
 /home         /   301
 /home.html    /   301
+/syndication-feed.xml /feed.xml 301
+
