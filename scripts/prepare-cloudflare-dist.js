@@ -39,7 +39,7 @@ function pruneRscTxt(dir) {
     const full = path.join(dir, item.name);
     if (item.isDirectory()) {
       pruneRscTxt(full);
-    } else if (item.isFile() && item.name.endsWith('.txt') && item.name !== 'robots.txt' && item.name !== 'humans.txt' && item.name !== 'llms.txt' && item.name !== 'llms-full.txt' && !item.name.includes('indexnow')) {
+    } else if (item.isFile() && item.name.endsWith('.txt') && item.name !== 'robots.txt' && item.name !== 'humans.txt' && item.name !== 'llms.txt' && item.name !== 'llms-full.txt' && item.name !== 'security.txt' && !item.name.includes('indexnow')) {
       const size = fs.statSync(full).size;
       fs.unlinkSync(full);
       prunedCount++;

@@ -23,6 +23,15 @@
   Cache-Control: public, max-age=86400
   Content-Type: text/plain; charset=utf-8
 
+# RFC 9116 Vulnerability Disclosure Directive
+/.well-known/security.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
+/security.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
 # Manifest & Icons
 /manifest.json
   Cache-Control: public, max-age=86400
