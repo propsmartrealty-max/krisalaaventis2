@@ -728,6 +728,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link rel="apple-touch-icon" href="/assets/images/logo.jpg" />
         <link rel="stylesheet" href="/assets/css/style-v2026.min.css" />
         <link rel="manifest" href="/manifest.json" />
+        <script
+          type="speculationrules"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              prerender: [
+                {
+                  source: "list",
+                  urls: [
+                    "/pricing",
+                    "/floor-plans",
+                    "/location",
+                    "/amenities",
+                    "/maharera",
+                    "/tathawade-vs-wakad",
+                    "/near",
+                    "/price",
+                    "/guide",
+                    "/market",
+                    "/compare",
+                    "/feature",
+                    "/blog",
+                    "/invest"
+                  ],
+                  eagerness: "moderate"
+                }
+              ],
+              prefetch: [
+                {
+                  source: "document",
+                  where: {
+                    and: [
+                      { href_matches: "/*" },
+                      { not: { href_matches: "/api/*" } }
+                    ]
+                  },
+                  eagerness: "conservative"
+                }
+              ]
+            })
+          }}
+        />
         <meta name="theme-color" content="#caa350" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

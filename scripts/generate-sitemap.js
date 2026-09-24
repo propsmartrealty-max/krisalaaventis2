@@ -95,6 +95,12 @@ coreSitemapContent += buildUrlEntry(`${DOMAIN}/amenities`, '0.95', 'weekly', [ma
 coreSitemapContent += buildUrlEntry(`${DOMAIN}/maharera`, '0.95', 'monthly', [masterImages[0]]);
 coreSitemapContent += buildUrlEntry(`${DOMAIN}/tathawade-vs-wakad`, '0.95', 'weekly', [masterImages[0]]);
 
+// Category Pillar Hubs (High-Authority Topical Silos)
+const categoryHubs = ['near', 'price', 'guide', 'market', 'compare', 'feature', 'blog', 'invest'];
+for (const cat of categoryHubs) {
+  coreSitemapContent += buildUrlEntry(`${DOMAIN}/${cat}`, '0.92', 'daily', [masterImages[0]]);
+}
+
 // Core URLs
 for (const page of coreData) {
   const slug = page.url_slug.replace('.html', '').replace(/^\/+/, '');
