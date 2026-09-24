@@ -670,6 +670,61 @@ const masterSchema = {
           ".body-text"
         ]
       }
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://krisalaventis.in/#site-navigation",
+      "name": "Krisala Aventis Sitelinks Navigation",
+      "hasPart": [
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Pricing & Cost Sheet",
+          "url": "https://krisalaventis.in/pricing",
+          "description": "All-inclusive price lists, payment schedules, and cost sheet breakdowns."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Floor Plans",
+          "url": "https://krisalaventis.in/floor-plans",
+          "description": "2.25 & 3.25 BHK Smart Study architectural layouts and dimensions."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Location & Connectivity",
+          "url": "https://krisalaventis.in/location",
+          "description": "Transit index to Hinjewadi Phase 1, Wakad, and Mumbai-Pune Expressway."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "40+ Amenities",
+          "url": "https://krisalaventis.in/amenities",
+          "description": "Podium rooftop infinity pool, gym, co-working club, and sports zones."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "MahaRERA Registration",
+          "url": "https://krisalaventis.in/maharera",
+          "description": "Official MahaRERA P52100080336 legal approvals and title verification."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Tathawade vs Wakad",
+          "url": "https://krisalaventis.in/tathawade-vs-wakad",
+          "description": "Comparative micro-market real estate analysis and ROI comparison."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Connectivity Hub",
+          "url": "https://krisalaventis.in/near",
+          "description": "Directory of proximity and transit routes in West Pune."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Real Estate Market Trends",
+          "url": "https://krisalaventis.in/market",
+          "description": "Tathawade appreciation index, rental yields, and metro infrastructure."
+        }
+      ]
     }
   ]
 };

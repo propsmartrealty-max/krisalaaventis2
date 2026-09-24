@@ -1,13 +1,40 @@
 {
   "name": "Krisala Aventis Tathawade",
   "short_name": "Krisala Aventis",
-  "description": "Ultra-luxury 2.25 & 3.25 BHK Smart Study Homes in Tathawade, Pune by Krisala Legacy.",
+  "description": "Ultra-luxury 2.25 & 3.25 BHK Smart Study Homes in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
+  "id": "https://krisalaventis.in/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#080a10",
   "theme_color": "#caa350",
   "orientation": "portrait-primary",
+  "categories": [
+    "real estate",
+    "lifestyle",
+    "business"
+  ],
   "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
@@ -19,6 +46,36 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Pricing & Cost Sheet",
+      "short_name": "Pricing",
+      "description": "View official 2026 cost sheet & all-inclusive pricing",
+      "url": "/pricing",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Floor Plans",
+      "short_name": "Layouts",
+      "description": "Explore 2.25 & 3.25 BHK Smart Study floor plans",
+      "url": "/floor-plans",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Location & Transit",
+      "short_name": "Location",
+      "description": "Check connectivity to Hinjewadi Phase 1 & Highways",
+      "url": "/location",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "40+ Luxury Amenities",
+      "short_name": "Amenities",
+      "description": "Explore rooftop infinity pool & 40+ amenities",
+      "url": "/amenities",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
