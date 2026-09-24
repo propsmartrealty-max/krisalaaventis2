@@ -15,9 +15,67 @@ export const metadata: Metadata = {
   },
 };
 
+const comparisonSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Tathawade vs Wakad Real Estate Comparison 2026 — Price, ROI & Lifestyle",
+      "description": "Comprehensive 2026 real estate comparison: Tathawade vs Wakad Pune. Discover why buying in Tathawade offers 25% larger carpet area and higher rental yields near Hinjewadi IT Park.",
+      "url": "https://krisalaventis.in/tathawade-vs-wakad",
+      "image": "https://krisalaventis.in/assets/images/hero.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "Krisala Legacy",
+        "url": "https://krisalaventis.in"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Krisala Legacy",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://krisalaventis.in/assets/images/logo.jpg"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalaventis.in" },
+        { "@type": "ListItem", "position": 2, "name": "Tathawade vs Wakad Analysis", "item": "https://krisalaventis.in/tathawade-vs-wakad" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Tathawade better than Wakad for residential property investment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Tathawade offers approximately 15-25% lower entry pricing than saturated Wakad while delivering identical proximity to Hinjewadi IT Park Phase 1. This generates higher rental yields (4-5%) and superior capital appreciation potential."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the price per square foot difference between Tathawade and Wakad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In 2026, premium residential properties in Wakad average ₹9,200 to ₹11,500 per sq.ft, whereas newly launched luxury projects in Tathawade like Krisala Aventis range between ₹7,500 and ₹8,600 per sq.ft."
+          }
+        }
+      ]
+    }
+  ]
+};
+
 export default function TathawadeVsWakadPage() {
   return (
     <main suppressHydrationWarning className="editorial-pillar-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonSchema) }}
+      />
       {/* Navigation */}
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">

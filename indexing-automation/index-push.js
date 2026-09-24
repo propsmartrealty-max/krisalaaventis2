@@ -17,8 +17,24 @@ const rootDir = path.join(__dirname, '..');
 function getAllUrls() {
   const urls = new Set();
   
-  // 1. Homepage & Root Pages
+  // 1. Homepage & Core Pillar Pages
   urls.add(`${BASE_URL}/`);
+  urls.add(`${BASE_URL}/pricing`);
+  urls.add(`${BASE_URL}/floor-plans`);
+  urls.add(`${BASE_URL}/location`);
+  urls.add(`${BASE_URL}/amenities`);
+  urls.add(`${BASE_URL}/maharera`);
+  urls.add(`${BASE_URL}/tathawade-vs-wakad`);
+
+  // 2. 8 Topical Category Pillar Hubs
+  urls.add(`${BASE_URL}/near`);
+  urls.add(`${BASE_URL}/price`);
+  urls.add(`${BASE_URL}/guide`);
+  urls.add(`${BASE_URL}/market`);
+  urls.add(`${BASE_URL}/compare`);
+  urls.add(`${BASE_URL}/feature`);
+  urls.add(`${BASE_URL}/blog`);
+  urls.add(`${BASE_URL}/invest`);
 
   // Helper to load and add JSON data
   function addFromJson(relativeFilePath) {

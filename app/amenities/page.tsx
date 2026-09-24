@@ -15,9 +15,41 @@ export const metadata: Metadata = {
   },
 };
 
+const amenitiesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ApartmentComplex",
+      "name": "Krisala Aventis Tathawade",
+      "description": "Ultra-luxury residential community with 40+ curated amenities across 3 acres in Tathawade Pune.",
+      "url": "https://krisalaventis.in/amenities",
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Rooftop Horizon Infinity Pool", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Executive Co-Working Lounge & Study Pods", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Technogym Fitted Fitness Center", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Box Cricket & Futsal Arena", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Acupressure Walkway & Zen Garden", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "EV Fast Charging Stations", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Children's Interactive Play Hub", "value": true }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalaventis.in" },
+        { "@type": "ListItem", "position": 2, "name": "40+ Amenities", "item": "https://krisalaventis.in/amenities" }
+      ]
+    }
+  ]
+};
+
 export default function AmenitiesPage() {
   return (
     <main suppressHydrationWarning className="editorial-pillar-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(amenitiesSchema) }}
+      />
       {/* Navigation */}
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">

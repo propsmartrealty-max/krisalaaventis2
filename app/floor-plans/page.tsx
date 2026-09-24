@@ -35,6 +35,13 @@ const fpSchema = {
       "numberOfRooms": 4,
       "image": "https://krisalaventis.in/assets/images/floorplan-3bhk.webp",
       "description": "1116 sq.ft carpet area 3.25 BHK luxury suite with dedicated executive study room."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalaventis.in" },
+        { "@type": "ListItem", "position": 2, "name": "Floor Plans", "item": "https://krisalaventis.in/floor-plans" }
+      ]
     }
   ]
 };

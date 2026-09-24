@@ -17,22 +17,33 @@ export const metadata: Metadata = {
 
 const locationSchema = {
   "@context": "https://schema.org",
-  "@type": "Place",
-  "name": "Krisala Aventis Tathawade Location Command Center",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Beside Shakai Circle, Mumbai-Pune Highway Service Road, Tathawade",
-    "addressLocality": "Pune",
-    "addressRegion": "Maharashtra",
-    "postalCode": "411033",
-    "addressCountry": "IN"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 18.6314375,
-    "longitude": 73.7462656
-  },
-  "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv"
+  "@graph": [
+    {
+      "@type": "Place",
+      "name": "Krisala Aventis Tathawade Location Command Center",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Beside Shakai Circle, Mumbai-Pune Highway Service Road, Tathawade",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "411033",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 18.6314375,
+        "longitude": 73.7462656
+      },
+      "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalaventis.in" },
+        { "@type": "ListItem", "position": 2, "name": "Location & Connectivity", "item": "https://krisalaventis.in/location" }
+      ]
+    }
+  ]
 };
 
 export default function LocationPage() {

@@ -15,9 +15,41 @@ export const metadata: Metadata = {
   },
 };
 
+const mahareraSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "GovernmentPermit",
+      "name": "MahaRERA Registration Certificate — Krisala Aventis",
+      "permitAudience": "Homebuyers & Real Estate Investors",
+      "issuedBy": {
+        "@type": "GovernmentOrganization",
+        "name": "Maharashtra Real Estate Regulatory Authority (MahaRERA)",
+        "url": "https://maharera.mahaonline.gov.in"
+      },
+      "identifier": "P52100080336",
+      "validIn": {
+        "@type": "AdministrativeArea",
+        "name": "Maharashtra, India"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalaventis.in" },
+        { "@type": "ListItem", "position": 2, "name": "MahaRERA Compliance", "item": "https://krisalaventis.in/maharera" }
+      ]
+    }
+  ]
+};
+
 export default function MahaReraPage() {
   return (
     <main suppressHydrationWarning className="editorial-pillar-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(mahareraSchema) }}
+      />
       {/* Navigation */}
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">

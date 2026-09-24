@@ -54,9 +54,9 @@ export default function NotFound() {
 
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-          gap: "12px",
-          marginBottom: "2rem"
+          gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+          gap: "10px",
+          marginBottom: "1.5rem"
         }}>
           <Link
             href="/"
@@ -64,47 +64,129 @@ export default function NotFound() {
               background: "linear-gradient(135deg, #caa350, #b08d3b)",
               color: "#000",
               fontWeight: 600,
-              padding: "12px 16px",
+              padding: "10px 12px",
               borderRadius: "8px",
               textDecoration: "none",
-              fontSize: "0.85rem",
+              fontSize: "0.82rem",
               transition: "transform 0.2s"
             }}
           >
-            🏠 Return Home
+            🏠 Home
           </Link>
-
           <Link
-            href="/#floorplans"
+            href="/pricing"
             style={{
               background: "rgba(255, 255, 255, 0.05)",
               border: "1px solid rgba(202, 163, 80, 0.3)",
               color: "#fff",
               fontWeight: 500,
-              padding: "12px 16px",
+              padding: "10px 12px",
               borderRadius: "8px",
               textDecoration: "none",
-              fontSize: "0.85rem"
+              fontSize: "0.82rem"
+            }}
+          >
+            💰 Pricing
+          </Link>
+          <Link
+            href="/floor-plans"
+            style={{
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(202, 163, 80, 0.3)",
+              color: "#fff",
+              fontWeight: 500,
+              padding: "10px 12px",
+              borderRadius: "8px",
+              textDecoration: "none",
+              fontSize: "0.82rem"
             }}
           >
             📐 Floor Plans
           </Link>
-
           <Link
-            href="/#contact"
+            href="/location"
             style={{
               background: "rgba(255, 255, 255, 0.05)",
               border: "1px solid rgba(202, 163, 80, 0.3)",
               color: "#fff",
               fontWeight: 500,
-              padding: "12px 16px",
+              padding: "10px 12px",
               borderRadius: "8px",
               textDecoration: "none",
-              fontSize: "0.85rem"
+              fontSize: "0.82rem"
             }}
           >
-            💰 Price List
+            📍 Location
           </Link>
+          <Link
+            href="/amenities"
+            style={{
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(202, 163, 80, 0.3)",
+              color: "#fff",
+              fontWeight: 500,
+              padding: "10px 12px",
+              borderRadius: "8px",
+              textDecoration: "none",
+              fontSize: "0.82rem"
+            }}
+          >
+            🏊 40+ Amenities
+          </Link>
+          <Link
+            href="/maharera"
+            style={{
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(202, 163, 80, 0.3)",
+              color: "#fff",
+              fontWeight: 500,
+              padding: "10px 12px",
+              borderRadius: "8px",
+              textDecoration: "none",
+              fontSize: "0.82rem"
+            }}
+          >
+            📜 MahaRERA
+          </Link>
+        </div>
+
+        {/* Topical Silo Hubs */}
+        <div style={{
+          borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+          paddingTop: "1rem",
+          marginBottom: "1.5rem"
+        }}>
+          <div style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "1.5px", color: "#caa350", marginBottom: "8px" }}>
+            Explore Topical Knowledge Hubs
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", justifyContent: "center" }}>
+            {[
+              { name: "Connectivity", path: "/near" },
+              { name: "Price Intel", path: "/price" },
+              { name: "Buyer Guides", path: "/guide" },
+              { name: "Market Trends", path: "/market" },
+              { name: "Comparison Matrix", path: "/compare" },
+              { name: "Specifications", path: "/feature" },
+              { name: "Editorial", path: "/blog" },
+              { name: "NRI Investment", path: "/invest" }
+            ].map((hub) => (
+              <Link
+                key={hub.path}
+                href={hub.path}
+                style={{
+                  padding: "4px 10px",
+                  borderRadius: "20px",
+                  background: "rgba(202, 163, 80, 0.08)",
+                  border: "1px solid rgba(202, 163, 80, 0.2)",
+                  color: "#d4af37",
+                  fontSize: "0.75rem",
+                  textDecoration: "none"
+                }}
+              >
+                {hub.name} →
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)", paddingTop: "1.5rem" }}>

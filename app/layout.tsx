@@ -132,7 +132,7 @@ export const metadata: Metadata = {
     siteName: "Krisala Aventis Tathawade",
     images: [
       {
-        url: "/assets/images/hero.webp",
+        url: `${BASE_URL}/assets/images/hero.webp`,
         width: 1200,
         height: 630,
         alt: "Krisala Aventis Tathawade Elevation & Architecture",
@@ -145,7 +145,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Krisala Aventis Tathawade | Official Portal",
     description: "Discover luxury 2.25 & 3.25 BHK Smart Study homes in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
-    images: ["/assets/images/hero.webp"],
+    images: [`${BASE_URL}/assets/images/hero.webp`],
   },
   robots: {
     index: true,
