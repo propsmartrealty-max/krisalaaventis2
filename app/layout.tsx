@@ -21,7 +21,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://krisalaventis.in";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Krisala Aventis Tathawade | 2.25 & 3.25 BHK Luxury Flats Pune",
+    default: "Krisala Aventis Tathawade™ — Official Website | 2.25 & 3.25 BHK Flats",
     template: "%s | Krisala Aventis Tathawade",
   },
   description: "Krisala Aventis Tathawade — Official New Launch by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes in West Pune near Hinjewadi Phase 1 & Wakad. Get floor plans, price list & MahaRERA P52100080336 details.",
@@ -126,7 +126,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Krisala Aventis Tathawade | Ultra-Premium 2.25 & 3.25 BHK Flats in Pune",
+    title: "Krisala Aventis Tathawade™ — Official Project Portal | Pune",
     description: "Official portal for Krisala Aventis Tathawade by Krisala Legacy. Premium smart-study homes, 40+ lifestyle amenities, near Hinjewadi IT Park & Wakad. MahaRERA P52100080336.",
     url: BASE_URL,
     siteName: "Krisala Aventis Tathawade",
@@ -143,7 +143,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krisala Aventis Tathawade | Official Portal",
+    title: "Krisala Aventis Tathawade™ — Official Project Portal",
     description: "Discover luxury 2.25 & 3.25 BHK Smart Study homes in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
     images: [`${BASE_URL}/assets/images/hero.webp`],
   },

@@ -100,14 +100,14 @@ export async function generateMetadata({
   const url = `https://krisalaventis.in/${category}`;
 
   return {
-    title: `${meta.name} | Krisala Aventis Tathawade Official Portal`,
+    title: meta.name,
     description: meta.description,
     keywords: meta.keywords,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${meta.headline} | Krisala Legacy Pune`,
+      title: `${meta.name} | Krisala Aventis Tathawade`,
       description: meta.description,
       url: url,
       images: [

@@ -53,15 +53,22 @@ export async function generateMetadata({
 
   const url = `https://krisalaventis.in/${page.folder}/${page.url_slug.replace(".html", "")}`;
 
+  // Sanitize title to eliminate keyword stuffing & duplicate branding with layout template
+  let cleanTitle = page.title.split("|")[0].trim();
+  cleanTitle = cleanTitle.replace(/^Krisala\s+Aventis(?:\s+Tathawade)?\s*[:\-–—]?\s*/i, "").trim();
+  if (!cleanTitle || cleanTitle.length < 5) {
+    cleanTitle = page.h1 || page.title;
+  }
+
   return {
-    title: `${page.title} | Krisala Aventis Tathawade`,
+    title: cleanTitle,
     description: page.description,
     keywords: page.keywords,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${page.title} | Krisala Legacy Pune`,
+      title: `${cleanTitle} | Krisala Aventis Tathawade`,
       description: page.description,
       url: url,
       images: [
@@ -76,7 +83,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: page.title,
+      title: `${cleanTitle} | Krisala Aventis Tathawade`,
       description: page.description,
       images: ["https://krisalaventis.in/assets/images/hero.webp"],
     },

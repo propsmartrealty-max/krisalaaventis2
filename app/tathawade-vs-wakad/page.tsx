@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Tathawade vs Wakad Real Estate Comparison 2026 — Price, ROI & Lifestyle",
+  title: "Tathawade vs Wakad Real Estate Comparison 2026",
   description: "Comprehensive 2026 real estate comparison: Tathawade vs Wakad Pune. Discover why buying in Tathawade offers 25% larger carpet area and higher rental yields near Hinjewadi IT Park.",
   alternates: {
     canonical: "https://krisalaventis.in/tathawade-vs-wakad",
   },
   openGraph: {
-    title: "Tathawade vs Wakad Property Investment Analysis 2026",
+    title: "Tathawade vs Wakad Comparison 2026 | Krisala Aventis Tathawade",
     description: "Detailed price per sq.ft, infrastructure, and ROI comparison between Tathawade and Wakad.",
     url: "https://krisalaventis.in/tathawade-vs-wakad",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
