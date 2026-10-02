@@ -12,6 +12,8 @@
     "lint": "next lint",
     "cf:purge": "node scripts/cloudflare-purge.js",
     "index:google": "node indexing-automation/index-push.js",
+    "index:check": "node indexing-automation/index-push.js --check",
+    "index:priority": "node indexing-automation/index-push.js --priority",
     "index:status": "node indexing-automation/index-push.js --status"
   },
   "keywords": [],

@@ -117,6 +117,8 @@ async function run() {
   const isStatus = args.includes('--status');
   const isReset = args.includes('--reset');
   const isAll = args.includes('--all');
+  const isPriority = args.includes('--priority');
+  const isCheck = args.includes('--check') || args.includes('--verify');
   
   let limitArg = 200; // Google default daily quota limit
   const limitIdx = args.indexOf('--limit');
@@ -124,7 +126,23 @@ async function run() {
     limitArg = parseInt(args[limitIdx + 1], 10) || 200;
   }
 
-  const allUrls = getAllUrls();
+  const allUrls = isPriority ? [
+    `${BASE_URL}/`,
+    `${BASE_URL}/pricing`,
+    `${BASE_URL}/floor-plans`,
+    `${BASE_URL}/location`,
+    `${BASE_URL}/amenities`,
+    `${BASE_URL}/maharera`,
+    `${BASE_URL}/tathawade-vs-wakad`,
+    `${BASE_URL}/near`,
+    `${BASE_URL}/price`,
+    `${BASE_URL}/guide`,
+    `${BASE_URL}/market`,
+    `${BASE_URL}/compare`,
+    `${BASE_URL}/feature`,
+    `${BASE_URL}/blog`,
+    `${BASE_URL}/invest`
+  ] : getAllUrls();
   let state = loadState();
 
   if (isReset) {
@@ -152,7 +170,9 @@ async function run() {
 
   console.log('\n🚀 \x1b[1mKrisala Aventis Sovereign Indexing Engine\x1b[0m');
   console.log(`Total catalog URLs detected: \x1b[36m${allUrls.length}\x1b[0m`);
-  console.log(`Resuming from URL index: \x1b[33m${state.currentIndex}\x1b[0m`);
+  if (!isPriority && !isCheck) {
+    console.log(`Resuming from URL index: \x1b[33m${state.currentIndex}\x1b[0m`);
+  }
 
   let authInfo;
   try {
@@ -165,8 +185,30 @@ async function run() {
   }
 
   const indexing = google.indexing('v3');
-  const startIndex = state.currentIndex;
-  const countToProcess = isAll ? (allUrls.length - startIndex) : Math.min(limitArg, allUrls.length - startIndex);
+
+  // Quick verification probe mode
+  if (isCheck) {
+    console.log('\n🔍 Testing Google Indexing API URL ownership for \x1b[36mhttps://krisalaventis.in/\x1b[0m...');
+    try {
+      const res = await indexing.urlNotifications.publish({
+        auth: authInfo.jwtClient,
+        requestBody: {
+          url: `${BASE_URL}/`,
+          type: 'URL_UPDATED'
+        }
+      });
+      console.log(`\x1b[32m✅ VERIFICATION SUCCESSFUL! HTTP ${res.status}\x1b[0m`);
+      console.log('🎉 Google Search Console ownership is verified and operational!');
+      console.log('You can now run: \x1b[36mnpm run index:google\x1b[0m to publish all URLs.\n');
+    } catch (checkErr) {
+      console.error(`\x1b[31m❌ VERIFICATION FAILED:\x1b[0m ${checkErr.message}\n`);
+      printOwnershipHelp(authInfo.email);
+    }
+    return;
+  }
+
+  const startIndex = isPriority ? 0 : state.currentIndex;
+  const countToProcess = isPriority ? allUrls.length : (isAll ? (allUrls.length - startIndex) : Math.min(limitArg, allUrls.length - startIndex));
 
   if (countToProcess <= 0) {
     console.log('\x1b[32m🎉 100% of all catalog URLs have already been submitted! Use --reset to re-index.\x1b[0m\n');
@@ -195,6 +237,10 @@ async function run() {
     } catch (apiErr) {
       console.error(`[${itemNum}/${allUrls.length}] ❌ \x1b[31mFAIL:\x1b[0m ${url} — ${apiErr.message}`);
       failed++;
+      if (apiErr.code === 403 || apiErr.message.includes('Permission denied')) {
+        printOwnershipHelp(authInfo.email);
+        break;
+      }
       if (apiErr.code === 429 || apiErr.message.includes('Quota exceeded')) {
         console.warn('\n\x1b[33m⚠️ Daily quota limit reached from Google Indexing API (200 requests/day default).\x1b[0m');
         console.log('State saved. You can rerun tomorrow to process the next batch.\n');
@@ -206,25 +252,55 @@ async function run() {
     await new Promise(resolve => setTimeout(resolve, 150));
   }
 
-  // Update State
-  const newIndex = startIndex + successful;
-  state.currentIndex = newIndex;
-  state.totalSubmitted = (state.totalSubmitted || 0) + successful;
-  state.lastRun = new Date().toISOString();
-  state.history.push({
-    date: state.lastRun,
-    attempted: batchUrls.length,
-    successful,
-    failed,
-    range: [startIndex, newIndex]
-  });
+  if (!isPriority) {
+    // Update State
+    const newIndex = startIndex + successful;
+    state.currentIndex = newIndex;
+    state.totalSubmitted = (state.totalSubmitted || 0) + successful;
+    state.lastRun = new Date().toISOString();
+    state.history.push({
+      date: state.lastRun,
+      attempted: batchUrls.length,
+      successful,
+      failed,
+      range: [startIndex, newIndex]
+    });
 
-  saveState(state);
+    saveState(state);
+  }
 
   console.log('\n─────────────────────────────────────────────');
   console.log(`✨ Batch complete! Successfully submitted: \x1b[32m${successful}\x1b[0m URLs (Failed: ${failed})`);
-  console.log(`Overall progress: \x1b[36m${state.currentIndex} / ${allUrls.length}\x1b[0m (${Math.round((state.currentIndex / allUrls.length) * 100)}%)`);
+  if (!isPriority) {
+    console.log(`Overall progress: \x1b[36m${state.currentIndex} / ${allUrls.length}\x1b[0m (${Math.round((state.currentIndex / allUrls.length) * 100)}%)`);
+  }
   console.log('─────────────────────────────────────────────\n');
+}
+
+function printOwnershipHelp(email) {
+  console.log('\n' + '═'.repeat(65));
+  console.log('\x1b[33m⚠️ GOOGLE SEARCH CONSOLE OWNERSHIP VERIFICATION REQUIRED\x1b[0m');
+  console.log('═'.repeat(65));
+  console.log('The service account authenticated with GCP, but Google Search Console');
+  console.log(`rejected ownership for \x1b[36mhttps://krisalaventis.in/\x1b[0m.`);
+  console.log('\nService Account Email:');
+  console.log(`👉 \x1b[32m${email}\x1b[0m`);
+  console.log('\n\x1b[1mWhy this happens:\x1b[0m');
+  console.log('1. "Full" vs "Owner": In GSC, adding a user as "Full" is NOT enough.');
+  console.log('   The Indexing API strictly requires OWNER / DELEGATED OWNER permissions.');
+  console.log('2. Domain Property: Domain properties only offer "Full" or "Restricted".');
+  console.log('\n\x1b[1mHOW TO FIX (Takes 60 seconds):\x1b[0m');
+  console.log('\n\x1b[36m👉 OPTION A (Fastest & Direct - Webmaster Central):\x1b[0m');
+  console.log('   1. Open: \x1b[34mhttps://www.google.com/webmasters/verification/home\x1b[0m');
+  console.log('   2. Click on \x1b[32mhttps://krisalaventis.in/\x1b[0m (or add it if needed)');
+  console.log('   3. Under "Verified owners", click \x1b[1m"Add an owner"\x1b[0m');
+  console.log(`   4. Enter: \x1b[32m${email}\x1b[0m and click Continue.`);
+  console.log('\n\x1b[36m👉 OPTION B (Via Search Console):\x1b[0m');
+  console.log('   1. In Search Console, click property dropdown -> "+ Add property"');
+  console.log('   2. Select "URL prefix" and enter \x1b[32mhttps://krisalaventis.in/\x1b[0m');
+  console.log('   3. Go to Settings -> Users and permissions');
+  console.log(`   4. Ensure \x1b[32m${email}\x1b[0m is set to \x1b[1mOwner\x1b[0m (not Full).`);
+  console.log('═'.repeat(65) + '\n');
 }
 
 run().catch(err => {
