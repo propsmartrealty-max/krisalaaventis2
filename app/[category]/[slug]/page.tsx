@@ -170,26 +170,28 @@ export default async function Page({
     }
   };
 
-  // Combine all pages to form a deterministic PageRank ring
+  // Semantic Silo Internal Linking: prioritize sibling pages in the same category silo
   const allPages = [...data, ...nriData, ...dominationData];
-  const currentIndex = allPages.findIndex(
-    (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
+  const sameCategoryPages = allPages.filter((item) => item.folder === p.category);
+  const currentCategoryIndex = sameCategoryPages.findIndex(
+    (item) => item.url_slug.replace(".html", "") === p.slug
   );
-  
-  // Pick 6 deterministic related pages to form a mesh
+
   const relatedPages = [];
+  const pool = sameCategoryPages.length >= 6 ? sameCategoryPages : allPages;
+  const startIdx = currentCategoryIndex !== -1 ? currentCategoryIndex : 0;
   for (let i = 1; i <= 6; i++) {
-    const nextIndex = ((currentIndex !== -1 ? currentIndex : 0) + i) % allPages.length;
-    relatedPages.push(allPages[nextIndex]);
+    const nextIndex = (startIdx + i) % pool.length;
+    relatedPages.push(pool[nextIndex]);
   }
 
   const krisalaProjects = [
-    { name: "Krisala Aventis Tathawade", tag: "Flagship New Launch", desc: "2.25 & 3.25 BHK Smart Study Homes on Mumbai-Pune Highway.", link: "/krisala-aventis-tathawade-2-bhk-flats" },
-    { name: "Krisala Luxovert Tathawade", tag: "Luxury Series", desc: "Premium 2, 3 & 4 BHK Residences near Hinjewadi Phase 1.", link: "/krisala-aventis-tathawade-flats-near-hinjewadi" },
-    { name: "Krisala 41 Cosmo Tathawade", tag: "High-Rise Gated Community", desc: "2 & 2.75 BHK Apartments near Bhumkar Chowk.", link: "/krisala-aventis-tathawade-construction-status" },
-    { name: "Krisala 41 Estera Punawale", tag: "Growth Corridor", desc: "Spacious 2 & 3 BHK Homes near Mumbai Expressway.", link: "/krisala-aventis-tathawade-market-growth-calculator" },
-    { name: "Krisala 41 Zircon Tathawade", tag: "Executive Living", desc: "Modern 2 & 3 BHK Flats close to JSPM University.", link: "/krisala-aventis-tathawade-connectivity-it-hubs" },
-    { name: "Krisala 41 Evok Ravet", tag: "BRTS Corridor", desc: "High-speed transit connectivity & resort lifestyle.", link: "/krisala-aventis-tathawade-investment-roi" }
+    { name: "Krisala Aventis Tathawade", tag: "Flagship New Launch", desc: "2.25 & 3.25 BHK Smart Study Homes on Mumbai-Pune Highway.", link: "/floor-plans" },
+    { name: "Krisala Luxovert Tathawade", tag: "Luxury Series", desc: "Premium 2, 3 & 4 BHK Residences near Hinjewadi Phase 1.", link: "/near" },
+    { name: "Krisala 41 Cosmo Tathawade", tag: "High-Rise Gated Community", desc: "2 & 2.75 BHK Apartments near Bhumkar Chowk.", link: "/feature" },
+    { name: "Krisala 41 Estera Punawale", tag: "Growth Corridor", desc: "Spacious 2 & 3 BHK Homes near Mumbai Expressway.", link: "/market" },
+    { name: "Krisala 41 Zircon Tathawade", tag: "Executive Living", desc: "Modern 2 & 3 BHK Flats close to JSPM University.", link: "/location" },
+    { name: "Krisala 41 Evok Ravet", tag: "BRTS Corridor", desc: "High-speed transit connectivity & resort lifestyle.", link: "/pricing" }
   ];
 
   return (
@@ -302,7 +304,7 @@ export default async function Page({
                   </div>
                   <div className="mt-6 pt-6 border-t border-gray-700/60">
                     <a
-                      href="/krisala-aventis-tathawade-brochure-download"
+                      href="/#contact"
                       className="inline-block w-full text-center py-3 bg-gradient-to-r from-gold to-goldLight text-black font-bold rounded-lg hover:shadow-xl transition-all"
                     >
                       Book Priority Site Visit →
@@ -404,10 +406,10 @@ export default async function Page({
               <h5 style={{ color: 'var(--clr-gold)', marginBottom: '14px', fontSize: '0.95rem', textTransform: 'uppercase' }}>Knowledge Silos</h5>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
                 <Link href="/tathawade-vs-wakad" style={{ color: '#aaa', textDecoration: 'none' }}>Tathawade vs Wakad Analysis</Link>
-                <Link href="/krisala-aventis-tathawade-construction-status" style={{ color: '#aaa', textDecoration: 'none' }}>Aluform Construction Status</Link>
-                <Link href="/krisala-aventis-tathawade-investment-roi" style={{ color: '#aaa', textDecoration: 'none' }}>Investment ROI Analysis</Link>
-                <Link href="/krisala-aventis-tathawade-vastu-compliance" style={{ color: '#aaa', textDecoration: 'none' }}>Vastu Compliance</Link>
-                <Link href="/krisala-aventis-tathawade-brochure-download" style={{ color: '#aaa', textDecoration: 'none' }}>Download Official Brochure</Link>
+                <Link href="/feature" style={{ color: '#aaa', textDecoration: 'none' }}>Aluform Engineering Specifications</Link>
+                <Link href="/invest" style={{ color: '#aaa', textDecoration: 'none' }}>Global NRI Investment Hub</Link>
+                <Link href="/guide" style={{ color: '#aaa', textDecoration: 'none' }}>Homebuyer Guide &amp; Legal Diligence</Link>
+                <Link href="/pricing" style={{ color: '#aaa', textDecoration: 'none' }}>Official Cost Sheet &amp; Price List</Link>
               </div>
             </div>
             <div>
@@ -415,7 +417,7 @@ export default async function Page({
               <p style={{ fontSize: '0.8rem', color: '#888', marginBottom: '10px', lineHeight: 1.5 }}>
                 Krisala Aventis Sales Experience Center, Beside Shakai Circle, Mumbai-Pune Highway, Tathawade, Pune 411033
               </p>
-              <a href="https://maps.app.goo.gl/TathawadeLocation" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--clr-gold)', fontWeight: 600, display: 'block', marginBottom: '12px', fontSize: '0.85rem', textDecoration: 'none' }}>
+              <a href="https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--clr-gold)', fontWeight: 600, display: 'block', marginBottom: '12px', fontSize: '0.85rem', textDecoration: 'none' }}>
                 📍 Get Directions on Google Maps →
               </a>
               <a href="https://api.whatsapp.com/send?phone=917744009295&text=Hi%2C%20I%20visited%20krisalaventis.in%20and%20would%20like%20to%20know%20more%20about%20Krisala%20Aventis%20Tathawade." target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', padding: '8px 16px', background: '#25D366', color: '#fff', borderRadius: '20px', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none' }}>
