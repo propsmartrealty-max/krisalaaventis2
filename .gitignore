@@ -39,4 +39,6 @@ next-env.d.ts
 *.log
 indexing-automation/indexing-state.json
 indexing-automation/node_modules
+indexing-automation/service-account.json
+*service-account*.json
 
