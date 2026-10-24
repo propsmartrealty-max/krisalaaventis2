@@ -56,20 +56,33 @@ export async function generateMetadata({
   // Sanitize title to eliminate keyword stuffing & duplicate branding with layout template
   let cleanTitle = page.title.split("|")[0].trim();
   cleanTitle = cleanTitle.replace(/^Krisala\s+Aventis(?:\s+Tathawade)?\s*[:\-–—]?\s*/i, "").trim();
+  cleanTitle = cleanTitle.replace(/\b2025\b/g, "2026");
   if (!cleanTitle || cleanTitle.length < 5) {
-    cleanTitle = page.h1 || page.title;
+    cleanTitle = (page.h1 || page.title).replace(/\b2025\b/g, "2026");
+  }
+
+  // Click-Magnet Meta Description with price, RERA, and direct CTA hooks
+  let cleanDesc = (page.description || "").replace(/\b2025\b/g, "2026").trim();
+  if (!cleanDesc.includes("P52100080336")) {
+    cleanDesc += " MahaRERA: P52100080336.";
+  }
+  if (!cleanDesc.includes("₹85") && !cleanDesc.includes("Price") && !cleanDesc.includes("Cost")) {
+    cleanDesc += " From ₹85L*.";
+  }
+  if (!cleanDesc.includes("Download") && !cleanDesc.includes("Brochure")) {
+    cleanDesc += " Download PDF Brochure & Floor Plans.";
   }
 
   return {
     title: cleanTitle,
-    description: page.description,
+    description: cleanDesc,
     keywords: page.keywords,
     alternates: {
       canonical: url,
     },
     openGraph: {
       title: `${cleanTitle} | Krisala Aventis Tathawade`,
-      description: page.description,
+      description: cleanDesc,
       url: url,
       images: [
         {
@@ -84,7 +97,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${cleanTitle} | Krisala Aventis Tathawade`,
-      description: page.description,
+      description: cleanDesc,
       images: ["https://krisalaventis.in/assets/images/hero.webp"],
     },
   };
@@ -99,7 +112,7 @@ export default async function Page({
   let page = data.find(
     (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
   );
-  
+
   if (!page) {
     page = nriData.find(
       (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
@@ -117,16 +130,19 @@ export default async function Page({
   }
 
   const pageUrl = `https://krisalaventis.in/${page.folder}/${page.url_slug.replace(".html", "")}`;
+  const cleanTitle = page.title.replace(/\b2025\b/g, "2026");
+  const cleanDesc = (page.description || "").replace(/\b2025\b/g, "2026");
+  const is3Bhk = page.title.toLowerCase().includes("3-bhk") || page.title.toLowerCase().includes("3 bhk") || page.title.toLowerCase().includes("3.25");
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: page.faqs.map((faq: any) => ({
       "@type": "Question",
-      name: faq.q,
+      name: faq.q.replace(/\b2025\b/g, "2026"),
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.a,
+        text: faq.a.replace(/\b2025\b/g, "2026"),
       },
     })),
   };
@@ -150,7 +166,7 @@ export default async function Page({
       {
         "@type": "ListItem",
         position: 3,
-        name: page.title,
+        name: cleanTitle,
         item: pageUrl,
       },
     ],
@@ -159,14 +175,43 @@ export default async function Page({
   const realEstateSchema = {
     "@context": "https://schema.org",
     "@type": "Apartment",
-    name: page.title,
-    description: page.description,
+    name: page.h1 ? page.h1.replace(/\b2025\b/g, "2026") : cleanTitle,
+    description: cleanDesc,
     url: pageUrl,
     image: "https://krisalaventis.in/assets/images/hero.webp",
+    numberOfRooms: is3Bhk ? 4 : 3,
+    numberOfBedrooms: is3Bhk ? 3 : 2,
+    floorSize: {
+      "@type": "QuantitativeValue",
+      value: is3Bhk ? 1116 : 839,
+      unitCode: "FTK"
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Beside Shakai Circle, Mumbai-Pune Highway, Tathawade",
+      addressLocality: "Pune",
+      addressRegion: "Maharashtra",
+      postalCode: "411033",
+      addressCountry: "IN"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 18.6314375,
+      longitude: 73.7462656
+    },
     containedInPlace: {
       "@type": "ApartmentComplex",
-      "name": "Krisala Aventis Tathawade",
-      "url": "https://krisalaventis.in"
+      name: "Krisala Aventis Tathawade",
+      url: "https://krisalaventis.in",
+      telephone: "+917744009295"
+    },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "INR",
+      price: is3Bhk ? "11500000" : "8500000",
+      priceValidUntil: "2027-12-31",
+      availability: "https://schema.org/InStock",
+      url: pageUrl
     }
   };
 
@@ -277,7 +322,7 @@ export default async function Page({
               
               {page.keywords && (
                 <div className="mb-12 p-6 bg-gray-800/40 rounded-xl border border-gray-700/50">
-                  <h3 className="text-sm font-semibold text-gold mb-3 uppercase tracking-wider">Indexed Search Keywords</h3>
+                  <h3 className="text-sm font-semibold text-gold mb-3 uppercase tracking-wider">Related Micro-Market &amp; Transit Searches</h3>
                   <div className="flex flex-wrap gap-2">
                     {page.keywords.split(',').map((kw: string, i: number) => (
                       <span key={i} className="px-3 py-1 bg-gray-900/80 border border-gray-700/50 rounded-full text-xs text-gray-300 hover:text-gold hover:border-gold/50 transition-colors cursor-default">
