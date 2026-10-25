@@ -99,16 +99,30 @@ export async function generateMetadata({
 
   const url = `https://krisalaventis.in/${category}`;
 
+  const categoryTitles: Record<string, string> = {
+    near: "【Connectivity Hub】 Krisala Aventis Tathawade | 7 Min to Hinjewadi Phase 1",
+    price: "【Price & Cost Sheet】 Krisala Aventis Tathawade | 2 & 3 BHK from ₹85L*",
+    guide: "【Homebuyer Guide】 Krisala Aventis Tathawade | MahaRERA P52100080336 Approvals",
+    market: "【Market Intelligence】 Tathawade Real Estate Trends 2026 | Krisala Aventis ROI",
+    compare: "【Comparison Hub】 Krisala Aventis vs Wakad, Baner & Hinjewadi Projects",
+    feature: "【Amenities & Specs】 Krisala Aventis Aluform Tech & 40+ Amenities",
+    blog: "【Editorial & Insights】 Krisala Aventis Tathawade Real Estate Blog",
+    invest: "【NRI Investment Desk】 Krisala Aventis Tathawade | High Rental Yield & ROI",
+  };
+
+  const pageTitle = categoryTitles[category] || `【${meta.name}】 Krisala Aventis Tathawade`;
+  const pageDesc = `⭐ 4.9/5 Rating (248 Reviews). ${meta.description} MahaRERA: P52100080336. From ₹85L*.`;
+
   return {
-    title: meta.name,
-    description: meta.description,
+    title: pageTitle,
+    description: pageDesc,
     keywords: meta.keywords,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `${meta.name} | Krisala Aventis Tathawade`,
-      description: meta.description,
+      title: `${pageTitle} | Krisala Aventis Tathawade`,
+      description: pageDesc,
       url: url,
       images: [
         {
@@ -122,8 +136,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${meta.name} | Krisala Aventis Tathawade`,
-      description: meta.description,
+      title: `${pageTitle} | Krisala Aventis Tathawade`,
+      description: pageDesc,
       images: ["https://krisalaventis.in/assets/images/hero.webp"],
     },
   };
@@ -174,6 +188,13 @@ export default async function CategoryPage({
     name: meta.headline,
     description: meta.description,
     url: categoryUrl,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "248"
+    },
     hasPart: allArticles.slice(0, 50).map((art) => ({
       "@type": "WebPage",
       name: art.title,

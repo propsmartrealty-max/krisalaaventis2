@@ -29,6 +29,30 @@ console.log('\n🚀 \x1b[1mOptimizing Static Distribution for Cloudflare Pages..
   }
 });
 
+// 1b. Inject Dynamic Case-Resilient 301 Redirects for all uppercase slugs into out/_redirects
+try {
+  const coreData = require('../data.json');
+  const nriData = require('../data/global-nri-seo.json');
+  const domData = require('../data/krisala-domination-seo.json');
+  const allSlugItems = [...coreData, ...nriData, ...domData];
+  const uppercaseItems = allSlugItems.filter(item => item && item.url_slug && /[A-Z]/.test(item.url_slug));
+  
+  if (uppercaseItems.length > 0) {
+    const destRedirects = path.join(outDir, '_redirects');
+    let extraRules = '\n\n# Dynamic Case-Insensitive Canonical Redirects (Protects 500+ Slugs against Crawler 404s)\n';
+    uppercaseItems.forEach(item => {
+      const folder = item.folder.replace(/^\/+/, '').replace(/\/+$/, '');
+      const originalSlug = item.url_slug.replace('.html', '').replace(/^\/+/, '');
+      const lowerSlug = originalSlug.toLowerCase();
+      extraRules += `/${folder}/${lowerSlug} /${folder}/${originalSlug} 301\n`;
+    });
+    fs.appendFileSync(destRedirects, extraRules, 'utf8');
+    console.log(`✅ Injected ${uppercaseItems.length} dynamic case-resilient 301 redirects into out/_redirects`);
+  }
+} catch (e) {
+  console.warn('⚠️ Could not inject dynamic slug redirects:', e.message);
+}
+
 // 2. Prune .txt files to stay under Cloudflare 20,000 file ceiling
 let prunedCount = 0;
 let prunedBytes = 0;

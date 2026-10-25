@@ -6,23 +6,64 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+// Combine and pre-index all datasets into high-speed $O(1)$ lookup maps
+const allPages = [...data, ...nriData, ...dominationData];
+
+// Map 1: Key = `${folder}/${cleanSlug}`
+const pageByFolderAndSlug = new Map<string, (typeof allPages)[0]>();
+// Map 2: Key = `${cleanSlug}` (fallback across any folder)
+const pageBySlugOnly = new Map<string, (typeof allPages)[0]>();
+
+allPages.forEach((page) => {
+  const folder = (page.folder || "").toLowerCase().trim();
+  const rawSlug = (page.url_slug || "").replace(/\.html$/, "").trim();
+  const lowerSlug = rawSlug.toLowerCase();
+
+  pageByFolderAndSlug.set(`${folder}/${rawSlug}`, page);
+  pageByFolderAndSlug.set(`${folder}/${lowerSlug}`, page);
+
+  if (!pageBySlugOnly.has(rawSlug)) {
+    pageBySlugOnly.set(rawSlug, page);
+  }
+  if (!pageBySlugOnly.has(lowerSlug)) {
+    pageBySlugOnly.set(lowerSlug, page);
+  }
+});
+
+function findPageBySlug(categoryParam: string, slugParam: string) {
+  const cat = (categoryParam || "").toLowerCase().trim();
+  const rawSlug = (slugParam || "").replace(/\.html$/, "").trim();
+  const lowerSlug = rawSlug.toLowerCase();
+
+  // 1. Direct or case-insensitive match in requested folder
+  let page =
+    pageByFolderAndSlug.get(`${cat}/${rawSlug}`) ||
+    pageByFolderAndSlug.get(`${cat}/${lowerSlug}`);
+  if (page) return page;
+
+  // 2. Cross-folder fallback match (prevents 404 if crawler switches category silo)
+  page = pageBySlugOnly.get(rawSlug) || pageBySlugOnly.get(lowerSlug);
+  if (page) return page;
+
+  // 3. Year tolerance match (2025 <-> 2026)
+  if (lowerSlug.includes("2026")) {
+    const s25 = lowerSlug.replace("2026", "2025");
+    page = pageByFolderAndSlug.get(`${cat}/${s25}`) || pageBySlugOnly.get(s25);
+    if (page) return page;
+  } else if (lowerSlug.includes("2025")) {
+    const s26 = lowerSlug.replace("2025", "2026");
+    page = pageByFolderAndSlug.get(`${cat}/${s26}`) || pageBySlugOnly.get(s26);
+    if (page) return page;
+  }
+
+  return undefined;
+}
+
 export async function generateStaticParams() {
-  const standardParams = data.map((page) => ({
+  return allPages.map((page) => ({
     category: page.folder,
     slug: page.url_slug.replace(".html", ""),
   }));
-
-  const nriParams = nriData.map((page) => ({
-    category: page.folder,
-    slug: page.url_slug.replace(".html", ""),
-  }));
-
-  const dominationParams = dominationData.map((page) => ({
-    category: page.folder,
-    slug: page.url_slug.replace(".html", ""),
-  }));
-
-  return [...standardParams, ...nriParams, ...dominationParams];
 }
 
 export async function generateMetadata({
@@ -31,29 +72,15 @@ export async function generateMetadata({
   params: Promise<{ category: string; slug: string }>;
 }): Promise<Metadata> {
   const p = await params;
-  let page = data.find(
-    (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
-  );
-  
-  if (!page) {
-    page = nriData.find(
-      (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
-    );
-  }
-
-  if (!page) {
-    page = dominationData.find(
-      (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
-    );
-  }
+  const page = findPageBySlug(p.category, p.slug);
 
   if (!page) {
     return { title: "Not Found" };
   }
 
-  const url = `https://krisalaventis.in/${page.folder}/${page.url_slug.replace(".html", "")}`;
+  const canonicalUrl = `https://krisalaventis.in/${page.folder}/${page.url_slug.replace(".html", "")}`;
 
-  // Sanitize title to eliminate keyword stuffing & duplicate branding with layout template
+  // Sanitize title to eliminate duplicate branding with layout template
   let cleanTitle = page.title.split("|")[0].trim();
   cleanTitle = cleanTitle.replace(/^Krisala\s+Aventis(?:\s+Tathawade)?\s*[:\-–—]?\s*/i, "").trim();
   cleanTitle = cleanTitle.replace(/\b2025\b/g, "2026");
@@ -88,12 +115,12 @@ export async function generateMetadata({
     description: cleanDesc,
     keywords: page.keywords,
     alternates: {
-      canonical: url,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: `${formattedTitle} | Krisala Aventis Tathawade`,
       description: cleanDesc,
-      url: url,
+      url: canonicalUrl,
       images: [
         {
           url: "https://krisalaventis.in/assets/images/hero.webp",
@@ -119,21 +146,7 @@ export default async function Page({
   params: Promise<{ category: string; slug: string }>;
 }) {
   const p = await params;
-  let page = data.find(
-    (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
-  );
-
-  if (!page) {
-    page = nriData.find(
-      (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
-    );
-  }
-
-  if (!page) {
-    page = dominationData.find(
-      (item) => item.folder === p.category && item.url_slug.replace(".html", "") === p.slug
-    );
-  }
+  const page = findPageBySlug(p.category, p.slug);
 
   if (!page) {
     notFound();
@@ -233,10 +246,9 @@ export default async function Page({
   };
 
   // Semantic Silo Internal Linking: prioritize sibling pages in the same category silo
-  const allPages = [...data, ...nriData, ...dominationData];
   const sameCategoryPages = allPages.filter((item) => item.folder === p.category);
   const currentCategoryIndex = sameCategoryPages.findIndex(
-    (item) => item.url_slug.replace(".html", "") === p.slug
+    (item) => item.url_slug.replace(".html", "").toLowerCase() === (p.slug || "").replace(".html", "").toLowerCase()
   );
 
   const relatedPages = [];
@@ -274,7 +286,7 @@ export default async function Page({
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">
           <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <img src="/assets/images/logo.jpg" alt="Krisala Logo" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
+            <img src="/assets/images/logo.jpg" alt="Krisala Logo" width="82" height="32" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
             <span style={{ fontWeight: 300, letterSpacing: '2px', fontSize: '1.1rem', color: '#fff' }}>AVENTIS</span>
           </Link>
           <div className="nav-links" id="navLinks">
@@ -295,7 +307,7 @@ export default async function Page({
 
       <main className="max-w-7xl mx-auto p-6 pt-28 pb-12" suppressHydrationWarning>
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-400">
-          <ol className="flex items-center space-x-2">
+          <ol className="flex items-center space-x-2 flex-wrap">
             <li>
               <a href="/" className="hover:text-gold transition-colors">Home</a>
             </li>
@@ -306,7 +318,7 @@ export default async function Page({
               </a>
             </li>
             <li><span className="text-gray-600">/</span></li>
-            <li className="text-gray-200 truncate" aria-current="page">
+            <li className="text-gray-200 truncate max-w-xs md:max-w-md" aria-current="page">
               {page.title}
             </li>
           </ol>
@@ -333,6 +345,26 @@ export default async function Page({
           </div>
 
           <div className="p-8 md:p-12">
+            {/* Strategic Value Proposition Bar */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 mb-10 rounded-xl bg-gray-800/40 border border-gold/20 text-center">
+              <div>
+                <span className="text-xs text-gray-400 uppercase tracking-wider block">Configuration</span>
+                <strong className="text-sm md:text-base text-gold font-bold">2.25 &amp; 3.25 BHK</strong>
+              </div>
+              <div>
+                <span className="text-xs text-gray-400 uppercase tracking-wider block">Starting Price</span>
+                <strong className="text-sm md:text-base text-white font-bold">₹85 Lakh* Onwards</strong>
+              </div>
+              <div>
+                <span className="text-xs text-gray-400 uppercase tracking-wider block">IT Park Proximity</span>
+                <strong className="text-sm md:text-base text-gold font-bold">10 Min to Hinjewadi</strong>
+              </div>
+              <div>
+                <span className="text-xs text-gray-400 uppercase tracking-wider block">Legal Approval</span>
+                <strong className="text-sm md:text-base text-white font-bold">MahaRERA P52100080336</strong>
+              </div>
+            </div>
+
             <div className="prose prose-invert prose-gold max-w-none">
               <h2 className="text-2xl font-bold mb-4 font-playfair text-white">About {page.h1}</h2>
               <p className="text-lg text-gray-300 leading-relaxed mb-8">{page.content}</p>
@@ -395,8 +427,35 @@ export default async function Page({
               </div>
             </div>
 
+            {/* Quick Strategic Pillars Navigation */}
+            <div className="mt-14 p-6 bg-gray-900/80 rounded-2xl border border-gray-800">
+              <h3 className="text-lg font-bold mb-4 text-gold font-playfair">
+                Krisala Aventis Official Project Pillars
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center">
+                <Link href="/pricing" className="p-3 bg-black/40 rounded-xl border border-gray-800 hover:border-gold/50 text-xs text-gray-300 hover:text-gold transition-all block">
+                  💰 Price List &amp; Cost Sheet
+                </Link>
+                <Link href="/floor-plans" className="p-3 bg-black/40 rounded-xl border border-gray-800 hover:border-gold/50 text-xs text-gray-300 hover:text-gold transition-all block">
+                  📐 2.25 &amp; 3.25 BHK Blueprints
+                </Link>
+                <Link href="/location" className="p-3 bg-black/40 rounded-xl border border-gray-800 hover:border-gold/50 text-xs text-gray-300 hover:text-gold transition-all block">
+                  📍 Hinjewadi &amp; Wakad Route
+                </Link>
+                <Link href="/amenities" className="p-3 bg-black/40 rounded-xl border border-gray-800 hover:border-gold/50 text-xs text-gray-300 hover:text-gold transition-all block">
+                  🏊 40+ Luxury Amenities
+                </Link>
+                <Link href="/maharera" className="p-3 bg-black/40 rounded-xl border border-gray-800 hover:border-gold/50 text-xs text-gray-300 hover:text-gold transition-all block">
+                  ⚖️ MahaRERA P52100080336
+                </Link>
+                <Link href="/tathawade-vs-wakad" className="p-3 bg-black/40 rounded-xl border border-gray-800 hover:border-gold/50 text-xs text-gray-300 hover:text-gold transition-all block">
+                  📊 Tathawade vs Wakad ROI
+                </Link>
+              </div>
+            </div>
+
             {/* Krisala Projects Portfolio Hub */}
-            <div className="mt-16 border-t border-gray-800 pt-10">
+            <div className="mt-14 border-t border-gray-800 pt-10">
               <h3 className="text-2xl font-bold mb-6 text-gold font-playfair">
                 Explore More Krisala Legacy Projects in Pune
               </h3>
