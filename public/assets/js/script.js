@@ -9,7 +9,9 @@
   window.addEventListener('error', (e) => {
     const entry = { type: 'js_error', msg: e.message, src: e.filename, line: e.lineno, ts: Date.now() };
     ERROR_LOG.push(entry);
-    console.error('[Sovereign Guard] Exception:', entry);
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+      console.error('[Sovereign Guard] Exception:', entry);
+    }
     try { localStorage.setItem('ka_error_log', JSON.stringify(ERROR_LOG.slice(-20))); } catch(_) {}
     return false;
   });
@@ -17,7 +19,9 @@
   window.addEventListener('unhandledrejection', (e) => {
     const entry = { type: 'promise_rejection', msg: String(e.reason), ts: Date.now() };
     ERROR_LOG.push(entry);
-    console.error('[Sovereign Guard] Unhandled Promise:', entry);
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+      console.error('[Sovereign Guard] Unhandled Promise:', entry);
+    }
     try { localStorage.setItem('ka_error_log', JSON.stringify(ERROR_LOG.slice(-20))); } catch(_) {}
   });
 
@@ -434,22 +438,9 @@
   });
 
   /* =============================================
-     7b. AUTO-MODAL ON FIRST LOAD (Hardened)
+     7b. MODAL ON DEMAND (Auto-modal disabled to comply with Google interstitial guidelines & prevent forced reflow)
      ============================================= */
-  if (modal) {
-    // Reveal modal after 1.5s for maximum engagement
-    setTimeout(() => {
-      const isAnyModalOpen = document.querySelector('.modal-overlay.open');
-      if (!isAnyModalOpen) {
-        modal.classList.add('open');
-        const modalHeader = modal.querySelector('.modal-header h3');
-        const modalDesc   = modal.querySelector('.modal-header p');
-        if (modalHeader) modalHeader.innerHTML = 'Unlock <span class="gold">Exclusive Offers</span>';
-        if (modalDesc) modalDesc.innerText = 'Register now to receive current inventory status and pre-launch pricing.';
-        console.log('[Sovereign Guard] Auto-Modal Triggered');
-      }
-    }, 1500); 
-  }
+
 
   function persistLead(data) {
     try {

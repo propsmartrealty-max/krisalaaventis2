@@ -721,7 +721,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/assets/images/logo.jpg" />
-        <link rel="stylesheet" href="/assets/css/style-v2026.min.css" />
+        <link rel="preload" as="image" href="/assets/images/hero-mobile.webp" media="(max-width: 640px)" fetchPriority="high" type="image/webp" />
+        <link rel="preload" as="image" href="/assets/images/hero.webp" media="(min-width: 641px)" fetchPriority="high" type="image/webp" />
         <link rel="manifest" href="/manifest.json" />
         <script
           type="speculationrules"
@@ -786,7 +787,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         )}
         {children}
         <Script src="/assets/js/script.min.js?v=26" strategy="afterInteractive" />
-        <Script src="/assets/js/cinematic.js?v=26" strategy="lazyOnload" />
+        <Script src="/assets/js/cinematic.min.js?v=26" strategy="lazyOnload" />
       </body>
     </html>
   );

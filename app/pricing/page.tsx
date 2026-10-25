@@ -220,10 +220,10 @@ export default function PricingPage() {
             </p>
             
             <form action="/api/contact" method="POST" className="contact-form" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <input type="text" name="name" placeholder="Your Full Name *" required style={{ padding: '14px 18px', borderRadius: '8px', background: 'rgba(255,255,255,0.06)', border: '1px solid var(--clr-glass-border)', color: '#fff' }} />
-              <input type="tel" name="phone" placeholder="WhatsApp Phone Number *" required style={{ padding: '14px 18px', borderRadius: '8px', background: 'rgba(255,255,255,0.06)', border: '1px solid var(--clr-glass-border)', color: '#fff' }} />
-              <input type="email" name="email" placeholder="Email Address" style={{ padding: '14px 18px', borderRadius: '8px', background: 'rgba(255,255,255,0.06)', border: '1px solid var(--clr-glass-border)', color: '#fff' }} />
-              <select name="config" style={{ padding: '14px 18px', borderRadius: '8px', background: 'var(--clr-onyx)', border: '1px solid var(--clr-glass-border)', color: '#fff' }}>
+              <input type="text" name="name" placeholder="Your Full Name *" aria-label="Your Full Name" required style={{ padding: '14px 18px', borderRadius: '8px', background: 'rgba(255,255,255,0.06)', border: '1px solid var(--clr-glass-border)', color: '#fff' }} />
+              <input type="tel" name="phone" placeholder="WhatsApp Phone Number *" aria-label="WhatsApp Phone Number" required style={{ padding: '14px 18px', borderRadius: '8px', background: 'rgba(255,255,255,0.06)', border: '1px solid var(--clr-glass-border)', color: '#fff' }} />
+              <input type="email" name="email" placeholder="Email Address" aria-label="Email Address" style={{ padding: '14px 18px', borderRadius: '8px', background: 'rgba(255,255,255,0.06)', border: '1px solid var(--clr-glass-border)', color: '#fff' }} />
+              <select name="config" aria-label="Select Unit Configuration" style={{ padding: '14px 18px', borderRadius: '8px', background: 'var(--clr-onyx)', border: '1px solid var(--clr-glass-border)', color: '#fff' }}>
                 <option value="2.25 BHK (839 sq.ft) - ₹85L+">2.25 BHK Smart Study (839 sq.ft) — ₹85L+</option>
                 <option value="3.25 BHK (1116 sq.ft) - ₹1.15Cr+">3.25 BHK Executive Suite (1116 sq.ft) — ₹1.15Cr+</option>
               </select>
