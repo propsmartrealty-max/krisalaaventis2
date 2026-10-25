@@ -3,14 +3,14 @@ import Script from "next/script";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "【Official Cost Sheet】 Krisala Aventis Tathawade Price List 2026 | ₹85L* All-Inclusive",
-  description: "⭐ 4.9/5 Rating. Official 2026 price list and detailed all-inclusive cost sheet for Krisala Aventis Tathawade. 2.25 BHK starting ₹85 Lakh* and 3.25 BHK starting ₹1.15 Cr*. View PCMC stamp duty & bank EMI calculator.",
+  title: "Krisala Aventis Tathawade Price List 2026 — Cost Sheet | ₹85L*",
+  description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK starting ₹85 Lakh* and 3.25 BHK starting ₹1.15 Cr*. View PCMC taxes, stamp duty & EMI schedules.",
   alternates: {
     canonical: "https://krisalaventis.in/pricing",
   },
   openGraph: {
-    title: "【Official Cost Sheet】 Krisala Aventis Tathawade Price List 2026 | ₹85L*",
-    description: "⭐ 4.9/5 Rating. Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK from ₹85L* & 3.25 BHK from ₹1.15 Cr*.",
+    title: "Krisala Aventis Tathawade Price List 2026 — Cost Sheet | ₹85L*",
+    description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK from ₹85L* & 3.25 BHK from ₹1.15 Cr*.",
     url: "https://krisalaventis.in/pricing",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },

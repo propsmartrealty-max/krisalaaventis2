@@ -90,9 +90,7 @@ export async function generateMetadata({
 
   let formattedTitle = cleanTitle;
   if (!formattedTitle.includes("₹85") && !formattedTitle.includes("Price") && !formattedTitle.includes("Cost")) {
-    formattedTitle = `⚡ ${formattedTitle} @ ₹85L*`;
-  } else if (!formattedTitle.startsWith("⚡")) {
-    formattedTitle = `⚡ ${formattedTitle}`;
+    formattedTitle = `${formattedTitle} @ ₹85L*`;
   }
 
   // Click-Magnet Meta Description with price, RERA, and direct CTA hooks

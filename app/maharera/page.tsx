@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "【MahaRERA: P52100080336】 Krisala Aventis Tathawade Legal Approvals & Title",
-  description: "⭐ 4.9/5 Rating. Official MahaRERA registration details for Krisala Aventis Tathawade (MahaRERA No. P52100080336). View legal clearances, title deed, bank approvals & possession timelines.",
+  title: "Krisala Aventis MahaRERA P52100080336 — Legal Approvals & Title",
+  description: "Official MahaRERA registration details for Krisala Aventis Tathawade (MahaRERA No. P52100080336). View legal clearances, title deed, bank approvals & possession timelines.",
   alternates: {
     canonical: "https://krisalaventis.in/maharera",
   },
   openGraph: {
-    title: "【MahaRERA: P52100080336】 Krisala Aventis Tathawade Legal Verification",
-    description: "⭐ 4.9/5 Rating. 100% legal verification and compliance certificate for Krisala Aventis Tathawade Pune.",
+    title: "Krisala Aventis MahaRERA P52100080336 — Legal Approvals & Title",
+    description: "100% legal verification and compliance certificate for Krisala Aventis Tathawade Pune.",
     url: "https://krisalaventis.in/maharera",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },

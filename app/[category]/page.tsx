@@ -100,18 +100,18 @@ export async function generateMetadata({
   const url = `https://krisalaventis.in/${category}`;
 
   const categoryTitles: Record<string, string> = {
-    near: "【Connectivity Hub】 Krisala Aventis Tathawade | 7 Min to Hinjewadi Phase 1",
-    price: "【Price & Cost Sheet】 Krisala Aventis Tathawade | 2 & 3 BHK from ₹85L*",
-    guide: "【Homebuyer Guide】 Krisala Aventis Tathawade | MahaRERA P52100080336 Approvals",
-    market: "【Market Intelligence】 Tathawade Real Estate Trends 2026 | Krisala Aventis ROI",
-    compare: "【Comparison Hub】 Krisala Aventis vs Wakad, Baner & Hinjewadi Projects",
-    feature: "【Amenities & Specs】 Krisala Aventis Aluform Tech & 40+ Amenities",
-    blog: "【Editorial & Insights】 Krisala Aventis Tathawade Real Estate Blog",
-    invest: "【NRI Investment Desk】 Krisala Aventis Tathawade | High Rental Yield & ROI",
+    near: "Krisala Aventis Connectivity — 7 Min to Hinjewadi Phase 1",
+    price: "Krisala Aventis Pricing & Cost Sheet — 2 & 3 BHK from ₹85L*",
+    guide: "Krisala Aventis Homebuyer Guide — MahaRERA P52100080336",
+    market: "Tathawade Real Estate Market Intelligence 2026 — Krisala Aventis",
+    compare: "Krisala Aventis vs Wakad & Hinjewadi Real Estate Comparison",
+    feature: "Krisala Aventis Architecture — Aluform Tech & 40+ Amenities",
+    blog: "Krisala Aventis Editorial — West Pune Lifestyle & Real Estate",
+    invest: "Krisala Aventis NRI Investment Desk — Rental Yields & Growth",
   };
 
-  const pageTitle = categoryTitles[category] || `【${meta.name}】 Krisala Aventis Tathawade`;
-  const pageDesc = `⭐ 4.9/5 Rating (248 Reviews). ${meta.description} MahaRERA: P52100080336. From ₹85L*.`;
+  const pageTitle = categoryTitles[category] || `${meta.name} — Krisala Aventis Tathawade`;
+  const pageDesc = `${meta.description} MahaRERA: P52100080336. 2 & 3 BHK from ₹85L*.`;
 
   return {
     title: pageTitle,

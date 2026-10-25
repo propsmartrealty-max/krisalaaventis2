@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Script from "next/script";
+
+export const metadata: Metadata = {
+  title: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK",
+  description: "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download 2026 Price List, Floor Plans & Instant VIP Pass. MahaRERA: P52100080336.",
+  alternates: {
+    canonical: "https://krisalaventis.in",
+  },
+};
 
 export default function Home() {
   return (
