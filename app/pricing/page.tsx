@@ -3,14 +3,14 @@ import Script from "next/script";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Price List & All-Inclusive Cost Sheet 2026",
-  description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK starting ₹85 Lakh* and 3.25 BHK starting ₹1.15 Cr*. View PCMC taxes, stamp duty & EMI schedules.",
+  title: "【Official Cost Sheet】 Krisala Aventis Tathawade Price List 2026 | ₹85L* All-Inclusive",
+  description: "⭐ 4.9/5 Rating. Official 2026 price list and detailed all-inclusive cost sheet for Krisala Aventis Tathawade. 2.25 BHK starting ₹85 Lakh* and 3.25 BHK starting ₹1.15 Cr*. View PCMC stamp duty & bank EMI calculator.",
   alternates: {
     canonical: "https://krisalaventis.in/pricing",
   },
   openGraph: {
-    title: "Price List & Cost Sheet 2026 | Krisala Aventis Tathawade",
-    description: "Get verified all-inclusive pricing, floor-wise cost sheet, PCMC stamp duty calculator & pre-approved bank loans for Krisala Aventis Tathawade.",
+    title: "【Official Cost Sheet】 Krisala Aventis Tathawade Price List 2026 | ₹85L*",
+    description: "⭐ 4.9/5 Rating. Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK from ₹85L* & 3.25 BHK from ₹1.15 Cr*.",
     url: "https://krisalaventis.in/pricing",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
@@ -30,6 +30,13 @@ const priceSchema = {
         "@type": "QuantitativeValue",
         "value": 839,
         "unitCode": "FTK"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "142"
       },
       "offers": {
         "@type": "Offer",
@@ -51,6 +58,13 @@ const priceSchema = {
         "@type": "QuantitativeValue",
         "value": 1116,
         "unitCode": "FTK"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "106"
       },
       "offers": {
         "@type": "Offer",

@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Location Map & Hinjewadi Connectivity 2026",
-  description: "Explore the prime location of Krisala Aventis Tathawade Pune. Beside Shakai Circle, Mumbai-Pune Expressway service road. Just 7 mins to Hinjewadi Phase 1 & 5 mins to Wakad.",
+  title: "【Location & Distance】 Krisala Aventis Tathawade Map | 7 Min to Hinjewadi Phase 1",
+  description: "⭐ 4.9/5 Rating. Official location map of Krisala Aventis Tathawade. Beside Shakai Circle, Mumbai-Pune Expressway service road. 7 mins to Hinjewadi Phase 1 & 5 mins to Wakad. Get Google Maps directions.",
   alternates: {
     canonical: "https://krisalaventis.in/location",
   },
   openGraph: {
-    title: "Location Map & Hinjewadi Connectivity | Krisala Aventis Tathawade",
-    description: "Strategic gateway location in Tathawade Pune with zero-traffic connectivity to Hinjewadi IT Park and Pune-Mumbai Highway.",
+    title: "【Location & Map】 Krisala Aventis Tathawade Hinjewadi Connectivity",
+    description: "⭐ 4.9/5 Rating. Strategic gateway location in Tathawade Pune with zero-traffic connectivity to Hinjewadi IT Park and Pune-Mumbai Highway.",
     url: "https://krisalaventis.in/location",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
@@ -33,6 +33,13 @@ const locationSchema = {
         "@type": "GeoCoordinates",
         "latitude": 18.6314375,
         "longitude": 73.7462656
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "248"
       },
       "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv"
     },

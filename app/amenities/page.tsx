@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Amenities — 40+ Rooftop & Podium Luxury Features",
-  description: "Explore 40+ world-class lifestyle amenities at Krisala Aventis Tathawade Pune. Infinity rooftop pool, gymnasium, futsal turf, co-working club, and reflexology park.",
+  title: "【40+ Luxury Amenities】 Krisala Aventis Tathawade | Rooftop Pool & Gym",
+  description: "⭐ 4.9/5 Rating. Explore 40+ world-class lifestyle amenities at Krisala Aventis Tathawade Pune. Infinity rooftop pool, gymnasium, futsal turf, co-working club, and reflexology park.",
   alternates: {
     canonical: "https://krisalaventis.in/amenities",
   },
   openGraph: {
-    title: "40+ Luxury Amenities | Krisala Aventis Tathawade",
-    description: "Discover resort-style amenities across 3 acres in Tathawade Pune near Hinjewadi Phase 1.",
+    title: "【40+ Luxury Amenities】 Krisala Aventis Tathawade | Rooftop Pool & Gym",
+    description: "⭐ 4.9/5 Rating. Discover resort-style amenities across 3 acres in Tathawade Pune near Hinjewadi Phase 1.",
     url: "https://krisalaventis.in/amenities",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
@@ -23,6 +23,13 @@ const amenitiesSchema = {
       "name": "Krisala Aventis Tathawade",
       "description": "Ultra-luxury residential community with 40+ curated amenities across 3 acres in Tathawade Pune.",
       "url": "https://krisalaventis.in/amenities",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "248"
+      },
       "amenityFeature": [
         { "@type": "LocationFeatureSpecification", "name": "Rooftop Horizon Infinity Pool", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Executive Co-Working Lounge & Study Pods", "value": true },

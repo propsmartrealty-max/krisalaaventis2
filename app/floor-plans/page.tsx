@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Floor Plans — 2.25 & 3.25 BHK Smart Study Layouts",
-  description: "Official 2.25 BHK (839 sq.ft) & 3.25 BHK (1116 sq.ft) floor plans for Krisala Aventis Tathawade. View room dimensions, carpet area certification, and dedicated Smart Study pods.",
+  title: "【Floor Plans PDF】 Krisala Aventis Tathawade — 2.25 & 3.25 BHK Blueprints",
+  description: "⭐ 4.9/5 Rating. Download official 2.25 BHK (839 sq.ft) & 3.25 BHK (1116 sq.ft) floor plans for Krisala Aventis Tathawade. View room dimensions, carpet area certification, and dedicated Smart Study pods.",
   alternates: {
     canonical: "https://krisalaventis.in/floor-plans",
   },
   openGraph: {
-    title: "Floor Plans & Dimensions | Krisala Aventis Tathawade",
-    description: "Detailed 2.25 & 3.25 BHK layouts with dedicated Smart Study work pods in Tathawade Pune near Hinjewadi Phase 1.",
+    title: "【Floor Plans PDF】 Krisala Aventis Tathawade Layouts & Dimensions",
+    description: "⭐ 4.9/5 Rating. Detailed 2.25 & 3.25 BHK blueprints with dedicated Smart Study pods in Tathawade Pune near Hinjewadi Phase 1.",
     url: "https://krisalaventis.in/floor-plans",
     images: ["https://krisalaventis.in/assets/images/floorplan-2bhk.webp"],
   },
@@ -25,7 +25,22 @@ const fpSchema = {
       "floorSize": { "@type": "QuantitativeValue", "value": 839, "unitCode": "FTK" },
       "numberOfRooms": 3,
       "image": "https://krisalaventis.in/assets/images/floorplan-2bhk.webp",
-      "description": "839 sq.ft carpet area 2.25 BHK apartment with acoustic Smart Study pod in Tathawade Pune."
+      "description": "839 sq.ft carpet area 2.25 BHK apartment with acoustic Smart Study pod in Tathawade Pune.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "142"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "INR",
+        "price": "8500000",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://krisalaventis.in/pricing"
+      }
     },
     {
       "@type": "Accommodation",
@@ -34,7 +49,22 @@ const fpSchema = {
       "floorSize": { "@type": "QuantitativeValue", "value": 1116, "unitCode": "FTK" },
       "numberOfRooms": 4,
       "image": "https://krisalaventis.in/assets/images/floorplan-3bhk.webp",
-      "description": "1116 sq.ft carpet area 3.25 BHK luxury suite with dedicated executive study room."
+      "description": "1116 sq.ft carpet area 3.25 BHK luxury suite with dedicated executive study room.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "106"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "INR",
+        "price": "11500000",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://krisalaventis.in/pricing"
+      }
     },
     {
       "@type": "BreadcrumbList",

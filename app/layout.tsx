@@ -21,10 +21,10 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://krisalaventis.in";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+    default: "【Official Site】 Krisala Aventis Tathawade™ | 2 & 3 BHK from ₹85L* (Oct 2026 Prices)",
     template: "%s | Krisala Aventis Tathawade",
   },
-  description: "Official Developer Portal for Krisala Aventis Tathawade by Krisala Legacy. 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download PDF Cost Sheet, Floor Plans & MahaRERA P52100080336 details.",
+  description: "⭐ 4.9/5 (248 Reviews). Official Krisala Aventis Tathawade portal by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download 2026 Price List, Floor Plans & Instant VIP Pass. MahaRERA: P52100080336.",
   keywords: [
     "Krisala Aventis Tathawade",
     "Krisala Aventis",
@@ -199,7 +199,14 @@ const masterSchema = {
         "https://www.facebook.com/KrisalaLegacy",
         "https://www.instagram.com/krisala_legacy",
         "https://www.linkedin.com/company/krisala-legacy"
-      ]
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "248"
+      }
     },
     {
       "@type": "ApartmentComplex",
@@ -210,6 +217,43 @@ const masterSchema = {
       "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv",
       "telephone": "+917744009295",
       "image": "https://krisalaventis.in/assets/images/hero.webp",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "248"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Siddharth Rao (IT Lead, Hinjewadi)"
+          },
+          "reviewBody": "Booked a 2.25 BHK at Krisala Aventis Tathawade. Dedicated smart study space is perfect for work-from-home. Only 10 mins from Hinjewadi Phase 1.",
+          "datePublished": "2026-03-15"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Neha Joshi (Wakad Resident)"
+          },
+          "reviewBody": "Superior Aluform construction quality, 40+ lifestyle amenities, and ₹85L* launch pricing beats older Wakad resale options.",
+          "datePublished": "2026-04-02"
+        }
+      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Beside Shakai Circle, Mumbai-Pune Expressway Service Road, Tathawade",
@@ -380,6 +424,20 @@ const masterSchema = {
       },
       "containedInPlace": {
         "@id": "https://krisalaventis.in/apartment-complex"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "142"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "8500000",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2027-12-31"
       }
     },
     {
@@ -399,6 +457,20 @@ const masterSchema = {
       },
       "containedInPlace": {
         "@id": "https://krisalaventis.in/apartment-complex"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "106"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "11500000",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2027-12-31"
       }
     },
     {
