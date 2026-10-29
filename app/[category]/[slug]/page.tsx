@@ -243,19 +243,42 @@ export default async function Page({
     }
   };
 
-  // Semantic Silo Internal Linking: prioritize sibling pages in the same category silo
+  // Semantic Silo Internal Linking: 6 sibling pages in same silo + 6 companion cross-silo pages
   const sameCategoryPages = allPages.filter((item) => item.folder === p.category);
+  const otherCategoryPages = allPages.filter((item) => item.folder !== p.category);
   const currentCategoryIndex = sameCategoryPages.findIndex(
     (item) => item.url_slug.replace(".html", "").toLowerCase() === (p.slug || "").replace(".html", "").toLowerCase()
   );
 
   const relatedPages = [];
-  const pool = sameCategoryPages.length >= 6 ? sameCategoryPages : allPages;
+  const catPool = sameCategoryPages.length > 0 ? sameCategoryPages : allPages;
   const startIdx = currentCategoryIndex !== -1 ? currentCategoryIndex : 0;
   for (let i = 1; i <= 6; i++) {
-    const nextIndex = (startIdx + i) % pool.length;
-    relatedPages.push(pool[nextIndex]);
+    const nextIdx = (startIdx + i) % catPool.length;
+    relatedPages.push(catPool[nextIdx]);
   }
+
+  // Cross-silo companion links (multiplies crawl paths across entire site taxonomy for 10k daily impressions)
+  const crossPool = otherCategoryPages.length > 0 ? otherCategoryPages : allPages;
+  for (let j = 1; j <= 6; j++) {
+    const crossIdx = (startIdx * 7 + j * 13) % crossPool.length;
+    relatedPages.push(crossPool[crossIdx]);
+  }
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: `${page.h1 || cleanTitle} | Krisala Aventis Tathawade`,
+    isPartOf: {
+      "@id": "https://krisalaventis.in/website"
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".editorial-lead", ".value-prop", ".faq-answer", "p"]
+    }
+  };
 
   const krisalaProjects = [
     { name: "Krisala Aventis Tathawade", tag: "Flagship New Launch", desc: "2.25 & 3.25 BHK Smart Study Homes on Mumbai-Pune Highway.", link: "/floor-plans" },
@@ -279,6 +302,10 @@ export default async function Page({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
       {/* Universal Floating Luxury Navbar */}
       <nav className="pill-navbar" id="mainNav">
