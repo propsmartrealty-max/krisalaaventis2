@@ -136,7 +136,20 @@ for (const page of dominationData) {
   if (slug.includes('krisala') || slug.includes('tathawade') || slug.includes('wakad') || slug.includes('hinjewadi')) {
     priority = '0.85';
   }
-  puneSitemapContent += buildUrlEntry(`${DOMAIN}/${folder}/${slug}`, priority, 'weekly');
+
+  // Assign contextual Google Image metadata for maximum Image Search impressions (10,800+ image candidates)
+  let pageImages = [masterImages[0]];
+  if (slug.includes('floor-plan') || slug.includes('2-bhk') || slug.includes('layout')) {
+    pageImages.push(masterImages[3]);
+  } else if (slug.includes('3-bhk') || slug.includes('luxury') || slug.includes('suite')) {
+    pageImages.push(masterImages[4]);
+  } else if (slug.includes('amenities') || slug.includes('pool') || slug.includes('lifestyle')) {
+    pageImages.push(masterImages[1]);
+  } else {
+    pageImages.push(masterImages[2]);
+  }
+
+  puneSitemapContent += buildUrlEntry(`${DOMAIN}/${folder}/${slug}`, priority, 'weekly', pageImages);
 }
 puneSitemapContent += xmlFooter;
 fs.writeFileSync(path.join(__dirname, '../public/sitemap-pune.xml'), puneSitemapContent, 'utf8');

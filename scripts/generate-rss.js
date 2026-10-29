@@ -95,21 +95,32 @@ hubs.forEach(h => {
     </item>`);
 });
 
-// 3. Programmatic High-Priority Articles (Top 100)
-const allProgrammatic = [...dominationData, ...nriData, ...coreData];
-const sampledArticles = allProgrammatic.slice(0, 100);
+// 3. Programmatic High-Priority Articles (Top 500 Curated for Google Discover & News Syndication)
+const prioritySlices = [
+  ...nriData,
+  ...coreData.slice(0, 250),
+  ...dominationData.slice(0, 250)
+];
 
-sampledArticles.forEach(art => {
+prioritySlices.forEach(art => {
   const cleanFolder = (art.folder || '').trim().replace(/^\/+|\/+$/g, '');
   const cleanSlug = (art.url_slug || art.slug || '').replace('.html', '').replace(/^\/+|\/+$/g, '');
   if (!cleanFolder || !cleanSlug) return;
 
   const link = `${BASE_URL}/${cleanFolder}/${cleanSlug}`;
+  let itemImg = `${BASE_URL}/assets/images/hero.webp`;
+  if (cleanSlug.includes('2-bhk') || cleanSlug.includes('floor-plan')) {
+    itemImg = `${BASE_URL}/assets/images/floorplan-2bhk.webp`;
+  } else if (cleanSlug.includes('3-bhk') || cleanSlug.includes('luxury')) {
+    itemImg = `${BASE_URL}/assets/images/floorplan-3bhk.webp`;
+  }
+
   items.push(`    <item>
       <title>${escapeXml(art.title || `Krisala Aventis Tathawade | ${cleanFolder}`)}</title>
       <link>${link}</link>
       <guid isPermaLink="true">${link}</guid>
       <description>${escapeXml(art.description || `Comprehensive real estate intelligence on Krisala Aventis Tathawade Pune.`)}</description>
+      <enclosure url="${itemImg}" length="150000" type="image/webp" />
       <pubDate>${now}</pubDate>
     </item>`);
 });
