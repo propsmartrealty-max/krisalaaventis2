@@ -864,8 +864,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         {children}
-        <Script src="/assets/js/script.min.js?v=26" strategy="afterInteractive" />
-        <Script src="/assets/js/cinematic.min.js?v=26" strategy="lazyOnload" />
+        <Script src="/assets/js/script.min.js?v=27" strategy="afterInteractive" />
+        <Script src="/assets/js/cinematic.min.js?v=27" strategy="lazyOnload" />
       </body>
     </html>
   );

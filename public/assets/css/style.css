@@ -1381,144 +1381,600 @@ button { cursor: pointer; font-family: inherit; }
 .feature-item:nth-child(3) .feature-icon { animation-delay: 1s; }
 .feature-item:nth-child(4) .feature-icon { animation-delay: 1.5s; }
 
-/* 6. GLASSMORPHISM HOVER GLOW & 3D ELEVATION */
-.glass-glow {
+/* =========================================
+   8. STRATEGIC FLOWING GLASSMORPHISM ENGINE v5.0
+   ========================================= */
+
+/* --- 1. Ambient Flowing Aurora & Liquid Mesh Keyframes --- */
+@keyframes auroraMesh1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.45;
+  }
+  33% {
+    transform: translate3d(60px, -40px, 0) rotate(10deg) scale(1.12);
+    opacity: 0.65;
+  }
+  66% {
+    transform: translate3d(-40px, 45px, 0) rotate(-8deg) scale(0.94);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.45;
+  }
+}
+
+@keyframes auroraMesh2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate3d(-60px, -45px, 0) rotate(-12deg) scale(1.15);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.4;
+  }
+}
+
+@keyframes flowingBorderBeam {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flowingGold {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes ribbonFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ambient Flowing Backdrops for Sections (Zero CLS, GPU-Accelerated) */
+.section {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(202, 163, 80, 0.015) 40%, rgba(10, 12, 18, 0.75) 100%) !important;
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.09) !important;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15), inset 0 0 24px 0 rgba(202, 163, 80, 0.02), 0 12px 36px -4px rgba(0, 0, 0, 0.6);
-  border-radius: 16px;
+  isolation: isolate;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  left: -8%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 620px;
+  max-height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(202, 163, 80, 0.08) 0%, rgba(223, 185, 101, 0.03) 40%, transparent 70%);
+  filter: blur(65px);
+  pointer-events: none;
+  z-index: 0;
+  animation: auroraMesh1 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  right: -8%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 580px;
+  max-height: 580px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(100, 130, 180, 0.06) 0%, rgba(202, 163, 80, 0.025) 45%, transparent 70%);
+  filter: blur(75px);
+  pointer-events: none;
+  z-index: 0;
+  animation: auroraMesh2 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- 2. Master Frosted Glass Panel & Glow Utility --- */
+.ultra-glass,
+.glass-glow,
+.glass-panel {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.065) 0%, rgba(202, 163, 80, 0.025) 40%, rgba(9, 12, 19, 0.84) 100%) !important;
+  backdrop-filter: blur(28px) saturate(190%) contrast(102%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(102%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.11) !important;
+  box-shadow: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.5), inset 0 0 30px 0 rgba(202, 163, 80, 0.025), 0 20px 50px -10px rgba(0, 0, 0, 0.65) !important;
+  border-radius: 20px;
   transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
 
-.glass-glow::after {
+.ultra-glass:hover,
+.glass-glow:hover {
+  box-shadow: inset 0 2px 2px 0 rgba(255, 255, 255, 0.45), 0 25px 65px -10px rgba(0, 0, 0, 0.85), 0 0 45px rgba(202, 163, 80, 0.3) !important;
+  border-color: rgba(202, 163, 80, 0.58) !important;
+  transform: translateY(-8px) scale(1.012);
+}
+
+/* --- 3. Dynamic Cursor Spotlight Specular Reflection (cinematic.js) --- */
+.glass-glow::after,
+.ultra-glass::after,
+.portfolio-card::after,
+.spec-card::after,
+.zone-card::after,
+.cluster-card::after,
+.landmark-card::after,
+.bento-card::after,
+.fp-card::after,
+.tower-card::after,
+.feature-item::after,
+.calc-result-box::after,
+.calc-grid::after,
+.configurator-wrapper::after,
+.milestones-timeline-wrapper::after,
+.highlights-table-wrapper::after,
+.modal-content::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(600px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%), rgba(202, 163, 80, 0.12), transparent 40%);
+  background: radial-gradient(480px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%), rgba(255, 255, 255, 0.16), rgba(202, 163, 80, 0.14) 28%, transparent 65%);
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
   z-index: 2;
 }
 
-.glass-glow:hover::after {
+.glass-glow:hover::after,
+.ultra-glass:hover::after,
+.portfolio-card:hover::after,
+.spec-card:hover::after,
+.zone-card:hover::after,
+.cluster-card:hover::after,
+.landmark-card:hover::after,
+.bento-card:hover::after,
+.fp-card:hover::after,
+.tower-card:hover::after,
+.feature-item:hover::after,
+.calc-result-box:hover::after,
+.calc-grid:hover::after,
+.configurator-wrapper:hover::after,
+.milestones-timeline-wrapper:hover::after,
+.highlights-table-wrapper:hover::after,
+.modal-content:hover::after {
   opacity: 1;
 }
 
-.glass-glow:hover {
-  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.35), 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 45px rgba(202, 163, 80, 0.25);
-  border-color: rgba(202, 163, 80, 0.55) !important;
-  transform: translateY(-8px) scale(1.015);
-}
-
-/* 7. PARALLAX BG */
-.hero-bg {
-  transform: translateY(var(--scroll-offset, 0px));
-  will-change: transform;
-}
-
-/* =========================================
-   8. STRATEGIC GLASSMORPHISM ENGINE v4.0
-   ========================================= */
-
-/* Frosted Glass Base Utility */
-.glass-panel {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(202, 163, 80, 0.02) 50%, rgba(8, 10, 16, 0.85) 100%) !important;
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 16px 40px rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
-}
-
-/* Navbar Scrolled Glass Override */
-.pill-navbar.scrolled {
-  background: rgba(8, 10, 16, 0.75) !important;
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
-  border: 1px solid rgba(202, 163, 80, 0.25) !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(202, 163, 80, 0.12);
-}
-
-/* Feature Cards & Bento Grids Override */
-.portfolio-card, .spec-card, .zone-card, .cluster-card, .amenity-cat, .tower-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(202, 163, 80, 0.015) 45%, rgba(10, 12, 18, 0.8) 100%) !important;
-  backdrop-filter: blur(24px) saturate(170%);
-  -webkit-backdrop-filter: blur(24px) saturate(170%);
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12), 0 10px 30px rgba(0, 0, 0, 0.5);
-  border-radius: 18px;
+/* --- 4. Flowing Border Beam Laser Utility --- */
+.flowing-border {
   position: relative;
-  overflow: hidden;
+  isolation: isolate;
 }
 
-/* Enquiry Form Glassmorphism */
-.enquiry-left, .enquiry-right, .glass-form-container {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(202, 163, 80, 0.02) 40%, rgba(9, 11, 17, 0.88) 100%) !important;
-  backdrop-filter: blur(30px) saturate(190%);
-  -webkit-backdrop-filter: blur(30px) saturate(190%);
-  border-radius: 24px;
-  padding: 40px;
-  border: 1px solid rgba(202, 163, 80, 0.2) !important;
-  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.2), 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(202, 163, 80, 0.1);
+.flowing-border::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--card-mouse-angle, 0deg) at 50% 50%, transparent 0%, rgba(202, 163, 80, 0.85) 25%, transparent 50%, rgba(255, 255, 255, 0.95) 75%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+  animation: flowingBorderBeam 8s linear infinite;
 }
 
-/* Sticky Ribbon Overlay */
+/* --- 5. Kinetic Flowing Shimmer Text --- */
+.shimmer-text,
+.flowing-gold {
+  background: linear-gradient(100deg, var(--clr-gold) 0%, #fff 25%, var(--clr-gold-light) 50%, #fff6d6 75%, var(--clr-gold) 100%) !important;
+  background-size: 250% auto !important;
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  animation: flowingGold 5s ease infinite !important;
+  display: inline-block;
+}
+
+/* --- 6. Flowing Glass Sticky Ribbon --- */
 .sticky-ribbon {
-  background: linear-gradient(90deg, rgba(202, 163, 80, 0.25) 0%, rgba(236, 208, 140, 0.35) 50%, rgba(202, 163, 80, 0.25) 100%) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(202, 163, 80, 0.45);
+  background: linear-gradient(90deg, rgba(202, 163, 80, 0.28) 0%, rgba(236, 208, 140, 0.42) 25%, rgba(180, 140, 60, 0.28) 50%, rgba(255, 230, 160, 0.45) 75%, rgba(202, 163, 80, 0.28) 100%) !important;
+  background-size: 250% 100% !important;
+  animation: ribbonFlow 10s ease infinite !important;
+  backdrop-filter: blur(18px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(200%) !important;
+  border-bottom: 1px solid rgba(202, 163, 80, 0.5) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 20px rgba(202, 163, 80, 0.15) !important;
   color: #fff !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-/* Specular Glint Light Sweep on Hover */
-.portfolio-card::before, .spec-card::before, .zone-card::before, .cluster-card::before, .landmark-card::before, .bento-card::before, .fp-card::before, .tower-card::before {
+.ribbon-cta {
+  background: rgba(10, 12, 18, 0.75) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(202, 163, 80, 0.45) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+  color: var(--clr-gold) !important;
+  padding: 5px 16px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ribbon-cta:hover {
+  background: var(--clr-gold) !important;
+  color: #000 !important;
+  box-shadow: 0 4px 18px rgba(202, 163, 80, 0.45) !important;
+  transform: translateY(-1px);
+}
+
+/* --- 7. Floating Ultra-Glass Navbar --- */
+.pill-navbar {
+  background: linear-gradient(135deg, rgba(16, 20, 30, 0.75) 0%, rgba(8, 10, 16, 0.85) 100%) !important;
+  backdrop-filter: blur(30px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.22), 0 15px 35px -5px rgba(0, 0, 0, 0.65), 0 0 20px rgba(202, 163, 80, 0.08) !important;
+  transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+.pill-navbar.scrolled {
+  top: 10px !important;
+  background: linear-gradient(135deg, rgba(12, 16, 24, 0.88) 0%, rgba(6, 8, 12, 0.95) 100%) !important;
+  backdrop-filter: blur(34px) saturate(220%) !important;
+  -webkit-backdrop-filter: blur(34px) saturate(220%) !important;
+  border: 1px solid rgba(202, 163, 80, 0.38) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.3), 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(202, 163, 80, 0.2) !important;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  color: var(--clr-gold) !important;
+  box-shadow: 0 0 12px rgba(202, 163, 80, 0.2);
+}
+
+.cta-pill {
+  background: linear-gradient(135deg, #dfb965 0%, #caa350 100%) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 18px rgba(202, 163, 80, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.cta-pill:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: inset 0 1.5px 2px rgba(255, 255, 255, 0.6), 0 8px 25px rgba(202, 163, 80, 0.5) !important;
+}
+
+/* --- 8. Frosted Badges, Chips & Section Tags --- */
+.hero-badge {
+  background: linear-gradient(135deg, rgba(202, 163, 80, 0.16) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(10, 12, 18, 0.8) 100%) !important;
+  backdrop-filter: blur(18px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(190%) !important;
+  border: 1px solid rgba(202, 163, 80, 0.45) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(202, 163, 80, 0.15) !important;
+  color: var(--clr-gold) !important;
+}
+
+.hero-chips span {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(202, 163, 80, 0.02) 50%, rgba(10, 12, 18, 0.65) 100%) !important;
+  backdrop-filter: blur(14px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.hero-chips span:hover {
+  border-color: rgba(202, 163, 80, 0.5) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(202, 163, 80, 0.2) !important;
+  transform: translateY(-2px);
+  color: #fff !important;
+}
+
+.section-tag {
+  background: linear-gradient(135deg, rgba(202, 163, 80, 0.14) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(10, 12, 18, 0.72) 100%) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(202, 163, 80, 0.4) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 15px rgba(202, 163, 80, 0.1) !important;
+}
+
+/* --- 9. Luminous Stats Marquee --- */
+.stats-bar {
+  background: linear-gradient(90deg, rgba(8, 10, 16, 0.88) 0%, rgba(16, 20, 30, 0.78) 50%, rgba(8, 10, 16, 0.88) 100%) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12), 0 15px 35px rgba(0, 0, 0, 0.55) !important;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 50px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stat-item:hover {
+  background: rgba(202, 163, 80, 0.09);
+  border-color: rgba(202, 163, 80, 0.35);
+  box-shadow: 0 0 22px rgba(202, 163, 80, 0.18);
+  transform: translateY(-2px);
+}
+
+/* --- 10. Cards, Feature Pods, Inventory & Matrix Cards --- */
+.portfolio-card,
+.spec-card,
+.zone-card,
+.cluster-card,
+.amenity-cat,
+.tower-card,
+.feature-item,
+.loc-category,
+.l-stat,
+.faq-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.055) 0%, rgba(202, 163, 80, 0.02) 42%, rgba(10, 12, 18, 0.82) 100%) !important;
+  backdrop-filter: blur(26px) saturate(180%) contrast(102%) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(180%) contrast(102%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 2px 0 rgba(0, 0, 0, 0.4), 0 12px 35px rgba(0, 0, 0, 0.55) !important;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.portfolio-card:hover,
+.spec-card:hover,
+.zone-card:hover,
+.cluster-card:hover,
+.amenity-cat:hover,
+.tower-card:hover,
+.feature-item:hover,
+.loc-category:hover,
+.l-stat:hover,
+.faq-item:hover {
+  border-color: rgba(202, 163, 80, 0.55) !important;
+  box-shadow: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.35), 0 24px 60px -8px rgba(0, 0, 0, 0.85), 0 0 40px rgba(202, 163, 80, 0.28) !important;
+  transform: translateY(-6px);
+}
+
+/* --- 11. Highlights Matrix & Data Tables --- */
+.highlights-table-wrapper,
+.table-responsive.glass-glow {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(202, 163, 80, 0.02) 40%, rgba(10, 12, 18, 0.82) 100%) !important;
+  backdrop-filter: blur(26px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.18), 0 18px 45px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 22px;
+  overflow: hidden;
+  padding: 10px 20px;
+  margin-top: 24px;
+}
+
+.highlights-table tr,
+.table-responsive table tr {
+  transition: background 0.3s ease;
+}
+.highlights-table tr:hover,
+.table-responsive table tbody tr:hover {
+  background: rgba(202, 163, 80, 0.07);
+}
+
+/* --- 12. Master Layout Tower Stat Row --- */
+.tower-stat-row {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(202, 163, 80, 0.02) 40%, rgba(10, 12, 18, 0.8) 100%) !important;
+  backdrop-filter: blur(26px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15), 0 15px 40px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 24px;
+}
+
+/* --- 13. Unit Configurator & Milestones --- */
+.configurator-wrapper,
+.milestones-timeline-wrapper {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(202, 163, 80, 0.02) 40%, rgba(10, 12, 18, 0.85) 100%) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.18), 0 20px 50px rgba(0, 0, 0, 0.65) !important;
+  border-radius: 26px;
+}
+
+.r-spec-item {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+.r-spec-item:hover {
+  background: rgba(202, 163, 80, 0.08) !important;
+  border-color: rgba(202, 163, 80, 0.35) !important;
+}
+
+/* --- 14. Real Estate Calculator Grid & Result Box --- */
+.calc-grid {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(202, 163, 80, 0.02) 40%, rgba(10, 12, 18, 0.85) 100%) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2), 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 28px;
+}
+
+.calc-result-box {
+  background: linear-gradient(145deg, rgba(16, 20, 32, 0.85) 0%, rgba(8, 10, 16, 0.95) 100%) !important;
+  backdrop-filter: blur(30px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  border: 1px solid rgba(202, 163, 80, 0.35) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.25), 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(202, 163, 80, 0.12) !important;
+  border-radius: 22px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.calc-result-box:hover {
+  border-color: rgba(202, 163, 80, 0.6) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.35), 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 45px rgba(202, 163, 80, 0.25) !important;
+}
+
+/* --- 15. Enquiry Form & Contact Panels --- */
+.enquiry-left,
+.enquiry-right,
+.glass-form-container {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(202, 163, 80, 0.02) 40%, rgba(9, 11, 17, 0.88) 100%) !important;
+  backdrop-filter: blur(32px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+  border-radius: 26px;
+  border: 1px solid rgba(202, 163, 80, 0.25) !important;
+  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.25), 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(202, 163, 80, 0.12) !important;
+}
+
+/* --- 16. Floating VIP Pass & Modal Dialogs --- */
+.modal-content {
+  background: linear-gradient(135deg, rgba(20, 25, 36, 0.9) 0%, rgba(10, 12, 18, 0.96) 100%) !important;
+  backdrop-filter: blur(36px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(210%) !important;
+  border: 1px solid rgba(202, 163, 80, 0.3) !important;
+  box-shadow: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.28), 0 40px 100px rgba(0, 0, 0, 0.85), 0 0 55px rgba(202, 163, 80, 0.18) !important;
+  border-radius: 28px;
+}
+
+/* --- 17. Mobile Sticky Action Bar --- */
+.mobile-sticky-action-bar {
+  background: linear-gradient(180deg, rgba(16, 20, 32, 0.88) 0%, rgba(8, 10, 16, 0.97) 100%) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border-top: 1px solid rgba(202, 163, 80, 0.38) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 -10px 35px rgba(0, 0, 0, 0.9), 0 0 20px rgba(202, 163, 80, 0.15) !important;
+}
+
+/* --- 18. Dynamic Article & Editorial Silo Pages --- */
+.editorial-pillar-page article,
+article.bg-gray-900\/50 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(202, 163, 80, 0.015) 45%, rgba(10, 12, 18, 0.85) 100%) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18), 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* --- 19. Specular Glint Light Sweep on Hover --- */
+.portfolio-card::before,
+.spec-card::before,
+.zone-card::before,
+.cluster-card::before,
+.landmark-card::before,
+.bento-card::before,
+.fp-card::before,
+.tower-card::before,
+.feature-item::before,
+.calc-result-box::before {
   content: '';
   position: absolute;
-  top: 0; left: -120%; width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), rgba(202, 163, 80, 0.15), transparent);
+  top: 0;
+  left: -130%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), rgba(202, 163, 80, 0.18), transparent);
   transform: skewX(-25deg);
-  transition: 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 3;
   pointer-events: none;
 }
 
-.portfolio-card:hover::before, .spec-card:hover::before, .zone-card:hover::before, .cluster-card:hover::before, .landmark-card:hover::before, .bento-card:hover::before, .fp-card:hover::before, .tower-card:hover::before {
-  left: 160%;
+.portfolio-card:hover::before,
+.spec-card:hover::before,
+.zone-card:hover::before,
+.cluster-card:hover::before,
+.landmark-card:hover::before,
+.bento-card:hover::before,
+.fp-card:hover::before,
+.tower-card:hover::before,
+.feature-item:hover::before,
+.calc-result-box:hover::before {
+  left: 170%;
 }
 
-.portfolio-card img, .bento-card img, .fp-card img, .zone-card img {
+.portfolio-card img,
+.bento-card img,
+.fp-card img,
+.zone-card img {
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.portfolio-card:hover img, .bento-card:hover img, .fp-card:hover img, .zone-card:hover img {
+.portfolio-card:hover img,
+.bento-card:hover img,
+.fp-card:hover img,
+.zone-card:hover img {
   transform: scale(1.06) !important;
 }
 
-/* Aura Glow Animations for Verified & Selling Badges */
+/* --- 20. Aura Glow Animations for Verified & Status Badges --- */
 @keyframes auraPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(202, 163, 80, 0.4), inset 0 0 8px rgba(202, 163, 80, 0.2);
+    box-shadow: 0 0 0 0 rgba(202, 163, 80, 0.45), inset 0 0 8px rgba(202, 163, 80, 0.25);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(202, 163, 80, 0), inset 0 0 12px rgba(202, 163, 80, 0.4);
+    box-shadow: 0 0 0 12px rgba(202, 163, 80, 0), inset 0 0 14px rgba(202, 163, 80, 0.45);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(202, 163, 80, 0), inset 0 0 8px rgba(202, 163, 80, 0.2);
+    box-shadow: 0 0 0 0 rgba(202, 163, 80, 0), inset 0 0 8px rgba(202, 163, 80, 0.25);
   }
 }
 
-.hero-badge, .badge-selling, .badge-limited, .tower-status-badge {
+.hero-badge,
+.badge-selling,
+.badge-limited,
+.tower-status-badge {
   animation: auraPulse 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section::before,
+  .section::after,
+  .flowing-border::before,
+  .shimmer-text,
+  .flowing-gold,
+  .sticky-ribbon,
+  .hero-badge,
+  .badge-selling,
+  .badge-limited,
+  .tower-status-badge {
+    animation: none !important;
+  }
 }
 
 /* Shimmer Button Light Sheen */

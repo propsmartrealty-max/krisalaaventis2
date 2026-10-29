@@ -1,72 +1,151 @@
 document.addEventListener('DOMContentLoaded', () => {
-  /* 1. GLOBAL MOUSE SPOTLIGHT */
-  const spotlight = document.createElement('div');
-  spotlight.className = 'cursor-spotlight';
-  document.body.appendChild(spotlight);
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
-  document.addEventListener('mousemove', (e) => {
-    spotlight.style.setProperty('--mouse-x', `${e.clientX}px`);
-    spotlight.style.setProperty('--mouse-y', `${e.clientY}px`);
-  }, { passive: true });
+  /* 1. GLOBAL MOUSE SPOTLIGHT (Desktop Fine Pointer Only) */
+  if (isFinePointer) {
+    const spotlight = document.createElement('div');
+    spotlight.className = 'cursor-spotlight';
+    document.body.appendChild(spotlight);
+
+    let mouseX = 0, mouseY = 0;
+    let spotlightRaf = null;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!spotlightRaf) {
+        spotlightRaf = requestAnimationFrame(() => {
+          spotlight.style.setProperty('--mouse-x', `${mouseX}px`);
+          spotlight.style.setProperty('--mouse-y', `${mouseY}px`);
+          spotlightRaf = null;
+        });
+      }
+    }, { passive: true });
+  }
 
   /* 2. DYNAMIC GLASS CARD SPOTLIGHT & 3D TILT PHYSICS */
-  const glassCards = document.querySelectorAll(
-    '.portfolio-card, .spec-card, .zone-card, .cluster-card, .landmark-card, .bento-card, .fp-card, .tower-card, .glass-glow, .stat-item, .feature-item'
-  );
+  const glassCardSelectors = [
+    '.portfolio-card',
+    '.spec-card',
+    '.zone-card',
+    '.cluster-card',
+    '.landmark-card',
+    '.bento-card',
+    '.fp-card',
+    '.tower-card',
+    '.glass-glow',
+    '.stat-item',
+    '.feature-item',
+    '.calc-grid',
+    '.calc-result-box',
+    '.configurator-wrapper',
+    '.milestones-timeline-wrapper',
+    '.highlights-table-wrapper',
+    '.modal-content',
+    '.enquiry-left',
+    '.enquiry-right',
+    '.glass-form-container',
+    '.faq-item',
+    '.ultra-glass',
+    '.price-card',
+    '.l-stat',
+    '.tower-stat'
+  ];
+
+  const glassCards = document.querySelectorAll(glassCardSelectors.join(', '));
 
   glassCards.forEach((card) => {
+    let rafId = null;
+
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      card.style.setProperty('--card-mouse-x', `${x}px`);
-      card.style.setProperty('--card-mouse-y', `${y}px`);
+      if (!rafId) {
+        rafId = requestAnimationFrame(() => {
+          card.style.setProperty('--card-mouse-x', `${x}px`);
+          card.style.setProperty('--card-mouse-y', `${y}px`);
 
-      // Gentle 3D perspective tilt
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+          // Flowing border angle tracking cursor
+          const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+          card.style.setProperty('--card-mouse-angle', `${angle + 90}deg`);
+
+          // Gentle 3D perspective tilt only for fine pointers & screens > 768px
+          if (isFinePointer && window.innerWidth > 768 && !card.classList.contains('no-tilt')) {
+            const rotateX = ((y - centerY) / centerY) * -4.5;
+            const rotateY = ((x - centerX) / centerX) * 4.5;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+          }
+
+          rafId = null;
+        });
+      }
     }, { passive: true });
 
     card.addEventListener('mouseleave', () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
       card.style.transform = '';
-      card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+      card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease';
     });
 
     card.addEventListener('mouseenter', () => {
-      card.style.transition = 'transform 0.15s ease-out';
+      card.style.transition = 'transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease';
     });
   });
 
   /* 3. MAGNETIC CTAs */
-  const magneticEls = document.querySelectorAll('.magnetic, .btn-primary, .shimmer-btn, .wa-floating-btn');
-  magneticEls.forEach((el) => {
-    el.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
-    
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const h = rect.width / 2;
-      const v = rect.height / 2;
-      const x = e.clientX - rect.left - h;
-      const y = e.clientY - rect.top - v;
-      el.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
-    }, { passive: true });
+  if (isFinePointer) {
+    const magneticEls = document.querySelectorAll('.magnetic, .btn-primary, .shimmer-btn, .wa-floating-btn, .cta-pill');
+    magneticEls.forEach((el) => {
+      el.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+      
+      let magRaf = null;
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const h = rect.width / 2;
+        const v = rect.height / 2;
+        const x = e.clientX - rect.left - h;
+        const y = e.clientY - rect.top - v;
 
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = `translate(0px, 0px)`;
+        if (!magRaf) {
+          magRaf = requestAnimationFrame(() => {
+            el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            magRaf = null;
+          });
+        }
+      }, { passive: true });
+
+      el.addEventListener('mouseleave', () => {
+        if (magRaf) {
+          cancelAnimationFrame(magRaf);
+          magRaf = null;
+        }
+        el.style.transform = 'translate(0px, 0px)';
+      });
     });
-  });
+  }
 
   /* 4. PARALLAX HERO BACKGROUND */
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg) {
+    let scrollRaf = null;
     window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      heroBg.style.setProperty('--scroll-offset', `${scrolled * 0.35}px`);
+      if (!scrollRaf) {
+        scrollRaf = requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+          if (scrolled < 1200) {
+            heroBg.style.setProperty('--scroll-offset', `${scrolled * 0.32}px`);
+          }
+          scrollRaf = null;
+        });
+      }
     }, { passive: true });
   }
 
@@ -78,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer3D.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal-3d, .reveal').forEach((el) => observer3D.observe(el));
 });

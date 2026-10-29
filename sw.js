@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krisala-aventis-v2026';
+const CACHE_NAME = 'krisala-aventis-v2026-flowing-glass';
 const ASSETS = [
   '/',
   '/krisala-aventis-premium-living-review',
@@ -62,6 +62,7 @@ const ASSETS = [
   '/assets/css/style-v2026.min.css',
   '/assets/js/config.js',
   '/assets/js/script.min.js',
+  '/assets/js/cinematic.min.js',
   '/assets/images/logo.webp',
   '/favicon.png'
 ];

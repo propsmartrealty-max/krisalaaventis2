@@ -1,8 +1,9 @@
-const CACHE_NAME = 'krisala-aventis-v2026';
+const CACHE_NAME = 'krisala-aventis-v2026-flowing-glass';
 const STATIC_ASSETS = [
   '/',
   '/assets/css/style-v2026.min.css',
   '/assets/js/script.min.js',
+  '/assets/js/cinematic.min.js',
   '/assets/images/hero.webp',
   '/assets/images/logo.jpg',
   '/manifest.json'
