@@ -100,18 +100,29 @@ export async function generateMetadata({
   const url = `https://krisalaventis.in/${category}`;
 
   const categoryTitles: Record<string, string> = {
-    near: "Krisala Aventis Connectivity — 7 Min to Hinjewadi Phase 1",
-    price: "Krisala Aventis Pricing & Cost Sheet — 2 & 3 BHK from ₹85L*",
-    guide: "Krisala Aventis Homebuyer Guide — MahaRERA P52100080336",
-    market: "Tathawade Real Estate Market Intelligence 2026 — Krisala Aventis",
-    compare: "Krisala Aventis vs Wakad & Hinjewadi Real Estate Comparison",
-    feature: "Krisala Aventis Architecture — Aluform Tech & 40+ Amenities",
-    blog: "Krisala Aventis Editorial — West Pune Lifestyle & Real Estate",
-    invest: "Krisala Aventis NRI Investment Desk — Rental Yields & Growth",
+    near: "Krisala Aventis Location — 7 Min to Hinjewadi Phase 1",
+    price: "Krisala Aventis Price List 2026 — 2 & 3 BHK from ₹85L*",
+    guide: "Krisala Aventis Buyer Guide — MahaRERA P52100080336",
+    market: "Tathawade Real Estate Trends 2026 | Krisala Aventis",
+    compare: "Krisala Aventis vs Wakad & Hinjewadi 2026 Comparison",
+    feature: "Krisala Aventis Amenities — Aluform Tech & 40+ Luxury",
+    blog: "Krisala Aventis Editorial — Tathawade Real Estate",
+    invest: "Krisala Aventis NRI Investment Desk — High ROI Pune",
   };
 
-  const pageTitle = categoryTitles[category] || `${meta.name} — Krisala Aventis Tathawade`;
-  const pageDesc = `${meta.description} MahaRERA: P52100080336. 2 & 3 BHK from ₹85L*.`;
+  const categoryDescriptions: Record<string, string> = {
+    near: "⭐ 4.9/5 | Krisala Aventis Tathawade transit guide. 7 mins to Hinjewadi Phase 1 & 5 mins to Wakad. MahaRERA P52100080336. Get Route Map & 2026 Cost Sheet.",
+    price: "⭐ 4.9/5 | Krisala Aventis 2026 price list & cost sheet. 2.25 & 3.25 BHK flats starting ₹85L* near Hinjewadi. MahaRERA P52100080336. Download Cost Sheet PDF.",
+    guide: "⭐ 4.9/5 | Krisala Aventis homebuyer & legal guide. MahaRERA P52100080336 approvals, bank loans & smart study layouts from ₹85L*. Download Free PDF Guide.",
+    market: "⭐ 4.9/5 | Tathawade & West Pune real estate market report 2026. Capital appreciation, rental yields & Metro Line 3 growth analysis at Krisala Aventis.",
+    compare: "⭐ 4.9/5 | Krisala Aventis vs Wakad, Hinjewadi & Baner real estate comparison. Analyze price per sq.ft, carpet area & ROI. Download Comparative Report.",
+    feature: "⭐ 4.9/5 | Krisala Aventis architectural specs: 100% monolithic Aluform construction, smart study spaces & 40+ luxury amenities. View 2026 Blueprints.",
+    blog: "⭐ 4.9/5 | Krisala Aventis editorial & Pune real estate news. Updates on Tathawade infrastructure, expressway connectivity & luxury living by Krisala Legacy.",
+    invest: "⭐ 4.9/5 | Krisala Aventis NRI investment desk. High rental yields near Hinjewadi IT Park, hassle-free repatriation & property management from ₹85L*.",
+  };
+
+  const pageTitle = categoryTitles[category] || `Krisala Aventis: ${meta.name}`;
+  const pageDesc = categoryDescriptions[category] || `⭐ 4.9/5 | Krisala Aventis Tathawade: ${meta.description.slice(0, 95)}... MahaRERA P52100080336 | From ₹85L*. Cost Sheet PDF.`;
 
   return {
     title: pageTitle,
@@ -121,7 +132,7 @@ export async function generateMetadata({
       canonical: url,
     },
     openGraph: {
-      title: `${pageTitle} | Krisala Aventis Tathawade`,
+      title: pageTitle,
       description: pageDesc,
       url: url,
       images: [
@@ -136,7 +147,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${pageTitle} | Krisala Aventis Tathawade`,
+      title: pageTitle,
       description: pageDesc,
       images: ["https://krisalaventis.in/assets/images/hero.webp"],
     },
@@ -217,7 +228,7 @@ export default async function CategoryPage({
       {/* Luxury Navbar */}
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">
-          <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/" className="logo" title="Krisala Aventis Tathawade Official Website" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <img src="/assets/images/logo.jpg" alt="Krisala Logo" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
             <span style={{ fontWeight: 300, letterSpacing: '2px', fontSize: '1.1rem', color: '#fff' }}>AVENTIS</span>
           </Link>

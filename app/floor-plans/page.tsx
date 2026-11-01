@@ -78,6 +78,44 @@ const fpSchema = {
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalaventis.in" },
         { "@type": "ListItem", "position": 2, "name": "Floor Plans", "item": "https://krisalaventis.in/floor-plans" }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krisalaventis.in/floor-plans#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the carpet area of 2.25 BHK and 3.25 BHK flats in Krisala Aventis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 2.25 BHK Smart Study unit has an official MahaRERA certified carpet area of 839 sq.ft, while the 3.25 BHK luxury suite offers 1116 sq.ft carpet area, maximizing usable carpet efficiency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the +0.25 Smart Study concept in Krisala Aventis floor plans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The +0.25 is an acoustically isolated, dedicated work-from-home or child study room with high-speed fiber conduits, ample power points, and natural daylight ventilation, eliminating living room distractions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the floor plans approved under MahaRERA P52100080336?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all floor plans for Towers A, B, C, and D are fully sanctioned and certified under MahaRERA registration number P52100080336 and PCMC municipal town planning norms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I download the high-resolution floor plans PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can download the complete high-resolution blueprint PDF with architectural dimensions and master cluster layouts instantly using the enquiry form on this page or via WhatsApp at +917744009295."
+          }
+        }
+      ]
     }
   ]
 };
@@ -93,7 +131,7 @@ export default function FloorPlansPage() {
       {/* Navigation */}
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">
-          <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/" className="logo" title="Krisala Aventis Tathawade Official Website" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <img src="/assets/images/logo.jpg" alt="Krisala Logo" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
             <span style={{ fontWeight: 300, letterSpacing: '2px', fontSize: '1.1rem', color: '#fff' }}>AVENTIS</span>
           </Link>
@@ -183,6 +221,55 @@ export default function FloorPlansPage() {
             <div className="glass-glow" style={{ padding: '20px', borderRadius: '16px', textAlign: 'center' }}>
               <img src="/assets/images/floorplan-3bhk.webp" alt="Krisala Aventis 3.25 BHK Floor Plan" style={{ width: '100%', height: 'auto', borderRadius: '12px' }} />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Floor Plans FAQs Section for Google Rich Snippets */}
+      <section className="section" style={{ background: 'rgba(0, 0, 0, 0.4)', borderTop: '1px solid var(--clr-glass-border)', padding: '60px 0' }}>
+        <div className="container" style={{ maxWidth: '900px' }}>
+          <div className="section-tag" style={{ textAlign: 'center', margin: '0 auto 12px' }}>Floor Plans & Layout FAQs</div>
+          <div className="section-header center">
+            <h2>Frequently Asked <span className="gold shimmer-text">Floor Plan Questions</span></h2>
+            <p>Certified dimensions, Smart Study specifications, and MahaRERA compliance.</p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '30px' }}>
+            <details className="glass-glow" style={{ padding: '20px 24px', borderRadius: '12px', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 600, color: 'var(--clr-gold)', fontSize: '1.05rem', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                What is the carpet area of 2.25 BHK and 3.25 BHK flats in Krisala Aventis?
+                <span>▼</span>
+              </summary>
+              <p style={{ color: 'var(--clr-silver)', marginTop: '12px', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                The 2.25 BHK Smart Study unit has an official MahaRERA certified carpet area of 839 sq.ft, while the 3.25 BHK luxury suite offers 1116 sq.ft carpet area, maximizing usable carpet efficiency.
+              </p>
+            </details>
+            <details className="glass-glow" style={{ padding: '20px 24px', borderRadius: '12px', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 600, color: 'var(--clr-gold)', fontSize: '1.05rem', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                What is the +0.25 Smart Study concept in Krisala Aventis floor plans?
+                <span>▼</span>
+              </summary>
+              <p style={{ color: 'var(--clr-silver)', marginTop: '12px', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                The +0.25 is an acoustically isolated, dedicated work-from-home or child study room with high-speed fiber conduits, ample power points, and natural daylight ventilation, eliminating living room distractions.
+              </p>
+            </details>
+            <details className="glass-glow" style={{ padding: '20px 24px', borderRadius: '12px', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 600, color: 'var(--clr-gold)', fontSize: '1.05rem', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                Are the floor plans approved under MahaRERA P52100080336?
+                <span>▼</span>
+              </summary>
+              <p style={{ color: 'var(--clr-silver)', marginTop: '12px', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Yes, all floor plans for Towers A, B, C, and D are fully sanctioned and certified under MahaRERA registration number P52100080336 and PCMC municipal town planning norms.
+              </p>
+            </details>
+            <details className="glass-glow" style={{ padding: '20px 24px', borderRadius: '12px', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 600, color: 'var(--clr-gold)', fontSize: '1.05rem', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                How can I download the high-resolution floor plans PDF?
+                <span>▼</span>
+              </summary>
+              <p style={{ color: 'var(--clr-silver)', marginTop: '12px', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                You can download the complete high-resolution blueprint PDF with architectural dimensions and master cluster layouts instantly using the enquiry form on this page or via WhatsApp at +917744009295.
+              </p>
+            </details>
           </div>
         </div>
       </section>

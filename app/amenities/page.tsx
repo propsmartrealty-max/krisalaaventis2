@@ -66,7 +66,7 @@ export default function AmenitiesPage() {
       {/* Navigation */}
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">
-          <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/" className="logo" title="Krisala Aventis Tathawade Official Website" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <img src="/assets/images/logo.jpg" alt="Krisala Logo" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
             <span style={{ fontWeight: 300, letterSpacing: '2px', fontSize: '1.1rem', color: '#fff' }}>AVENTIS</span>
           </Link>

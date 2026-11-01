@@ -87,6 +87,44 @@ const priceSchema = {
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalaventis.in" },
         { "@type": "ListItem", "position": 2, "name": "Pricing & Cost Sheet", "item": "https://krisalaventis.in/pricing" }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krisalaventis.in/pricing#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the starting price of 2.25 BHK and 3.25 BHK at Krisala Aventis Tathawade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis 2.25 BHK Smart Study homes (839 sq.ft carpet) start from ₹85 Lakh* and 3.25 BHK luxury suites (1116 sq.ft carpet) start from ₹1.15 Cr*. All prices are launch-exclusive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the government taxes and additional charges for Krisala Aventis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Additional statutory charges include PCMC Stamp Duty (7%), Registration (₹30,000), GST (5%), and society maintenance, detailed in our official cost sheet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the construction-linked payment schedule for Krisala Aventis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis follows a 100% construction-linked milestone plan under MahaRERA: 10% on booking/agreement, 20% on plinth, 45% distributed across slab casting, and 25% upon finishing and possession."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which banks offer approved home loans for Krisala Aventis Tathawade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis is pre-approved by leading banks including SBI, HDFC Bank, ICICI Bank, and Axis Bank with mortgage interest rates starting from 8.50% p.a. and quick digital sanctions."
+          }
+        }
+      ]
     }
   ]
 };
@@ -102,7 +140,7 @@ export default function PricingPage() {
       {/* Navigation Bar */}
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">
-          <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/" className="logo" title="Krisala Aventis Tathawade Official Website" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <img src="/assets/images/logo.jpg" alt="Krisala Logo" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
             <span style={{ fontWeight: 300, letterSpacing: '2px', fontSize: '1.1rem', color: '#fff' }}>AVENTIS</span>
           </Link>
@@ -223,6 +261,55 @@ export default function PricingPage() {
                 Final payment upon completion of vitrified flooring, electrical fittings, and MahaRERA Occupancy Certificate (OC).
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing FAQs Section for Google Rich Snippets */}
+      <section className="section" style={{ background: 'rgba(0, 0, 0, 0.4)', borderTop: '1px solid var(--clr-glass-border)', padding: '60px 0' }}>
+        <div className="container" style={{ maxWidth: '900px' }}>
+          <div className="section-tag" style={{ textAlign: 'center', margin: '0 auto 12px' }}>Pricing & Payment FAQs</div>
+          <div className="section-header center">
+            <h2>Frequently Asked <span className="gold shimmer-text">Pricing Questions</span></h2>
+            <p>Clear, transparent answers regarding costs, PCMC statutory levies, and payment terms.</p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '30px' }}>
+            <details className="glass-glow" style={{ padding: '20px 24px', borderRadius: '12px', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 600, color: 'var(--clr-gold)', fontSize: '1.05rem', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                What is the starting price of 2.25 BHK and 3.25 BHK at Krisala Aventis Tathawade?
+                <span>▼</span>
+              </summary>
+              <p style={{ color: 'var(--clr-silver)', marginTop: '12px', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Krisala Aventis 2.25 BHK Smart Study homes (839 sq.ft carpet) start from ₹85 Lakh* and 3.25 BHK luxury suites (1116 sq.ft carpet) start from ₹1.15 Cr*. All prices are launch-exclusive.
+              </p>
+            </details>
+            <details className="glass-glow" style={{ padding: '20px 24px', borderRadius: '12px', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 600, color: 'var(--clr-gold)', fontSize: '1.05rem', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                What are the government taxes and additional charges for Krisala Aventis?
+                <span>▼</span>
+              </summary>
+              <p style={{ color: 'var(--clr-silver)', marginTop: '12px', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Additional statutory charges include PCMC Stamp Duty (7%), Registration (₹30,000), GST (5%), and society maintenance, detailed in our official cost sheet.
+              </p>
+            </details>
+            <details className="glass-glow" style={{ padding: '20px 24px', borderRadius: '12px', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 600, color: 'var(--clr-gold)', fontSize: '1.05rem', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                What is the construction-linked payment schedule for Krisala Aventis?
+                <span>▼</span>
+              </summary>
+              <p style={{ color: 'var(--clr-silver)', marginTop: '12px', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Krisala Aventis follows a 100% construction-linked milestone plan under MahaRERA: 10% on booking/agreement, 20% on plinth, 45% distributed across slab casting, and 25% upon finishing and possession.
+              </p>
+            </details>
+            <details className="glass-glow" style={{ padding: '20px 24px', borderRadius: '12px', cursor: 'pointer' }}>
+              <summary style={{ fontWeight: 600, color: 'var(--clr-gold)', fontSize: '1.05rem', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                Which banks offer approved home loans for Krisala Aventis Tathawade?
+                <span>▼</span>
+              </summary>
+              <p style={{ color: 'var(--clr-silver)', marginTop: '12px', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Krisala Aventis is pre-approved by leading banks including SBI, HDFC Bank, ICICI Bank, and Axis Bank with mortgage interest rates starting from 8.50% p.a. and quick digital sanctions.
+              </p>
+            </details>
           </div>
         </div>
       </section>
