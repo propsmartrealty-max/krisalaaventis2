@@ -34,26 +34,51 @@ function findPageBySlug(categoryParam: string, slugParam: string) {
   const cat = (categoryParam || "").toLowerCase().trim();
   const rawSlug = (slugParam || "").replace(/\.html$/, "").trim();
   const lowerSlug = rawSlug.toLowerCase();
+  const normalizedSlug = lowerSlug.replace(/_/g, "-").replace(/-+/g, "-");
 
   // 1. Direct or case-insensitive match in requested folder
   let page =
     pageByFolderAndSlug.get(`${cat}/${rawSlug}`) ||
-    pageByFolderAndSlug.get(`${cat}/${lowerSlug}`);
+    pageByFolderAndSlug.get(`${cat}/${lowerSlug}`) ||
+    pageByFolderAndSlug.get(`${cat}/${normalizedSlug}`);
   if (page) return page;
 
   // 2. Cross-folder fallback match (prevents 404 if crawler switches category silo)
-  page = pageBySlugOnly.get(rawSlug) || pageBySlugOnly.get(lowerSlug);
+  page = pageBySlugOnly.get(rawSlug) || pageBySlugOnly.get(lowerSlug) || pageBySlugOnly.get(normalizedSlug);
   if (page) return page;
 
-  // 3. Year tolerance match (2025 <-> 2026)
-  if (lowerSlug.includes("2026")) {
-    const s25 = lowerSlug.replace("2026", "2025");
-    page = pageByFolderAndSlug.get(`${cat}/${s25}`) || pageBySlugOnly.get(s25);
-    if (page) return page;
-  } else if (lowerSlug.includes("2025")) {
-    const s26 = lowerSlug.replace("2025", "2026");
-    page = pageByFolderAndSlug.get(`${cat}/${s26}`) || pageBySlugOnly.get(s26);
-    if (page) return page;
+  // 3. Year tolerance match (2025 <-> 2026 <-> 2027)
+  const years = ["2026", "2025", "2027"];
+  for (const yr of years) {
+    if (lowerSlug.includes(yr)) {
+      for (const targetYr of years) {
+        if (targetYr !== yr) {
+          const replaced = lowerSlug.replace(yr, targetYr);
+          page = pageByFolderAndSlug.get(`${cat}/${replaced}`) || pageBySlugOnly.get(replaced);
+          if (page) return page;
+        }
+      }
+    }
+  }
+
+  // 4. Token similarity fallback for any search permutation
+  const catPages = allPages.filter((p) => p.folder === cat);
+  if (catPages.length > 0) {
+    const slugTokens = lowerSlug.split(/[-_]+/).filter((t) => t.length > 2);
+    let bestMatch = null;
+    let maxMatches = 0;
+    for (const p of catPages) {
+      const pSlug = (p.url_slug || "").toLowerCase();
+      let matches = 0;
+      for (const t of slugTokens) {
+        if (pSlug.includes(t)) matches++;
+      }
+      if (matches > maxMatches && matches >= 2) {
+        maxMatches = matches;
+        bestMatch = p;
+      }
+    }
+    if (bestMatch) return bestMatch;
   }
 
   return undefined;

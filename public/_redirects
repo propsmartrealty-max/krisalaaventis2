@@ -11,6 +11,38 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /sitemap /sitemap.xml 301
 /sitemap.html /sitemap.xml 301
 
+# Universal High-Intent Query Permutation Redirects (Direct 100% Crawlers & Users to Position #1 Content)
+/cost-sheet               /pricing            301
+/cost-sheet.html          /pricing            301
+/costsheet                /pricing            301
+/price-list               /pricing            301
+/price-list.html          /pricing            301
+/pricing.html             /pricing            301
+/floorplan                /floor-plans        301
+/floorplans               /floor-plans        301
+/floor-plan               /floor-plans        301
+/floor-plans.html         /floor-plans        301
+/brochure                 /floor-plans        301
+/brochure.html            /floor-plans        301
+/brochure-download        /floor-plans        301
+/rera                     /maharera           301
+/rera.html                /maharera           301
+/maharera.html            /maharera           301
+/maharera-p52100080336    /maharera           301
+/p52100080336             /maharera           301
+/possession-date          /maharera           301
+/location.html            /location           301
+/location-map             /location           301
+/map                      /location           301
+/amenity                  /amenities          301
+/amenities.html           /amenities          301
+/contact-us               /#contact           301
+/contact                  /#contact           301
+/reviews                  /#overview          301
+/review                   /#overview          301
+/overview                 /#overview          301
+/tathawade-vs-wakad.html  /tathawade-vs-wakad 301
+
 # Core Legacy & Placeholder Silo Redirects (Eliminates 40,000+ Crawler 404s)
 /krisala-aventis-tathawade-brochure-download           /#contact                                  301
 /krisala-aventis-tathawade-price-list                  /pricing                                   301
