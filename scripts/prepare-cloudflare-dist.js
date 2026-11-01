@@ -29,6 +29,17 @@ console.log('\n🚀 \x1b[1mOptimizing Static Distribution for Cloudflare Pages..
   }
 });
 
+// 1a. Copy .well-known directory contents (security.txt, llms.txt, ai-plugin.json)
+const wellKnownSrc = path.join(publicDir, '.well-known');
+const wellKnownDest = path.join(outDir, '.well-known');
+if (fs.existsSync(wellKnownSrc)) {
+  if (!fs.existsSync(wellKnownDest)) fs.mkdirSync(wellKnownDest, { recursive: true });
+  fs.readdirSync(wellKnownSrc).forEach(f => {
+    fs.copyFileSync(path.join(wellKnownSrc, f), path.join(wellKnownDest, f));
+    console.log(`✅ Injected .well-known/${f} into out/`);
+  });
+}
+
 // 1b. Inject Dynamic Case-Resilient 301 Redirects for all uppercase slugs into out/_redirects
 try {
   const coreData = require('../data.json');

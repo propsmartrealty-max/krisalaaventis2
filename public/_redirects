@@ -43,6 +43,13 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /overview                 /#overview          301
 /tathawade-vs-wakad.html  /tathawade-vs-wakad 301
 
+# AI Engine Shortcuts & RFC Discoveries
+/chatgpt                    /                   301
+/searchgpt                  /                   301
+/ai                         /llms.txt           301
+/ai.txt                     /llms.txt           301
+/ai-knowledge               /ai-knowledge.json  301
+
 # Core Legacy & Placeholder Silo Redirects (Eliminates 40,000+ Crawler 404s)
 /krisala-aventis-tathawade-brochure-download           /#contact                                  301
 /krisala-aventis-tathawade-price-list                  /pricing                                   301

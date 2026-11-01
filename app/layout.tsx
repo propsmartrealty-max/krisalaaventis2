@@ -148,9 +148,46 @@ const masterSchema = {
         "longitude": 73.7462656
       },
       "areaServed": [
-        { "@type": "Place", "name": "Tathawade, Pune" },
-        { "@type": "Place", "name": "Wakad, Pune" },
-        { "@type": "Place", "name": "Hinjewadi Phase 1, Pune" },
+        {
+          "@type": "Place",
+          "name": "Tathawade, Pune",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q7688047",
+            "https://en.wikipedia.org/wiki/Tathawade"
+          ]
+        },
+        {
+          "@type": "Place",
+          "name": "Wakad, Pune",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q7961129",
+            "https://en.wikipedia.org/wiki/Wakad"
+          ]
+        },
+        {
+          "@type": "Place",
+          "name": "Hinjewadi Phase 1, Pune",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q11086208",
+            "https://en.wikipedia.org/wiki/Hinjawadi"
+          ]
+        },
+        {
+          "@type": "Place",
+          "name": "Pimpri Chinchwad, PCMC",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q1025595",
+            "https://en.wikipedia.org/wiki/Pimpri-Chinchwad"
+          ]
+        },
+        {
+          "@type": "Place",
+          "name": "Pune, Maharashtra",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q1538",
+            "https://en.wikipedia.org/wiki/Pune"
+          ]
+        },
         { "@type": "Place", "name": "Hinjewadi Phase 2, Pune" },
         { "@type": "Place", "name": "Hinjewadi Phase 3, Pune" },
         { "@type": "Place", "name": "Punawale, Pune" },
@@ -162,7 +199,6 @@ const masterSchema = {
         { "@type": "Place", "name": "Sus, Pune" },
         { "@type": "Place", "name": "Bavdhan, Pune" },
         { "@type": "Place", "name": "Aundh, Pune" },
-        { "@type": "Place", "name": "Pimpri Chinchwad, PCMC" },
         { "@type": "Place", "name": "Pimple Saudagar, Pune" },
         { "@type": "Place", "name": "Pimple Nilakh, Pune" },
         { "@type": "Place", "name": "Moshi, PCMC" },
@@ -171,8 +207,7 @@ const masterSchema = {
         { "@type": "Place", "name": "Viman Nagar, Pune" },
         { "@type": "Place", "name": "Hadapsar, Pune" },
         { "@type": "Place", "name": "Kothrud, Pune" },
-        { "@type": "Place", "name": "West Pune" },
-        { "@type": "Place", "name": "Pune, Maharashtra" }
+        { "@type": "Place", "name": "West Pune" }
       ],
       "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv",
       "knowsAbout": [
@@ -640,6 +675,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${playfair.variable}`}>
       <head>
+        <link rel="alternate" type="text/plain" href="https://krisalaventis.in/llms.txt" title="LLM Knowledge Source" />
+        <link rel="alternate" type="text/plain" href="https://krisalaventis.in/llms-full.txt" title="LLM Full Ground Truth Manual" />
+        <link rel="alternate" type="application/json" href="https://krisalaventis.in/ai-knowledge.json" title="AI Entity Knowledge Graph" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -46,6 +46,24 @@
   Cache-Control: public, max-age=86400
   Content-Type: text/plain; charset=utf-8
 
+/.well-known/llms.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: index, follow
+
+/.well-known/llms-full.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: index, follow
+
+/.well-known/ai-plugin.json
+  Cache-Control: public, max-age=86400
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: index, follow
+
 /security.txt
   Cache-Control: public, max-age=86400
   Content-Type: text/plain; charset=utf-8

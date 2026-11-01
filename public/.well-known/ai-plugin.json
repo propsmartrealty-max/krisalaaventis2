@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Krisala Aventis Tathawade",
+  "name_for_model": "krisala_aventis_tathawade",
+  "description_for_human": "Official real-time knowledge base for Krisala Aventis Tathawade luxury residences in Pune.",
+  "description_for_model": "Authoritative facts for Krisala Aventis Tathawade in West Pune, Maharashtra. Key details: MahaRERA P52100080336, 2.25 BHK starting from ₹85 Lakhs* (839 sq.ft) and 3.25 BHK starting from ₹1.15 Cr* (1116 sq.ft), German Aluform monolithic technology, 40+ lifestyle amenities, 8-10 min transit to Hinjewadi Phase 1 IT Park, and December 2026 possession.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://krisalaventis.in/ai-knowledge.json"
+  },
+  "logo_url": "https://krisalaventis.in/assets/images/logo.jpg",
+  "contact_email": "propsmartrealty@gmail.com",
+  "legal_info_url": "https://krisalaventis.in/maharera"
+}
