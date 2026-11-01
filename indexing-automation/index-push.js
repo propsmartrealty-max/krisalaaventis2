@@ -86,30 +86,58 @@ function saveState(state) {
   fs.writeFileSync(stateFile, JSON.stringify(state, null, 2), 'utf8');
 }
 
-async function getJwtClient() {
-  let credentials;
+async function getAllJwtClients() {
+  const clients = [];
+
+  // 1. Check environment variable GCP_SA_KEY
   if (process.env.GCP_SA_KEY) {
     try {
-      credentials = JSON.parse(process.env.GCP_SA_KEY);
+      const credentials = JSON.parse(process.env.GCP_SA_KEY);
+      const jwtClient = new google.auth.JWT(
+        credentials.client_email,
+        null,
+        credentials.private_key,
+        ['https://www.googleapis.com/auth/indexing'],
+        null
+      );
+      await jwtClient.authorize();
+      clients.push({ jwtClient, email: credentials.client_email, projectId: credentials.project_id, source: 'GCP_SA_KEY' });
     } catch (err) {
-      throw new Error('GCP_SA_KEY is not valid JSON string');
+      console.warn('⚠️ Could not parse GCP_SA_KEY:', err.message);
     }
-  } else if (fs.existsSync(keyFile)) {
-    credentials = JSON.parse(fs.readFileSync(keyFile, 'utf8'));
-  } else {
+  }
+
+  // 2. Discover all service-account*.json in indexing-automation/
+  const dirFiles = fs.readdirSync(__dirname);
+  const saFiles = dirFiles.filter(f => f.startsWith('service-account') && f.endsWith('.json'));
+
+  for (const f of saFiles) {
+    try {
+      const full = path.join(__dirname, f);
+      const credentials = JSON.parse(fs.readFileSync(full, 'utf8'));
+      if (credentials && credentials.client_email && credentials.private_key) {
+        if (!clients.some(c => c.email === credentials.client_email)) {
+          const jwtClient = new google.auth.JWT(
+            credentials.client_email,
+            null,
+            credentials.private_key,
+            ['https://www.googleapis.com/auth/indexing'],
+            null
+          );
+          await jwtClient.authorize();
+          clients.push({ jwtClient, email: credentials.client_email, projectId: credentials.project_id, source: f });
+        }
+      }
+    } catch (err) {
+      console.warn(`⚠️ Could not authorize ${f}:`, err.message);
+    }
+  }
+
+  if (clients.length === 0) {
     throw new Error('Service account key not found. Place service-account.json in indexing-automation/ or set GCP_SA_KEY.');
   }
 
-  const jwtClient = new google.auth.JWT(
-    credentials.client_email,
-    null,
-    credentials.private_key,
-    ['https://www.googleapis.com/auth/indexing'],
-    null
-  );
-
-  await jwtClient.authorize();
-  return { jwtClient, email: credentials.client_email, projectId: credentials.project_id };
+  return clients;
 }
 
 async function run() {
@@ -174,13 +202,16 @@ async function run() {
     console.log(`Resuming from URL index: \x1b[33m${state.currentIndex}\x1b[0m`);
   }
 
-  let authInfo;
+  let authClients;
   try {
-    authInfo = await getJwtClient();
-    console.log(`\x1b[32m✅ Authenticated with GCP Project [${authInfo.projectId}] as ${authInfo.email}\x1b[0m`);
+    authClients = await getAllJwtClients();
+    console.log(`\x1b[32m✅ Loaded ${authClients.length} authenticated Google Service Account(s) into pool:\x1b[0m`);
+    authClients.forEach((ac, idx) => {
+      console.log(`   [Account ${idx + 1}] Project: \x1b[36m${ac.projectId}\x1b[0m | ${ac.email} (${ac.source})`);
+    });
   } catch (err) {
     console.error(`\x1b[31m❌ Authentication Error:\x1b[0m ${err.message}`);
-    console.log('\x1b[33m💡 Please check indexing-automation/service-account.json or set GCP_SA_KEY.\x1b[0m\n');
+    console.log('\x1b[33m💡 Please check service-account*.json in indexing-automation/ or set GCP_SA_KEY.\x1b[0m\n');
     return;
   }
 
@@ -188,22 +219,27 @@ async function run() {
 
   // Quick verification probe mode
   if (isCheck) {
-    console.log('\n🔍 Testing Google Indexing API URL ownership for \x1b[36mhttps://krisalaventis.in/\x1b[0m...');
-    try {
-      const res = await indexing.urlNotifications.publish({
-        auth: authInfo.jwtClient,
-        requestBody: {
-          url: `${BASE_URL}/`,
-          type: 'URL_UPDATED'
+    console.log('\n🔍 Testing Google Indexing API URL ownership for all service accounts...');
+    for (const ac of authClients) {
+      try {
+        const res = await indexing.urlNotifications.publish({
+          auth: ac.jwtClient,
+          requestBody: {
+            url: `${BASE_URL}/`,
+            type: 'URL_UPDATED'
+          }
+        });
+        console.log(`\x1b[32m✅ [${ac.email}] VERIFICATION SUCCESSFUL! HTTP ${res.status}\x1b[0m`);
+      } catch (checkErr) {
+        if (checkErr.code === 429) {
+          console.log(`\x1b[33m⚠️ [${ac.email}] Quota currently reached (HTTP 429), but GSC permission is valid!\x1b[0m`);
+        } else {
+          console.error(`\x1b[31m❌ [${ac.email}] VERIFICATION FAILED:\x1b[0m ${checkErr.message}`);
+          printOwnershipHelp(ac.email);
         }
-      });
-      console.log(`\x1b[32m✅ VERIFICATION SUCCESSFUL! HTTP ${res.status}\x1b[0m`);
-      console.log('🎉 Google Search Console ownership is verified and operational!');
-      console.log('You can now run: \x1b[36mnpm run index:google\x1b[0m to publish all URLs.\n');
-    } catch (checkErr) {
-      console.error(`\x1b[31m❌ VERIFICATION FAILED:\x1b[0m ${checkErr.message}\n`);
-      printOwnershipHelp(authInfo.email);
+      }
     }
+    console.log('\nYou can run: \x1b[36mnpm run index:google\x1b[0m to publish URLs.\n');
     return;
   }
 
@@ -220,32 +256,51 @@ async function run() {
 
   let successful = 0;
   let failed = 0;
+  let clientIndex = 0;
 
   for (let i = 0; i < batchUrls.length; i++) {
     const url = batchUrls[i];
     const itemNum = startIndex + i + 1;
-    try {
-      const res = await indexing.urlNotifications.publish({
-        auth: authInfo.jwtClient,
-        requestBody: {
-          url: url,
-          type: 'URL_UPDATED'
+    let urlSubmitted = false;
+
+    while (clientIndex < authClients.length && !urlSubmitted) {
+      const currentAuth = authClients[clientIndex];
+      try {
+        const res = await indexing.urlNotifications.publish({
+          auth: currentAuth.jwtClient,
+          requestBody: {
+            url: url,
+            type: 'URL_UPDATED'
+          }
+        });
+        console.log(`[${itemNum}/${allUrls.length}] 🚀 \x1b[32mOK (${res.status})\x1b[0m ${url} (via ${currentAuth.email.split('@')[0]})`);
+        successful++;
+        urlSubmitted = true;
+      } catch (apiErr) {
+        if (apiErr.code === 429 || apiErr.message.includes('Quota exceeded')) {
+          console.warn(`\n\x1b[33m⚠️ Daily quota limit reached for [${currentAuth.email}] (Project: ${currentAuth.projectId}).\x1b[0m`);
+          clientIndex++;
+          if (clientIndex < authClients.length) {
+            console.log(`🔄 Rotating to next Service Account [${authClients[clientIndex].email}]...\n`);
+          } else {
+            console.warn('\x1b[33m⚠️ All available Service Accounts in pool have reached daily quota.\x1b[0m');
+            console.log('State saved. Quota resets daily at midnight PST. You can also add service accounts from additional GCP projects to multiply daily throughput.\n');
+            break;
+          }
+        } else if (apiErr.code === 403 || apiErr.message.includes('Permission denied')) {
+          console.error(`❌ Permission denied for ${currentAuth.email}`);
+          printOwnershipHelp(currentAuth.email);
+          clientIndex++;
+        } else {
+          console.error(`[${itemNum}/${allUrls.length}] ❌ \x1b[31mFAIL:\x1b[0m ${url} — ${apiErr.message}`);
+          failed++;
+          urlSubmitted = true;
         }
-      });
-      console.log(`[${itemNum}/${allUrls.length}] 🚀 \x1b[32mOK (${res.status})\x1b[0m ${url}`);
-      successful++;
-    } catch (apiErr) {
-      console.error(`[${itemNum}/${allUrls.length}] ❌ \x1b[31mFAIL:\x1b[0m ${url} — ${apiErr.message}`);
-      failed++;
-      if (apiErr.code === 403 || apiErr.message.includes('Permission denied')) {
-        printOwnershipHelp(authInfo.email);
-        break;
       }
-      if (apiErr.code === 429 || apiErr.message.includes('Quota exceeded')) {
-        console.warn('\n\x1b[33m⚠️ Daily quota limit reached from Google Indexing API (200 requests/day default).\x1b[0m');
-        console.log('State saved. You can rerun tomorrow to process the next batch.\n');
-        break;
-      }
+    }
+
+    if (clientIndex >= authClients.length) {
+      break;
     }
 
     // Rate limiting delay
