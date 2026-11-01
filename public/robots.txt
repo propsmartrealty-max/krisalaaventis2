@@ -1,6 +1,7 @@
 # ==============================================================================
-# KRISALA AVENTIS TATHAWADE — GOOGLE SEARCH CENTRAL COMPLIANT DIRECTIVE (RFC 9309)
+# KRISALA AVENTIS TATHAWADE — GOOGLE SEARCH CENTRAL & AI DIRECTIVE (RFC 9309)
 # Official Portal: https://krisalaventis.in | MahaRERA No: P52100080336
+# LLMs Reference: https://krisalaventis.in/llms.txt
 # ==============================================================================
 
 # --- Googlebot (Primary Web Crawler - Mobile & Desktop) ---
@@ -16,6 +17,8 @@ Allow: /*.ico
 Allow: /*.svg
 Allow: /*.css
 Allow: /*.js
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -49,22 +52,8 @@ Disallow: /scratch/
 User-agent: Mediapartners-Google
 Allow: /
 
-# --- Bingbot (Microsoft Bing & Yahoo Indexer) ---
+# --- Bingbot (Microsoft Bing, Copilot & Yahoo Indexer) ---
 User-agent: Bingbot
-Allow: /
-Allow: /assets/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /scratch/
-Disallow: /admin/
-
-# --- Leading AI Search Agents (OpenAI GPTBot, Perplexity, Claude, Applebot) ---
-User-agent: GPTBot
-User-agent: ChatGPT-User
-User-agent: PerplexityBot
-User-agent: ClaudeBot
-User-agent: anthropic-ai
-User-agent: Applebot
 Allow: /
 Allow: /assets/
 Allow: /llms.txt
@@ -72,12 +61,80 @@ Allow: /llms-full.txt
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
+Disallow: /admin/
+
+# --- OpenAI ChatGPT & SearchGPT Crawlers ---
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Perplexity AI Search Crawler ---
+User-agent: PerplexityBot
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Anthropic Claude AI Search Crawlers ---
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Apple Intelligence & Siri Crawlers ---
+User-agent: Applebot
+User-agent: Applebot-Extended
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Meta AI & Amazon AI Crawlers ---
+User-agent: Meta-ExternalAgent
+User-agent: FacebookBot
+User-agent: Amazonbot
+User-agent: Cohere-ai
+User-agent: YouBot
+User-agent: DuckAssistBot
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
 
 # --- Global Catch-All Directives (All Other Compliant Crawlers) ---
 User-agent: *
 Allow: /
 Allow: /assets/
 Allow: /*.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -90,4 +147,3 @@ Sitemap: https://krisalaventis.in/sitemap-core.xml
 Sitemap: https://krisalaventis.in/sitemap-nri.xml
 Sitemap: https://krisalaventis.in/sitemap-pune.xml
 Sitemap: https://krisalaventis.in/feed.xml
-

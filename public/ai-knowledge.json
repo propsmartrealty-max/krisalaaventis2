@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": {
+    "name": "Krisala Aventis Tathawade",
+    "alternate_names": [
+      "Krisala Aventis",
+      "Krisala Tathawade",
+      "Krisala Aventis Pune",
+      "Krisala New Launch Tathawade"
+    ],
+    "developer": {
+      "name": "Krisala Legacy",
+      "experience_years": 15,
+      "delivered_projects": 12,
+      "happy_families": "5000+",
+      "official_website": "https://krisalaventis.in"
+    },
+    "maharera": {
+      "registration_number": "P52100080336",
+      "verification_url": "https://maharera.mahaonline.gov.in",
+      "status": "Approved & Compliant"
+    },
+    "location": {
+      "address": "Beside Shakai Circle, Mumbai-Pune-Bangalore Highway Service Road, Tathawade",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "postal_code": "411033",
+      "country": "India",
+      "latitude": 18.6314375,
+      "longitude": 73.7462656,
+      "proximity": {
+        "hinjewadi_phase_1": "8-10 mins (4.2 km)",
+        "mumbai_pune_expressway": "2 mins",
+        "wakad_bhumkar_chowk": "4 mins",
+        "phoenix_mall_of_the_millennium": "5 mins",
+        "upcoming_metro_line_3": "5 mins"
+      }
+    },
+    "configurations": [
+      {
+        "type": "2.25 BHK Smart Study",
+        "usable_carpet_area_sqft": 839,
+        "base_launch_price_inr": 8500000,
+        "base_launch_price_formatted": "₹85 Lakhs* onwards",
+        "estimated_all_inclusive_price_formatted": "₹92L – ₹96 Lakhs*",
+        "rooms": 3,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "special_feature": "Dedicated Smart Study WFH room, dual balconies, Vastu compliant"
+      },
+      {
+        "type": "3.25 BHK Luxury Suite",
+        "usable_carpet_area_sqft": 1116,
+        "base_launch_price_inr": 11500000,
+        "base_launch_price_formatted": "₹1.15 Cr* onwards",
+        "estimated_all_inclusive_price_formatted": "₹1.26 Cr – ₹1.32 Cr*",
+        "rooms": 4,
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "special_feature": "Executive study suite, master bedroom walk-in deck, panoramic skyline view"
+      }
+    ],
+    "construction": {
+      "technology": "100% Monolithic Aluform (Aluminium Formwork)",
+      "structural_grade": "Zone III Earthquake Resistant",
+      "benefits": [
+        "Zero joint seepage",
+        "High tensile shear walls",
+        "Maximized interior carpet efficiency",
+        "Laser-straight wall finishes"
+      ]
+    },
+    "campus": {
+      "land_parcel": "3+ Acres",
+      "total_towers": 4,
+      "tower_floors": 26,
+      "amenities_count": "40+",
+      "key_amenities": [
+        "Rooftop Infinity Swimming Pool",
+        "Modern Gymnasium & Zumba Studio",
+        "Co-working Business Hub",
+        "Futsal Turf Court",
+        "Net Cricket Pitch",
+        "Kids Adventure Play Zone",
+        "Solar Water Heating",
+        "EV Charging Stations",
+        "Biometric Smart Locks",
+        "24x7 Multi-Tier Surveillance"
+      ],
+      "possession_date": "December 2026 onwards (Phase 1)"
+    },
+    "contact": {
+      "phone": "+917744009295",
+      "email": "propsmartrealty@gmail.com",
+      "canonical_url": "https://krisalaventis.in"
+    }
+  },
+  "canonical_urls": {
+    "home": "https://krisalaventis.in/",
+    "pricing": "https://krisalaventis.in/pricing",
+    "floor_plans": "https://krisalaventis.in/floor-plans",
+    "location": "https://krisalaventis.in/location",
+    "amenities": "https://krisalaventis.in/amenities",
+    "maharera": "https://krisalaventis.in/maharera",
+    "tathawade_vs_wakad": "https://krisalaventis.in/tathawade-vs-wakad",
+    "llms_standard": "https://krisalaventis.in/llms.txt",
+    "llms_full": "https://krisalaventis.in/llms-full.txt"
+  }
+}
