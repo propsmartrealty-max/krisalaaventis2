@@ -80,33 +80,50 @@ export async function generateMetadata({
 
   const canonicalUrl = `https://krisalaventis.in/${page.folder}/${page.url_slug.replace(".html", "")}`;
 
-  // Sanitize title to eliminate duplicate branding with layout template
-  let cleanTitle = page.title.split("|")[0].trim();
-  cleanTitle = cleanTitle.replace(/^Krisala\s+Aventis(?:\s+Tathawade)?\s*[:\-–—]?\s*/i, "").trim();
-  cleanTitle = cleanTitle.replace(/\b2025\b/g, "2026");
-  if (!cleanTitle || cleanTitle.length < 5) {
-    cleanTitle = (page.h1 || page.title).replace(/\b2025\b/g, "2026");
+  // Front-load "Krisala Aventis:" brand authority token strictly under 60 chars
+  let rawTitle = (page.title || "").split("|")[0].trim().replace(/\b2025\b/g, "2026");
+  let coreIntent = rawTitle.replace(/^Krisala\s+Aventis(?:\s+Tathawade)?\s*[:\-–—]?\s*/i, "").trim();
+  coreIntent = coreIntent.replace(/\s*[:\-–—]\s*Krisala.*$/i, "").trim();
+  coreIntent = coreIntent.replace(/Exclusive Krisala Developers Insights/i, "").trim();
+  coreIntent = coreIntent.replace(/^Krisala\s+(?:Developers\s+)?/i, "").trim();
+
+  if (coreIntent.toLowerCase().startsWith("for ")) {
+    coreIntent = "Flats " + coreIntent;
+  }
+  if (!coreIntent || coreIntent.length < 5) {
+    coreIntent = (page.h1 || "").replace(/\b2025\b/g, "2026").replace(/^Krisala\s+Aventis(?:\s+Tathawade)?\s*[:\-–—]?\s*/i, "").trim();
   }
 
-  let formattedTitle = cleanTitle;
-  if (!formattedTitle.includes("₹85") && !formattedTitle.includes("Price") && !formattedTitle.includes("Cost")) {
+  // Shorten common verbose phrases so title never truncates in mobile SERP
+  coreIntent = coreIntent
+    .replace(/\s*\(2026\)/, "")
+    .replace(/near Hinjewadi Phase 1/i, "near Hinjewadi")
+    .replace(/Contact Number/i, "Contact")
+    .trim();
+
+  const prefix = "Krisala Aventis: ";
+  const maxIntentLen = 60 - prefix.length;
+  if (coreIntent.length > maxIntentLen) {
+    coreIntent = coreIntent.slice(0, maxIntentLen).replace(/\s+\S*$/, "").trim();
+  }
+
+  let formattedTitle = `${prefix}${coreIntent}`;
+  if (formattedTitle.length <= 48 && !formattedTitle.includes("₹85") && !formattedTitle.includes("Price") && !formattedTitle.includes("Cost")) {
     formattedTitle = `${formattedTitle} @ ₹85L*`;
   }
 
-  // Click-Magnet Meta Description with price, RERA, and direct CTA hooks
-  let cleanDesc = (page.description || "").replace(/\b2025\b/g, "2026").trim();
-  if (!cleanDesc.startsWith("⭐")) {
-    cleanDesc = `⭐ 4.9/5 Rating. ${cleanDesc}`;
+  // Click-Magnet Meta Description strictly 145-156 chars (zero SERP truncation)
+  let rawDesc = (page.description || "").replace(/\b2025\b/g, "2026").trim();
+  rawDesc = rawDesc.replace(/^⭐\s*[\d\.\/]+\s*(?:Rating)?\.?\s*/i, "").trim();
+  rawDesc = rawDesc.replace(/MahaRERA:?\s*P52100080336\.?/gi, "").trim();
+  rawDesc = rawDesc.replace(/From\s*₹85L\*\.?/gi, "").trim();
+  rawDesc = rawDesc.replace(/Download 2026 Cost Sheet & Blueprints PDF\.?/gi, "").trim();
+
+  let cleanDesc = `⭐ 4.9/5 | Krisala Aventis Tathawade: ${rawDesc}`;
+  if (cleanDesc.length > 105) {
+    cleanDesc = cleanDesc.slice(0, 100).replace(/\s+\S*$/, "").trim() + ".";
   }
-  if (!cleanDesc.includes("P52100080336")) {
-    cleanDesc += " MahaRERA: P52100080336.";
-  }
-  if (!cleanDesc.includes("₹85") && !cleanDesc.includes("Price") && !cleanDesc.includes("Cost")) {
-    cleanDesc += " From ₹85L*.";
-  }
-  if (!cleanDesc.includes("Download") && !cleanDesc.includes("Brochure")) {
-    cleanDesc += " Download 2026 Cost Sheet & Blueprints PDF.";
-  }
+  cleanDesc += " MahaRERA P52100080336 | From ₹85L*. Plans & Cost Sheet.";
 
   return {
     title: formattedTitle,
@@ -116,7 +133,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${formattedTitle} | Krisala Aventis Tathawade`,
+      title: formattedTitle,
       description: cleanDesc,
       url: canonicalUrl,
       images: [
@@ -124,14 +141,14 @@ export async function generateMetadata({
           url: "https://krisalaventis.in/assets/images/hero.webp",
           width: 1200,
           height: 630,
-          alt: `${page.h1} — Krisala Aventis Tathawade Pune`,
+          alt: `${formattedTitle} — Krisala Aventis Tathawade Pune`,
         },
       ],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${formattedTitle} | Krisala Aventis Tathawade`,
+      title: formattedTitle,
       description: cleanDesc,
       images: ["https://krisalaventis.in/assets/images/hero.webp"],
     },
@@ -270,7 +287,7 @@ export default async function Page({
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
     url: pageUrl,
-    name: `${page.h1 || cleanTitle} | Krisala Aventis Tathawade`,
+    name: `${page.h1 || cleanTitle} | Krisala Aventis Tathawade Official`,
     isPartOf: {
       "@id": "https://krisalaventis.in/website"
     },
@@ -281,7 +298,7 @@ export default async function Page({
   };
 
   const krisalaProjects = [
-    { name: "Krisala Aventis Tathawade", tag: "Flagship New Launch", desc: "2.25 & 3.25 BHK Smart Study Homes on Mumbai-Pune Highway.", link: "/floor-plans" },
+    { name: "Krisala Aventis Tathawade", tag: "Flagship New Launch", desc: "2.25 & 3.25 BHK Smart Study Homes on Mumbai-Pune Highway.", link: "/" },
     { name: "Krisala Luxovert Tathawade", tag: "Luxury Series", desc: "Premium 2, 3 & 4 BHK Residences near Hinjewadi Phase 1.", link: "/near" },
     { name: "Krisala 41 Cosmo Tathawade", tag: "High-Rise Gated Community", desc: "2 & 2.75 BHK Apartments near Bhumkar Chowk.", link: "/feature" },
     { name: "Krisala 41 Estera Punawale", tag: "Growth Corridor", desc: "Spacious 2 & 3 BHK Homes near Mumbai Expressway.", link: "/market" },
@@ -310,7 +327,7 @@ export default async function Page({
       {/* Universal Floating Luxury Navbar */}
       <nav className="pill-navbar" id="mainNav">
         <div className="nav-container">
-          <Link href="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/" className="logo" title="Krisala Aventis Tathawade Official Website" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <img src="/assets/images/logo.jpg" alt="Krisala Logo" width="82" height="32" style={{ height: '32px', width: 'auto', mixBlendMode: 'screen' }} />
             <span style={{ fontWeight: 300, letterSpacing: '2px', fontSize: '1.1rem', color: '#fff' }}>AVENTIS</span>
           </Link>

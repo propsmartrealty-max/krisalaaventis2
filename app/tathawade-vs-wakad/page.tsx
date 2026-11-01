@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     url: "https://krisalaventis.in/tathawade-vs-wakad",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tathawade vs Wakad Real Estate Comparison 2026 | Krisala Aventis",
+    description: "Detailed price per sq.ft, infrastructure, and ROI comparison between Tathawade and Wakad.",
+    images: ["https://krisalaventis.in/assets/images/hero.webp"],
+  },
 };
 
 const comparisonSchema = {

@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     url: "https://krisalaventis.in/maharera",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krisala Aventis MahaRERA P52100080336 — Legal Approvals & Title",
+    description: "100% legal verification and compliance certificate for Krisala Aventis Tathawade Pune.",
+    images: ["https://krisalaventis.in/assets/images/hero.webp"],
+  },
 };
 
 const mahareraSchema = {

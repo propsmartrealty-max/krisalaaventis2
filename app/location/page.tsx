@@ -2,15 +2,21 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Krisala Aventis Tathawade Location — 7 Min to Hinjewadi Phase 1",
+  title: "Krisala Aventis Location — Beside Shakai, Tathawade Pune",
   description: "Official location map of Krisala Aventis Tathawade. Beside Shakai Circle, Mumbai-Pune Expressway service road. 7 mins to Hinjewadi Phase 1 & 5 mins to Wakad. Get Google Maps directions.",
   alternates: {
     canonical: "https://krisalaventis.in/location",
   },
   openGraph: {
-    title: "Krisala Aventis Tathawade Location — 7 Min to Hinjewadi Phase 1",
+    title: "Krisala Aventis Location — Beside Shakai, Tathawade Pune",
     description: "Strategic gateway location in Tathawade Pune with zero-traffic connectivity to Hinjewadi IT Park and Pune-Mumbai Highway.",
     url: "https://krisalaventis.in/location",
+    images: ["https://krisalaventis.in/assets/images/hero.webp"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krisala Aventis Location — Beside Shakai, Tathawade Pune",
+    description: "Strategic gateway location in Tathawade Pune with zero-traffic connectivity to Hinjewadi IT Park and Pune-Mumbai Highway.",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
 };

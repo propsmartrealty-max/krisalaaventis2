@@ -2,15 +2,21 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Krisala Aventis Floor Plans — 2.25 & 3.25 BHK Blueprints PDF",
+  title: "Krisala Aventis Floor Plans — 2.25 & 3.25 BHK Layouts PDF",
   description: "Official 2.25 BHK (839 sq.ft) & 3.25 BHK (1116 sq.ft) floor plans for Krisala Aventis Tathawade. View room dimensions, carpet area certification, and dedicated Smart Study pods.",
   alternates: {
     canonical: "https://krisalaventis.in/floor-plans",
   },
   openGraph: {
-    title: "Krisala Aventis Floor Plans — 2.25 & 3.25 BHK Blueprints PDF",
+    title: "Krisala Aventis Floor Plans — 2.25 & 3.25 BHK Layouts PDF",
     description: "Detailed 2.25 & 3.25 BHK blueprints with dedicated Smart Study pods in Tathawade Pune near Hinjewadi Phase 1.",
     url: "https://krisalaventis.in/floor-plans",
+    images: ["https://krisalaventis.in/assets/images/floorplan-2bhk.webp"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krisala Aventis Floor Plans — 2.25 & 3.25 BHK Layouts PDF",
+    description: "Detailed 2.25 & 3.25 BHK blueprints with dedicated Smart Study pods in Tathawade Pune near Hinjewadi Phase 1.",
     images: ["https://krisalaventis.in/assets/images/floorplan-2bhk.webp"],
   },
 };

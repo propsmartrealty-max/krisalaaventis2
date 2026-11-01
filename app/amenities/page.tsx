@@ -2,15 +2,21 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Krisala Aventis 40+ Amenities — Rooftop Infinity Pool & Gym",
+  title: "Krisala Aventis Amenities — 40+ Rooftop & Podium Features",
   description: "Explore 40+ world-class lifestyle amenities at Krisala Aventis Tathawade Pune. Infinity rooftop pool, gymnasium, futsal turf, co-working club, and reflexology park.",
   alternates: {
     canonical: "https://krisalaventis.in/amenities",
   },
   openGraph: {
-    title: "Krisala Aventis 40+ Amenities — Rooftop Infinity Pool & Gym",
+    title: "Krisala Aventis Amenities — 40+ Rooftop & Podium Features",
     description: "Discover resort-style amenities across 3 acres in Tathawade Pune near Hinjewadi Phase 1.",
     url: "https://krisalaventis.in/amenities",
+    images: ["https://krisalaventis.in/assets/images/hero.webp"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krisala Aventis Amenities — 40+ Rooftop & Podium Features",
+    description: "Discover resort-style amenities across 3 acres in Tathawade Pune near Hinjewadi Phase 1.",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
 };
