@@ -588,6 +588,9 @@ export default async function Page({
                 <Link href="/location" style={{ color: '#aaa', textDecoration: 'none' }}>Location &amp; Hinjewadi Route</Link>
                 <Link href="/amenities" style={{ color: '#aaa', textDecoration: 'none' }}>40+ Luxury Amenities</Link>
                 <Link href="/maharera" style={{ color: '#aaa', textDecoration: 'none' }}>MahaRERA P52100080336</Link>
+                <Link href="/privacy-policy" style={{ color: '#aaa', textDecoration: 'none' }}>Privacy Policy</Link>
+                <Link href="/terms-and-conditions" style={{ color: '#aaa', textDecoration: 'none' }}>Terms &amp; Conditions</Link>
+                <Link href="/disclaimer" style={{ color: '#aaa', textDecoration: 'none' }}>Legal Disclaimer</Link>
               </div>
             </div>
             <div>
@@ -614,7 +617,7 @@ export default async function Page({
             </div>
           </div>
           <div style={{ textAlign: 'center', fontSize: '0.75rem', color: '#666', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '20px' }}>
-            <p>© 2026 Krisala Legacy Pune. All rights reserved. MahaRERA Registration: P52100080336 | <Link href="/sitemap.xml" style={{ color: 'var(--clr-gold)', textDecoration: 'none' }}>XML Sitemap</Link></p>
+            <p>© 2026 Krisala Legacy Pune. All rights reserved. MahaRERA Registration: P52100080336 | <Link href="/privacy-policy" style={{ color: 'var(--clr-gold)', textDecoration: 'none' }}>Privacy Policy</Link> | <Link href="/terms-and-conditions" style={{ color: 'var(--clr-gold)', textDecoration: 'none' }}>Terms &amp; Conditions</Link> | <Link href="/disclaimer" style={{ color: 'var(--clr-gold)', textDecoration: 'none' }}>Legal Disclaimer</Link> | <Link href="/sitemap.xml" style={{ color: 'var(--clr-gold)', textDecoration: 'none' }}>XML Sitemap</Link></p>
           </div>
         </div>
       </footer>

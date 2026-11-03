@@ -203,6 +203,15 @@ export default function AmenitiesPage() {
               </ul>
             </div>
             <div>
+              <h4 style={{ color: 'var(--clr-gold)', marginBottom: '14px' }}>Legal &amp; Policy Hub</h4>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.88rem', color: 'var(--clr-silver)' }}>
+                <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+                <li><Link href="/terms-and-conditions">Terms &amp; Conditions</Link></li>
+                <li><Link href="/disclaimer">Legal Disclaimer</Link></li>
+                <li><Link href="/maharera">MahaRERA Compliance</Link></li>
+              </ul>
+            </div>
+            <div>
               <h4 style={{ color: 'var(--clr-gold)', marginBottom: '14px' }}>Developer Verification</h4>
               <p style={{ fontSize: '0.85rem', color: 'var(--clr-muted)', lineHeight: 1.6 }}>
                 Krisala Legacy Sales Lounge, Beside Shakai Circle, Mumbai-Pune Highway, Tathawade, Pune 411033. MahaRERA No. P52100080336.
@@ -210,7 +219,7 @@ export default function AmenitiesPage() {
             </div>
           </div>
           <div style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--clr-muted)', borderTop: '1px solid var(--clr-glass-border)', paddingTop: '20px' }}>
-            © 2026 Krisala Aventis Tathawade. Official Canonical Portal. All Rights Reserved.
+            © 2026 Krisala Aventis Tathawade. Official Canonical Portal. All Rights Reserved. | <Link href="/privacy-policy" style={{ color: 'var(--clr-gold)' }}>Privacy Policy</Link> | <Link href="/terms-and-conditions" style={{ color: 'var(--clr-gold)' }}>Terms &amp; Conditions</Link> | <Link href="/disclaimer" style={{ color: 'var(--clr-gold)' }}>Disclaimer</Link>
           </div>
         </div>
       </footer>

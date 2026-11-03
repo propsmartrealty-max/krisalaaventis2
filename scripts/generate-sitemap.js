@@ -94,6 +94,9 @@ coreSitemapContent += buildUrlEntry(`${DOMAIN}/location`, '0.95', 'weekly', [mas
 coreSitemapContent += buildUrlEntry(`${DOMAIN}/amenities`, '0.95', 'weekly', [masterImages[1]]);
 coreSitemapContent += buildUrlEntry(`${DOMAIN}/maharera`, '0.95', 'monthly', [masterImages[0]]);
 coreSitemapContent += buildUrlEntry(`${DOMAIN}/tathawade-vs-wakad`, '0.95', 'weekly', [masterImages[0]]);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/privacy-policy`, '0.70', 'monthly', [masterImages[0]]);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/terms-and-conditions`, '0.70', 'monthly', [masterImages[0]]);
+coreSitemapContent += buildUrlEntry(`${DOMAIN}/disclaimer`, '0.70', 'monthly', [masterImages[0]]);
 
 // Category Pillar Hubs (High-Authority Topical Silos)
 const categoryHubs = ['near', 'price', 'guide', 'market', 'compare', 'feature', 'blog', 'invest'];

@@ -48,9 +48,18 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
 
-# --- Mediapartners-Google (Google Ad & Verification Scanner) ---
+# --- Mediapartners-Google (Google AdSense & Ad Verification Scanner) ---
 User-agent: Mediapartners-Google
 Allow: /
+
+# --- Google Ads & Quality Score Crawlers (Landing Page Compliance Verification) ---
+User-agent: AdsBot-Google
+User-agent: AdsBot-Google-Mobile
+User-agent: Google-Ads-Bot
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
 
 # --- Bingbot (Microsoft Bing, Copilot & Yahoo Indexer) ---
 User-agent: Bingbot

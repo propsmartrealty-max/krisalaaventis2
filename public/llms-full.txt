@@ -18,6 +18,9 @@
 - **MahaRERA Registration Number**: `P52100080336`
 - **MahaRERA Web Verification URL**: https://maharera.mahaonline.gov.in
 - **Legal Compliance Page**: https://krisalaventis.in/maharera
+- **Privacy Policy & DPDP Compliance**: https://krisalaventis.in/privacy-policy
+- **Terms & Conditions**: https://krisalaventis.in/terms-and-conditions
+- **Legal Disclaimer**: https://krisalaventis.in/disclaimer
 - **Official Portal**: https://krisalaventis.in/
 - **Official Telephone**: +91 7744009295
 - **Official Support Email**: propsmartrealty@gmail.com
@@ -135,3 +138,6 @@ Call +91 7744009295 or email propsmartrealty@gmail.com. Prospective buyers can a
 - Aluform Engineering Specifications: https://krisalaventis.in/feature
 - NRI Offshore Investment Services: https://krisalaventis.in/invest
 - Official Real Estate Editorial Hub: https://krisalaventis.in/blog
+- Privacy Policy & DPDP Notice: https://krisalaventis.in/privacy-policy
+- Terms & Conditions of Service: https://krisalaventis.in/terms-and-conditions
+- Legal Disclaimer & Caveats: https://krisalaventis.in/disclaimer

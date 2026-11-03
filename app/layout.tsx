@@ -658,6 +658,24 @@ const masterSchema = {
           "name": "Real Estate Market Trends",
           "url": "https://krisalaventis.in/market",
           "description": "Tathawade appreciation index, rental yields, and metro infrastructure."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Privacy Policy",
+          "url": "https://krisalaventis.in/privacy-policy",
+          "description": "Personal data protection terms and DPDP Act 2023 compliance policy."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Terms & Conditions",
+          "url": "https://krisalaventis.in/terms-and-conditions",
+          "description": "Official terms of service, indicative pricing, and booking terms."
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": "Legal Disclaimer",
+          "url": "https://krisalaventis.in/disclaimer",
+          "description": "MahaRERA P52100080336 statutory disclosures and artist impression caveats."
         }
       ]
     }
@@ -678,6 +696,23 @@ export default function RootLayout({
         <link rel="alternate" type="text/plain" href="https://krisalaventis.in/llms.txt" title="LLM Knowledge Source" />
         <link rel="alternate" type="text/plain" href="https://krisalaventis.in/llms-full.txt" title="LLM Full Ground Truth Manual" />
         <link rel="alternate" type="application/json" href="https://krisalaventis.in/ai-knowledge.json" title="AI Entity Knowledge Graph" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('consent', 'default', {
+  'ad_storage': 'granted',
+  'ad_user_data': 'granted',
+  'ad_personalization': 'granted',
+  'analytics_storage': 'granted',
+  'functionality_storage': 'granted',
+  'personalization_storage': 'granted',
+  'security_storage': 'granted',
+  'wait_for_update': 500
+});`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

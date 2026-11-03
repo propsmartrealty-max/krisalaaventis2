@@ -25,6 +25,9 @@ function getAllUrls() {
   urls.add(`${BASE_URL}/amenities`);
   urls.add(`${BASE_URL}/maharera`);
   urls.add(`${BASE_URL}/tathawade-vs-wakad`);
+  urls.add(`${BASE_URL}/privacy-policy`);
+  urls.add(`${BASE_URL}/terms-and-conditions`);
+  urls.add(`${BASE_URL}/disclaimer`);
 
   // 2. 8 Topical Category Pillar Hubs
   urls.add(`${BASE_URL}/near`);
