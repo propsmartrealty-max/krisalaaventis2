@@ -21,10 +21,10 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://krisalaventis.in";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+    default: "Krisala Aventis Tathawade™ Official | 2 & 3 BHK from ₹85L*",
     template: "%s",
   },
-  description: "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download 2026 Price List, Floor Plans & Instant VIP Pass. MahaRERA: P52100080336.",
+  description: "⭐ 4.9/5 | Krisala Aventis Tathawade Official Portal. Luxury 2.25 & 3.25 BHK from ₹85L* near Hinjewadi. MahaRERA P52100080336. Download 2026 Price List & Plans.",
   keywords: [
     "Krisala Aventis Tathawade",
     "Krisala Aventis",
@@ -778,7 +778,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     "/compare",
                     "/feature",
                     "/blog",
-                    "/invest"
+                    "/invest",
+                    "/privacy-policy",
+                    "/terms-and-conditions",
+                    "/disclaimer"
                   ],
                   eagerness: "moderate"
                 }

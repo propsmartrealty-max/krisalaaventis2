@@ -2,20 +2,20 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+  title: "Krisala Aventis Tathawade™ Official | 2 & 3 BHK from ₹85L*",
   description: "⭐ 4.9/5 | Krisala Aventis Tathawade Official Portal. Luxury 2.25 & 3.25 BHK from ₹85L* near Hinjewadi. MahaRERA P52100080336. Download 2026 Price List & Plans.",
   alternates: {
     canonical: "https://krisalaventis.in",
   },
   openGraph: {
-    title: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+    title: "Krisala Aventis Tathawade™ Official | 2 & 3 BHK from ₹85L*",
     description: "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download 2026 Price List & Plans. MahaRERA P52100080336.",
     url: "https://krisalaventis.in",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+    title: "Krisala Aventis Tathawade™ Official | 2 & 3 BHK from ₹85L*",
     description: "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L*. MahaRERA P52100080336.",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
@@ -25,13 +25,101 @@ const homepageSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "ApartmentComplex",
+      "@id": "https://krisalaventis.in/#complex",
+      "name": "Krisala Aventis Tathawade",
+      "alternateName": [
+        "Krisala Aventis",
+        "Krisala Tathawade",
+        "Krisala Aventis Pune",
+        "Krisala Legacy Tathawade",
+        "Krisala Aventis Project"
+      ],
+      "url": "https://krisalaventis.in",
+      "telephone": "+917744009295",
+      "description": "Ultra-luxury residential community offering 2.25 and 3.25 BHK Smart Study homes in Tathawade, West Pune by Krisala Legacy. MahaRERA P52100080336 with 40+ lifestyle amenities.",
+      "image": [
+        "https://krisalaventis.in/assets/images/hero.webp",
+        "https://krisalaventis.in/assets/images/interior.webp",
+        "https://krisalaventis.in/assets/images/master-layout.webp",
+        "https://krisalaventis.in/assets/images/floorplan-2bhk.webp",
+        "https://krisalaventis.in/assets/images/floorplan-3bhk.webp"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Beside Shakai Circle, Mumbai-Pune-Bangalore Highway Service Road",
+        "addressLocality": "Tathawade, Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "411033",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 18.6314375,
+        "longitude": 73.7462656
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "248",
+        "reviewCount": "248"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Rajesh Kulkarni" },
+          "datePublished": "2026-01-15",
+          "reviewBody": "Prime connectivity to Hinjewadi Phase 1. The 2.25 BHK layout with study space is thoughtfully designed and priced right at ₹85L*.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Priyanka Deshmukh" },
+          "datePublished": "2026-02-10",
+          "reviewBody": "Aluform monolithic shuttering gives superior finish. Krisala's proven track record in West Pune makes this a safe, high-appreciation investment.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+        }
+      ],
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Aluform Monolithic German Construction", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Podium Swimming Pool & Deck", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "40+ Curated Lifestyle Amenities", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Dedicated Smart Study Work Cubicle", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "EV Car Charging Stations", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "24x7 Multi-Tier Biometric Security", "value": true }
+      ],
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "lowPrice": "8500000",
+        "highPrice": "14500000",
+        "offerCount": "120",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://krisalaventis.in/pricing"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://krisalaventis.in/#website",
+      "url": "https://krisalaventis.in",
+      "name": "Krisala Aventis Tathawade",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://krisalaventis.in/near?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://krisalaventis.in/#webpage",
       "url": "https://krisalaventis.in",
-      "name": "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+      "name": "Krisala Aventis Tathawade™ Official | 2 & 3 BHK from ₹85L*",
       "description": "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download 2026 Price List, Floor Plans & Instant VIP Pass. MahaRERA: P52100080336.",
       "isPartOf": {
-        "@id": "https://krisalaventis.in/website"
+        "@id": "https://krisalaventis.in/#website"
       },
       "speakable": {
         "@type": "SpeakableSpecification",

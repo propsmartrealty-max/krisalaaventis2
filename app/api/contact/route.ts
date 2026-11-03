@@ -3,6 +3,18 @@ import nodemailer from 'nodemailer';
 import fs from 'fs';
 import path from 'path';
 
+function sanitizeHtml(input: any, maxLen = 300): string {
+  if (input === null || input === undefined) return '';
+  return String(input)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .trim()
+    .slice(0, maxLen);
+}
+
 function backupLeadLocally(leadData: any) {
   try {
     const backupDir = path.join(process.cwd(), 'data');
@@ -51,7 +63,27 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
 
-    const {
+    // Honeypot bot protection: ignore automated spam submissions silently
+    if (data.bot_check || data.website_url || data.honeypot || data.company_fax) {
+      console.warn('[Honeypot Triggered] Automated bot lead silently discarded.');
+      return NextResponse.json({ success: true, filtered: true }, {
+        headers: { 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+
+    const name = sanitizeHtml(data.name, 100);
+    const rawPhone = String(data.phone || '').replace(/[^0-9+]/g, '').slice(0, 16);
+    const phone = sanitizeHtml(rawPhone, 20);
+    const email = sanitizeHtml(data.email, 100);
+    const config = sanitizeHtml(data.config, 50);
+    const budget = sanitizeHtml(data.budget, 50);
+    const message = sanitizeHtml(data.message, 1000);
+    const utm_source = sanitizeHtml(data.utm_source, 100);
+    const utm_medium = sanitizeHtml(data.utm_medium, 100);
+    const utm_campaign = sanitizeHtml(data.utm_campaign, 100);
+    const page_url = sanitizeHtml(data.page_url, 300);
+
+    const sanitizedData = {
       name,
       phone,
       email,
@@ -61,11 +93,11 @@ export async function POST(request: Request) {
       utm_source,
       utm_medium,
       utm_campaign,
-      page_url
-    } = data;
+      page_url,
+    };
 
     // Record lead immediately to backup vault
-    backupLeadLocally(data);
+    backupLeadLocally(sanitizedData);
 
     // Validate email configuration
     const isConfigured = process.env.EMAIL_USER && process.env.EMAIL_PASS && !process.env.EMAIL_PASS.includes('your-16-digit');

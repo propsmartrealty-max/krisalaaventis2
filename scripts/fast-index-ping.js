@@ -26,7 +26,10 @@ function getAllUrls() {
     '/compare',
     '/feature',
     '/blog',
-    '/invest'
+    '/invest',
+    '/privacy-policy',
+    '/terms-and-conditions',
+    '/disclaimer'
   ];
   corePaths.forEach(p => urls.add(`https://${HOST}${p}`));
 

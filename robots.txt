@@ -1,56 +1,158 @@
-User-agent: *
-Allow: /
-Disallow: /scratch/
-Disallow: /indexing-automation/
-Disallow: /*.json$
+# ==============================================================================
+# KRISALA AVENTIS TATHAWADE — GOOGLE SEARCH CENTRAL & AI DIRECTIVE (RFC 9309)
+# Official Portal: https://krisalaventis.in | MahaRERA No: P52100080336
+# LLMs Reference: https://krisalaventis.in/llms.txt
+# ==============================================================================
 
-# Priority Crawl Paths
-Allow: /assets/images/
-Allow: /sitemap.xml
-Allow: /llms.txt
-Allow: /llms-full.txt
-
-Sitemap: https://krisalaventis.in/sitemap.xml
-
-# AI Search & Answer Engine Optimization (AEO) Directives
-User-agent: Google-Extended
-Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
-
-User-agent: GPTBot
-Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
-
-User-agent: PerplexityBot
-Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
-
-User-agent: ClaudeBot
-Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
-
-# Krisala Aventis Tathawade — Sovereign SEO Infrastructure
-# Domain: krisalaventis.in
-# Last Hardened: 2026-08-05
-
-# Search Engine Crawl Optimization
+# --- Googlebot (Primary Web Crawler - Mobile & Desktop) ---
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0
+Allow: /assets/
+Allow: /*.xml
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.ico
+Allow: /*.svg
+Allow: /*.css
+Allow: /*.js
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
 
+# --- Googlebot-Image (Google Image Search Indexer) ---
 User-agent: Googlebot-Image
 Allow: /assets/images/
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.ico
+Allow: /*.svg
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
 
+# --- Google-Extended (Google Gemini & SGE AI Knowledge Graphs) ---
+User-agent: Google-Extended
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+
+# --- Mediapartners-Google (Google AdSense & Ad Verification Scanner) ---
+User-agent: Mediapartners-Google
+Allow: /
+
+# --- Google Ads & Quality Score Crawlers (Landing Page Compliance Verification) ---
+User-agent: AdsBot-Google
+User-agent: AdsBot-Google-Mobile
+User-agent: Google-Ads-Bot
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# --- Bingbot (Microsoft Bing, Copilot & Yahoo Indexer) ---
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
 
-User-agent: DuckDuckBot
+# --- OpenAI ChatGPT & SearchGPT Crawlers ---
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
 Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
 
-User-agent: Yandex
+# --- Perplexity AI Search Crawler ---
+User-agent: PerplexityBot
 Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Anthropic Claude AI Search Crawlers ---
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Apple Intelligence & Siri Crawlers ---
+User-agent: Applebot
+User-agent: Applebot-Extended
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Meta AI & Amazon AI Crawlers ---
+User-agent: Meta-ExternalAgent
+User-agent: FacebookBot
+User-agent: Amazonbot
+User-agent: Cohere-ai
+User-agent: YouBot
+User-agent: DuckAssistBot
+Allow: /
+Allow: /assets/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Global Catch-All Directives (All Other Compliant Crawlers) ---
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /*.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /_next/
+Disallow: /scratch/
+Disallow: /admin/
+
+# --- Master XML Sitemaps Hierarchy (Canonical HTTPS Index & Child Sitemaps) ---
+Sitemap: https://krisalaventis.in/sitemap.xml
+Sitemap: https://krisalaventis.in/sitemap-index.xml
+Sitemap: https://krisalaventis.in/sitemap-core.xml
+Sitemap: https://krisalaventis.in/sitemap-nri.xml
+Sitemap: https://krisalaventis.in/sitemap-pune.xml
+Sitemap: https://krisalaventis.in/feed.xml

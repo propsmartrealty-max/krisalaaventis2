@@ -74,8 +74,9 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /krisala-aventis-tathawade-competitor-comparison       /compare                                   301
 /krisala-aventis-tathawade-vastu-compliance            /feature                                   301
 /krisala-aventis-tathawade-home-loan-emi-calculator    /pricing                                   301
-/krisala-aventis-tathawade-privacy-policy              /#contact                                  301
-/krisala-aventis-tathawade-terms-conditions            /#contact                                  301
+/krisala-aventis-tathawade-privacy-policy              /privacy-policy                            301
+/krisala-aventis-tathawade-terms-conditions            /terms-and-conditions                      301
+/krisala-aventis-tathawade-disclaimer                  /disclaimer                                301
 /nri-investor-hub                                      /invest                                    301
 /krisala-aventis-tathawade-site-visit-book             /#contact                                  301
 /krisala-aventis-tathawade-aluform-technology          /feature                                   301

@@ -13,7 +13,26 @@ export async function onRequestOptions() {
 export async function onRequestPost(context: any) {
   try {
     const data = await context.request.json();
-    const { name, phone, email, config, budget, message, utm_source, utm_medium, utm_campaign, page_url } = data;
+
+    // Honeypot bot protection
+    if (data.bot_check || data.website_url || data.honeypot || data.company_fax) {
+      return new Response(JSON.stringify({ success: true, filtered: true }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+
+    const clean = (val: any, len = 200) => String(val || '').replace(/[<>"'&]/g, '').trim().slice(0, len);
+    const name = clean(data.name, 100);
+    const rawPhone = String(data.phone || '').replace(/[^0-9+]/g, '').slice(0, 16);
+    const phone = clean(rawPhone, 20);
+    const email = clean(data.email, 100);
+    const config = clean(data.config, 50);
+    const budget = clean(data.budget, 50);
+    const message = clean(data.message, 1000);
+    const utm_source = clean(data.utm_source, 100);
+    const utm_medium = clean(data.utm_medium, 100);
+    const utm_campaign = clean(data.utm_campaign, 100);
+    const page_url = clean(data.page_url, 300);
 
     // Relay lead via HTTPS to Web3Forms / Email Service
     const leadPayload = {
