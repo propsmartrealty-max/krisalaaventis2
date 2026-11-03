@@ -25,8 +25,10 @@ const amenitiesSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ApartmentComplex",
+      "@type": ["ApartmentComplex", "RealEstateAgent"],
       "name": "Krisala Aventis Tathawade",
+      "priceRange": "₹85 Lakh - ₹1.45 Crore",
+      "telephone": "+917744009295",
       "description": "Ultra-luxury residential community with 40+ curated amenities across 3 acres in Tathawade Pune.",
       "url": "https://krisalaventis.in/amenities",
       "aggregateRating": {

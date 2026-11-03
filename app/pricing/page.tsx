@@ -26,7 +26,7 @@ const priceSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Apartment",
+      "@type": ["Product", "Apartment"],
       "@id": "https://krisalaventis.in/pricing#apartment-2bhk",
       "name": "Krisala Aventis 2.25 BHK Smart Study Flat Tathawade",
       "image": "https://krisalaventis.in/assets/images/floorplan-2bhk.webp",
@@ -54,7 +54,7 @@ const priceSchema = {
       }
     },
     {
-      "@type": "Apartment",
+      "@type": ["Product", "Apartment"],
       "@id": "https://krisalaventis.in/pricing#apartment-3bhk",
       "name": "Krisala Aventis 3.25 BHK Luxury Residence Tathawade",
       "image": "https://krisalaventis.in/assets/images/floorplan-3bhk.webp",

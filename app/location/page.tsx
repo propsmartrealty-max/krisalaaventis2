@@ -25,8 +25,10 @@ const locationSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Place",
+      "@type": ["Place", "RealEstateAgent"],
       "name": "Krisala Aventis Tathawade Location Command Center",
+      "priceRange": "₹85 Lakh - ₹1.45 Crore",
+      "telephone": "+917744009295",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Beside Shakai Circle, Mumbai-Pune Highway Service Road, Tathawade",

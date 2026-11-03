@@ -25,7 +25,7 @@ const fpSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Accommodation",
+      "@type": ["Product", "Accommodation"],
       "@id": "https://krisalaventis.in/floor-plans#2bhk",
       "name": "Krisala Aventis 2.25 BHK Smart Study Layout",
       "floorSize": { "@type": "QuantitativeValue", "value": 839, "unitCode": "FTK" },
@@ -49,7 +49,7 @@ const fpSchema = {
       }
     },
     {
-      "@type": "Accommodation",
+      "@type": ["Product", "Accommodation"],
       "@id": "https://krisalaventis.in/floor-plans#3bhk",
       "name": "Krisala Aventis 3.25 BHK Luxury Suite Layout",
       "floorSize": { "@type": "QuantitativeValue", "value": 1116, "unitCode": "FTK" },

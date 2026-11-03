@@ -29,6 +29,9 @@ const comparisonSchema = {
       "headline": "Tathawade vs Wakad Real Estate Comparison 2026 — Price, ROI & Lifestyle",
       "description": "Comprehensive 2026 real estate comparison: Tathawade vs Wakad Pune. Discover why buying in Tathawade offers 25% larger carpet area and higher rental yields near Hinjewadi IT Park.",
       "url": "https://krisalaventis.in/tathawade-vs-wakad",
+      "mainEntityOfPage": "https://krisalaventis.in/tathawade-vs-wakad",
+      "datePublished": "2026-01-15T09:00:00+05:30",
+      "dateModified": "2026-11-04T00:00:00+05:30",
       "image": "https://krisalaventis.in/assets/images/hero.webp",
       "author": {
         "@type": "Organization",

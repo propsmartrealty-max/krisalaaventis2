@@ -25,7 +25,7 @@ const homepageSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ApartmentComplex",
+      "@type": ["ApartmentComplex", "RealEstateAgent"],
       "@id": "https://krisalaventis.in/#complex",
       "name": "Krisala Aventis Tathawade",
       "alternateName": [
@@ -37,6 +37,7 @@ const homepageSchema = {
       ],
       "url": "https://krisalaventis.in",
       "telephone": "+917744009295",
+      "priceRange": "₹85 Lakh - ₹1.45 Crore",
       "description": "Ultra-luxury residential community offering 2.25 and 3.25 BHK Smart Study homes in Tathawade, West Pune by Krisala Legacy. MahaRERA P52100080336 with 40+ lifestyle amenities.",
       "image": [
         "https://krisalaventis.in/assets/images/hero.webp",

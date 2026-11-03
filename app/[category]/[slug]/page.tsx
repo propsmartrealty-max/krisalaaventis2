@@ -237,7 +237,7 @@ export default async function Page({
 
   const realEstateSchema = {
     "@context": "https://schema.org",
-    "@type": "Apartment",
+    "@type": ["Product", "Apartment"],
     name: page.h1 ? page.h1.replace(/\b2025\b/g, "2026") : cleanTitle,
     description: cleanDesc,
     url: pageUrl,
@@ -314,7 +314,7 @@ export default async function Page({
     url: pageUrl,
     name: `${page.h1 || cleanTitle} | Krisala Aventis Tathawade Official`,
     isPartOf: {
-      "@id": "https://krisalaventis.in/website"
+      "@id": "https://krisalaventis.in/#website"
     },
     speakable: {
       "@type": "SpeakableSpecification",
