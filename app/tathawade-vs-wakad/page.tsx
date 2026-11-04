@@ -220,6 +220,9 @@ export default function TathawadeVsWakadPage() {
               <button type="submit" className="btn-primary shimmer-btn" style={{ padding: '16px', fontSize: '1rem', fontWeight: 700, marginTop: '10px' }}>
                 Download Market Analysis Report PDF →
               </button>
+              <p style={{ fontSize: '0.75rem', color: 'var(--clr-silver)', marginTop: '8px', textAlign: 'center', lineHeight: 1.4 }}>
+                By submitting, you agree to our <Link href="/privacy-policy" style={{ color: 'var(--clr-gold)', textDecoration: 'underline' }}>Privacy Policy</Link> &amp; <Link href="/terms-and-conditions" style={{ color: 'var(--clr-gold)', textDecoration: 'underline' }}>Terms</Link>, and authorize Krisala Legacy to contact you via Call/WhatsApp/SMS. Overrides DNC/NDNC.
+              </p>
             </form>
           </div>
         </div>
