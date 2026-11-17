@@ -19,6 +19,7 @@ Allow: /*.css
 Allow: /*.js
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -33,6 +34,7 @@ Allow: /*.jpeg
 Allow: /*.webp
 Allow: /*.ico
 Allow: /*.svg
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -44,6 +46,7 @@ Allow: /
 Allow: /assets/
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -60,6 +63,7 @@ Allow: /
 Allow: /assets/
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 
 # --- Bingbot (Microsoft Bing, Copilot & Yahoo Indexer) ---
 User-agent: Bingbot
@@ -67,6 +71,7 @@ Allow: /
 Allow: /assets/
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -80,6 +85,7 @@ Allow: /
 Allow: /assets/
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -91,6 +97,7 @@ Allow: /
 Allow: /assets/
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -104,6 +111,7 @@ Allow: /
 Allow: /assets/
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -116,6 +124,7 @@ Allow: /
 Allow: /assets/
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -132,6 +141,7 @@ Allow: /
 Allow: /assets/
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -142,8 +152,11 @@ User-agent: *
 Allow: /
 Allow: /assets/
 Allow: /*.xml
+Allow: /*.css
+Allow: /*.js
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /scratch/
@@ -154,5 +167,4 @@ Sitemap: https://krisalaventis.in/sitemap.xml
 Sitemap: https://krisalaventis.in/sitemap-index.xml
 Sitemap: https://krisalaventis.in/sitemap-core.xml
 Sitemap: https://krisalaventis.in/sitemap-nri.xml
-Sitemap: https://krisalaventis.in/sitemap-pune.xml
 Sitemap: https://krisalaventis.in/feed.xml

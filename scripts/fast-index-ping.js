@@ -56,7 +56,7 @@ function getAllUrls() {
 
   addFromJson('data.json');
   addFromJson('data/global-nri-seo.json');
-  addFromJson('data/krisala-domination-seo.json');
+  // data/krisala-domination-seo.json excluded to focus crawl budget 100% on core ranking URLs
   addFromJson('data/pune-market-keywords.json');
 
   return Array.from(urls);

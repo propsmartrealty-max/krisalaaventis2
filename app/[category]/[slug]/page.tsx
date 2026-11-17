@@ -126,15 +126,18 @@ export async function generateMetadata({
     .replace(/Contact Number/i, "Contact")
     .trim();
 
-  const prefix = "Krisala Aventis: ";
-  const maxIntentLen = 60 - prefix.length;
-  if (coreIntent.length > maxIntentLen) {
-    coreIntent = coreIntent.slice(0, maxIntentLen).replace(/\s+\S*$/, "").trim();
-  }
+  const brandSuffix = " | Krisala Aventis";
+  const fullBrandSuffix = " | Krisala Aventis Tathawade";
 
-  let formattedTitle = `${prefix}${coreIntent}`;
-  if (formattedTitle.length <= 48 && !formattedTitle.includes("₹85") && !formattedTitle.includes("Price") && !formattedTitle.includes("Cost")) {
-    formattedTitle = `${formattedTitle} @ ₹85L*`;
+  let formattedTitle = "";
+  if (`${coreIntent}${fullBrandSuffix}`.length <= 60) {
+    formattedTitle = `${coreIntent}${fullBrandSuffix}`;
+  } else {
+    const maxIntentLen = 60 - brandSuffix.length;
+    if (coreIntent.length > maxIntentLen) {
+      coreIntent = coreIntent.slice(0, maxIntentLen).replace(/\s+\S*$/, "").trim();
+    }
+    formattedTitle = `${coreIntent}${brandSuffix}`;
   }
 
   // Click-Magnet Meta Description strictly 145-156 chars (zero SERP truncation)

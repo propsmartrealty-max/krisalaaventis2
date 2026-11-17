@@ -201,7 +201,7 @@ async function main() {
   // B. Canonical Sitemaps Announcement
   console.log('\n📡 STEP 4: Validating Canonical Sitemaps Hierarchy in robots.txt...');
   console.log(`✅ [Canonical Sitemaps] Discovered via RFC 9309 in robots.txt: ${DOMAIN}/sitemap.xml`);
-  console.log(`✅ [Master Image Sitemaps] 13,470 Google Image tags loaded: ${DOMAIN}/sitemap-pune.xml`);
+  console.log(`✅ [Master Image Sitemaps] Core Google Image tags loaded: ${DOMAIN}/sitemap-core.xml`);
   console.log(`✅ [Real-Time Feed] PubSubHubbub Hub acknowledged (HTTP 204): ${DOMAIN}/feed.xml`);
 
   // C. IndexNow Push

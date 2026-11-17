@@ -21,10 +21,10 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://krisalaventis.in";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Krisala Aventis Tathawade™ Official | 2 & 3 BHK from ₹85L*",
+    default: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
     template: "%s",
   },
-  description: "⭐ 4.9/5 | Krisala Aventis Tathawade Official Portal. Luxury 2.25 & 3.25 BHK from ₹85L* near Hinjewadi. MahaRERA P52100080336. Download 2026 Price List & Plans.",
+  description: "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download 2026 Price List, Floor Plans & Instant VIP Pass. MahaRERA: P52100080336.",
   keywords: [
     "Krisala Aventis Tathawade",
     "Krisala Aventis",
@@ -64,8 +64,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Krisala Aventis Tathawade™ — Official Project Portal | Pune",
-    description: "Official portal for Krisala Aventis Tathawade by Krisala Legacy. Premium smart-study homes, 40+ lifestyle amenities, near Hinjewadi IT Park & Wakad. MahaRERA P52100080336.",
+    title: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+    description: "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. MahaRERA P52100080336.",
     url: BASE_URL,
     siteName: "Krisala Aventis Tathawade",
     images: [
@@ -81,8 +81,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krisala Aventis Tathawade™ — Official Project Portal",
-    description: "Discover luxury 2.25 & 3.25 BHK Smart Study homes in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
+    title: "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+    description: "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L*. MahaRERA P52100080336.",
     images: [`${BASE_URL}/assets/images/hero.webp`],
   },
   robots: {
@@ -674,6 +674,131 @@ const masterSchema = {
           "name": "Legal Disclaimer",
           "url": "https://krisalaventis.in/disclaimer",
           "description": "MahaRERA P52100080336 statutory disclosures and artist impression caveats."
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://krisalaventis.in/#webpage",
+      "url": "https://krisalaventis.in",
+      "name": "Krisala Aventis Tathawade™ — Official Website | 2 & 3 BHK from ₹85L*",
+      "description": "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download 2026 Price List, Floor Plans & Instant VIP Pass. MahaRERA: P52100080336.",
+      "isPartOf": {
+        "@id": "https://krisalaventis.in/website"
+      },
+      "about": {
+        "@id": "https://krisalaventis.in/apartment-complex"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".h1-subtitle",
+          ".hero-desc",
+          ".lead-text",
+          ".body-text",
+          "#ai-key-facts",
+          ".highlights-table",
+          ".faq-expansive"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krisalaventis.in/breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krisalaventis.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Pune Real Estate",
+          "item": "https://krisalaventis.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tathawade Flats",
+          "item": "https://krisalaventis.in/location"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Krisala Aventis Tathawade",
+          "item": "https://krisalaventis.in"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://krisalaventis.in/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the current construction status of Krisala Aventis Tathawade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The construction is progressing at a high velocity using Aluform technology. Phase 1 (Towers A & B) RCC work is in advanced stages, while foundation work for Phase 2 is underway. Expected possession starts from Dec 2026."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far is Krisala Aventis Tathawade from Hinjewadi IT Park?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The project is strategically located just 10 minutes (approx. 4.5 KM) from Hinjewadi Phase 1, making it the ideal choice for IT professionals seeking a work-life balance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the unique configurations offered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer 2.25 BHK and 3.25 BHK configurations. The '.25' refers to an additional versatile study/office room, perfect for modern hybrid work cultures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Krisala Aventis Tathawade RERA registered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the project is fully compliant with MahaRERA regulations. The registration number is P52100080336. All documents are available at the site office for verification."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What global brands are used in construction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We use premium global brands including Kohler/Jaquar for CP fittings, Schneider/Legrand for electricals, and Otis/Schindler for high-speed elevators."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there any schools near the project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tathawade is an educational hub. Schools like Akshara International, Lotus Business School, and JSPM University are within a 2-5 min radius."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the price of 2.25 BHK and 3.25 BHK in Krisala Aventis Tathawade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Krisala Aventis Tathawade price starts from ₹85 Lakh* onwards for 2.25 BHK Smart Study homes (839 sq.ft carpet) and ₹1.15 Cr* onwards for 3.25 BHK luxury residences (1116 sq.ft carpet). Contact official sales at +917744009295 for the latest all-inclusive cost sheet and pre-launch pricing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to download the official Krisala Aventis Tathawade brochure PDF and floor plans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can download the official Krisala Aventis Tathawade e-brochure, floor plan layouts, master plan, and cost sheet instantly by submitting the VIP enquiry form on https://krisalaventis.in or by messaging our official sales concierge on WhatsApp at +917744009295."
+          }
         }
       ]
     }

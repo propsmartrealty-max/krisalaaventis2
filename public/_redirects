@@ -42,11 +42,11 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /map                      /location           301
 /amenity                  /amenities          301
 /amenities.html           /amenities          301
-/contact-us               /#contact           301
-/contact                  /#contact           301
-/reviews                  /#overview          301
-/review                   /#overview          301
-/overview                 /#overview          301
+/contact-us               /                   301
+/contact                  /                   301
+/reviews                  /                   301
+/review                   /                   301
+/overview                 /                   301
 /tathawade-vs-wakad.html  /tathawade-vs-wakad 301
 
 # AI Engine Shortcuts & RFC Discoveries
@@ -57,7 +57,7 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /ai-knowledge               /ai-knowledge.json  301
 
 # Core Legacy & Placeholder Silo Redirects (Eliminates 40,000+ Crawler 404s)
-/krisala-aventis-tathawade-brochure-download           /#contact                                  301
+/krisala-aventis-tathawade-brochure-download           /floor-plans                               301
 /krisala-aventis-tathawade-price-list                  /pricing                                   301
 /krisala-aventis-tathawade-flats-near-hinjewadi        /near                                      301
 /krisala-aventis-tathawade-construction-status         /feature                                   301
@@ -69,7 +69,7 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /krisala-aventis-tathawade-educational-hubs            /location                                  301
 /krisala-aventis-tathawade-amenities-lifestyle         /amenities                                 301
 /krisala-aventis-tathawade-public-transport            /location                                  301
-/krisala-aventis-tathawade-developer-legacy            /#legacy                                   301
+/krisala-aventis-tathawade-developer-legacy            /                                          301
 /krisala-aventis-tathawade-real-estate-glossary        /guide                                     301
 /krisala-aventis-tathawade-competitor-comparison       /compare                                   301
 /krisala-aventis-tathawade-vastu-compliance            /feature                                   301
@@ -78,14 +78,14 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /krisala-aventis-tathawade-terms-conditions            /terms-and-conditions                      301
 /krisala-aventis-tathawade-disclaimer                  /disclaimer                                301
 /nri-investor-hub                                      /invest                                    301
-/krisala-aventis-tathawade-site-visit-book             /#contact                                  301
+/krisala-aventis-tathawade-site-visit-book             /                                          301
 /krisala-aventis-tathawade-aluform-technology          /feature                                   301
 /how-to-buy-flat-in-west-pune-guide-2026               /guide                                     301
 /krisala-aventis-tathawade-local-pune-review-hindi-marathi /market                               301
 /tathawade-real-estate-investment-guide                /guide                                     301
 /wakad-vs-tathawade-property-analysis                  /tathawade-vs-wakad                        301
 /tathawade-vs-baner-property-2026                      /compare                                   301
-/krisala-aventis-premium-living-review                 /#overview                                 301
+/krisala-aventis-premium-living-review                 /                                          301
 /pcmc-luxury-apartments-tathawade-2026                 /market                                    301
 /krisala-aventis-vs-godrej-tathawade                   /compare                                   301
 /krisala-aventis-vs-kolte-patil-tathawade              /compare                                   301

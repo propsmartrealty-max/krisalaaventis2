@@ -158,6 +158,8 @@ puneSitemapContent += xmlFooter;
 fs.writeFileSync(path.join(__dirname, '../public/sitemap-pune.xml'), puneSitemapContent, 'utf8');
 
 // 4. MASTER SITEMAP INDEX (sitemap-index.xml & main sitemap.xml)
+// NOTE: sitemap-pune.xml is intentionally excluded from the master index to protect domain quality
+// score and prevent Google's Scaled Content classifier dampener.
 const sitemapIndexContent = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
@@ -166,10 +168,6 @@ const sitemapIndexContent = `<?xml version="1.0" encoding="UTF-8"?>
   </sitemap>
   <sitemap>
     <loc>${DOMAIN}/sitemap-nri.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>${DOMAIN}/sitemap-pune.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
 </sitemapindex>`;
@@ -181,6 +179,5 @@ fs.writeFileSync(path.join(__dirname, '../public/sitemap.xml'), sitemapIndexCont
 console.log('✅ Generated Ultra-Advanced Google-Compliant Modular Sitemaps:');
 console.log('  1. public/sitemap-core.xml (Core + Master Images + Hreflang)');
 console.log('  2. public/sitemap-nri.xml (NRI Global Hub)');
-console.log('  3. public/sitemap-pune.xml (Pune Market Domination)');
-console.log('  4. public/sitemap-index.xml (Master XML Sitemap Index)');
-console.log('  5. public/sitemap.xml (Root Canonical Index)');
+console.log('  3. public/sitemap-index.xml (Master XML Sitemap Index - Scaled Content Protected)');
+console.log('  4. public/sitemap.xml (Root Canonical Index)');
