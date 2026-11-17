@@ -49,6 +49,29 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /overview                 /                   301
 /tathawade-vs-wakad.html  /tathawade-vs-wakad 301
 
+# Krisala Sovereign Brand Permutation Shortcuts
+/krisala                                       /                                          301
+/krisala-aventis                               /                                          301
+/krisala-tathawade                             /                                          301
+/krisala-legacy                                /                                          301
+/krisala-developers                            /                                          301
+/krisala-group                                 /                                          301
+/krisala-builders                              /                                          301
+/krisala-pune                                  /                                          301
+/krisala-price                                 /pricing                                   301
+/krisala-aventis-price                         /pricing                                   301
+/krisala-cost-sheet                            /pricing                                   301
+/krisala-floor-plans                           /floor-plans                               301
+/krisala-aventis-floor-plans                   /floor-plans                               301
+/krisala-brochure                              /floor-plans                               301
+/krisala-location                              /location                                  301
+/krisala-address                               /location                                  301
+/krisala-maharera                              /maharera                                  301
+/krisala-reviews                               /                                          301
+/krisala-contact                               /                                          301
+/krisala-site-visit                            /                                          301
+/krisala-projects                              /                                          301
+
 # AI Engine Shortcuts & RFC Discoveries
 /chatgpt                    /                   301
 /searchgpt                  /                   301

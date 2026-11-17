@@ -26,12 +26,41 @@ export const metadata: Metadata = {
   },
   description: "Official Website for Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 & 3.25 BHK Smart Study homes from ₹85L* near Hinjewadi Phase 1 & Wakad. Download 2026 Price List, Floor Plans & Instant VIP Pass. MahaRERA: P52100080336.",
   keywords: [
-    "Krisala Aventis Tathawade",
+    "Krisala",
     "Krisala Aventis",
-    "Krisala Aventis Floor Plans",
-    "Krisala Aventis Price List",
-    "Krisala Aventis Location",
+    "Krisala Aventis Tathawade",
+    "Krisala Tathawade",
+    "Krisala Pune",
+    "Krisala Legacy",
     "Krisala Legacy Pune",
+    "Krisala Developers",
+    "Krisala Builders",
+    "Krisala Group Pune",
+    "Krisala Group",
+    "Krisala Aventis Price",
+    "Krisala Aventis Price List",
+    "Krisala Aventis Tathawade Price",
+    "Krisala Aventis Cost Sheet",
+    "Krisala Aventis Floor Plans",
+    "Krisala Aventis 2 BHK",
+    "Krisala Aventis 2.25 BHK",
+    "Krisala Aventis 3 BHK",
+    "Krisala Aventis 3.25 BHK",
+    "Krisala Aventis Brochure",
+    "Krisala Aventis Brochure PDF",
+    "Krisala Aventis Location",
+    "Krisala Aventis Address",
+    "Krisala Aventis MahaRERA",
+    "Krisala Aventis Possession Date",
+    "Krisala Aventis Construction Status",
+    "Krisala Aventis Reviews",
+    "Krisala Aventis Contact Number",
+    "Krisala 41 Cosmo",
+    "Krisala 41 Luxovert",
+    "Krisala 41 Magia",
+    "Krisala 41 Zillenia",
+    "Krisala Projects in Tathawade",
+    "Krisala Projects Pune",
     "2.25 BHK Flats in Tathawade",
     "3.25 BHK Flats in Tathawade",
     "Flats near Hinjewadi Phase 1",
@@ -126,7 +155,16 @@ const masterSchema = {
       "@type": "RealEstateAgent",
       "@id": "https://krisalaventis.in/organization",
       "name": "Krisala Legacy",
-      "alternateName": ["Krisala Developers", "Krisala Group Pune", "Krisala Builders"],
+      "alternateName": [
+        "Krisala",
+        "Krisala Developers",
+        "Krisala Group",
+        "Krisala Group Pune",
+        "Krisala Builders",
+        "Krisala Legacy Pune",
+        "Krisala Builders Pune",
+        "Krisala Construction"
+      ],
       "url": "https://krisalaventis.in",
       "logo": "https://krisalaventis.in/assets/images/logo.jpg",
       "image": "https://krisalaventis.in/assets/images/hero.webp",
@@ -209,9 +247,33 @@ const masterSchema = {
       ],
       "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv",
       "knowsAbout": [
+        "Krisala",
+        "Krisala Aventis",
         "Krisala Aventis Tathawade",
+        "Krisala Tathawade",
+        "Krisala Pune",
+        "Krisala Legacy",
         "Krisala Legacy Pune",
-        "Krisala Developers Projects",
+        "Krisala Developers",
+        "Krisala Builders",
+        "Krisala Group Pune",
+        "Krisala Group",
+        "Krisala Aventis Price",
+        "Krisala Aventis Cost Sheet",
+        "Krisala Aventis Floor Plans",
+        "Krisala Aventis Brochure",
+        "Krisala Aventis Location",
+        "Krisala Aventis Address",
+        "Krisala Aventis MahaRERA",
+        "Krisala Aventis Reviews",
+        "Krisala Aventis Possession Date",
+        "Krisala Aventis Construction Status",
+        "Krisala Projects in Tathawade",
+        "Krisala Projects Pune",
+        "Krisala 41 Cosmo",
+        "Krisala 41 Luxovert",
+        "Krisala 41 Magia",
+        "Krisala 41 Zillenia",
         "2.25 BHK Flats in Tathawade",
         "3.25 BHK Luxury Apartments Pune",
         "Smart Study Real Estate Concept",
@@ -232,61 +294,27 @@ const masterSchema = {
         "https://www.facebook.com/KrisalaLegacy",
         "https://www.instagram.com/krisala_legacy",
         "https://www.linkedin.com/company/krisala-legacy"
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "248"
-      }
+      ]
     },
     {
       "@type": "ApartmentComplex",
       "@id": "https://krisalaventis.in/apartment-complex",
       "name": "Krisala Aventis Tathawade",
+      "alternateName": [
+        "Krisala Aventis",
+        "Krisala Tathawade",
+        "Krisala Aventis Pune",
+        "Krisala Legacy Tathawade",
+        "Krisala Aventis Project",
+        "Krisala New Launch Tathawade",
+        "Krisala Aventis Beside Shakai",
+        "Krisala Luxury Residences"
+      ],
       "description": "Ultra-luxury residential community featuring 2.25 and 3.25 BHK Smart Study apartments in Tathawade, Pune by Krisala Legacy. MahaRERA P52100080336.",
       "url": "https://krisalaventis.in",
       "hasMap": "https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2bb001eb0d45f:0x7536287cc8523825!8m2!3d18.6314375!4d73.7462656!16s%2Fg%2F11ygjwzygv",
       "telephone": "+917744009295",
       "image": "https://krisalaventis.in/assets/images/hero.webp",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "248"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Siddharth Rao (IT Lead, Hinjewadi)"
-          },
-          "reviewBody": "Booked a 2.25 BHK at Krisala Aventis Tathawade. Dedicated smart study space is perfect for work-from-home. Only 10 mins from Hinjewadi Phase 1.",
-          "datePublished": "2026-03-15"
-        },
-        {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Neha Joshi (Wakad Resident)"
-          },
-          "reviewBody": "Superior Aluform construction quality, 40+ lifestyle amenities, and ₹85L* launch pricing beats older Wakad resale options.",
-          "datePublished": "2026-04-02"
-        }
-      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Beside Shakai Circle, Mumbai-Pune Expressway Service Road, Tathawade",
@@ -458,13 +486,6 @@ const masterSchema = {
       "containedInPlace": {
         "@id": "https://krisalaventis.in/apartment-complex"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "142"
-      },
       "offers": {
         "@type": "Offer",
         "price": "8500000",
@@ -490,13 +511,6 @@ const masterSchema = {
       },
       "containedInPlace": {
         "@id": "https://krisalaventis.in/apartment-complex"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "106"
       },
       "offers": {
         "@type": "Offer",
