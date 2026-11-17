@@ -2,21 +2,21 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Krisala Aventis Floor Plans — 2.25 & 3.25 BHK Layouts PDF",
-  description: "Official 2.25 BHK (839 sq.ft) & 3.25 BHK (1116 sq.ft) floor plans for Krisala Aventis Tathawade. View room dimensions, carpet area certification, and dedicated Smart Study pods.",
+  title: "Krisala Aventis Floor Plans & Brochure PDF | 2 & 3 BHK Layouts",
+  description: "Official 2.25 BHK (839 sq.ft) & 3.25 BHK (1116 sq.ft) floor plans and brochure PDF for Krisala Aventis Tathawade. View room dimensions, carpet area certification, and Smart Study layouts. MahaRERA P52100080336.",
   alternates: {
     canonical: "https://krisalaventis.in/floor-plans",
   },
   openGraph: {
-    title: "Krisala Aventis Floor Plans — 2.25 & 3.25 BHK Layouts PDF",
-    description: "Detailed 2.25 & 3.25 BHK blueprints with dedicated Smart Study pods in Tathawade Pune near Hinjewadi Phase 1.",
+    title: "Krisala Aventis Floor Plans & Brochure PDF | 2 & 3 BHK Layouts",
+    description: "Official 2.25 BHK (839 sq.ft) & 3.25 BHK (1116 sq.ft) floor plans and brochure PDF for Krisala Aventis Tathawade. Smart Study pods in Tathawade Pune near Hinjewadi Phase 1. MahaRERA P52100080336.",
     url: "https://krisalaventis.in/floor-plans",
     images: ["https://krisalaventis.in/assets/images/floorplan-2bhk.webp"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krisala Aventis Floor Plans — 2.25 & 3.25 BHK Layouts PDF",
-    description: "Detailed 2.25 & 3.25 BHK blueprints with dedicated Smart Study pods in Tathawade Pune near Hinjewadi Phase 1.",
+    title: "Krisala Aventis Floor Plans & Brochure PDF | 2 & 3 BHK Layouts",
+    description: "Official 2.25 BHK (839 sq.ft) & 3.25 BHK (1116 sq.ft) floor plans and brochure PDF for Krisala Aventis Tathawade. MahaRERA P52100080336.",
     images: ["https://krisalaventis.in/assets/images/floorplan-2bhk.webp"],
   },
 };
@@ -308,9 +308,10 @@ export default function FloorPlansPage() {
             <div>
               <h4 style={{ color: 'var(--clr-gold)', marginBottom: '14px' }}>Krisala Aventis Pillars</h4>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.88rem', color: 'var(--clr-silver)' }}>
-                <li><Link href="/pricing">Price List & Cost Sheet</Link></li>
-                <li><Link href="/floor-plans">Floor Plans & Blueprints</Link></li>
-                <li><Link href="/location">Location & Hinjewadi Distance</Link></li>
+                <li><Link href="/">Krisala Aventis Tathawade Official</Link></li>
+                <li><Link href="/pricing">Price List &amp; Cost Sheet</Link></li>
+                <li><Link href="/floor-plans">Floor Plans &amp; Blueprints</Link></li>
+                <li><Link href="/location">Location &amp; Hinjewadi Distance</Link></li>
                 <li><Link href="/amenities">40+ Rooftop Amenities</Link></li>
                 <li><Link href="/maharera">MahaRERA P52100080336</Link></li>
               </ul>

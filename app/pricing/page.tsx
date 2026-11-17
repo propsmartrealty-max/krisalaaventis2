@@ -3,21 +3,21 @@ import Script from "next/script";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Krisala Aventis Price List 2026 — 2 & 3 BHK Cost Sheet",
-  description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK starting ₹85 Lakh* and 3.25 BHK starting ₹1.15 Cr*. View PCMC taxes, stamp duty & EMI schedules.",
+  title: "Krisala Aventis Price & Cost Sheet 2026 | 2 & 3 BHK Tathawade",
+  description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK starting ₹85 Lakh* and 3.25 BHK starting ₹1.15 Cr*. View PCMC taxes, stamp duty & EMI schedules. MahaRERA P52100080336.",
   alternates: {
     canonical: "https://krisalaventis.in/pricing",
   },
   openGraph: {
-    title: "Krisala Aventis Price List 2026 — 2 & 3 BHK Cost Sheet",
-    description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK from ₹85L* & 3.25 BHK from ₹1.15 Cr*.",
+    title: "Krisala Aventis Price & Cost Sheet 2026 | 2 & 3 BHK Tathawade",
+    description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK from ₹85L* & 3.25 BHK from ₹1.15 Cr*. MahaRERA P52100080336.",
     url: "https://krisalaventis.in/pricing",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krisala Aventis Price List 2026 — 2 & 3 BHK Cost Sheet",
-    description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK from ₹85L* & 3.25 BHK from ₹1.15 Cr*.",
+    title: "Krisala Aventis Price & Cost Sheet 2026 | 2 & 3 BHK Tathawade",
+    description: "Official 2026 price list and detailed cost sheet for Krisala Aventis Tathawade. 2.25 BHK from ₹85L* & 3.25 BHK from ₹1.15 Cr*. MahaRERA P52100080336.",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
 };
@@ -352,9 +352,10 @@ export default function PricingPage() {
             <div>
               <h4 style={{ color: 'var(--clr-gold)', marginBottom: '14px' }}>Krisala Aventis Pillars</h4>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.88rem', color: 'var(--clr-silver)' }}>
-                <li><Link href="/pricing">Official Price List</Link></li>
-                <li><Link href="/floor-plans">2.25 & 3.25 BHK Floor Plans</Link></li>
-                <li><Link href="/location">Location & Hinjewadi Connectivity</Link></li>
+                <li><Link href="/">Krisala Aventis Tathawade Official</Link></li>
+                <li><Link href="/pricing">Price List &amp; Cost Sheet</Link></li>
+                <li><Link href="/floor-plans">2.25 &amp; 3.25 BHK Floor Plans</Link></li>
+                <li><Link href="/location">Location &amp; Hinjewadi Connectivity</Link></li>
                 <li><Link href="/amenities">40+ Rooftop Amenities</Link></li>
                 <li><Link href="/maharera">MahaRERA P52100080336</Link></li>
               </ul>

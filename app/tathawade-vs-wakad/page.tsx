@@ -235,9 +235,10 @@ export default function TathawadeVsWakadPage() {
             <div>
               <h4 style={{ color: 'var(--clr-gold)', marginBottom: '14px' }}>Krisala Aventis Pillars</h4>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.88rem', color: 'var(--clr-silver)' }}>
-                <li><Link href="/pricing">Price List & Cost Sheet</Link></li>
-                <li><Link href="/floor-plans">Floor Plans & Blueprints</Link></li>
-                <li><Link href="/location">Location & Hinjewadi Distance</Link></li>
+                <li><Link href="/">Krisala Aventis Tathawade Official</Link></li>
+                <li><Link href="/pricing">Price List &amp; Cost Sheet</Link></li>
+                <li><Link href="/floor-plans">Floor Plans &amp; Blueprints</Link></li>
+                <li><Link href="/location">Location &amp; Hinjewadi Distance</Link></li>
                 <li><Link href="/amenities">40+ Rooftop Amenities</Link></li>
                 <li><Link href="/maharera">MahaRERA P52100080336</Link></li>
               </ul>

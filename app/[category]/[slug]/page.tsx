@@ -220,7 +220,7 @@ export default async function Page({
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
+        name: "Krisala Aventis Official",
         item: "https://krisalaventis.in/",
       },
       {
@@ -379,7 +379,7 @@ export default async function Page({
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-400">
           <ol className="flex items-center space-x-2 flex-wrap">
             <li>
-              <a href="/" className="hover:text-gold transition-colors">Home</a>
+              <a href="/" className="hover:text-gold transition-colors">Krisala Aventis Official</a>
             </li>
             <li><span className="text-gray-600">/</span></li>
             <li>
@@ -585,12 +585,12 @@ export default async function Page({
             <div>
               <h5 style={{ color: 'var(--clr-gold)', marginBottom: '14px', fontSize: '0.95rem', textTransform: 'uppercase' }}>Project Explorer</h5>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem' }}>
-                <Link href="/" style={{ color: '#aaa', textDecoration: 'none' }}>Overview</Link>
-                <Link href="/pricing" style={{ color: '#aaa', textDecoration: 'none' }}>Price List &amp; Cost Sheet</Link>
-                <Link href="/floor-plans" style={{ color: '#aaa', textDecoration: 'none' }}>Floor Plans (2.25 &amp; 3.25 BHK)</Link>
-                <Link href="/location" style={{ color: '#aaa', textDecoration: 'none' }}>Location &amp; Hinjewadi Route</Link>
-                <Link href="/amenities" style={{ color: '#aaa', textDecoration: 'none' }}>40+ Luxury Amenities</Link>
-                <Link href="/maharera" style={{ color: '#aaa', textDecoration: 'none' }}>MahaRERA P52100080336</Link>
+                <Link href="/" style={{ color: '#aaa', textDecoration: 'none' }}>Krisala Aventis Tathawade Official</Link>
+                <Link href="/pricing" style={{ color: '#aaa', textDecoration: 'none' }}>Krisala Aventis Price &amp; Cost Sheet</Link>
+                <Link href="/floor-plans" style={{ color: '#aaa', textDecoration: 'none' }}>Krisala Aventis Floor Plans &amp; Brochure</Link>
+                <Link href="/location" style={{ color: '#aaa', textDecoration: 'none' }}>Krisala Aventis Location &amp; Address</Link>
+                <Link href="/amenities" style={{ color: '#aaa', textDecoration: 'none' }}>Krisala Aventis 40+ Amenities</Link>
+                <Link href="/maharera" style={{ color: '#aaa', textDecoration: 'none' }}>MahaRERA P52100080336 Registration</Link>
                 <Link href="/privacy-policy" style={{ color: '#aaa', textDecoration: 'none' }}>Privacy Policy</Link>
                 <Link href="/terms-and-conditions" style={{ color: '#aaa', textDecoration: 'none' }}>Terms &amp; Conditions</Link>
                 <Link href="/disclaimer" style={{ color: '#aaa', textDecoration: 'none' }}>Legal Disclaimer</Link>

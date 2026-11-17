@@ -181,7 +181,7 @@ export default async function CategoryPage({
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
+        name: "Krisala Aventis Official",
         item: "https://krisalaventis.in/",
       },
       {
@@ -253,7 +253,7 @@ export default async function CategoryPage({
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-gray-400">
           <ol className="flex items-center space-x-2">
             <li>
-              <Link href="/" className="hover:text-gold transition-colors">Home</Link>
+              <Link href="/" className="hover:text-gold transition-colors">Krisala Aventis Official</Link>
             </li>
             <li><span className="text-gray-600">/</span></li>
             <li className="text-gold font-medium" aria-current="page">

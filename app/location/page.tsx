@@ -2,21 +2,21 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Krisala Aventis Location — Beside Shakai, Tathawade Pune",
-  description: "Official location map of Krisala Aventis Tathawade. Beside Shakai Circle, Mumbai-Pune Expressway service road. 7 mins to Hinjewadi Phase 1 & 5 mins to Wakad. Get Google Maps directions.",
+  title: "Krisala Aventis Location & Address — Beside Shakai, Tathawade",
+  description: "Official location and address of Krisala Aventis Tathawade. Beside Shakai Circle, Mumbai-Pune Expressway service road. 7 mins to Hinjewadi Phase 1 & 5 mins to Wakad. Get directions. MahaRERA P52100080336.",
   alternates: {
     canonical: "https://krisalaventis.in/location",
   },
   openGraph: {
-    title: "Krisala Aventis Location — Beside Shakai, Tathawade Pune",
-    description: "Strategic gateway location in Tathawade Pune with zero-traffic connectivity to Hinjewadi IT Park and Pune-Mumbai Highway.",
+    title: "Krisala Aventis Location & Address — Beside Shakai, Tathawade",
+    description: "Strategic gateway location in Tathawade Pune with zero-traffic connectivity to Hinjewadi IT Park and Pune-Mumbai Highway. MahaRERA P52100080336.",
     url: "https://krisalaventis.in/location",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krisala Aventis Location — Beside Shakai, Tathawade Pune",
-    description: "Strategic gateway location in Tathawade Pune with zero-traffic connectivity to Hinjewadi IT Park and Pune-Mumbai Highway.",
+    title: "Krisala Aventis Location & Address — Beside Shakai, Tathawade",
+    description: "Strategic gateway location in Tathawade Pune with zero-traffic connectivity to Hinjewadi IT Park and Pune-Mumbai Highway. MahaRERA P52100080336.",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
 };
@@ -217,9 +217,10 @@ export default function LocationPage() {
             <div>
               <h4 style={{ color: 'var(--clr-gold)', marginBottom: '14px' }}>Krisala Aventis Pillars</h4>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.88rem', color: 'var(--clr-silver)' }}>
-                <li><Link href="/pricing">Price List & Cost Sheet</Link></li>
-                <li><Link href="/floor-plans">Floor Plans & Blueprints</Link></li>
-                <li><Link href="/location">Location & Hinjewadi Distance</Link></li>
+                <li><Link href="/">Krisala Aventis Tathawade Official</Link></li>
+                <li><Link href="/pricing">Price List &amp; Cost Sheet</Link></li>
+                <li><Link href="/floor-plans">Floor Plans &amp; Blueprints</Link></li>
+                <li><Link href="/location">Location &amp; Hinjewadi Distance</Link></li>
                 <li><Link href="/amenities">40+ Rooftop Amenities</Link></li>
                 <li><Link href="/maharera">MahaRERA P52100080336</Link></li>
               </ul>

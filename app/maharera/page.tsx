@@ -2,21 +2,21 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Krisala Aventis MahaRERA P52100080336 — Legal Approvals & Title",
+  title: "Krisala Aventis MahaRERA P52100080336 | Approvals & Status",
   description: "Official MahaRERA registration details for Krisala Aventis Tathawade (MahaRERA No. P52100080336). View legal clearances, title deed, bank approvals & possession timelines.",
   alternates: {
     canonical: "https://krisalaventis.in/maharera",
   },
   openGraph: {
-    title: "Krisala Aventis MahaRERA P52100080336 — Legal Approvals & Title",
-    description: "100% legal verification and compliance certificate for Krisala Aventis Tathawade Pune.",
+    title: "Krisala Aventis MahaRERA P52100080336 | Approvals & Status",
+    description: "100% legal verification and compliance certificate for Krisala Aventis Tathawade Pune. MahaRERA P52100080336.",
     url: "https://krisalaventis.in/maharera",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krisala Aventis MahaRERA P52100080336 — Legal Approvals & Title",
-    description: "100% legal verification and compliance certificate for Krisala Aventis Tathawade Pune.",
+    title: "Krisala Aventis MahaRERA P52100080336 | Approvals & Status",
+    description: "100% legal verification and compliance certificate for Krisala Aventis Tathawade Pune. MahaRERA P52100080336.",
     images: ["https://krisalaventis.in/assets/images/hero.webp"],
   },
 };
@@ -204,9 +204,10 @@ export default function MahaReraPage() {
             <div>
               <h4 style={{ color: 'var(--clr-gold)', marginBottom: '14px' }}>Krisala Aventis Pillars</h4>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.88rem', color: 'var(--clr-silver)' }}>
-                <li><Link href="/pricing">Price List & Cost Sheet</Link></li>
-                <li><Link href="/floor-plans">Floor Plans & Blueprints</Link></li>
-                <li><Link href="/location">Location & Hinjewadi Distance</Link></li>
+                <li><Link href="/">Krisala Aventis Tathawade Official</Link></li>
+                <li><Link href="/pricing">Price List &amp; Cost Sheet</Link></li>
+                <li><Link href="/floor-plans">Floor Plans &amp; Blueprints</Link></li>
+                <li><Link href="/location">Location &amp; Hinjewadi Distance</Link></li>
                 <li><Link href="/amenities">40+ Rooftop Amenities</Link></li>
                 <li><Link href="/maharera">MahaRERA P52100080336</Link></li>
               </ul>
