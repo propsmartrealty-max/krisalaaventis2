@@ -32,13 +32,6 @@ const fpSchema = {
       "numberOfRooms": 3,
       "image": "https://krisalaventis.in/assets/images/floorplan-2bhk.webp",
       "description": "839 sq.ft carpet area 2.25 BHK apartment with acoustic Smart Study pod in Tathawade Pune.",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "142"
-      },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
@@ -56,13 +49,6 @@ const fpSchema = {
       "numberOfRooms": 4,
       "image": "https://krisalaventis.in/assets/images/floorplan-3bhk.webp",
       "description": "1116 sq.ft carpet area 3.25 BHK luxury suite with dedicated executive study room.",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "106"
-      },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",

@@ -50,7 +50,6 @@
   setTimeout(() => {
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
       el.classList.add('visible');
-      console.log('[Sovereign Guard] Safety Reveal Triggered for:', el);
     });
   }, 2500);
 

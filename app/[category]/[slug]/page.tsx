@@ -271,13 +271,6 @@ export default async function Page({
       url: "https://krisalaventis.in",
       telephone: "+917744009295"
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "248"
-    },
     offers: {
       "@type": "Offer",
       priceCurrency: "INR",

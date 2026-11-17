@@ -31,13 +31,6 @@ const amenitiesSchema = {
       "telephone": "+917744009295",
       "description": "Ultra-luxury residential community with 40+ curated amenities across 3 acres in Tathawade Pune.",
       "url": "https://krisalaventis.in/amenities",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "248"
-      },
       "amenityFeature": [
         { "@type": "LocationFeatureSpecification", "name": "Rooftop Horizon Infinity Pool", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Executive Co-Working Lounge & Study Pods", "value": true },

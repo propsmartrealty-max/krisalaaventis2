@@ -37,13 +37,6 @@ const priceSchema = {
         "value": 839,
         "unitCode": "FTK"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "142"
-      },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
@@ -64,13 +57,6 @@ const priceSchema = {
         "@type": "QuantitativeValue",
         "value": 1116,
         "unitCode": "FTK"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "106"
       },
       "offers": {
         "@type": "Offer",

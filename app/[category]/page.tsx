@@ -199,13 +199,6 @@ export default async function CategoryPage({
     name: meta.headline,
     description: meta.description,
     url: categoryUrl,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "248"
-    },
     hasPart: allArticles.slice(0, 50).map((art) => ({
       "@type": "WebPage",
       name: art.title,

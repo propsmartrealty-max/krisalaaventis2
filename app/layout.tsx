@@ -830,6 +830,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${playfair.variable}`}>
       <head>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `:root{--ribbon-height:38px;--clr-obsidian:hsl(222,18%,7%);--clr-gold:hsl(42,72%,56%);}@media(max-width:768px){:root{--ribbon-height:52px;}}#stickyRibbon{min-height:var(--ribbon-height,38px);contain:layout;}#mainNav{min-height:50px;contain:layout;}#hero{min-height:100vh;contain:layout;}#hero .hero-content{opacity:1!important;transform:none!important;animation:none!important;}`,
+          }}
+        />
         <link rel="alternate" type="text/plain" href="https://krisalaventis.in/llms.txt" title="LLM Knowledge Source" />
         <link rel="alternate" type="text/plain" href="https://krisalaventis.in/llms-full.txt" title="LLM Full Ground Truth Manual" />
         <link rel="alternate" type="application/json" href="https://krisalaventis.in/ai-knowledge.json" title="AI Entity Knowledge Graph" />
@@ -943,11 +948,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="alternate" type="application/rss+xml" title="Krisala Aventis Real Estate Syndication Feed" href="https://krisalaventis.in/feed.xml" />
         <link rel="alternate" type="application/rss+xml" title="Krisala Aventis RSS 2.0" href="https://krisalaventis.in/rss.xml" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://api.web3forms.com" />
       </head>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className={outfit.className}>
         {GTM_ID && (
           <noscript>
             <iframe
