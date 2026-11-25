@@ -1,13 +1,12 @@
 import data from "../../../data.json";
 import nriData from "../../../data/global-nri-seo.json";
-import dominationData from "../../../data/krisala-domination-seo.json";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// Combine and pre-index all datasets into high-speed $O(1)$ lookup maps
-const allPages = [...data, ...nriData, ...dominationData];
+// Combine and pre-index all curated, high-intent datasets into high-speed $O(1)$ lookup maps
+const allPages = [...data, ...nriData];
 
 // Map 1: Key = `${folder}/${cleanSlug}`
 const pageByFolderAndSlug = new Map<string, (typeof allPages)[0]>();

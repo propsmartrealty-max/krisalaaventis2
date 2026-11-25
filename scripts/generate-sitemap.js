@@ -7,7 +7,6 @@ const today = new Date().toISOString().split('T')[0];
 // Load Data Sources
 const coreData = require('../data.json');
 const nriData = require('../data/global-nri-seo.json');
-const dominationData = require('../data/krisala-domination-seo.json');
 
 // --- XML Schema Declarations (Strict Google Search Central Compliance) ---
 const xmlHeader = `<?xml version="1.0" encoding="UTF-8"?>
@@ -130,34 +129,14 @@ for (const page of nriData) {
 nriSitemapContent += xmlFooter;
 fs.writeFileSync(path.join(__dirname, '../public/sitemap-nri.xml'), nriSitemapContent, 'utf8');
 
-// 3. SITEMAP 3: Pune Real Estate & Krisala Domination Network (sitemap-pune.xml)
-let puneSitemapContent = xmlHeader;
-for (const page of dominationData) {
-  const slug = page.url_slug.replace('.html', '').replace(/^\/+/, '');
-  const folder = page.folder.replace(/^\/+/, '').replace(/\/+$/, '');
-  let priority = '0.75';
-  if (slug.includes('krisala') || slug.includes('tathawade') || slug.includes('wakad') || slug.includes('hinjewadi')) {
-    priority = '0.85';
-  }
-
-  // Assign contextual Google Image metadata for maximum Image Search impressions (10,800+ image candidates)
-  let pageImages = [masterImages[0]];
-  if (slug.includes('floor-plan') || slug.includes('2-bhk') || slug.includes('layout')) {
-    pageImages.push(masterImages[3]);
-  } else if (slug.includes('3-bhk') || slug.includes('luxury') || slug.includes('suite')) {
-    pageImages.push(masterImages[4]);
-  } else if (slug.includes('amenities') || slug.includes('pool') || slug.includes('lifestyle')) {
-    pageImages.push(masterImages[1]);
-  } else {
-    pageImages.push(masterImages[2]);
-  }
-
-  puneSitemapContent += buildUrlEntry(`${DOMAIN}/${folder}/${slug}`, priority, 'weekly', pageImages);
+// Ensure deprecated sitemap-pune.xml is deleted to protect domain from Scaled Content classifier dampener
+const deprecatedPuneSitemap = path.join(__dirname, '../public/sitemap-pune.xml');
+if (fs.existsSync(deprecatedPuneSitemap)) {
+  fs.unlinkSync(deprecatedPuneSitemap);
+  console.log('🗑️ Removed deprecated public/sitemap-pune.xml');
 }
-puneSitemapContent += xmlFooter;
-fs.writeFileSync(path.join(__dirname, '../public/sitemap-pune.xml'), puneSitemapContent, 'utf8');
 
-// 4. MASTER SITEMAP INDEX (sitemap-index.xml & main sitemap.xml)
+// 3. MASTER SITEMAP INDEX (sitemap-index.xml & main sitemap.xml)
 // NOTE: sitemap-pune.xml is intentionally excluded from the master index to protect domain quality
 // score and prevent Google's Scaled Content classifier dampener.
 const sitemapIndexContent = `<?xml version="1.0" encoding="UTF-8"?>
@@ -176,7 +155,7 @@ fs.writeFileSync(path.join(__dirname, '../public/sitemap-index.xml'), sitemapInd
 // Keep public/sitemap.xml as master index
 fs.writeFileSync(path.join(__dirname, '../public/sitemap.xml'), sitemapIndexContent, 'utf8');
 
-console.log('✅ Generated Ultra-Advanced Google-Compliant Modular Sitemaps:');
+console.log('✅ Generated Google-Compliant Modular Sitemaps:');
 console.log('  1. public/sitemap-core.xml (Core + Master Images + Hreflang)');
 console.log('  2. public/sitemap-nri.xml (NRI Global Hub)');
 console.log('  3. public/sitemap-index.xml (Master XML Sitemap Index - Scaled Content Protected)');

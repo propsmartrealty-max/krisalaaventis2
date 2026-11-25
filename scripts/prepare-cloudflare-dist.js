@@ -29,6 +29,13 @@ console.log('\n🚀 \x1b[1mOptimizing Static Distribution for Cloudflare Pages..
   }
 });
 
+// Remove deprecated sitemap-pune.xml from out/ if present
+const outSitemapPune = path.join(outDir, 'sitemap-pune.xml');
+if (fs.existsSync(outSitemapPune)) {
+  fs.unlinkSync(outSitemapPune);
+  console.log('🗑️ Removed deprecated out/sitemap-pune.xml');
+}
+
 // 1a. Copy .well-known directory contents (security.txt, llms.txt, ai-plugin.json)
 const wellKnownSrc = path.join(publicDir, '.well-known');
 const wellKnownDest = path.join(outDir, '.well-known');
@@ -44,8 +51,7 @@ if (fs.existsSync(wellKnownSrc)) {
 try {
   const coreData = require('../data.json');
   const nriData = require('../data/global-nri-seo.json');
-  const domData = require('../data/krisala-domination-seo.json');
-  const allSlugItems = [...coreData, ...nriData, ...domData];
+  const allSlugItems = [...coreData, ...nriData];
   const uppercaseItems = allSlugItems.filter(item => item && item.url_slug && /[A-Z]/.test(item.url_slug));
   
   if (uppercaseItems.length > 0) {

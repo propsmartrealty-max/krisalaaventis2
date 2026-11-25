@@ -31,6 +31,6 @@ Krisala Aventis Tathawade is a landmark luxury residential community on the Mumb
 - [Terms & Conditions](https://krisalaventis.in/terms-and-conditions): Official terms of service, indicative pricing, and booking terms.
 - [Legal Disclaimer](https://krisalaventis.in/disclaimer): MahaRERA P52100080336 statutory disclosures and developer caveats.
 
-## Full Ground Truth Manual
+## Optional
 
 - [Full Ground Truth Reference Manual](https://krisalaventis.in/llms-full.txt): Complete exhaustive technical, architectural, legal, and financial reference manual for LLMs and answer engines.

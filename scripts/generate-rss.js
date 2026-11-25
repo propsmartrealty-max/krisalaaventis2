@@ -7,7 +7,6 @@ const rootDir = path.join(__dirname, '..');
 
 const coreData = require(path.join(rootDir, 'data.json'));
 const nriData = require(path.join(rootDir, 'data', 'global-nri-seo.json'));
-const dominationData = require(path.join(rootDir, 'data', 'krisala-domination-seo.json'));
 
 const now = new Date().toUTCString();
 
@@ -95,11 +94,10 @@ hubs.forEach(h => {
     </item>`);
 });
 
-// 3. Programmatic High-Priority Articles (Top 500 Curated for Google Discover & News Syndication)
+// 3. Programmatic High-Priority Articles (Curated for Google Discover & News Syndication)
 const prioritySlices = [
   ...nriData,
-  ...coreData.slice(0, 250),
-  ...dominationData.slice(0, 250)
+  ...coreData.slice(0, 300)
 ];
 
 prioritySlices.forEach(art => {

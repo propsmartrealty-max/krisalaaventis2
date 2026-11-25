@@ -79,7 +79,6 @@ function getAllUrls() {
 
   addFromJson('data.json');
   addFromJson('data/global-nri-seo.json');
-  addFromJson('data/krisala-domination-seo.json');
 
   return Array.from(urls);
 }

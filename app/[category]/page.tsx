@@ -1,6 +1,5 @@
 import data from "../../data.json";
 import nriData from "../../data/global-nri-seo.json";
-import dominationData from "../../data/krisala-domination-seo.json";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -167,7 +166,7 @@ export default async function CategoryPage({
   }
 
   // Gather all articles in this category across datasets
-  const allArticles = [...data, ...nriData, ...dominationData].filter(
+  const allArticles = [...data, ...nriData].filter(
     (item) => item.folder === category
   );
 
