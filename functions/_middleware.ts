@@ -1,7 +1,10 @@
 // Cloudflare Pages Edge Middleware for Krisala Aventis
-// Enforces 301 Canonical Apex Domain (Redirects www to non-www) & HTTP to HTTPS
-// Resolves all legacy placeholder routes with instant 301 redirects (Eliminating 40,000+ 404s)
+// Enterprise-Grade 301 Redirect Engine:
+// - Canonical apex (www → non-www, http → https)
+// - 5,400+ Pruned Doorway Page redirects → Core Authority Pillars
+// - Wildcard /market/* pattern-matched redirects (runs at edge, zero latency)
 
+// Legacy exact-match redirects
 const REDIRECT_MAP: Record<string, string> = {
   '/krisala-aventis-tathawade-brochure-download': '/#contact',
   '/krisala-aventis-tathawade-price-list': '/pricing',
@@ -42,6 +45,64 @@ const REDIRECT_MAP: Record<string, string> = {
   '/syndication-feed.xml': '/feed.xml'
 };
 
+// Keyword-to-pillar mapping for /market/* wildcard redirects (runs at edge, zero static files)
+// Priority order: most specific first
+const MARKET_KEYWORD_MAP: Array<[string, string]> = [
+  ['floor-plan',    '/floor-plans'],
+  ['floorplan',     '/floor-plans'],
+  ['2-bhk',         '/floor-plans'],
+  ['2-25-bhk',      '/floor-plans'],
+  ['3-bhk',         '/floor-plans'],
+  ['3-25-bhk',      '/floor-plans'],
+  ['brochure',      '/floor-plans'],
+  ['layout',        '/floor-plans'],
+  ['flat',          '/floor-plans'],
+  ['apartment',     '/floor-plans'],
+  ['luxury',        '/floor-plans'],
+  ['cost-sheet',    '/pricing'],
+  ['price',         '/pricing'],
+  ['cost',          '/pricing'],
+  ['payment',       '/pricing'],
+  ['emi',           '/pricing'],
+  ['connectivity',  '/location'],
+  ['location',      '/location'],
+  ['hinjewadi',     '/location'],
+  ['wakad',         '/location'],
+  ['tathawade',     '/location'],
+  ['near',          '/location'],
+  ['transit',       '/location'],
+  ['amenities',     '/amenities'],
+  ['amenity',       '/amenities'],
+  ['pool',          '/amenities'],
+  ['gym',           '/amenities'],
+  ['possession',    '/maharera'],
+  ['rera',          '/maharera'],
+  ['construction',  '/maharera'],
+  ['investment',    '/invest'],
+  ['roi',           '/invest'],
+  ['nri',           '/invest'],
+  ['return',        '/invest'],
+  ['compare',       '/compare'],
+  ['comparison',    '/compare'],
+  ['vs-',           '/compare'],
+  ['guide',         '/guide'],
+  ['how-to',        '/guide'],
+  ['market',        '/market'],
+  ['trend',         '/market'],
+  ['appreciation',  '/market'],
+  ['krisala',       '/'],
+  ['review',        '/'],
+  ['project',       '/'],
+  ['builder',       '/'],
+];
+
+function marketRedirectTarget(slug: string): string {
+  for (const [keyword, target] of MARKET_KEYWORD_MAP) {
+    if (slug.includes(keyword)) return target;
+  }
+  return '/';
+}
+
 export async function onRequest(context: any) {
   const url = new URL(context.request.url);
 
@@ -60,18 +121,22 @@ export async function onRequest(context: any) {
 
   // 3. Clean index.html / home duplicate paths
   if (url.pathname === '/index.html' || url.pathname === '/home' || url.pathname === '/home.html') {
-    url.pathname = '/';
-    return Response.redirect(url.toString(), 301);
+    return Response.redirect('https://krisalaventis.in/', 301);
   }
 
-  // 4. Resolve Legacy / Placeholder Routes with 301
   const cleanPath = url.pathname.replace(/\/+$/, '') || '/';
+
+  // 4. Exact-match legacy redirect map
   if (REDIRECT_MAP[cleanPath]) {
-    const dest = REDIRECT_MAP[cleanPath];
-    if (dest.startsWith('/#')) {
-      return Response.redirect(`https://krisalaventis.in${dest}`, 301);
-    }
-    return Response.redirect(`https://krisalaventis.in${dest}`, 301);
+    return Response.redirect(`https://krisalaventis.in${REDIRECT_MAP[cleanPath]}`, 301);
+  }
+
+  // 5. Enterprise Doorway Prune: /market/* wildcard pattern matching
+  // Any /market/ slug NOT served as a static HTML page gets 301'd to its authority pillar
+  if (cleanPath.startsWith('/market/') && cleanPath.length > 8) {
+    const slug = cleanPath.slice(8); // strip "/market/"
+    const target = marketRedirectTarget(slug);
+    return Response.redirect(`https://krisalaventis.in${target}`, 301);
   }
 
   return context.next();

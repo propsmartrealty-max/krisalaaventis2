@@ -115,37 +115,7 @@ http://krisalaventis.in/*        https://krisalaventis.in/:splat   301!
 /best-3-bhk-under-1-5-crore-pune-2026                  /pricing                                   301
 /residential-flats-near-hinjewadi-phase-3              /near                                      301
 
-# Pruned Doorway Consolidation (Redirects 5,400 Doorway Pages to Core Authority Pillars)
-/market/*floor-plan*              /floor-plans        301
-/market/*floorplan*               /floor-plans        301
-/market/*2-bhk*                   /floor-plans        301
-/market/*3-bhk*                   /floor-plans        301
-/market/*bhk*                     /floor-plans        301
-/market/*price*                   /pricing            301
-/market/*cost*                    /pricing            301
-/market/*payment*                 /pricing            301
-/market/*emi*                     /pricing            301
-/market/*brochure*                /floor-plans        301
-/market/*location*                /location           301
-/market/*connectivity*            /location           301
-/market/*amenities*               /amenities          301
-/market/*amenity*                 /amenities          301
-/market/*possession*              /maharera           301
-/market/*rera*                    /maharera           301
-/market/*investment*              /invest             301
-/market/*roi*                     /invest             301
-/market/*nri*                     /invest             301
-/market/*comparison*              /compare            301
-/market/*compare*                 /compare            301
-/market/*guide*                   /guide              301
-/market/*review*                  /                   301
-/market/*krisala-aventis*         /                   301
-/market/*krisala*                 /                   301
-/market/*tathawade*               /location           301
-/market/*hinjewadi*               /location           301
-/market/*wakad*                   /location           301
-/market/*luxury*                  /floor-plans        301
-/market/*flat*                    /floor-plans        301
-/market/*apartment*               /floor-plans        301
-/market/*project*                 /                   301
-/market/*builder*                 /                   301
+# Pruned Doorway Consolidation: Handled by functions/_middleware.ts (Edge Function)
+# The /market/* wildcard 301 logic runs at Cloudflare edge via onRequest() handler.
+# This keeps _redirects under the 2,000-rule limit while handling 5,400+ pruned doorway URLs.
+
