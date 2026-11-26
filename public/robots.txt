@@ -147,6 +147,28 @@ Disallow: /_next/
 Disallow: /scratch/
 Disallow: /admin/
 
+# --- 2026 AI Crawlers (Newly Active — Full Allow) ---
+User-agent: Diffbot
+User-agent: AI2Bot
+User-agent: Timpibot
+User-agent: iaskspider
+User-agent: Bytespider
+User-agent: ICC-Crawler
+User-agent: Omgili
+User-agent: omgilibot
+User-agent: Kangaroo Bot
+User-agent: SearchGPT
+User-agent: ImagesiftBot
+User-agent: wp_is_mobile
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-knowledge.json
+Allow: /.well-known/ai-plugin.json
+Disallow: /api/
+Disallow: /scratch/
+Disallow: /admin/
+
 # --- Global Catch-All Directives (All Other Compliant Crawlers) ---
 User-agent: *
 Allow: /

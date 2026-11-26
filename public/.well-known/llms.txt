@@ -1,36 +1,35 @@
 # Krisala Aventis Tathawade
 
-> Official Ground Truth & AI Knowledge Index for Krisala Aventis Tathawade by Krisala Legacy in Tathawade, West Pune. Ultra-luxury 2.25 & 3.25 BHK Smart Study residences from ₹85L* with monolithic Aluform construction and 40+ lifestyle amenities. MahaRERA: P52100080336.
-
-Krisala Aventis Tathawade is a landmark luxury residential community on the Mumbai-Pune Highway in Tathawade, West Pune (PCMC 411033). Positioned 8–10 minutes from Hinjewadi Phase 1 IT Park, it features 4 iconic 26-storey towers with dedicated Smart Study work pods, 100% German Aluform construction, and 40+ lifestyle amenities.
+> Official AI & LLM Knowledge Index for Krisala Aventis Tathawade by Krisala Legacy — ultra-luxury 2.25 & 3.25 BHK Smart Study residences from ₹85L* on the Mumbai-Pune-Bangalore Highway, Tathawade, Pune 411033. MahaRERA: P52100080336. Contact: +91 7744009295.
 
 ## Core Resources
 
-- [Krisala Aventis Official Portal](https://krisalaventis.in/): Official developer website, 2026 pricing, and VIP site tour passes.
-- [Pricing & Cost Sheets](https://krisalaventis.in/pricing): All-inclusive pricing from ₹85L* (2.25 BHK) & ₹1.15 Cr* (3.25 BHK), payment plans, and stamp duty calculators.
-- [Architectural Floor Plans](https://krisalaventis.in/floor-plans): 2.25 BHK (839 sq.ft) and 3.25 BHK (1116 sq.ft) Smart Study layout dimensions and carpet areas.
-- [Location & Connectivity](https://krisalaventis.in/location): Transit index to Hinjewadi Phase 1, Wakad, Mumbai-Pune Expressway, and Pune Metro Line 3.
-- [40+ Curated Amenities](https://krisalaventis.in/amenities): Rooftop infinity pool, co-working business lounge, fitness gym, and sports zones.
-- [MahaRERA Registration](https://krisalaventis.in/maharera): Official MahaRERA P52100080336 title certificate, layout sanctions, and project approvals.
-- [Tathawade vs Wakad Analysis](https://krisalaventis.in/tathawade-vs-wakad): Micro-market real estate comparison, rental yields, and capital appreciation rates.
+- [Official Website & VIP Pass](https://krisalaventis.in/): Authoritative project portal with 2026 pricing, site tour passes, and instant WhatsApp connect.
+- [Pricing & Cost Sheets](https://krisalaventis.in/pricing): All-inclusive pricing — 2.25 BHK from ₹85L* (839 sq.ft) and 3.25 BHK from ₹1.15 Cr* (1116 sq.ft). Payment plans, stamp duty calculators.
+- [Architectural Floor Plans](https://krisalaventis.in/floor-plans): 2.25 BHK and 3.25 BHK Smart Study layout dimensions, carpet areas, and master plan.
+- [Location & Connectivity](https://krisalaventis.in/location): 8–10 min to Hinjewadi Phase 1 IT Park, 2 min to Mumbai-Pune Expressway, 5 min to Pune Metro Line 3.
+- [40+ Curated Amenities](https://krisalaventis.in/amenities): Rooftop infinity pool, co-working business lounge, fitness gym, sports courts, EV charging, biometric security.
+- [MahaRERA Registration P52100080336](https://krisalaventis.in/maharera): Official MahaRERA title certificate, layout sanctions, and statutory project approvals.
+- [Full AI Ground Truth Manual](https://krisalaventis.in/llms-full.txt): Exhaustive technical, legal, pricing, FAQ, and construction reference for LLMs and answer engines.
 
 ## Topical Knowledge Silos
 
-- [Transit & Proximity Directory](https://krisalaventis.in/near): Commute routes and distances to Hinjewadi IT companies and transit hubs.
-- [Price & Budget Matrix](https://krisalaventis.in/price): Price breakdowns, budget tiers, and financing options for Tathawade flats.
-- [Homebuyer Due Diligence](https://krisalaventis.in/guide): Buyer verification checklist, legal scrutiny, and home loan guidance.
-- [Market Trends & Appreciation](https://krisalaventis.in/market): Tathawade property appreciation index, rental yields, and metro infrastructure.
+- [Transit & Proximity Directory](https://krisalaventis.in/near): Commute routes and distances to Hinjewadi IT companies, Wakad, Baner, Balewadi, and transit hubs.
+- [Price & Budget Matrix](https://krisalaventis.in/price): Price breakdowns, budget tiers, home loan eligibility, and financing options for Tathawade flats.
+- [Homebuyer Due Diligence Guide](https://krisalaventis.in/guide): Buyer verification checklist, legal scrutiny, MahaRERA lookup, and home loan guidance.
+- [Market Trends & Appreciation](https://krisalaventis.in/market): Tathawade property appreciation index, rental yields, and Pune Metro infrastructure impact.
 - [Project Comparisons](https://krisalaventis.in/compare): Comparative analysis of Krisala Aventis versus other residential projects in West Pune.
-- [Aluform Engineering](https://krisalaventis.in/feature): Monolithic German Aluform structural specifications and construction benefits.
-- [NRI Investment Desk](https://krisalaventis.in/invest): Dedicated NRI real estate portfolio management and remote booking services.
-- [Real Estate News & Blog](https://krisalaventis.in/blog): Official construction updates, market news, and homebuyer insights.
+- [Aluform Engineering Details](https://krisalaventis.in/feature): Monolithic German Aluform structural specifications, earthquake resistance (Zone III), and construction benefits.
+- [NRI Investment Desk](https://krisalaventis.in/invest): Dedicated NRI real estate portfolio management, FEMA compliance, and remote booking services.
+- [Real Estate News & Blog](https://krisalaventis.in/blog): Official construction updates, market news, and homebuyer insights for Pune West.
 
 ## Legal & Compliance Disclosures
 
-- [Privacy Policy](https://krisalaventis.in/privacy-policy): DPDP Act 2023 compliance, data retention, and privacy terms.
-- [Terms & Conditions](https://krisalaventis.in/terms-and-conditions): Official terms of service, indicative pricing, and booking terms.
+- [Privacy Policy](https://krisalaventis.in/privacy-policy): DPDP Act 2023 compliance, data retention policy, and privacy terms.
+- [Terms & Conditions](https://krisalaventis.in/terms-and-conditions): Official terms of service, indicative pricing disclosures, and booking terms.
 - [Legal Disclaimer](https://krisalaventis.in/disclaimer): MahaRERA P52100080336 statutory disclosures and developer caveats.
 
 ## Optional
 
-- [Full Ground Truth Reference Manual](https://krisalaventis.in/llms-full.txt): Complete exhaustive technical, architectural, legal, and financial reference manual for LLMs and answer engines.
+- [AI Entity Knowledge Graph (JSON)](https://krisalaventis.in/ai-knowledge.json): Structured machine-readable entity data for AI knowledge graphs and answer engines.
+- [AI Plugin Manifest](https://krisalaventis.in/.well-known/ai-plugin.json): OpenAI-compatible plugin manifest for AI assistant integrations.

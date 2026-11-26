@@ -815,6 +815,43 @@ const masterSchema = {
           }
         }
       ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://krisalaventis.in/#article",
+      "headline": "Krisala Aventis Tathawade — Official 2 & 3 BHK New Launch 2026 | From ₹85L*",
+      "description": "Complete official guide to Krisala Aventis Tathawade by Krisala Legacy. Ultra-luxury 2.25 BHK (839 sq.ft, ₹85L*) and 3.25 BHK (1116 sq.ft, ₹1.15Cr*) Smart Study apartments in West Pune. MahaRERA P52100080336. 8 min to Hinjewadi Phase 1 IT Park.",
+      "image": "https://krisalaventis.in/assets/images/hero.webp",
+      "datePublished": "2026-04-01T00:00:00+05:30",
+      "dateModified": "2026-11-25T00:00:00+05:30",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://krisalaventis.in/organization",
+        "name": "Krisala Legacy"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://krisalaventis.in/organization",
+        "name": "Krisala Legacy",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://krisalaventis.in/assets/images/logo.jpg"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://krisalaventis.in/#webpage"
+      },
+      "about": {
+        "@id": "https://krisalaventis.in/apartment-complex"
+      },
+      "keywords": "Krisala Aventis Tathawade, 2 BHK Tathawade, 3 BHK Tathawade, flats near Hinjewadi, Krisala Legacy, MahaRERA P52100080336, Tathawade new launch 2026, Smart Study apartment Pune",
+      "inLanguage": "en-IN",
+      "isAccessibleForFree": true,
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".hero-desc", "#ai-key-facts", ".highlights-table", ".faq-expansive", ".h1-subtitle"]
+      }
     }
   ]
 };
@@ -838,6 +875,22 @@ export default function RootLayout({
         <link rel="alternate" type="text/plain" href="https://krisalaventis.in/llms.txt" title="LLM Knowledge Source" />
         <link rel="alternate" type="text/plain" href="https://krisalaventis.in/llms-full.txt" title="LLM Full Ground Truth Manual" />
         <link rel="alternate" type="application/json" href="https://krisalaventis.in/ai-knowledge.json" title="AI Entity Knowledge Graph" />
+        <link rel="alternate" type="application/json" href="https://krisalaventis.in/.well-known/ai-plugin.json" title="AI Plugin Manifest" />
+        <meta name="citation_title" content="Krisala Aventis Tathawade — Official Website | 2 & 3 BHK from ₹85L*" />
+        <meta name="citation_author" content="Krisala Legacy" />
+        <meta name="citation_public_url" content="https://krisalaventis.in" />
+        <meta name="citation_language" content="en-IN" />
+        <meta name="article:published_time" content="2026-04-01T00:00:00+05:30" />
+        <meta name="article:modified_time" content="2026-11-25T00:00:00+05:30" />
+        <meta name="article:author" content="Krisala Legacy" />
+        <meta name="article:section" content="Real Estate" />
+        <meta name="article:tag" content="Krisala Aventis Tathawade, 2 BHK Pune, Hinjewadi, MahaRERA P52100080336" />
+        <meta name="dc.title" content="Krisala Aventis Tathawade — Official Website" />
+        <meta name="dc.creator" content="Krisala Legacy" />
+        <meta name="dc.subject" content="Real Estate, Residential Apartments, Pune, Tathawade, Hinjewadi" />
+        <meta name="dc.identifier" content="https://krisalaventis.in" />
+        <meta name="dc.language" content="en-IN" />
+        <link rel="me" href="https://www.google.com/maps/place/Krisala+Aventis/@18.6314375,73.7462656" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
